@@ -219,16 +219,22 @@ const i18n = {
   }
 };
 let lang = 'es';
+try { if (localStorage.getItem('gv-lang') === 'en') lang = 'en'; } catch(e) {}
 const langBtn = document.getElementById('langBtn');
-langBtn.addEventListener('click', ()=>{
-  lang = lang === 'es' ? 'en' : 'es';
+function applyLang(){
   document.documentElement.lang = lang;
   langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const t = i18n[lang][el.dataset.i18n];
-    if(t !== undefined) el.textContent = t;
+    if (t !== undefined) el.textContent = t;
   });
+}
+langBtn.addEventListener('click', ()=>{
+  lang = lang === 'es' ? 'en' : 'es';
+  try { localStorage.setItem('gv-lang', lang); } catch(e) {}
+  applyLang();
 });
+if (lang !== 'es') applyLang();
 </script>
 </body>
 </html>
