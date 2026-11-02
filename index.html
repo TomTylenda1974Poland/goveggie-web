@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoVeggie — Prototipo web</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="panel nav">
+      <a class="logo" href="#top" aria-label="GoVeggie">
+        <!-- Placeholder mark — replace with the approved GoVeggie logo files -->
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17.5" fill="none" stroke="#000" stroke-width="3"/><path d="M20 30 C14 24 13 16 20 10 C27 16 26 24 20 30 Z" fill="none" stroke="#000" stroke-width="2.2"/><path d="M20 12 L20 29" stroke="#000" stroke-width="1.5"/></svg>
+        goveggie.life
+      </a>
+      <nav class="nav-links" aria-label="principal">
+        <a href="productos.html" data-i18n="nav_products">Productos</a>
+        <a href="#calidad" data-i18n="nav_quality">Calidad</a>
+        <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
+        <a href="supermercados.html" data-i18n="nav_b2b">Para supermercados</a>
+        <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
+      </nav>
+      <a class="btn arrow" href="supermercados.html" data-i18n="nav_cta" style="margin-left:auto">Solicitar catálogo</a>
+      <button class="lang" id="langBtn" aria-label="Switch language">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <section class="panel">
+    <div class="hero-grid hero">
+      <div>
+        <h1 data-i18n="hero_h1">Frescura que se nota.</h1>
+        <p class="hero-sub" data-i18n="hero_sub">Frutas y vegetales seleccionados para supermercados de República Dominicana.</p>
+        <a class="btn arrow" href="productos.html" data-i18n="hero_cta">Conoce nuestros productos</a>
+        <br>
+        <span class="proto-tag" data-i18n="proto">Prototipo · contenidos de ejemplo</span>
+      </div>
+      <div class="hero-art">
+        <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/hero.jpg" width="526" height="370" alt="Tomates frescos con grabado botánico y sello: del campo a tu supermercado">
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUALITY ================= -->
+  <section class="panel" id="calidad">
+    <div class="q-grid">
+      <div class="q-item">
+        <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/icon-sel.jpg" alt="" width="107" height="90">
+        <div>
+          <h3 data-i18n="q1_h">Selección</h3>
+          <p data-i18n="q1_p">Productos frescos, de alta calidad y con excelente apariencia.</p>
+        </div>
+      </div>
+      <div class="q-item">
+        <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/icon-pres.jpg" alt="" width="90" height="82">
+        <div>
+          <h3 data-i18n="q2_h">Presentación</h3>
+          <p data-i18n="q2_p">Empaque y formatos ideales para el punto de venta.</p>
+        </div>
+      </div>
+      <div class="q-item">
+        <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/icon-dist.jpg" alt="" width="122" height="77">
+        <div>
+          <h3 data-i18n="q3_h">Distribución</h3>
+          <p data-i18n="q3_p">Entrega confiable y puntual en toda la República Dominicana.</p>
+        </div>
+      </div>
+    </div>
+    <p class="q-note" data-i18n="q_note">Nota del prototipo: las declaraciones de calidad y logística son de ejemplo y deberán confirmarse con GoVeggie antes de publicar.</p>
+  </section>
+
+  <!-- ================= PRODUCTS ================= -->
+  <section id="productos">
+    <div class="section-head"><h2 data-i18n="cat_h">Nuestros productos</h2></div>
+    <div class="cards">
+
+      <article class="card">
+        <div class="card-top">
+          <span class="card-logo"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17.5" fill="none" stroke="#000" stroke-width="3"/><path d="M20 30 C14 24 13 16 20 10 C27 16 26 24 20 30 Z" fill="none" stroke="#000" stroke-width="2.2"/></svg>goveggie.life</span>
+          <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/card1-eng.jpg" alt="" width="69" height="70">
+          <div class="card-name"><h3 data-i18n="p1_h">Tomates</h3><span class="variety">Barceló</span></div>
+        </div>
+        <div class="card-photo"><img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/card1-photo.jpg" alt="Tomates frescos" width="236" height="140"></div>
+        <div class="card-cta"><a class="arrow" href="productos.html" data-i18n="card_link">Ver productos</a></div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="card-logo"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17.5" fill="none" stroke="#000" stroke-width="3"/><path d="M20 30 C14 24 13 16 20 10 C27 16 26 24 20 30 Z" fill="none" stroke="#000" stroke-width="2.2"/></svg>goveggie.life</span>
+          <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/card2-eng.jpg" alt="" width="77" height="70">
+          <div class="card-name"><h3 data-i18n="p2_h">Pepinos</h3><span class="variety">Barceló</span></div>
+        </div>
+        <div class="card-photo"><img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/card2-photo.jpg" alt="Pepinos frescos" width="236" height="140"></div>
+        <div class="card-cta"><a class="arrow" href="productos.html" data-i18n="card_link">Ver productos</a></div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <span class="card-logo"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17.5" fill="none" stroke="#000" stroke-width="3"/><path d="M20 30 C14 24 13 16 20 10 C27 16 26 24 20 30 Z" fill="none" stroke="#000" stroke-width="2.2"/></svg>goveggie.life</span>
+          <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/card3-eng.jpg" alt="" width="87" height="73">
+          <div class="card-name"><h3 data-i18n="p3_h">Ajíes</h3><span class="variety">Barceló</span></div>
+        </div>
+        <div class="card-photo"><img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/card3-photo.jpg" alt="Ajíes rojos, verdes y amarillos" width="236" height="141"></div>
+        <div class="card-cta"><a class="arrow" href="productos.html" data-i18n="card_link">Ver productos</a></div>
+      </article>
+
+    </div>
+    <p class="cat-note" data-i18n="cat_note">Variedades de ejemplo — el catálogo final se construirá con la oferta real de Go Veggie Life.</p>
+  </section>
+
+  <!-- ================= B2B ================= -->
+  <section class="panel" id="b2b">
+    <div class="b2b-grid">
+      <div class="b2b-left">
+        <h2 data-i18n="b2b_h">Tu aliado en productos frescos</h2>
+        <p data-i18n="b2b_p">Abastecemos supermercados, cadenas y distribuidores con un portafolio confiable, variado y de alta rotación.</p>
+        <a class="btn arrow" href="supermercados.html" data-i18n="b2b_cta">Hablemos de tu negocio</a>
+      </div>
+      <div class="b2b-art">
+        <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/farm.jpg" alt="Grabado de un campo dominicano con un trabajador cosechando" width="425" height="232">
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contacto">
+  <div class="wrap">
+    <div class="panel footer-bar" id="nosotros">
+      <a class="logo" href="#top" aria-label="GoVeggie">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17.5" fill="none" stroke="#fff" stroke-width="3"/><path d="M20 30 C14 24 13 16 20 10 C27 16 26 24 20 30 Z" fill="none" stroke="#fff" stroke-width="2.2"/></svg>
+        goveggie.life
+      </a>
+      <p class="f-desc" data-i18n="f_about">Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.</p>
+      <div class="f-col">
+        <a href="productos.html" data-i18n="nav_products">Productos</a>
+        <a href="#calidad" data-i18n="nav_quality">Calidad</a>
+        <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
+      </div>
+      <div class="f-col">
+        <a href="supermercados.html" data-i18n="nav_b2b">Para supermercados</a>
+        <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
+        <a href="https://palapa-verde-donpollolococabarete-9718.vercel.app">Palapa Verde</a>
+      </div>
+      <div class="f-social">
+        <a href="contacto.html" aria-label="Instagram"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg></a>
+        <a href="contacto.html" aria-label="Facebook"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M14 8 L14 5.5 C14 4 15 3 16.5 3 L18 3 M14 8 L11 8 M14 8 L14 21 M11 12 L17 12" transform="translate(-1,0)"/></svg></a>
+        <a href="contacto.html" aria-label="LinkedIn"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10 L8 17 M8 7 L8 7.01 M12 17 L12 10 M12 13 C12 11 16 11 16 13 L16 17"/></svg></a>
+      </div>
+    </div>
+    <div class="f-meta">
+      <span data-i18n="f_legal">© 2026 Go Veggie Life · [datos de la empresa] · [correo comercial] · [teléfono / WhatsApp]</span>
+      <span data-i18n="f_proto">Prototipo de diseño — logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="b2b-sticky" href="supermercados.html" data-i18n="sticky">Hablemos de tu negocio</a>
+
+<script>
+const i18n = {
+  es: {
+    nav_products:"Productos", nav_quality:"Calidad", nav_about:"Nosotros", nav_b2b:"Para supermercados", nav_contact:"Contacto",
+    nav_cta:"Solicitar catálogo",
+    hero_h1:"Frescura que se nota.",
+    hero_sub:"Frutas y vegetales seleccionados para supermercados de República Dominicana.",
+    hero_cta:"Conoce nuestros productos",
+    proto:"Prototipo · contenidos de ejemplo",
+    q1_h:"Selección", q1_p:"Productos frescos, de alta calidad y con excelente apariencia.",
+    q2_h:"Presentación", q2_p:"Empaque y formatos ideales para el punto de venta.",
+    q3_h:"Distribución", q3_p:"Entrega confiable y puntual en toda la República Dominicana.",
+    q_note:"Nota del prototipo: las declaraciones de calidad y logística son de ejemplo y deberán confirmarse con GoVeggie antes de publicar.",
+    cat_h:"Nuestros productos",
+    cat_note:"Variedades de ejemplo — el catálogo final se construirá con la oferta real de Go Veggie Life.",
+    p1_h:"Tomates", p2_h:"Pepinos", p3_h:"Ajíes",
+    card_link:"Ver productos",
+    b2b_h:"Tu aliado en productos frescos",
+    b2b_p:"Abastecemos supermercados, cadenas y distribuidores con un portafolio confiable, variado y de alta rotación.",
+    b2b_cta:"Hablemos de tu negocio",
+    f_about:"Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.",
+    f_legal:"© 2026 Go Veggie Life · [datos de la empresa] · [correo comercial] · [teléfono / WhatsApp]",
+    f_proto:"Prototipo de diseño — logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.",
+    sticky:"Hablemos de tu negocio"
+  },
+  en: {
+    nav_products:"Products", nav_quality:"Quality", nav_about:"About us", nav_b2b:"For supermarkets", nav_contact:"Contact",
+    nav_cta:"Request catalogue",
+    hero_h1:"Freshness you can see.",
+    hero_sub:"Selected fruits and vegetables for supermarkets across the Dominican Republic.",
+    hero_cta:"Discover our products",
+    proto:"Prototype · sample content",
+    q1_h:"Selection", q1_p:"Fresh, high-quality produce with excellent appearance.",
+    q2_h:"Presentation", q2_p:"Packaging and formats ideal for the point of sale.",
+    q3_h:"Distribution", q3_p:"Reliable, on-time delivery across the Dominican Republic.",
+    q_note:"Prototype note: quality and logistics claims are examples and must be confirmed with GoVeggie before publishing.",
+    cat_h:"Our products",
+    cat_note:"Sample varieties — the final catalogue will be built from Go Veggie Life's real offering.",
+    p1_h:"Tomatoes", p2_h:"Cucumbers", p3_h:"Bell peppers",
+    card_link:"View products",
+    b2b_h:"Your fresh-produce partner",
+    b2b_p:"We supply supermarkets, chains and distributors with a reliable, varied, high-rotation portfolio.",
+    b2b_cta:"Let's talk business",
+    f_about:"Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.",
+    f_legal:"© 2026 Go Veggie Life · [company details] · [sales email] · [phone / WhatsApp]",
+    f_proto:"Design prototype — logo, photography, products and contact details will be replaced with approved materials.",
+    sticky:"Let's talk business"
+  }
+};
+let lang = 'es';
+const langBtn = document.getElementById('langBtn');
+langBtn.addEventListener('click', ()=>{
+  lang = lang === 'es' ? 'en' : 'es';
+  document.documentElement.lang = lang;
+  langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const t = i18n[lang][el.dataset.i18n];
+    if(t !== undefined) el.textContent = t;
+  });
+});
+</script>
+</body>
+</html>

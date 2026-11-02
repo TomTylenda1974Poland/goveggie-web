@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — GoVeggie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="panel nav">
+      <a class="logo" href="index.html" aria-label="GoVeggie">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17.5" fill="none" stroke="#000" stroke-width="3"/><path d="M20 30 C14 24 13 16 20 10 C27 16 26 24 20 30 Z" fill="none" stroke="#000" stroke-width="2.2"/><path d="M20 12 L20 29" stroke="#000" stroke-width="1.5"/></svg>
+        goveggie.life
+      </a>
+      <nav class="nav-links" aria-label="principal">
+        <a href="productos.html" data-i18n="nav_products">Productos</a>
+        <a href="index.html#calidad" data-i18n="nav_quality">Calidad</a>
+        <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
+        <a href="supermercados.html" data-i18n="nav_b2b">Para supermercados</a>
+        <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
+      </nav>
+      <a class="btn arrow" href="supermercados.html" data-i18n="nav_cta" style="margin-left:auto">Solicitar catálogo</a>
+      <button class="lang" id="langBtn" aria-label="Switch language">EN</button>
+    </div>
+  </div>
+</header>
+<main>
+<div class="wrap">
+
+  <section class="panel page-head">
+    <h1 data-i18n="ph_h">Contacto</h1>
+    <p data-i18n="ph_p">Escríbenos y te respondemos el mismo día hábil.</p>
+  </section>
+  <section class="panel">
+    <div class="two-col pad">
+      <div>
+        <table class="spec-table">
+          <tr><th data-i18n="c1">Correo comercial</th><td>[correo comercial]</td></tr>
+          <tr><th data-i18n="c2">Teléfono / WhatsApp</th><td>[teléfono / WhatsApp]</td></tr>
+          <tr><th data-i18n="c3">Zona de entrega</th><td data-i18n="c3v">Toda la República Dominicana</td></tr>
+          <tr><th data-i18n="c4">Horario</th><td>[horario de atención]</td></tr>
+        </table>
+        <p class="note" style="margin-top:12px" data-i18n="c_note">Datos de ejemplo — se sustituirán por los datos reales de la empresa.</p>
+      </div>
+      <form class="form-grid" id="cForm" novalidate>
+        <div><label for="c-name" data-i18n="l1">Nombre</label><input id="c-name" type="text" autocomplete="name"></div>
+        <div><label for="c-mail" data-i18n="l2">Correo</label><input id="c-mail" type="email" autocomplete="email"></div>
+        <div><label for="c-msg" data-i18n="l4">Mensaje</label><textarea id="c-msg"></textarea></div>
+        <button class="btn" type="submit" data-i18n="l5">Enviar</button>
+        <p class="form-ok" id="formOk" role="status" data-i18n="l6">Prototipo: el formulario se conectará al correo comercial en la versión de producción.</p>
+      </form>
+    </div>
+  </section>
+
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="panel footer-bar">
+      <a class="logo" href="index.html" aria-label="GoVeggie">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17.5" fill="none" stroke="#fff" stroke-width="3"/><path d="M20 30 C14 24 13 16 20 10 C27 16 26 24 20 30 Z" fill="none" stroke="#fff" stroke-width="2.2"/></svg>
+        goveggie.life
+      </a>
+      <p class="f-desc" data-i18n="f_about">Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.</p>
+      <div class="f-col">
+        <a href="productos.html" data-i18n="nav_products">Productos</a>
+        <a href="index.html#calidad" data-i18n="nav_quality">Calidad</a>
+        <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
+      </div>
+      <div class="f-col">
+        <a href="supermercados.html" data-i18n="nav_b2b">Para supermercados</a>
+        <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
+        <a href="https://palapa-verde-donpollolococabarete-9718.vercel.app">Palapa Verde</a>
+      </div>
+      <div class="f-social">
+        <a href="contacto.html" aria-label="Instagram"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg></a>
+        <a href="contacto.html" aria-label="Facebook"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M14 8 L14 5.5 C14 4 15 3 16.5 3 L18 3 M14 8 L11 8 M14 8 L14 21 M11 12 L17 12" transform="translate(-1,0)"/></svg></a>
+        <a href="contacto.html" aria-label="LinkedIn"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10 L8 17 M8 7 L8 7.01 M12 17 L12 10 M12 13 C12 11 16 11 16 13 L16 17"/></svg></a>
+      </div>
+    </div>
+    <div class="f-meta">
+      <span data-i18n="f_legal">© 2026 Go Veggie Life · [datos de la empresa] · [correo comercial] · [teléfono / WhatsApp]</span>
+      <span data-i18n="f_proto">Prototipo de diseño — logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.</span>
+    </div>
+  </div>
+</footer>
+<a class="b2b-sticky" href="supermercados.html" data-i18n="sticky">Hablemos de tu negocio</a>
+<script>
+const i18n = {"es": {"nav_products": "Productos", "nav_quality": "Calidad", "nav_about": "Nosotros", "nav_b2b": "Para supermercados", "nav_contact": "Contacto", "nav_cta": "Solicitar catálogo", "f_about": "Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.", "f_legal": "© 2026 Go Veggie Life · [datos de la empresa] · [correo comercial] · [teléfono / WhatsApp]", "f_proto": "Prototipo de diseño — logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.", "sticky": "Hablemos de tu negocio", "ph_h": "Contacto", "ph_p": "Escríbenos y te respondemos el mismo día hábil.", "c1": "Correo comercial", "c2": "Teléfono / WhatsApp", "c3": "Zona de entrega", "c3v": "Toda la República Dominicana", "c4": "Horario", "c_note": "Datos de ejemplo — se sustituirán por los datos reales de la empresa.", "l1": "Nombre", "l2": "Correo", "l4": "Mensaje", "l5": "Enviar", "l6": "Prototipo: el formulario se conectará al correo comercial en la versión de producción."}, "en": {"nav_products": "Products", "nav_quality": "Quality", "nav_about": "About us", "nav_b2b": "For supermarkets", "nav_contact": "Contact", "nav_cta": "Request catalogue", "f_about": "Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.", "f_legal": "© 2026 Go Veggie Life · [company details] · [sales email] · [phone / WhatsApp]", "f_proto": "Design prototype — logo, photography, products and contact details will be replaced with approved materials.", "sticky": "Let's talk business", "ph_h": "Contact", "ph_p": "Write to us and we reply the same business day.", "c1": "Sales email", "c2": "Phone / WhatsApp", "c3": "Delivery area", "c3v": "All of the Dominican Republic", "c4": "Hours", "c_note": "Sample details — to be replaced with the company's real information.", "l1": "Name", "l2": "Email", "l4": "Message", "l5": "Send", "l6": "Prototype: this form will connect to the sales inbox in the production version."}};
+let lang = 'es';
+try { if (localStorage.getItem('gv-lang') === 'en') lang = 'en'; } catch(e) {}
+const langBtn = document.getElementById('langBtn');
+function applyLang(){
+  document.documentElement.lang = lang;
+  langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const t = i18n[lang][el.dataset.i18n];
+    if (t !== undefined) el.textContent = t;
+  });
+}
+langBtn.addEventListener('click', ()=>{
+  lang = lang === 'es' ? 'en' : 'es';
+  try { localStorage.setItem('gv-lang', lang); } catch(e) {}
+  applyLang();
+});
+if (lang !== 'es') applyLang();
+
+document.getElementById('cForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  document.getElementById('formOk').style.display = 'block';
+});
+</script>
+</body>
+</html>
