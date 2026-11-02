@@ -167,3 +167,11 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 .pcard-body h3{font-size:1.15rem}
 .pcard-body .pdesc{display:block;font-size:.78rem;color:var(--meta);margin-top:3px}
 .pcard-body .variety{font-size:.8rem;font-weight:500;letter-spacing:.3em;display:block;margin-top:2px}
+
+/* ---------- b2b art column with icon strip ---------- */
+.art-col{display:flex;flex-direction:column;justify-content:center;gap:clamp(12px,1.6vw,22px)}
+.art-col > img{width:100%;height:auto}
+.mini-icons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:var(--hairline);padding-top:clamp(12px,1.6vw,20px)}
+.mini-icons > div{text-align:center}
+.mini-icons img{width:clamp(54px,4.5vw,78px);margin:0 auto}
+.mini-icons span{display:block;font:700 .68rem var(--body);letter-spacing:.06em;text-transform:uppercase;margin-top:6px}
