@@ -171,6 +171,8 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 
 /* ---------- b2b art column with icon strip ---------- */
 .art-col{display:flex;flex-direction:column;justify-content:center;gap:clamp(12px,1.6vw,22px)}
+.journey-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.2vw,18px)}
+.journey-grid img{width:100%;height:auto}
 .art-col > img{width:100%;height:auto}
 .mini-icons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:var(--hairline);padding-top:clamp(12px,1.6vw,20px)}
 .mini-icons > div{text-align:center;display:flex;flex-direction:column;justify-content:flex-end}

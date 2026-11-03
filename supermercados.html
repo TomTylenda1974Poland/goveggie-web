@@ -63,8 +63,12 @@
         </form>
       </div>
       <div class="b2b-art art-col">
-        <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/journey-v2.jpg" alt="Del campo, al camión, al empaque y a tu supermercado" width="1120" height="330">
-        <img class="stamp" id="stampImg" src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/stamp-es-v3.jpg" data-es="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/stamp-es-v3.jpg" data-en="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/stamp-en-v3.jpg" alt="Del campo a tu supermercado" width="600" height="600">
+        <div class="journey-grid">
+          <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/etapa-campo.jpg" alt="Grabado: cosecha en el campo" width="560" height="460">
+          <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/etapa-camion.jpg" alt="Grabado: transporte" width="560" height="460">
+          <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/etapa-empaque.jpg" alt="Grabado: empaque y pesaje" width="560" height="460">
+          <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/etapa-mercado.jpg" alt="Grabado: supermercado" width="560" height="460">
+        </div>
         <div class="mini-icons">
           <div><img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/icon-sel.jpg" alt="" loading="lazy"><span data-i18n="m1">Selección</span></div>
           <div><img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/icon-pres.jpg" alt="" loading="lazy"><span data-i18n="m2">Presentación</span></div>
@@ -119,8 +123,6 @@ function applyLang(){
     const t = i18n[lang][el.dataset.i18n];
     if (t !== undefined) el.textContent = t;
   });
-  const st=document.getElementById('stampImg');
-  if(st) st.src = lang==='en' ? st.dataset.en : st.dataset.es;
 }
 langBtn.addEventListener('click', ()=>{
   lang = lang === 'es' ? 'en' : 'es';
