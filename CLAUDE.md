@@ -42,7 +42,7 @@ always include all 6 GoVeggie files, otherwise missing pages 404.
 - Design system: white paper / black ink, 2px frames + 1px hairlines, `.panel` sections,
   Archivo Black (display) + Inter (body), meta grey `#6E6E68`, alt bg `#F5F5F2`.
   Palapa adds `--verde:#1F5B1F` and Cormorant Garamond italic (`.botanical`).
-- Barceló is a tomato VARIETY — it appears only on the Tomates card, nowhere else.
+- Barceló (a tomato variety) was REMOVED from the sites at Adam's request (Nov 3) — do not re-add it anywhere.
 
 ## Next phase (planned, not started)
 Shop + operations app for GoVeggie. Supabase is available as backend candidate.
