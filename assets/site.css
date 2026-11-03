@@ -76,9 +76,9 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 .card-logo{display:flex;align-items:center;gap:7px;font-family:var(--display);font-size:.92rem;letter-spacing:-.01em}
 .card-logo svg{width:21px;height:21px}
 .card-top img{width:clamp(64px,6vw,92px);grid-row:1 / span 2;grid-column:2}
-.card-name{grid-column:1}
+.card-name{grid-column:1;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .card-name h3{font-size:clamp(1.5rem,1.9vw,1.9rem);margin-top:10px}
-.card-name .variety{font-size:.95rem;font-weight:500;letter-spacing:.35em;text-transform:none;display:block;margin-top:2px}
+.card-name .variety{font-size:.9rem;font-weight:600;letter-spacing:.14em;text-transform:none}
 .card-photo{padding:6px 14px 12px}
 .card-photo img{width:100%}
 .card-cta{border-top:var(--frame);margin-top:auto}
@@ -162,11 +162,12 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 /* ---------- full catalog grid ---------- */
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:clamp(10px,1.4vw,20px);margin-bottom:clamp(14px,2vw,26px)}
 .pcard{border:var(--frame);background:var(--paper);display:flex;flex-direction:column}
-.pcard img{width:100%;border-bottom:var(--hairline)}
+.pcard img{width:100%;aspect-ratio:384/341;object-fit:contain;border-bottom:var(--hairline)}
 .pcard-body{padding:12px 14px 14px}
 .pcard-body h3{font-size:1.15rem}
 .pcard-body .pdesc{display:block;font-size:.78rem;color:var(--meta);margin-top:3px}
-.pcard-body .variety{font-size:.8rem;font-weight:500;letter-spacing:.3em;display:block;margin-top:2px}
+.pcard-body .nrow{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.pcard-body .variety{font-size:.78rem;font-weight:600;letter-spacing:.14em}
 
 /* ---------- b2b art column with icon strip ---------- */
 .art-col{display:flex;flex-direction:column;justify-content:center;gap:clamp(12px,1.6vw,22px)}
