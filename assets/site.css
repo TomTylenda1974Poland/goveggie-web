@@ -188,3 +188,16 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 @media (max-width:760px){
   .ph-grid{grid-template-columns:1fr}
 }
+
+/* ---------- contacto ---------- */
+.contact-grid{display:grid;grid-template-columns:5fr 6fr;gap:clamp(18px,3.5vw,56px);align-items:center}
+.spec-table .ph-val{color:var(--meta)}
+.form-wide{max-width:none}
+.form-h{font-size:clamp(1.3rem,2.2vw,1.8rem);margin-bottom:4px}
+.form-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.form-wide textarea{min-height:140px}
+.form-wide .btn{justify-self:start;padding:13px 44px}
+@media (max-width:760px){
+  .contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
