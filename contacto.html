@@ -38,15 +38,9 @@
         <h1 data-i18n="ph_h">Contacto</h1>
         <p data-i18n="ph_p">Escríbenos y te respondemos el mismo día hábil.</p>
       </div>
-      <div>
-        <h2 class="form-h" data-i18n="t_h" style="margin-bottom:10px">Datos de contacto de Go Veggie Life</h2>
-        <table class="spec-table">
-          <tr><th data-i18n="c1">Correo comercial</th><td class="ph-val">[correo comercial]</td></tr>
-          <tr><th data-i18n="c2">Teléfono / WhatsApp</th><td class="ph-val">[teléfono / WhatsApp]</td></tr>
-          <tr><th data-i18n="c3">Zona de entrega</th><td data-i18n="c3v">Toda la República Dominicana</td></tr>
-          <tr><th data-i18n="c4">Horario</th><td class="ph-val">[horario de atención]</td></tr>
-        </table>
-        <p class="note" style="margin-top:12px" data-i18n="c_note">Datos de ejemplo — se sustituirán por los datos reales de la empresa.</p>
+      <div class="slogan">
+        <p class="slogan-main" data-i18n="sl_1">La frescura no espera.</p>
+        <p class="slogan-sub" data-i18n="sl_2">Del campo a tu góndola, sin rodeos.</p>
       </div>
     </div>
   </section>
@@ -103,7 +97,7 @@
 </footer>
 <a class="b2b-sticky" href="supermercados.html" data-i18n="sticky">Hablemos de tu negocio</a>
 <script>
-const i18n = {"es": {"nav_products": "Productos", "nav_quality": "Calidad", "nav_about": "Nosotros", "nav_b2b": "Para supermercados", "nav_contact": "Contacto", "nav_cta": "Solicitar catálogo", "f_about": "Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.", "f_legal": "© 2026 Go Veggie Life · [datos de la empresa] · [correo comercial] · [teléfono / WhatsApp]", "f_proto": "Prototipo de diseño — logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.", "sticky": "Hablemos de tu negocio", "ph_h": "Contacto", "ph_p": "Escríbenos y te respondemos el mismo día hábil.", "t_h": "Datos de contacto de Go Veggie Life", "c1": "Correo comercial", "c2": "Teléfono / WhatsApp", "c3": "Zona de entrega", "c3v": "Toda la República Dominicana", "c4": "Horario", "c_note": "Datos de ejemplo — se sustituirán por los datos reales de la empresa.", "f_h": "Envíanos un mensaje", "l1": "Nombre", "l2": "Correo", "l3": "Teléfono / WhatsApp", "l4": "Mensaje", "l5": "Enviar", "l6": "Prototipo: el formulario se conectará al correo comercial en la versión de producción."}, "en": {"nav_products": "Products", "nav_quality": "Quality", "nav_about": "About us", "nav_b2b": "For supermarkets", "nav_contact": "Contact", "nav_cta": "Request catalogue", "f_about": "Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.", "f_legal": "© 2026 Go Veggie Life · [company details] · [sales email] · [phone / WhatsApp]", "f_proto": "Design prototype — logo, photography, products and contact details will be replaced with approved materials.", "sticky": "Let's talk business", "ph_h": "Contact", "ph_p": "Write to us and we reply the same business day.", "t_h": "Go Veggie Life contact details", "c1": "Sales email", "c2": "Phone / WhatsApp", "c3": "Delivery area", "c3v": "All of the Dominican Republic", "c4": "Hours", "c_note": "Sample details — to be replaced with the company's real information.", "f_h": "Send us a message", "l1": "Name", "l2": "Email", "l3": "Phone / WhatsApp", "l4": "Message", "l5": "Send", "l6": "Prototype: this form will connect to the sales inbox in the production version."}};
+const i18n = {"es": {"nav_products": "Productos", "nav_quality": "Calidad", "nav_about": "Nosotros", "nav_b2b": "Para supermercados", "nav_contact": "Contacto", "nav_cta": "Solicitar catálogo", "f_about": "Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.", "f_legal": "© 2026 Go Veggie Life · [datos de la empresa] · [correo comercial] · [teléfono / WhatsApp]", "f_proto": "Prototipo de diseño — logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.", "sticky": "Hablemos de tu negocio", "ph_h": "Contacto", "ph_p": "Escríbenos y te respondemos el mismo día hábil.", "sl_1": "La frescura no espera.", "sl_2": "Del campo a tu góndola, sin rodeos.", "f_h": "Envíanos un mensaje", "l1": "Nombre", "l2": "Correo", "l3": "Teléfono / WhatsApp", "l4": "Mensaje", "l5": "Enviar", "l6": "Prototipo: el formulario se conectará al correo comercial en la versión de producción."}, "en": {"nav_products": "Products", "nav_quality": "Quality", "nav_about": "About us", "nav_b2b": "For supermarkets", "nav_contact": "Contact", "nav_cta": "Request catalogue", "f_about": "Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.", "f_legal": "© 2026 Go Veggie Life · [company details] · [sales email] · [phone / WhatsApp]", "f_proto": "Design prototype — logo, photography, products and contact details will be replaced with approved materials.", "sticky": "Let's talk business", "ph_h": "Contact", "ph_p": "Write to us and we reply the same business day.", "sl_1": "Freshness doesn't wait.", "sl_2": "From the field to your shelf, no detours.", "f_h": "Send us a message", "l1": "Name", "l2": "Email", "l3": "Phone / WhatsApp", "l4": "Message", "l5": "Send", "l6": "Prototype: this form will connect to the sales inbox in the production version."}};
 let lang = 'es';
 try { if (localStorage.getItem('gv-lang') === 'en') lang = 'en'; } catch(e) {}
 const langBtn = document.getElementById('langBtn');

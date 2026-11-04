@@ -194,6 +194,9 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 }
 
 /* ---------- contacto ---------- */
+.slogan{border-left:6px solid var(--ink);padding-left:clamp(18px,2.2vw,32px)}
+.page-head .slogan-main{font-family:var(--display);font-size:clamp(1.9rem,3.6vw,3.1rem);line-height:1.04;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance;max-width:none;margin-top:0}
+.page-head .slogan-sub{margin-top:12px;font-size:clamp(.95rem,1.1vw,1.05rem);color:var(--meta)}
 .contact-grid{display:grid;grid-template-columns:5fr 6fr;gap:clamp(18px,3.5vw,56px);align-items:center}
 .spec-table .ph-val{color:var(--meta)}
 .form-wide{max-width:none}
@@ -204,4 +207,5 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 @media (max-width:760px){
   .contact-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
+  .slogan{border-left:none;border-top:var(--frame);padding-left:0;padding-top:16px}
 }
