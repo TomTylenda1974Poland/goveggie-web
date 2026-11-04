@@ -53,11 +53,12 @@
       <div class="b2b-left">
         <h2 data-i18n="f_h">Hablemos de tu negocio</h2>
         <p data-i18n="f_p">Déjanos tus datos y te contactamos con el catálogo y condiciones comerciales.</p>
-        <form class="form-grid" id="b2bForm" novalidate>
-          <div><label for="f-name" data-i18n="l1">Nombre y empresa</label><input id="f-name" type="text" autocomplete="organization"></div>
-          <div><label for="f-mail" data-i18n="l2">Correo</label><input id="f-mail" type="email" autocomplete="email"></div>
-          <div><label for="f-tel" data-i18n="l3">Teléfono / WhatsApp</label><input id="f-tel" type="tel" autocomplete="tel"></div>
-          <div><label for="f-msg" data-i18n="l4">¿Qué necesita tu negocio?</label><textarea id="f-msg"></textarea></div>
+        <form class="form-grid" id="b2bForm">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div><label for="f-name" data-i18n="l1">Nombre y empresa</label><input id="f-name" name="empresa" type="text" autocomplete="organization" required></div>
+          <div><label for="f-mail" data-i18n="l2">Correo</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
+          <div><label for="f-tel" data-i18n="l3">Teléfono / WhatsApp</label><input id="f-tel" name="telefono" type="tel" autocomplete="tel"></div>
+          <div><label for="f-msg" data-i18n="l4">¿Qué necesita tu negocio?</label><textarea id="f-msg" name="mensaje" required></textarea></div>
           <button class="btn" type="submit" data-i18n="l5">Enviar</button>
           <p class="form-ok" id="formOk" role="status" data-i18n="l6">Prototipo: el formulario se conectará al correo comercial en la versión de producción.</p>
         </form>
@@ -102,7 +103,7 @@
 </footer>
 <a class="b2b-sticky" href="supermercados.html" data-i18n="sticky">Hablemos de tu negocio</a>
 <script>
-const i18n = {"es": {"nav_products": "Productos", "nav_quality": "Calidad", "nav_about": "Nosotros", "nav_b2b": "Para supermercados", "nav_contact": "Contacto", "nav_cta": "Solicitar catálogo", "f_about": "Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.", "f_legal": "© 2026 Go Veggie Life · [datos de la empresa] · [correo comercial] · [teléfono / WhatsApp]", "f_proto": "Prototipo de diseño — logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.", "sticky": "Hablemos de tu negocio", "m1": "Selección", "m2": "Presentación", "m3": "Distribución", "ph_h": "Para supermercados y distribuidores", "ph_p": "Un solo proveedor para tu góndola de frescos: selección, empaque para punto de venta y entrega puntual en toda la República Dominicana.", "s1_h": "Solicita el catálogo", "s1_p": "Recibe el catálogo con disponibilidad y precios para tu negocio.", "s2_h": "Define tu pedido", "s2_p": "Acordamos surtido, volúmenes, formatos y frecuencia de entrega.", "s3_h": "Recibe y rota", "s3_p": "Entregas puntuales y producto con excelente apariencia en góndola.", "f_h": "Hablemos de tu negocio", "f_p": "Déjanos tus datos y te contactamos con el catálogo y condiciones comerciales.", "l1": "Nombre y empresa", "l2": "Correo", "l3": "Teléfono / WhatsApp", "l4": "¿Qué necesita tu negocio?", "l5": "Enviar", "l6": "Prototipo: el formulario se conectará al correo comercial en la versión de producción."}, "en": {"nav_products": "Products", "nav_quality": "Quality", "nav_about": "About us", "nav_b2b": "For supermarkets", "nav_contact": "Contact", "nav_cta": "Request catalogue", "f_about": "Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.", "f_legal": "© 2026 Go Veggie Life · [company details] · [sales email] · [phone / WhatsApp]", "f_proto": "Design prototype — logo, photography, products and contact details will be replaced with approved materials.", "sticky": "Let's talk business", "m1": "Selection", "m2": "Presentation", "m3": "Distribution", "ph_h": "For supermarkets and distributors", "ph_p": "One supplier for your fresh aisle: selection, point-of-sale packaging and on-time delivery across the Dominican Republic.", "s1_h": "Request the catalogue", "s1_p": "Get the catalogue with availability and pricing for your business.", "s2_h": "Define your order", "s2_p": "We agree assortment, volumes, formats and delivery frequency.", "s3_h": "Receive and rotate", "s3_p": "On-time deliveries and produce that looks excellent on the shelf.", "f_h": "Let's talk business", "f_p": "Leave your details and we'll get back to you with the catalogue and trade terms.", "l1": "Name and company", "l2": "Email", "l3": "Phone / WhatsApp", "l4": "What does your business need?", "l5": "Send", "l6": "Prototype: this form will connect to the sales inbox in the production version."}};
+const i18n = {"es": {"nav_products": "Productos", "nav_quality": "Calidad", "nav_about": "Nosotros", "nav_b2b": "Para supermercados", "nav_contact": "Contacto", "nav_cta": "Solicitar catálogo", "f_about": "Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.", "f_legal": "© 2026 Go Veggie Life · [datos de la empresa] · [correo comercial] · [teléfono / WhatsApp]", "f_proto": "Prototipo de diseño — logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.", "sticky": "Hablemos de tu negocio", "m1": "Selección", "m2": "Presentación", "m3": "Distribución", "ph_h": "Para supermercados y distribuidores", "ph_p": "Un solo proveedor para tu góndola de frescos: selección, empaque para punto de venta y entrega puntual en toda la República Dominicana.", "s1_h": "Solicita el catálogo", "s1_p": "Recibe el catálogo con disponibilidad y precios para tu negocio.", "s2_h": "Define tu pedido", "s2_p": "Acordamos surtido, volúmenes, formatos y frecuencia de entrega.", "s3_h": "Recibe y rota", "s3_p": "Entregas puntuales y producto con excelente apariencia en góndola.", "f_h": "Hablemos de tu negocio", "f_p": "Déjanos tus datos y te contactamos con el catálogo y condiciones comerciales.", "l1": "Nombre y empresa", "l2": "Correo", "l3": "Teléfono / WhatsApp", "l4": "¿Qué necesita tu negocio?", "l5": "Enviar", "l6": "Solicitud enviada. Te contactamos con el catálogo y condiciones.", "l6s": "Enviando…", "l6e": "No se pudo enviar. Inténtalo de nuevo en un momento."}, "en": {"nav_products": "Products", "nav_quality": "Quality", "nav_about": "About us", "nav_b2b": "For supermarkets", "nav_contact": "Contact", "nav_cta": "Request catalogue", "f_about": "Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.", "f_legal": "© 2026 Go Veggie Life · [company details] · [sales email] · [phone / WhatsApp]", "f_proto": "Design prototype — logo, photography, products and contact details will be replaced with approved materials.", "sticky": "Let's talk business", "m1": "Selection", "m2": "Presentation", "m3": "Distribution", "ph_h": "For supermarkets and distributors", "ph_p": "One supplier for your fresh aisle: selection, point-of-sale packaging and on-time delivery across the Dominican Republic.", "s1_h": "Request the catalogue", "s1_p": "Get the catalogue with availability and pricing for your business.", "s2_h": "Define your order", "s2_p": "We agree assortment, volumes, formats and delivery frequency.", "s3_h": "Receive and rotate", "s3_p": "On-time deliveries and produce that looks excellent on the shelf.", "f_h": "Let's talk business", "f_p": "Leave your details and we'll get back to you with the catalogue and trade terms.", "l1": "Name and company", "l2": "Email", "l3": "Phone / WhatsApp", "l4": "What does your business need?", "l5": "Send", "l6": "Request sent. We'll contact you with the catalogue and terms.", "l6s": "Sending…", "l6e": "Couldn't send — please try again in a moment."}};
 let lang = 'es';
 try { if (localStorage.getItem('gv-lang') === 'en') lang = 'en'; } catch(e) {}
 const langBtn = document.getElementById('langBtn');
@@ -121,9 +122,22 @@ langBtn.addEventListener('click', ()=>{
 });
 if (lang !== 'es') applyLang();
 
+const FORM_TO = 'REPLACE_WITH_EMAIL';
 document.getElementById('b2bForm').addEventListener('submit', e=>{
   e.preventDefault();
-  document.getElementById('formOk').style.display = 'block';
+  const f = e.target;
+  const ok = document.getElementById('formOk');
+  const btn = f.querySelector('button[type="submit"]');
+  const fd = new FormData(f);
+  fd.append('_subject', 'Web GoVeggie — solicitud de supermercado');
+  fd.append('_template', 'table');
+  btn.disabled = true;
+  ok.dataset.i18n = 'l6s'; ok.textContent = i18n[lang]['l6s']; ok.style.display = 'block';
+  fetch('https://formsubmit.co/ajax/' + FORM_TO, {method:'POST', body:fd, headers:{'Accept':'application/json'}})
+    .then(r=>{ if(!r.ok) throw new Error('http'); return r.json(); })
+    .then(()=>{ ok.dataset.i18n = 'l6'; ok.textContent = i18n[lang]['l6']; f.reset(); })
+    .catch(()=>{ ok.dataset.i18n = 'l6e'; ok.textContent = i18n[lang]['l6e']; })
+    .finally(()=>{ btn.disabled = false; });
 });
 </script>
 </body>
