@@ -112,13 +112,13 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 /* ---------- mobile ---------- */
 .b2b-sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:var(--ink);color:var(--paper);text-align:center;font:700 .85rem var(--body);letter-spacing:.05em;text-transform:uppercase;padding:14px;text-decoration:none;border-top:var(--frame)}
 @media (max-width:1060px){
-  .nav-links{display:none}
+  .nav{height:auto;flex-wrap:wrap;padding:10px var(--pad);gap:10px 14px}
+  .nav .lang{margin-left:auto}
+  .nav-links{order:3;flex:1 1 100%;margin-left:0;flex-wrap:wrap;gap:8px 18px;justify-content:center;border-top:var(--hairline);padding-top:10px}
+  .nav .btn{flex:1 1 100%;margin-left:0!important;text-align:center;order:4}
   .cards{grid-template-columns:1fr 1fr}
 }
 @media (max-width:760px){
-  .nav{height:auto;flex-wrap:wrap;padding:10px var(--pad);gap:10px 14px}
-  .nav .lang{margin-left:auto}
-  .nav .btn{flex:1 1 100%;margin-left:0!important;text-align:center;order:3}
   .section-head h2{white-space:normal}
   .hero-grid{grid-template-columns:1fr;padding-top:22px}
   .q-grid{grid-template-columns:1fr}
