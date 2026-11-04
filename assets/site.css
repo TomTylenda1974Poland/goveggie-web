@@ -116,6 +116,10 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
   .cards{grid-template-columns:1fr 1fr}
 }
 @media (max-width:760px){
+  .nav{height:auto;flex-wrap:wrap;padding:10px var(--pad);gap:10px 14px}
+  .nav .lang{margin-left:auto}
+  .nav .btn{flex:1 1 100%;margin-left:0!important;text-align:center;order:3}
+  .section-head h2{white-space:normal}
   .hero-grid{grid-template-columns:1fr;padding-top:22px}
   .q-grid{grid-template-columns:1fr}
   .q-item + .q-item{border-left:none;border-top:var(--hairline)}
