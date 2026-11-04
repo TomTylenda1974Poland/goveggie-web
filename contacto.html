@@ -50,17 +50,22 @@
     </div>
   </section>
   <section class="panel">
-    <form class="form-grid form-wide pad" id="cForm" novalidate>
-      <h2 class="form-h" data-i18n="f_h">Envíanos un mensaje</h2>
-      <div class="form-row">
-        <div><label for="c-name" data-i18n="l1">Nombre</label><input id="c-name" type="text" autocomplete="name"></div>
-        <div><label for="c-mail" data-i18n="l2">Correo</label><input id="c-mail" type="email" autocomplete="email"></div>
-        <div><label for="c-tel" data-i18n="l3">Teléfono / WhatsApp</label><input id="c-tel" type="tel" autocomplete="tel"></div>
+    <div class="b2b-grid">
+      <div class="b2b-left">
+        <h2 data-i18n="f_h">Envíanos un mensaje</h2>
+        <form class="form-grid" id="cForm" novalidate style="margin-top:20px">
+          <div><label for="c-name" data-i18n="l1">Nombre</label><input id="c-name" type="text" autocomplete="name"></div>
+          <div><label for="c-mail" data-i18n="l2">Correo</label><input id="c-mail" type="email" autocomplete="email"></div>
+          <div><label for="c-tel" data-i18n="l3">Teléfono / WhatsApp</label><input id="c-tel" type="tel" autocomplete="tel"></div>
+          <div><label for="c-msg" data-i18n="l4">Mensaje</label><textarea id="c-msg"></textarea></div>
+          <button class="btn" type="submit" data-i18n="l5">Enviar</button>
+          <p class="form-ok" id="formOk" role="status" data-i18n="l6">Prototipo: el formulario se conectará al correo comercial en la versión de producción.</p>
+        </form>
       </div>
-      <div><label for="c-msg" data-i18n="l4">Mensaje</label><textarea id="c-msg"></textarea></div>
-      <button class="btn" type="submit" data-i18n="l5">Enviar</button>
-      <p class="form-ok" id="formOk" role="status" data-i18n="l6">Prototipo: el formulario se conectará al correo comercial en la versión de producción.</p>
-    </form>
+      <div class="b2b-art art-col">
+        <img src="https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/contacto-escena.jpg" alt="Grabado: atención al cliente — correo, teléfono y pedidos" width="1200" height="634">
+      </div>
+    </div>
   </section>
 
 </div>
