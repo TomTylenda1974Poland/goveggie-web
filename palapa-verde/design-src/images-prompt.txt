@@ -1,0 +1,42 @@
+You are the art director and food photographer for PALAPA VERDE, the value-added prepared-foods line of GO VEGGIE LIFE (fresh fruit & vegetable supplier for supermarkets in the Dominican Republic). Palapa Verde turns Go Veggie Life vegetables into finished, refrigerated products.
+
+THE FIRST ATTACHED IMAGE (referencia-envases) IS THE MANDATORY PACKAGING AND PHOTO STYLE. Reproduce its look precisely: the same containers, the same white die-cut label with arched top and thin black border, the same black-and-white typography (bold serif wordmark, small italic serif line, large bold condensed serif product name), the same black botanical engraving of the key ingredient at the top of the label, the same bright, clean, premium photography with fresh vegetables around the containers on a white background. The other attached images show the Go Veggie Life family style (vivid produce + black stippled botanical engraving on pure white).
+
+Use your image generation tool. Save each final image as PNG at exactly the given path (relative to the current directory, the palapa-verde/ folder); if the tool saves elsewhere, copy the final file there. Create only these files; do not modify any other file; do not run pnpm/npm/git.
+
+CONTAINERS:
+- CHUTNEY DE CILANTRO and PESTO DE CILANTRO CON SEMILLAS DE AUYAMA: straight-sided clear glass jar with a black metal screw lid (like the pesto jar in the reference).
+- HUMMUS DE ZANAHORIA, HUMMUS DE REMOLACHA, SALSA DE AGUACATE Y JALAPEÑO: clear round plastic deli tub with a clear lid (like the hummus tubs in the reference).
+
+LABEL (front, centred, identical system for every product):
+1) a black-ink botanical engraving of the product's key vegetable(s) at the top of the arch;
+2) the wordmark "PALAPA VERDE" (bold serif, black; NO ® or ™ symbol);
+3) the line "Una marca de Go Veggie Life" in small italic serif;
+4) a thin black rule;
+5) the product name, big, as two lines in the reference manner, spelled EXACTLY:
+   - "CHUTNEY" / "de CILANTRO"
+   - "PESTO de CILANTRO" / "con SEMILLAS DE AUYAMA"
+   - "HUMMUS" / "de ZANAHORIA"
+   - "HUMMUS" / "de REMOLACHA"
+   - "SALSA" / "de AGUACATE y JALAPEÑO" (with Ñ)
+IMPORTANT DIFFERENCE FROM THE REFERENCE: the label must NOT contain any description sentence, weight (no "g"), "MANTENER REFRIGERADO", price, barcode, claims or any other text. Below the product name the label simply ends with clean white space and the border. No other text anywhere in the image.
+
+FOOD: show only vegetables named in the product (no chickpeas, no garlic, no lemon, no olive oil, no cheese, no bread or crackers).
+- Chutney de cilantro: vibrant glossy green, chunky, visible through the glass; fresh cilantro around.
+- Pesto de cilantro con semillas de auyama: deep green pesto with visible green pumpkin seeds; fresh cilantro, a few pumpkin seeds and a wedge of West Indian pumpkin (auyama, orange flesh) around.
+- Hummus de zanahoria: smooth bright orange, visible through the tub; fresh carrots with feathery tops around.
+- Hummus de remolacha: smooth vivid magenta; fresh beetroots with red-veined leaves around.
+- Salsa de aguacate y jalapeño: creamy pale green with small dark-green jalapeño flecks; a halved avocado with pit and whole green jalapeños around.
+
+IMAGES (photorealistic, white background, soft daylight from the left, soft shadows, ultra sharp, appetising, labels perfectly legible, generous white margins):
+1. design-src/generated-raw/hero-linea.png — 1536x1024. All five containers together as one product line in a row (left to right: chutney jar, pesto jar, carrot hummus tub, beet hummus tub, avocado salsa tub), their fresh vegetables around and in front, white background, like the top half of the reference. Keep the top ~15% clean white.
+2. design-src/generated-raw/chutney-de-cilantro.png — 1536x1024, the chutney jar alone, front-facing, centred, its vegetables around it.
+3. design-src/generated-raw/pesto-de-cilantro-con-semillas-de-auyama.png — 1536x1024, the pesto jar alone, same composition.
+4. design-src/generated-raw/hummus-de-zanahoria.png — 1536x1024, the carrot hummus tub alone, same composition.
+5. design-src/generated-raw/hummus-de-remolacha.png — 1536x1024, the beet hummus tub alone, same composition.
+6. design-src/generated-raw/salsa-de-aguacate-y-jalapeno.png — 1536x1024, the avocado salsa tub alone, same composition.
+7. design-src/generated-raw/proceso-campo.png — 1024x1024. BLACK INK ONLY botanical engraving on pure white (no colour), same engraving style as the label illustrations: hands harvesting a bunch of cilantro beside a woven basket of fresh vegetables. No faces, no landscape, no text.
+8. design-src/generated-raw/proceso-cocina.png — 1024x1024. BLACK INK ONLY engraving on white: a cook's hands chopping fresh herbs on a wooden board, a few vegetables beside. No faces, no text.
+9. design-src/generated-raw/proceso-frasco.png — 1024x1024. BLACK INK ONLY engraving on white: one glass jar with black lid and an arched label left blank, a cilantro sprig beside it. No text.
+
+Before finishing, inspect every image: exact spelling, no forbidden text (no weight, no MANTENER REFRIGERADO, no description, no ®), correct container type, white background. Regenerate any image that fails (up to 3 tries each). Finally print the saved file list with pixel sizes and any image you could not get right.

@@ -17,9 +17,11 @@ distributor for supermarkets, Dominican Republic), plus the sister kitchen brand
 - `index.html`, `productos.html`, `supermercados.html`, `nosotros.html`, `contacto.html`,
   `assets/site.css` — the GoVeggie site (Vercel project **goveggie**,
   prod: `goveggie-donpollolococabarete-9718.vercel.app`, also `goveggie-hazel.vercel.app`).
-- `palapa-verde/index.html` — the entire Palapa Verde one-pager (separate Vercel project
-  **palapa-verde**, prod: `palapa-verde-donpollolococabarete-9718.vercel.app`).
-  Deploy it as `index.html` at the ROOT of that project, not in a subfolder.
+- `palapa-verde/` — the Palapa Verde website + shop: a **Next.js app** (since 2026-11-05, branch
+  `palapa-verde/shop`). Read `palapa-verde/AGENTS.md` before touching it; it has its own rules
+  (never invent prices/ingredients/allergens/shelf life; no real payments). The original one-pager is
+  archived in `palapa-verde/legacy/`. Vercel project **palapa-verde** is Git-connected to this repo with
+  Root Directory `palapa-verde`: pushes to other branches create previews, `main` is production.
 - `assets/*.jpg` — all imagery. Pages load images via jsDelivr:
   `https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/<file>`
   **jsDelivr caches `@main` aggressively → any changed image MUST get a NEW filename**
@@ -30,8 +32,8 @@ distributor for supermarkets, Dominican Republic), plus the sister kitchen brand
 
 ## Deploying
 Static deploys with no framework. From CLI: `vercel --prod` (GoVeggie from repo root with the
-5 HTML files + assets/site.css; Palapa from a folder containing only its index.html), or via
-API with `projectSettings: {framework: null}`. **Each deployment is a complete snapshot** —
+5 HTML files + assets/site.css), or via API with `projectSettings: {framework: null}`.
+Palapa Verde is NOT deployed this way any more — it deploys through its Git connection (see above). **Each deployment is a complete snapshot** —
 always include all 6 GoVeggie files, otherwise missing pages 404.
 
 ## Page conventions
