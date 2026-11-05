@@ -1,5 +1,5 @@
 
-/* ============ GoVeggie — per the approved mockup ============
+/* ============ GoVeggie - per the approved mockup ============
    White paper, black ink, framed sections, engraving + colour photo.
    Layout: boxed sections inside a 1440 container, 2px black frames. */
 :root{
@@ -230,3 +230,18 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
   .form-row{grid-template-columns:1fr}
   .slogan{border-left:none;border-top:var(--frame);padding-left:0;padding-top:16px}
 }
+
+
+/* Supply illustrations: same editorial language, accurate HTML typography. */
+.ph-image--supply{max-width:720px;object-position:center}
+.supply-story{width:100%;margin:0}
+.supply-brand{display:flex;align-items:center;justify-content:center;gap:8px;font:700 1rem var(--body);letter-spacing:-.04em}
+.supply-brand img{width:28px;height:28px;object-fit:contain}
+.supply-story h3{text-align:center;font-size:clamp(1.1rem,1.7vw,1.6rem);line-height:1.15;margin:14px auto 4px;max-width:26ch}
+.supply-story-art{width:100%;aspect-ratio:1.85;overflow:hidden}
+.supply-story-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center bottom}
+.supply-stages{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0;padding:16px 0 0;border-top:var(--hairline)}
+.supply-stages li{min-width:0;display:flex;flex-direction:column;gap:8px}
+.supply-stages span{font:700 .68rem var(--body);color:var(--meta)}
+.supply-stages strong{font:700 .68rem var(--body);text-transform:uppercase;line-height:1.35;overflow-wrap:break-word}
+@media(max-width:480px){.supply-stages{gap:6px}.supply-stages strong{font-size:.6rem}.supply-story h3{font-size:1.15rem}}
