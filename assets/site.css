@@ -36,6 +36,7 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 .nav{display:flex;align-items:center;gap:20px;height:58px;padding:0 var(--pad)}
 .logo{display:flex;align-items:center;gap:9px;font-family:var(--display);font-size:1.2rem;text-decoration:none;letter-spacing:-.02em;white-space:nowrap}
 .logo svg{width:28px;height:28px;flex:0 0 auto}
+.logo .brand-mark{width:30px;height:30px;flex:0 0 auto;object-fit:cover}
 .nav-links{display:flex;gap:clamp(12px,1.8vw,26px);margin-left:auto;font-size:.76rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
 .nav-links a{text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
 .nav-links a:hover,.nav-links a:focus-visible{border-bottom-color:var(--ink)}
@@ -75,6 +76,7 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 .card-top{display:grid;grid-template-columns:1fr auto;gap:8px;padding:14px 16px 0;align-items:start}
 .card-logo{display:flex;align-items:center;gap:7px;font-family:var(--display);font-size:.92rem;letter-spacing:-.01em}
 .card-logo svg{width:21px;height:21px}
+.card-logo .brand-mark{width:22px;height:22px;flex:0 0 auto;object-fit:cover}
 .card-top img{width:clamp(64px,6vw,92px);grid-row:1 / span 2;grid-column:2}
 .card-name{grid-column:1;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .card-name h3{font-size:clamp(1.5rem,1.9vw,1.9rem);margin-top:10px}
@@ -187,10 +189,24 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 .card-top{display:block}
 .ph-grid{display:grid;grid-template-columns:3fr 2fr;gap:clamp(16px,3vw,48px);align-items:center}
 .ph-grid img{width:100%;height:auto}
+.ph-grid--balanced{grid-template-columns:1fr 1fr}
+.ph-image{display:block;width:100%;height:clamp(245px,27vw,380px)!important;object-fit:contain;margin-inline:auto}
+.ph-image--family{max-width:720px;object-position:center}
+.ph-image--basket{max-width:620px;object-position:center bottom;padding:clamp(4px,1vw,14px) clamp(12px,3vw,42px) 0}
+.b2b-grid--story{grid-template-columns:1fr 1fr}
+.b2b-art--tomato{display:flex;align-items:center;justify-content:center;min-height:clamp(300px,30vw,410px);overflow:hidden}
+.b2b-art--tomato img{width:min(100%,680px);height:clamp(285px,29vw,390px);object-fit:contain;margin:auto}
+.b2b-art--dominicana{padding:clamp(16px,2vw,30px)}
+.b2b-art--dominicana img{width:100%;height:auto;max-height:360px;object-fit:contain}
 .b2b-art.art-col{align-self:stretch}
 .art-col img.stamp{width:clamp(200px,20vw,280px);height:auto;margin:auto}
 @media (max-width:760px){
   .ph-grid{grid-template-columns:1fr}
+  .ph-image{height:clamp(220px,68vw,310px)!important}
+  .ph-image--basket{padding-inline:0}
+  .b2b-grid--story{grid-template-columns:1fr}
+  .b2b-art--tomato{min-height:0}
+  .b2b-art--tomato img{height:auto;max-height:320px}
 }
 
 /* ---------- contacto ---------- */
