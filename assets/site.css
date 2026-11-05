@@ -245,3 +245,5 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 .supply-stages span{font:700 .68rem var(--body);color:var(--meta)}
 .supply-stages strong{font:700 .68rem var(--body);text-transform:uppercase;line-height:1.35;overflow-wrap:break-word}
 @media(max-width:480px){.supply-stages{gap:6px}.supply-stages strong{font-size:.6rem}.supply-story h3{font-size:1.15rem}}
+
+.ph-grid:has(.ph-image--supply) h1{font-size:clamp(2.1rem,3.9vw,3.3rem);text-wrap:balance}
