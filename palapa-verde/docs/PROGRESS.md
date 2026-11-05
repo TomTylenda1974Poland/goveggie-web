@@ -23,8 +23,8 @@ Ostatnia aktualizacja: 2026-11-05 · gałąź `palapa-verde/shop` · wersja 0.1.
 **Podgląd:** adres w sekcji „Ostatni podgląd” niżej.
 
 ## Następne zadania (kolejność)
-1. Właściciel ocenia wygląd na podglądzie. Poprawki grafik robimy przez Codex: prompt jest w `.codex-logs/images-prompt.txt`,
-   a referencja w `design-src/referencia-envases.jpg`.
+1. ~~Właściciel ocenia wygląd na podglądzie.~~ **Wygląd zatwierdzony 2026-11-05.** Następne poprawki grafik robimy przez
+   Codex: prompt jest w `design-src/images-prompt.txt`, a referencja w `design-src/referencia-envases.jpg` (tylko lokalnie).
 2. Uzupełnić dane produktów, gdy przyjdą od firmy (ceny, gramatura, skład, alergeny, termin, przechowywanie).
    Dziś są to `null` w `src/lib/commerce/mock/fixtures.ts`; docelowo przyjdą z API.
 3. Prawdziwe zdjęcia produktów: podmienić pliki w `public/media/productos/` (te same nazwy) i zmienić `kind`
@@ -52,7 +52,11 @@ Ostatnia aktualizacja: 2026-11-05 · gałąź `palapa-verde/shop` · wersja 0.1.
 ## Uwagi techniczne
 - Projekt Vercel **catalog** (domena catalog.goveggie.life, założony w innej sesji) też jest podłączony
   do `goveggie-web`. Każdy push buduje również jego podgląd, a push do `main` wdroży jego produkcję.
-  **Przed merge do `main` sprawdź, co `catalog` buduje z `main`.**
+  **Sprawdzone 2026-11-05:** buildy Git projektu `catalog` serwują stronę GoVeggie z katalogu głównego repo
+  („GoVeggie — Prototipo web”), a produkcja `catalog` to inna strona („Catálogo de productos — GoVeggie”),
+  wdrożona z CLI. **Pierwszy push do `main` podmieniłby więc catalog.goveggie.life na stronę główną GoVeggie.**
+  Zanim cokolwiek trafi do `main`, właściciel musi zdecydować, co z projektem `catalog` (odłączyć od Git
+  albo ustawić „Ignored Build Step” na `exit 0`). Nie zmieniałem go: to inny projekt z domeną goveggie.life.
 - Przegląd kodu przez Codex (`codex review --base main`) znalazł 3 rzeczy i wszystkie są poprawione:
   brak obrazów (dodane), zdjęcia z API z obcej domeny (`unoptimized`), limit czasu nie obejmował
   odczytu odpowiedzi (poprawione, jest test).
@@ -62,6 +66,7 @@ Ostatnia aktualizacja: 2026-11-05 · gałąź `palapa-verde/shop` · wersja 0.1.
   bo repozytorium jest publiczne. Prompt do obrazów jest w `design-src/images-prompt.txt`.
 
 ## Dziennik
+- 2026-11-05: właściciel zatwierdził nowy wygląd („Wygląd OK”).
 - 2026-11-05: odzyskany kod z Vercel, szkielet sklepu, warstwa integracji, testy, połączenie z Vercel.
   Właściciel odrzucił pierwszą wersję grafiki („strasznie”), więc grafika jest od nowa: produkty z wartością
   dodaną w opakowaniach według jego referencji, zdjęcia z ChatGPT (Codex).
