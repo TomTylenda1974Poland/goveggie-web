@@ -247,3 +247,45 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 @media(max-width:480px){.supply-stages{gap:6px}.supply-stages strong{font-size:.6rem}.supply-story h3{font-size:1.15rem}}
 
 .ph-grid:has(.ph-image--supply) h1{font-size:clamp(2.1rem,3.9vw,3.3rem);text-wrap:balance}
+/* Botanical colour edition: white space, fine rules, colour in the produce. */
+.botanical-site .page-head{padding-block:clamp(28px,4vw,62px)}
+.botanical-site .hero-grid{grid-template-columns:1fr 1.15fr;padding-block:clamp(30px,4vw,64px)}
+.botanical-site .hero-art img{aspect-ratio:3/2;object-fit:contain}
+.botanical-site .ph-grid{grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px)}
+.botanical-site .ph-image--produce{height:auto!important;max-height:430px;object-fit:contain;padding:0}
+.botanical-site .b2b-art{padding:clamp(24px,3vw,46px)}
+.botanical-site .art-col{justify-content:center}
+.botanical-site .art-col>img{object-fit:contain}
+.botanical-site .nav-links a[aria-current="page"]{border-bottom-color:var(--ink)}
+.friendly-form{display:grid;gap:22px;margin-top:24px;max-width:560px}
+.friendly-form>p:first-child{margin:0;font-size:.95rem;max-width:36em}
+.friendly-form fieldset{border:0;min-width:0}
+.friendly-form legend,.friendly-form label{font-size:.82rem;font-weight:600;letter-spacing:0;text-transform:none}
+.friendly-form legend{margin-bottom:9px}
+.contact-choices{display:flex;gap:8px;flex-wrap:wrap}
+.contact-choices label{position:relative;display:flex;flex:1 1 110px;cursor:pointer}
+.contact-choices input{position:absolute;opacity:0;width:1px;height:1px}
+.contact-choices span{display:flex;align-items:center;justify-content:center;min-height:48px;border:1px solid #aaa;padding:10px 12px;width:100%;text-align:center;font-size:.78rem;line-height:1.35}
+.contact-choices input:checked+span{background:#000;color:#fff;border-color:#000}
+.contact-choices input:focus-visible+span{outline:2px solid #000;outline-offset:3px}
+.contact-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.friendly-form input:not([type=radio]),.friendly-form textarea{display:block;width:100%;border:1px solid #aaa;border-radius:0;padding:13px 12px;background:#fff;color:#000;font:400 .95rem var(--body);margin-top:7px;min-height:48px}
+.friendly-form input::placeholder,.friendly-form textarea::placeholder{color:#777;font-size:.85rem}
+.friendly-form textarea{resize:vertical;min-height:96px}
+.friendly-form .btn{width:100%;min-height:50px;text-transform:none;font-size:.9rem;letter-spacing:0}
+.friendly-form .contact-hint,.friendly-form .contact-preview{font-size:.76rem;color:#61615c;margin:0;max-width:none}
+.friendly-form .contact-preview{margin-top:-12px}
+.contact-status{border-left:3px solid #000;padding:12px;font-size:.85rem;margin:0!important}
+.journey-caption{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;border-top:1px solid #000;padding-top:16px;list-style:none}
+.journey-caption li{font-size:.65rem;text-transform:uppercase;font-weight:700}
+.journey-caption b{display:block;color:#777;margin-bottom:6px;font-weight:400}
+.journey-title{font-size:clamp(1.2rem,2.2vw,2rem);text-align:center;line-height:1.1;margin-bottom:18px}
+@media(max-width:760px){
+ .botanical-site .hero-grid,.botanical-site .ph-grid{grid-template-columns:1fr}
+ .botanical-site .b2b-art{padding:24px 16px}
+ .botanical-site .b2b-left h2{font-size:clamp(1.85rem,8vw,3rem)}
+ .contact-fields{grid-template-columns:1fr}
+ .friendly-form{gap:20px}
+ .journey-caption{grid-template-columns:repeat(2,1fr)}
+ .botanical-site header{position:relative}
+}
