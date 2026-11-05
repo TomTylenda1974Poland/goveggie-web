@@ -37,6 +37,7 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 .logo{display:flex;align-items:center;gap:9px;font-family:var(--display);font-size:1.2rem;text-decoration:none;letter-spacing:-.02em;white-space:nowrap}
 .logo svg{width:28px;height:28px;flex:0 0 auto}
 .logo .brand-mark{width:30px;height:30px;flex:0 0 auto;object-fit:cover}
+.nav .brand-mark,.card-logo .brand-mark{content:url("goveggie-mark-white-v2.svg");object-fit:contain}
 .nav-links{display:flex;gap:clamp(12px,1.8vw,26px);margin-left:auto;font-size:.76rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
 .nav-links a{text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
 .nav-links a:hover,.nav-links a:focus-visible{border-bottom-color:var(--ink)}
@@ -181,6 +182,9 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 .journey-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.2vw,18px)}
 .journey-grid img{width:100%;height:auto}
 .art-col > img{width:100%;height:auto}
+.journey-visual{position:relative;width:100%}
+.journey-visual > img{width:100%;height:auto}
+.journey-visual > .journey-logo{position:absolute;left:32.5%;top:4%;width:7.5%;height:10%;object-fit:contain;background:#fff}
 .mini-icons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:var(--hairline);padding-top:clamp(12px,1.6vw,20px)}
 .mini-icons > div{text-align:center;display:flex;flex-direction:column;justify-content:flex-end}
 .mini-icons img{height:clamp(46px,4vw,64px);width:auto;max-width:100%;margin:0 auto;object-fit:contain}
