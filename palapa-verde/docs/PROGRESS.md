@@ -43,7 +43,23 @@ Ostatnia aktualizacja: 2026-11-05 · gałąź `palapa-verde/shop` · wersja 0.1.
 - Dane firmy do stopki (nazwa, RNC, kontakt, WhatsApp).
 
 ## Ostatni podgląd
-_(uzupełniane po każdym wdrożeniu)_
+- Gałąź (zawsze najnowsza wersja): https://palapa-verde-git-palapa-verde-shop-donpollolococabarete-9718.vercel.app/es
+- Wdrożenie z 2026-11-05: `dpl_Chqk54KV7Aw3nitQNSstjfdwKkpk`, commit `0c05bc1`, status READY.
+- Produkcja (https://palapa-verde.vercel.app) to nadal stary one-pager, celowo nietknięty.
+- Sprawdzone na podglądzie: wszystkie strony zwracają 200, nieznana strona 404, `noindex` jest,
+  zamówienie testowe przez `/api/orders` działa.
+
+## Uwagi techniczne
+- Projekt Vercel **catalog** (domena catalog.goveggie.life, założony w innej sesji) też jest podłączony
+  do `goveggie-web`. Każdy push buduje również jego podgląd, a push do `main` wdroży jego produkcję.
+  **Przed merge do `main` sprawdź, co `catalog` buduje z `main`.**
+- Przegląd kodu przez Codex (`codex review --base main`) znalazł 3 rzeczy i wszystkie są poprawione:
+  brak obrazów (dodane), zdjęcia z API z obcej domeny (`unoptimized`), limit czasu nie obejmował
+  odczytu odpowiedzi (poprawione, jest test).
+- Wtyczki Codex nie ma w tej sesji Claude Code. Używany jest Codex CLI 0.166 (logowanie przez ChatGPT):
+  `codex exec` do zadań i obrazów, `codex review` do przeglądu.
+- Referencja opakowań (`design-src/referencia-envases.jpg`) jest tylko lokalnie i nie trafia do gita,
+  bo repozytorium jest publiczne. Prompt do obrazów jest w `design-src/images-prompt.txt`.
 
 ## Dziennik
 - 2026-11-05: odzyskany kod z Vercel, szkielet sklepu, warstwa integracji, testy, połączenie z Vercel.
