@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { PageStartLink } from "@/components/PageStartLink";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import type { Locale } from "@/lib/commerce/types";
@@ -38,7 +39,9 @@ export function MobileNavigation({ links, label, locale }: Props) {
     >
       <summary className={styles.trigger} ref={summary}>{locale === "es" ? "Menú" : "Menu"}</summary>
       <nav className={styles.links} aria-label={label}>
-        {links.map(([href, name]) => (
+        {links.map(([href, name]) => href === `/${locale}/hoteles-restaurantes` ? (
+          <PageStartLink key={href} href={href} aria-current={pathname === href ? "page" : undefined}>{name}</PageStartLink>
+        ) : (
           <Link
             key={href}
             href={href}

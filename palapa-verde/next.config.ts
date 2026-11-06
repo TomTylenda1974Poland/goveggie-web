@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   turbopack: { root: fileURLToPath(new URL(".", import.meta.url)) },
+  async headers() {
+    return [{
+      source: "/equipo/:path*",
+      headers: [
+        { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+        { key: "Referrer-Policy", value: "no-referrer" },
+        { key: "Content-Security-Policy", value: "default-src 'self'; script-src 'self'; worker-src 'self'; img-src 'self' blob: data:; style-src 'self'; connect-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'" },
+      ],
+    }];
+  },
   async redirects() {
     return [
       { source: "/", destination: "/es", permanent: false },

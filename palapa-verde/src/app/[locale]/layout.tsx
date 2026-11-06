@@ -69,7 +69,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   ].map(path => `/${locale}${path}`);
 
   return (
-    <html lang={locale} className={`${display.variable} ${body.variable} ${botanical.variable} ${label.variable}`}>
+    <html lang={locale} data-scroll-behavior="smooth" className={`${display.variable} ${body.variable} ${botanical.variable} ${label.variable}`}>
       <body>
         <a className="skip" href="#contenido">
           {locale === "es" ? "Saltar al contenido" : "Skip to content"}

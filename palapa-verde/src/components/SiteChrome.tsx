@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PageStartLink } from "@/components/PageStartLink";
 import { MobileNavigation } from "@/components/MobileNavigation";
 import { LangSwitch } from "@/components/LangSwitch";
 import { PalapaLogo } from "@/components/PalapaLogo";
@@ -21,29 +22,31 @@ export function SiteHeader({ locale, prelaunch }: { locale: Locale; prelaunch: b
     [`/${locale}/hoteles-restaurantes`, t.nav.hospitality],
   ];
   return (
-    <header className="site-header">
+    <>
       {prelaunch ? (
         <p className="test-banner" role="note">
           {t.banner.prelaunch}
         </p>
       ) : null}
-      <div className="wrap">
-        <div className="panel nav">
-          <Link className="logo" href={`/${locale}`} aria-label={`${brandName(locale)} — ${t.nav.home}`}>
-            <PalapaLogo locale={locale} />
-          </Link>
-          <nav className="nav-links" aria-label={t.nav.menu}>
-            {links.map(([href, label]) => (
-              <Link key={href} href={href}>
-                {label}
-              </Link>
-            ))}
-          </nav>
-          <LangSwitch locale={locale} label={t.lang.label} text={t.lang.switchTo} />
-          <MobileNavigation locale={locale} links={links} label={t.nav.menu} />
+      <header className="site-header">
+        <div className="wrap">
+          <div className="panel nav">
+            <Link className="logo" href={`/${locale}`} aria-label={`${brandName(locale)} — ${t.nav.home}`}>
+              <PalapaLogo locale={locale} />
+            </Link>
+            <nav className="nav-links" aria-label={t.nav.menu}>
+              {links.map(([href, label]) => href === `/${locale}/hoteles-restaurantes` ? (
+                <PageStartLink key={href} href={href}>{label}</PageStartLink>
+              ) : (
+                <Link key={href} href={href}>{label}</Link>
+              ))}
+            </nav>
+            <LangSwitch locale={locale} label={t.lang.label} text={t.lang.switchTo} />
+            <MobileNavigation locale={locale} links={links} label={t.nav.menu} />
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }
 
@@ -60,7 +63,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <Link href={`/${locale}/recetas`}>{t.nav.recipes}</Link>
           <Link href={`/${locale}/preguntas`}>{t.nav.faq}</Link>
           <Link href={`/${locale}/negocios`}>{t.nav.business}</Link>
-          <Link href={`/${locale}/hoteles-restaurantes`}>{t.nav.hospitality}</Link>
+          <PageStartLink href={`/${locale}/hoteles-restaurantes`}>{t.nav.hospitality}</PageStartLink>
           <a href={partnerUrl(locale)} rel="noopener">
             Go Veggie Life
           </a>

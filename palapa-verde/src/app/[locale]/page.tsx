@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PageStartLink } from "@/components/PageStartLink";
 import { notFound } from "next/navigation";
 import { ProductCard } from "@/components/ProductCard";
 import { RecipeCard } from "@/components/RecipeCard";
@@ -10,7 +11,32 @@ import { pageMetadata } from "@/lib/site";
 import type { Metadata } from "next";
 import { loadCatalog } from "@/lib/shop";
 
-const STEPS = ["campo", "cocina", "frasco"] as const;
+const STEPS = [
+  {
+    key: "campo",
+    src: "/media/horeca/proceso-01-vegetales-v2.webp",
+    width: 512,
+    alt: {
+      es: "Una mano sostiene zanahorias frescas y una ramita de cilantro.",
+      en: "A hand holds fresh carrots and a sprig of cilantro.",
+    },
+  },
+  {
+    key: "cocina",
+    src: "/media/horeca/proceso-02-cocina-v2.webp",
+    width: 512,
+    alt: {
+      es: "Se tritura pesto de cilantro y semillas de auyama en un mortero.",
+      en: "Cilantro and pumpkin seeds are ground into pesto in a mortar.",
+    },
+  },
+  {
+    key: "frasco",
+    src: "/media/horeca/pesto-v1.webp",
+    width: 768,
+    alt: { es: "", en: "" },
+  },
+] as const;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -72,18 +98,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </figure>
       </section>
 
-      <section className="panel steps" aria-labelledby="h-proceso">
+      <section id="proceso" className="panel steps" aria-labelledby="h-proceso">
         <h2 id="h-proceso" className="sr-only">
           {h.stepsHeading}
         </h2>
-        {STEPS.map((step, i) => (
-          <div className="step" key={step}>
-            <Image src={step === "frasco" ? "/media/horeca/pesto-v1.webp" : `/media/proceso-${step}.jpg`} alt="" width={step === "frasco" ? 768 : 512} height={512} sizes="120px" />
+        {STEPS.map(({ key, src, width, alt }, i) => (
+          <div className="step" key={key}>
+            <Image src={src} alt={pick(alt, locale)} width={width} height={512} sizes="120px" />
             <div>
               <h3>
-                <span className="step-n">0{i + 1}</span> {h.steps[step].title}
+                <span className="step-n">0{i + 1}</span> {h.steps[key].title}
               </h3>
-              <p>{h.steps[step].text}</p>
+              <p>{h.steps[key].text}</p>
             </div>
           </div>
         ))}
@@ -169,7 +195,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <h2 className="h-md">{h.businessHeading}</h2>
           <p>{h.businessText}</p>
           <div className="cta-row">
-            <Link className="btn arrow" href={`/${locale}/hoteles-restaurantes`}>{t.nav.hospitality}</Link>
+            <PageStartLink className="btn arrow" href={`/${locale}/hoteles-restaurantes`}>{t.nav.hospitality}</PageStartLink>
             <Link className="btn btn--ghost" href={`/${locale}/negocios`} data-track="wholesale_contact_click" data-track-from="home">
               {h.businessCta}
             </Link>

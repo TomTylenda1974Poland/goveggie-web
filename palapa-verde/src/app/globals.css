@@ -82,8 +82,9 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; l
 .lang { border: var(--hairline); font: 700 0.72rem var(--body); padding: 10px 11px; letter-spacing: 0.05em; text-decoration: none; }
 .lang:hover { background: var(--ink); color: var(--paper); }
 @media (max-width:900px) {
-  .site-header { position:static; }
-  .site-header .test-banner { padding:3px 10px; margin-bottom:4px; font-size:.72rem; line-height:1.25; }
+  html { scroll-padding-top: calc(78px + env(safe-area-inset-top, 0px)); }
+  .site-header { position:sticky; top:0; padding-top:env(safe-area-inset-top, 0px); }
+  .test-banner { padding:3px 10px; margin-bottom:4px; font-size:.72rem; line-height:1.25; }
   .site-header .nav { position:relative; flex-wrap:nowrap; gap:6px; min-height:54px; margin-bottom:5px; padding:3px 8px; }
   .site-header .logo { min-width:0; margin-inline-end:auto; }
   .site-header .logo img { width:clamp(112px,39vw,152px); height:auto; }
@@ -379,6 +380,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; l
 .recipe-box-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
 .recipe-box-head .h-sm { margin: 0; }
 .servings { display: flex; align-items: center; gap: 10px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.servings select { min-width: 3.6rem; min-height: 44px; padding: 0 3px; border: 0; border-inline: var(--hairline); border-radius: 0; background-color: var(--paper); color: var(--ink); font: 700 1rem var(--body); text-align: center; cursor: pointer; }
 .product-used { margin: 16px 0 6px; padding: 10px 12px; background: var(--verde-soft); font-size: 0.86rem; }
 .ingredients { list-style: none; margin: 12px 0 18px; }
 .ingredients li { padding: 9px 0; border-bottom: 1px solid #deded8; font-size: 0.95rem; }
@@ -408,6 +410,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; l
 .stockists { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: var(--gap); margin: 12px 0; }
 .audiences { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
 .horeca { scroll-margin-top: 120px; }
+@media (max-width: 900px) { .horeca { scroll-margin-top:0; } }
 .horeca-head { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--gap); align-items: center; }
 .horeca-head .lead { margin-bottom: 0; }
 .horeca-visual { margin: 0; }
@@ -462,6 +465,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; l
   body { font-size: 11pt; }
   .panel, .recipe-box, .recipe-steps { border: 0; padding: 0; box-shadow: none; }
   .recipe-head, .recipe-body { display: block; }
+  .recipe-head-copy { padding: 0 0 4pt; }
+  .recipe-steps p:has(+ .note) { break-after: avoid; }
   .recipe-box { position: static; margin: 12pt 0; }
   .notice { border: 1px solid #999; }
   a { text-decoration: none; }
@@ -494,7 +499,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; l
 @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } .hero h1 { font-size: clamp(2rem, 8.4vw, 3rem); } }
 
 @media print {
-  .stepper button { display: none; }
+  .stepper button, .servings select { display: none; }
+  .servings output.sr-only { position: static; width: auto; height: auto; margin: 0; overflow: visible; clip: auto; white-space: normal; }
   .stepper, .stepper output { border: 0; height: auto; min-width: auto; }
 }
 

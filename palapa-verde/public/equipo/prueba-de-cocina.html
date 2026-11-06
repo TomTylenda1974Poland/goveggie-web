@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es-DO"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Prueba de cocina · Palapa Verde</title>
+<link rel="stylesheet" href="./piloto.css">
+<script src="./offline.js" defer></script><script src="./zip.min.js" defer></script><script src="./piloto.js" defer></script>
+</head><body>
+<header class="mast"><img src="/brand/palapa-verde-es.svg" width="180" height="61" alt="Palapa Verde, una marca de Go Veggie Life"><span>Equipo de cocina</span></header>
+<main>
+<header class="intro"><h1>Prueba de cocina</h1><p>Registra la muestra, añade fotos del servicio y guarda una copia para el equipo.</p></header>
+<noscript>Activa JavaScript para registrar una prueba en este dispositivo.</noscript>
+<div id="storage-alert" role="alert" hidden></div>
+<div id="app" hidden>
+<nav class="library" aria-label="Pruebas en este dispositivo"><label for="history">Mis pruebas</label><div><select id="history"></select><button id="new" type="button">Nueva prueba</button></div></nav>
+<form id="trial" novalidate>
+<section><h2>La muestra</h2>
+<fieldset><legend>Tipo de cocina</legend><div class="segments"><label><input type="radio" name="venue" value="Hotel"><span>Hotel</span></label><label><input type="radio" name="venue" value="Restaurante"><span>Restaurante</span></label></div></fieldset>
+<div class="grid">
+<label>Producto que pruebas<select name="product" id="product"><option value="">Selecciona el producto</option></select></label>
+<label id="custom-product-label" hidden>Nombre del producto<input name="customProduct" maxlength="120"></label>
+<label>Plato <em>(opcional)</em><select name="dish" id="dish"><option value="">Selecciona el plato</option></select></label>
+<label id="custom-dish-label" hidden>Nombre del plato<input name="customDish" maxlength="160"></label>
+</div></section>
+<details class="entry"><summary>Envase y mediciones <em>(opcional)</em></summary><div class="grid">
+<label>Fecha de la prueba<input type="date" name="trialDate"></label>
+<label>Lote de la muestra<input name="lot" maxlength="80" autocapitalize="characters"></label>
+<label>Envase utilizado<input name="pack" maxlength="130" placeholder="Ej. porción individual"></label>
+<label>Servicio<select name="service"><option value="">Selecciona el servicio</option><option>Bufé</option><option>A la carta</option><option>Banquete</option><option>Servicio a la habitación</option><option>Otro</option></select></label>
+<label class="wide">¿Qué observaste en el envase o la etiqueta?<textarea name="labelNotes" maxlength="600" rows="2" placeholder="Lectura, apertura o cierre"></textarea></label>
+<p class="wide help"><a href="./plantilla-etiqueta.pdf">Plantilla de etiquetas para probar en el envase</a> · Carta al 100 %.</p></div>
+<fieldset class="measure"><legend>Cantidades observadas</legend><p class="help">Usa la misma unidad para las tres cantidades. Deja en blanco lo que no mediste.</p>
+<div class="grid"><label>Unidad<select name="unit"><option value="">Elige la unidad</option><option>g</option><option>kg</option><option>lb</option><option>porciones</option><option>unidades</option></select></label>
+<label>Prevista<input type="number" step="any" min="0" inputmode="decimal" name="planned"></label>
+<label>Utilizada<input type="number" step="any" min="0" inputmode="decimal" name="used"></label>
+<label>Sobrante<input type="number" step="any" min="0" inputmode="decimal" name="remaining"></label>
+<label>Tiempo observado <em>(min)</em><input type="number" step="any" min="0" inputmode="decimal" name="minutes"></label></div></fieldset>
+</details>
+<section class="photo-section"><h2>Fotos de la prueba</h2><p class="help">Incluye el envase, la etiqueta o el plato servido. Usa fotos de esta prueba.</p>
+<div class="photo-buttons"><label class="file-button"><input id="camera" type="file" accept="image/*" capture="environment">Tomar foto</label><label class="file-button"><input id="files" type="file" accept="image/*,.heic,.heif" multiple>Elegir fotos</label></div>
+<ul id="photo-list"></ul><p id="photo-feedback" role="status"></p>
+</section>
+<section><h2>Al terminar</h2><div class="grid">
+<label>Resultado<select name="result"><option value="">Pendiente</option><option>Repetir la prueba</option><option>Probar en otro servicio</option><option>Detener esta prueba</option></select></label>
+<label>Siguiente paso<input name="nextStep" maxlength="180" placeholder="¿Qué hará el equipo?"></label>
+<label class="wide">Notas de cocina <em>(opcional)</em><textarea name="notes" maxlength="1500" rows="2" placeholder="¿Qué funcionó? ¿Qué cambiarías?"></textarea></label></div></section>
+</form>
+<footer class="actions"><p id="save-state" role="status"></p><small id="offline-status" role="status"></small>
+<div><button id="export" type="button" class="primary">Descargar prueba (.zip)</button><button id="print" type="button">Imprimir ficha</button></div>
+<p class="help">La prueba y las fotos se guardan en este navegador. Descarga el ZIP antes de cambiar de dispositivo o borrar sus datos. Contiene la ficha y las fotos originales para compartirlas tú mismo.</p><p id="export-feedback" role="status"></p></footer>
+</div><article id="paper" aria-hidden="true"></article>
+</main></body></html>

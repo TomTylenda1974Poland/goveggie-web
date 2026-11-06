@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Ingredient } from "@/content/recipes";
 import type { Locale } from "@/lib/commerce/types";
+import { track } from "@/lib/analytics";
 import { ingredientLine, ingredientText, whatsappShareUrl } from "@/lib/recipe-format";
 
 type Labels = {
@@ -31,6 +32,7 @@ type Props = {
 
 const MIN = 1;
 const MAX = 24;
+const PORTION_CHOICES = Array.from({ length: MAX - MIN + 1 }, (_, i) => MIN + i);
 
 /** Porciones ajustables, lista de ingredientes escalada, impresión y envío por WhatsApp. */
 export function RecipeInteractive({ locale, slug, title, baseServings, publicRecipeUrl, ingredients, labels }: Props) {
@@ -65,7 +67,18 @@ export function RecipeInteractive({ locale, slug, title, baseServings, publicRec
             >
               −
             </button>
-            <output aria-live="polite">{servings}</output>
+            <select
+              value={servings}
+              aria-labelledby={`servings-${slug}`}
+              onChange={event => {
+                const count = Number(event.target.value);
+                setServings(count);
+                track("servings_change", { recipe: slug, direction: count > servings ? "up" : "down" });
+              }}
+            >
+              {PORTION_CHOICES.map(count => <option key={count} value={count}>{count}</option>)}
+            </select>
+            <output className="sr-only" aria-live="polite">{servings}</output>
             <button
               type="button"
               aria-label={labels.moreServings}

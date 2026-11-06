@@ -51,8 +51,10 @@ export default async function ProfessionalKitchenPage({ params, searchParams }: 
           <a className={styles.jumpLink} href="#linea-profesional">{t.explore}</a>
         </div>
         <figure className={styles.heroArt}>
-          <Image src={heroImage} alt={t.imageAlt} width={1536} height={1024}
-            sizes="(max-width: 760px) 92vw, (min-width: 1500px) 720px, 50vw" preload />
+          <div className={styles.heroPicture}>
+            <Image src={heroImage} alt={t.imageAlt} width={1536} height={1024}
+              sizes="(max-width: 900px) 92vw, (min-width: 1500px) 720px, 50vw" preload />
+          </div>
           <figcaption>{t.imageCaption}</figcaption>
         </figure>
       </section>

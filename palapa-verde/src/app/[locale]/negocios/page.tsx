@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { PageStartLink } from "@/components/PageStartLink";
 import { notFound } from "next/navigation";
 import { CONTACT, GO_VEGGIE_LIFE_HORECA_URL, partnerUrl, SALES_EMAIL_READY } from "@/content/brand";
 import { loadCatalog } from "@/lib/shop";
@@ -65,7 +66,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
         <section id="hoteles" aria-labelledby="h-hoteles">
           <h2 id="h-hoteles">{t.nav.hospitality}</h2>
           <p>{business.horeca.teaser}</p>
-          <Link className="section-link arrow" href={`/${locale}/hoteles-restaurantes`}>{business.horeca.teaserCta}</Link>
+          <PageStartLink className="section-link arrow" href={`/${locale}/hoteles-restaurantes`}>{business.horeca.teaserCta}</PageStartLink>
         </section>
         <section aria-labelledby="h-produce">
           <h2 id="h-produce">{business.produceHeading}</h2>
