@@ -1,120 +1,83 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CONTACT, GO_VEGGIE_LIFE_HORECA_URL } from "@/content/brand";
+import { GO_VEGGIE_LIFE_HORECA_URL } from "@/content/brand";
 import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale } from "@/lib/i18n";
+import { BusinessInquiry } from "./BusinessInquiry";
+import styles from "./business.module.css";
 
 type Props = { params: Promise<{ locale: string }> };
+const art = "/media/horeca/consulta-comercial-v1.webp";
+
+const copy = {
+  es: {
+    heading: "Hablemos de tu negocio",
+    intro: "¿Quieres ofrecer Palapa Verde en tu tienda, usar nuestras salsas en tu cocina o distribuirlas en tu zona?",
+    cta: "Preparar mi consulta",
+    alt: "Una compradora prueba hummus de remolacha de Palapa Verde durante una conversación comercial.",
+    caption: "Muestra para una conversación comercial · Ilustración",
+    availability: "Disponibilidad y condiciones comerciales",
+  },
+  en: {
+    heading: "Let’s talk about your business",
+    intro: "Would you like to stock Palapa Verde, serve our sauces in your kitchen or distribute them in your area?",
+    cta: "Prepare my enquiry",
+    alt: "A buyer tastes Palapa Verde beet hummus during a business conversation.",
+    caption: "A sample for a trade enquiry · Illustration",
+    availability: "Availability and trade terms",
+  },
+} as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  const t = getDictionary(locale).business;
-  return pageMetadata({ locale, path: "/negocios", title: t.title, description: t.intro });
+  return pageMetadata({ locale, path: "/negocios", title: getDictionary(locale).business.title, description: copy[locale].intro, image: art });
 }
 
 export default async function BusinessPage({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const t = getDictionary(locale);
-  const b = t.business;
-  const subject = encodeURIComponent(locale === "es" ? "Consulta comercial Palapa Verde" : "Palapa Verde business enquiry");
-  const hasChannel = CONTACT.salesEmail !== null || CONTACT.whatsappNumber !== null;
+  const business = t.business;
+  const page = copy[locale];
 
   return (
     <>
-      <div className="page-head">
-        <h1>{b.title}</h1>
-        <p className="lead">{b.intro}</p>
+      <section className={`panel ${styles.hero}`} aria-labelledby="business-heading">
+        <div className={styles.heroCopy}>
+          <h1 id="business-heading">{page.heading}</h1>
+          <p>{page.intro}</p>
+          <a className="btn arrow" href="#contacto">{page.cta}</a>
+        </div>
+        <figure className={styles.art}>
+          <Image src={art} width={1200} height={800} alt={page.alt}
+            sizes="(max-width: 760px) 92vw, (min-width: 1440px) 690px, 49vw" preload />
+          <figcaption>{page.caption}</figcaption>
+        </figure>
+      </section>
+
+      <BusinessInquiry locale={locale} />
+
+      <div className={styles.links}>
+        <section id="hoteles" aria-labelledby="h-hoteles">
+          <h2 id="h-hoteles">{t.nav.hospitality}</h2>
+          <p>{business.horeca.teaser}</p>
+          <Link className="section-link arrow" href={`/${locale}/hoteles-restaurantes`}>{business.horeca.teaserCta}</Link>
+        </section>
+        <section aria-labelledby="h-produce">
+          <h2 id="h-produce">{business.produceHeading}</h2>
+          <p>{business.produceText}</p>
+          <a className="section-link arrow" href={GO_VEGGIE_LIFE_HORECA_URL} rel="noopener">{business.produceCta}</a>
+        </section>
       </div>
 
-      <section className="audiences" aria-label={b.title}>
-        {(Object.keys(b.audiences) as (keyof typeof b.audiences)[]).map((k) => (
-          <div key={k} className="panel pad audience">
-            <h2 className="h-sm">{b.audiences[k].title}</h2>
-            <p>{b.audiences[k].text}</p>
-            {k === "horeca" && (
-              <Link className="section-link arrow" href={`/${locale}/hoteles-restaurantes`}>{t.nav.kitchenFormats}</Link>
-            )}
-          </div>
-        ))}
-      </section>
-
-      <section id="hoteles" className="panel pad split-cta" aria-labelledby="h-hoteles">
-        <div>
-          <h2 id="h-hoteles" className="h-md">
-            {t.nav.hospitality}
-          </h2>
-          <p>{b.horeca.teaser}</p>
-        </div>
-        <Link className="btn arrow" href={`/${locale}/hoteles-restaurantes`}>
-          {b.horeca.teaserCta}
-        </Link>
-      </section>
-
-      <section className="panel pad" aria-labelledby="h-status">
-        <h2 id="h-status" className="h-md">
-          {b.statusHeading}
-        </h2>
-        <p>{b.statusText}</p>
-        <table className="spec-table">
-          <tbody>
-            {(Object.keys(b.facts) as (keyof typeof b.facts)[]).map((k) => (
-              <tr key={k}>
-                <th scope="row">{b.facts[k]}</th>
-                <td className="muted">{b.pending}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
-
-      <section className="panel pad split-cta" aria-labelledby="h-contact">
-        <div>
-          <h2 id="h-contact" className="h-md">
-            {b.contactHeading}
-          </h2>
-          {hasChannel ? null : <p>{b.contactPending}</p>}
-        </div>
-        {hasChannel ? (
-          <div className="cta-row">
-            {CONTACT.salesEmail ? (
-              <a className="btn" href={`mailto:${CONTACT.salesEmail}?subject=${subject}`} data-track="wholesale_contact_click" data-track-channel="email">
-                {b.contactEmail}
-              </a>
-            ) : null}
-            {CONTACT.whatsappNumber ? (
-              <a
-                className="btn btn--ghost"
-                href={`https://wa.me/${CONTACT.whatsappNumber.replace(/\D/g, "")}`}
-                target="_blank"
-                rel="noopener"
-                data-track="wholesale_contact_click"
-                data-track-channel="whatsapp"
-              >
-                {b.contactWhatsapp}
-              </a>
-            ) : null}
-          </div>
-        ) : null}
-      </section>
-
-      <section className="panel pad split-cta" aria-labelledby="h-produce">
-        <div>
-          <h2 id="h-produce" className="h-md">
-            {b.produceHeading}
-          </h2>
-          <p>{b.produceText}</p>
-        </div>
-        <a className="btn btn--ghost arrow" href={GO_VEGGIE_LIFE_HORECA_URL} rel="noopener">
-          {b.produceCta}
-        </a>
-      </section>
-
-      <p className="note">
+      <details className={styles.terms}>
+        <summary>{page.availability}</summary>
+        <p>{business.statusText}</p>
         <Link href={`/${locale}/preguntas#mayoristas`}>{t.nav.faq}</Link>
-      </p>
+      </details>
     </>
   );
 }

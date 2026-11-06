@@ -24,6 +24,7 @@ export const inquiryCopy = {
     subject: "Consulta de cocina profesional · Palapa Verde", productLine: "Producto", packLine: "Presentación de interés",
     request: "¿Qué presentaciones se cotizan para esta zona y cómo podemos hacer una prueba en nuestra cocina?",
     how: "Elige en WhatsApp el contacto comercial al que quieres enviarlo, o copia el texto para compartirlo por otro medio.",
+    emailHow: "Se abrirá un borrador dirigido a {email}. Pulsa «Enviar» en tu aplicación de correo para hacernos llegar la consulta.",
     verifiedHow: "Revisa el texto y envíalo desde tu aplicación de correo o WhatsApp.",
     choose: "Elegir contacto en WhatsApp", direct: "Abrir WhatsApp de ventas", email: "Abrir correo a ventas",
     copy: "Copiar mensaje", copied: "Mensaje copiado.", fallback: "El texto está seleccionado para que puedas copiarlo.",
@@ -47,6 +48,7 @@ export const inquiryCopy = {
     subject: "Professional kitchen enquiry · Palapa Verde", productLine: "Product", packLine: "Preferred pack",
     request: "Which packs can you quote for this area, and how could we try them in our kitchen?",
     how: "Choose your sales contact in WhatsApp, or copy the text to share it another way.",
+    emailHow: "Your email app will open a draft addressed to {email}. Press Send in your email app to send us the enquiry.",
     verifiedHow: "Review the text and send it from your email app or WhatsApp.",
     choose: "Choose contact in WhatsApp", direct: "Open sales WhatsApp", email: "Open email to sales",
     copy: "Copy message", copied: "Message copied.", fallback: "The text is selected so you can copy it.",
@@ -184,7 +186,7 @@ export function KitchenInquiry({ locale }: Props) {
             setMessage(event.target.value);
             setStatus("");
           }} />
-          <p>{salesNumber || email ? t.verifiedHow : t.how}</p>
+          <p>{email && !salesNumber ? t.emailHow.replace("{email}", email) : salesNumber ? t.verifiedHow : t.how}</p>
           {ready && (
             <div className={styles.actions}>
               {salesNumber || !email ? (

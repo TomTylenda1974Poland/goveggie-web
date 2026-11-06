@@ -5,8 +5,6 @@ import { ProductCard } from "@/components/ProductCard";
 import { RecipeCard } from "@/components/RecipeCard";
 import { GO_VEGGIE_LIFE_URL, relationship } from "@/content/brand";
 import { visibleRecipes } from "@/content/recipes";
-import { PRODUCE_PHOTOS } from "@/lib/commerce/brand-content";
-import type { ArtKey } from "@/lib/commerce/types";
 import { getDictionary, isLocale, pick } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/site";
 import type { Metadata } from "next";
@@ -34,7 +32,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const h = t.home;
   const { products } = await loadCatalog();
   const recipes = featuredRecipes(products);
-  const produce = Object.entries(PRODUCE_PHOTOS) as [ArtKey, string][];
 
   return (
     <>
@@ -143,14 +140,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </div>
         <div className="origin-media">
-          <ul className="produce" aria-label={h.produceCaption}>
-            {produce.map(([key, src]) => (
-              <li key={key}>
-                <Image src={src} alt="" width={384} height={300} sizes="(max-width: 760px) 30vw, 160px" />
-                <span>{t.veg[key]}</span>
-              </li>
-            ))}
-          </ul>
+          <figure className="origin-alliance">
+            <Image
+              src="/media/horeca/alianza-v1.webp"
+              alt={t.about.allianceAlt}
+              width={1200}
+              height={800}
+              sizes="(max-width: 900px) 95vw, (max-width: 1500px) 48vw, 700px"
+            />
+            <figcaption>{t.about.allianceCaption}</figcaption>
+          </figure>
           <div className="people-note">
             <h3 className="h-sm">{h.peopleHeading}</h3>
             <p>{h.peopleText}</p>

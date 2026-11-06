@@ -111,10 +111,10 @@ describe("hechos de marca y prelanzamiento", () => {
     expect(RELATIONSHIP_COPY.unconfirmed.statement.es).not.toMatch(/una marca de go veggie life|elaborado con vegetales de/i);
   });
 
-  it("no hay fabricante, tiendas ni canal de contacto inventados", () => {
+  it("solo se publican los datos comerciales confirmados por el propietario", () => {
     expect(MANUFACTURER).toBeNull();
     expect(STOCKISTS).toHaveLength(0);
-    expect(CONTACT).toEqual({ salesEmail: null, whatsappNumber: null });
+    expect(CONTACT).toEqual({ salesEmail: "info@palapaverde.com", whatsappNumber: null });
   });
 
   it("ningún producto figura a la venta y cada uno tiene tres ideas y QR único", () => {

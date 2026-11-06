@@ -12,7 +12,7 @@ Live status is also shown at `/es/admin` → "Hechos por confirmar". Update the 
 | 6 | **Real product photos** (and packaging approval) | The existing illustrative packshots carry the approved brand endorsement. Real photos require real finished products and approved labels. | `public/media/productos/`, `kind: "product"` |
 | 7 | **Kitchen-tested recipes** (cook, time, taste, photograph) | Recipes are hidden in production until tested or explicitly shown | `recipes.ts` → `status`, `media` |
 | 8 | **Confirmed stockists** (name, address, map pin, products, date) | "Dónde comprar" | `src/content/stockists.ts` |
-| 9 | **Public sales channel** (email and/or WhatsApp approved for publication) | Business and retailer requests | `brand.ts` → `CONTACT` |
+| 9 | **Public sales channel:** the owner approved info@palapaverde.com for Palapa Verde. A dedicated WhatsApp number is still to be confirmed. | Business and retailer requests | `brand.ts` → `CONTACT` |
 | 10 | **Business terms**: formats, minimum order, delivery coverage, lead times | `/negocios` | `i18n.ts` → `business` (currently "Por confirmar") |
 | 11 | **Production domain** (for QR printing, metadata, sitemap) | QR codes must not use `*.vercel.app` | Vercel env `SITE_URL` |
 | 12 | **Analytics provider** and privacy/cookie notice | Events go nowhere until installed | Tag manager + `NEXT_PUBLIC_ANALYTICS_PROVIDER` |

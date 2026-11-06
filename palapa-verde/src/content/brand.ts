@@ -24,7 +24,7 @@ export const MANUFACTURER: { name: string; address: string } | null = null;
  * aprobado por el propietario. Sin canal, la web no muestra formularios falsos.
  */
 export const CONTACT: { salesEmail: string | null; whatsappNumber: string | null } = {
-  salesEmail: null,
+  salesEmail: "info@palapaverde.com",
   whatsappNumber: null,
 };
 
