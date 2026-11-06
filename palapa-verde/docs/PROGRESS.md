@@ -1,6 +1,6 @@
 # Postęp: Palapa Verde (strona i sklep)
 
-Ostatnia aktualizacja: 2026-11-06 · gałąź `palapa-verde/shop` · wersja 0.2.0 (lokalnie, niewypchnięta)
+Ostatnia aktualizacja: 2026-11-06 · gałąź `palapa-verde/shop` · wersja 0.2.0 (podgląd na Vercel)
 
 ## Stan
 
@@ -78,8 +78,8 @@ Ostatnia aktualizacja: 2026-11-06 · gałąź `palapa-verde/shop` · wersja 0.2.
   (bez koszyka, fikcyjnych stanów i cen), przepisy (10 szkiców ES/EN, filtry, skalowanie, druk, WhatsApp),
   strony: Dónde comprar, Nosotros, FAQ, Negocios; QR `/p/{qrId}`; analityka bez dostawcy; plan social media
   i checklista zdjęć (Codex); 2 przeglądy Codex wdrożone. Szczegóły: `docs/strategy/09-verification-and-handoff.md`,
-  decyzje do potwierdzenia: `docs/APPROVAL_CHECKLIST.md`. **Commity lokalne: push zablokowany przez uprawnienia
-  sesji (repozytorium publiczne), czeka na zgodę właściciela.**
+  decyzje do potwierdzenia: `docs/APPROVAL_CHECKLIST.md`. Wypchnięte za zgodą właściciela; podgląd: https://palapa-verde-git-palapa-verde-shop-donpollolococabarete-9718.vercel.app/es
+  (produkcja bez zmian).
 - 2026-11-06: sklep wdrożony na produkcję palapa-verde.vercel.app za zgodą właściciela („Tak, zastąp”).
   Nocna wersja z innej sesji jest zarchiwizowana w `legacy/v6_2026-11-06_0134_jb4tzoi11/`.
 - 2026-11-05: właściciel zatwierdził nowy wygląd („Wygląd OK”).

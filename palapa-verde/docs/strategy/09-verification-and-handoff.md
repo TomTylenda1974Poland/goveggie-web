@@ -2,8 +2,9 @@
 
 Date: 2026-11-06 · Branch `palapa-verde/shop`.
 Commits: `c0e625c` (docs), `bc02cee` (site), `bc01df0` (Codex review fixes) and this docs commit.
-**Not pushed:** the push was blocked by the session's permission policy (public repository). Preview URL: none yet.
-After the owner allows the push, Vercel builds `https://palapa-verde-git-palapa-verde-shop-donpollolococabarete-9718.vercel.app/es` automatically.
+**Pushed 2026-11-06 with the owner's approval.** Preview: https://palapa-verde-git-palapa-verde-shop-donpollolococabarete-9718.vercel.app/es
+(deployment `3vrj4nUsavMFsr888zY7PsPzaam7`, READY). Checked on the preview: all 13 page routes 200, unknown page 404, the QR and cart
+redirects, `/api/orders` 503, draft recipes visible (preview environment), no removed claims in the HTML.
 Production (`palapa-verde.vercel.app`) was not touched.
 
 ## Implemented behaviour
@@ -49,7 +50,6 @@ Production (`palapa-verde.vercel.app`) was not touched.
 
 Not covered:
 - Real-device testing, screen-reader testing and Lighthouse scores.
-- Behaviour on Vercel preview (blocked by the push).
 - Codex couldn't open a browser from its sandbox, so its site review was a code and content audit.
 
 Screenshots were taken during verification in the in-app browser. They're not committed.
