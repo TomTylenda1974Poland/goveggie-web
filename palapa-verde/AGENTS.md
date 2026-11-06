@@ -7,6 +7,9 @@ Reply to the owner in Polish. The site is Spanish first (`/es`) and English seco
 
 Read these before working:
 - `docs/PROGRESS.md`: what's done, what's next, open questions. **Update it at the end of every session.**
+- `docs/APPROVAL_CHECKLIST.md`: facts only the owner can confirm. Never publish them before confirmation.
+- `docs/CONTENT_GUIDE.md`: how to add products, recipes and stockists.
+- `docs/strategy/`: audit, brand relationship, structure, recipes, social plan, filming, QR and analytics, handoff.
 - `docs/DECISIONS.md`: why things are the way they are.
 - `docs/INTEGRATION.md`: the goveggie.life API integration layer, still waiting for a spec.
 
@@ -14,14 +17,16 @@ Read these before working:
 1. **Never invent prices, ingredients, allergens, net content, shelf life or storage instructions.**
    These fields stay `null` until the business provides them. The shop then shows "Por confirmar",
    and `/admin` lists them as missing. `tests/rules.test.ts` enforces this for the test data.
-2. **Real payments are off.** Don't add a payment provider, keys or a checkout that charges money
+2. **Brand facts live in `src/content/brand.ts`**: relationship with Go Veggie Life, manufacturer, contact. Keep the
+   neutral defaults until the owner confirms in writing. Recipes stay `draft` until cooked and photographed.
+3. **Real payments are off.** Don't add a payment provider, keys or a checkout that charges money
    without the owner's explicit decision. Orders are test orders (`test: true`).
-3. Don't add paid services without asking the owner. That includes the Vercel Pro upgrade,
+4. Don't add paid services without asking the owner. That includes the Vercel Pro upgrade,
    databases and email providers.
-4. Inherited from the repo root `CLAUDE.md`: never touch the `goveggie.life` domain or its DNS.
+5. Inherited from the repo root `CLAUDE.md`: never touch the `goveggie.life` domain or its DNS.
    Deploy only in the Vercel scope `donpollolococabarete-9718`. No place names, and don't use the word "organic".
-5. Never commit secrets. Configuration goes in Vercel environment variables (see `.env.example`).
-6. Pages talk only to `CommerceProvider` (`src/lib/commerce/provider.ts`), never to an HTTP API directly.
+6. Never commit secrets. Configuration goes in Vercel environment variables (see `.env.example`).
+7. Pages talk only to `CommerceProvider` (`src/lib/commerce/provider.ts`), never to an HTTP API directly.
 
 ## Commands (run inside `palapa-verde/`)
 ```
@@ -40,7 +45,9 @@ pnpm check        # all three; run before every push
   `validation.ts` (order input), `brand-content.ts` (photos and drawings kept in this repo).
 - `src/lib/i18n.ts`: every UI string, ES and EN. Keys must match (a test checks this).
 - `src/lib/cart/`: pure cart logic (`cart.ts`) and the browser store (`store.ts`, localStorage).
-- `src/app/[locale]/`: home, `productos`, `productos/[slug]`, `carrito`, `admin`. `src/app/api/orders`: POST.
+- `src/app/[locale]/`: home, `productos`, `productos/[slug]` (QR destination), `recetas`, `recetas/[slug]`,
+  `donde-comprar`, `nosotros`, `preguntas`, `negocios`, `admin`. `src/app/api/orders`: off unless `ORDERS_ENABLED`.
+- `src/content/`: brand facts, recipes, FAQ, stockists. `src/lib/analytics.ts`: event layer (no provider).
 - `src/components/engravings.tsx`: original botanical line drawings (first drafted by Codex).
 - `public/media/`: optimised images. The `ingrediente-*.jpg` files are Go Veggie Life ingredient
   photos, labelled on the site as ingredient photos, not product photos.

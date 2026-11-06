@@ -1,6 +1,6 @@
 # Postęp: Palapa Verde (strona i sklep)
 
-Ostatnia aktualizacja: 2026-11-05 · gałąź `palapa-verde/shop` · wersja 0.1.0
+Ostatnia aktualizacja: 2026-11-06 · gałąź `palapa-verde/shop` · wersja 0.2.0 (lokalnie, niewypchnięta)
 
 ## Stan
 
@@ -74,6 +74,12 @@ Ostatnia aktualizacja: 2026-11-05 · gałąź `palapa-verde/shop` · wersja 0.1.
   bo repozytorium jest publiczne. Prompt do obrazów jest w `design-src/images-prompt.txt`.
 
 ## Dziennik
+- 2026-11-06 (runda 2, według briefu właściciela): audyt i plan, rekomendacja relacji marek, uczciwy prelaunch
+  (bez koszyka, fikcyjnych stanów i cen), przepisy (10 szkiców ES/EN, filtry, skalowanie, druk, WhatsApp),
+  strony: Dónde comprar, Nosotros, FAQ, Negocios; QR `/p/{qrId}`; analityka bez dostawcy; plan social media
+  i checklista zdjęć (Codex); 2 przeglądy Codex wdrożone. Szczegóły: `docs/strategy/09-verification-and-handoff.md`,
+  decyzje do potwierdzenia: `docs/APPROVAL_CHECKLIST.md`. **Commity lokalne: push zablokowany przez uprawnienia
+  sesji (repozytorium publiczne), czeka na zgodę właściciela.**
 - 2026-11-06: sklep wdrożony na produkcję palapa-verde.vercel.app za zgodą właściciela („Tak, zastąp”).
   Nocna wersja z innej sesji jest zarchiwizowana w `legacy/v6_2026-11-06_0134_jb4tzoi11/`.
 - 2026-11-05: właściciel zatwierdził nowy wygląd („Wygląd OK”).

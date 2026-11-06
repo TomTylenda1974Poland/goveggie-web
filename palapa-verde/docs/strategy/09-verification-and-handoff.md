@@ -1,0 +1,85 @@
+# 09: Verification report and Codex handoff
+
+Date: 2026-11-06 · Branch `palapa-verde/shop`.
+Commits: `c0e625c` (docs), `bc02cee` (site), `bc01df0` (Codex review fixes) and this docs commit.
+**Not pushed:** the push was blocked by the session's permission policy (public repository). Preview URL: none yet.
+After the owner allows the push, Vercel builds `https://palapa-verde-git-palapa-verde-shop-donpollolococabarete-9718.vercel.app/es` automatically.
+Production (`palapa-verde.vercel.app`) was not touched.
+
+## Implemented behaviour
+- **Honest prelaunch:**
+  - A banner on every page, plus the status "En desarrollo · aún no a la venta".
+  - No prices, stock badges, cart or order form. `/carrito` redirects to `/donde-comprar`, and `/api/orders` returns 503 unless `ORDERS_ENABLED=true`.
+- **Brand facts in one place** (`src/content/brand.ts`):
+  - The relationship uses neutral wording until confirmed; the manufacturer is hidden while `null`.
+  - Contact buttons appear only when a real channel is set.
+- **Products:**
+  - Category filter, three serving ideas, recipes for that product, an approved-facts-only panel and where to buy.
+  - Every illustration is captioned.
+- **Recipes:**
+  - 10 bilingual drafts with filters by product, time and occasion. Servings scale from 1 to 24 with unit-aware rounding.
+  - Print view, WhatsApp share (recipe link or shopping list, with a draft note), product link and where to buy.
+  - Drafts are hidden in production unless `SHOW_DRAFT_RECIPES=true`. JSON-LD appears only for tested recipes.
+- **Trust pages:** Dónde comprar (prelaunch + business route), Nosotros, Preguntas frecuentes, Negocios.
+- **QR:** `/p/{qrId}` redirects (307) to the exact product with UTM. Unknown codes go to the catalogue.
+- **Analytics:** provider-neutral `track()` with 11 events, a `data-track` listener, UTM handling and `site_env`. Nothing is sent without a provider.
+- **SEO:** per-page canonical, hreflang and Open Graph; robots and sitemap (noindex until `SITE_INDEXABLE=true`).
+
+## Routes and important files
+- Routes: see `03-structure-and-journeys.md`.
+- Content: `src/content/{brand,recipes,faq,stockists}.ts`, `src/lib/commerce/brand-content.ts`, `src/lib/i18n.ts`
+- Components: `RecipeCard`, `RecipeFilters`, `RecipeInteractive`, `StatusBadge`, `QrWelcome`, `AnalyticsListener`, `TrackView`, `ProductCard`, `SiteChrome`
+- Logic: `src/lib/recipe-format.ts`, `src/lib/analytics.ts`, `src/lib/site.ts`
+- Config: `next.config.ts` (QR and cart redirects), `.env.example` (new flags)
+- Removed: `CartView`, `CartLink`, `AddToCart`, `AvailabilityBadge`, `/carrito` page
+
+## Checks performed
+
+| Check | Result |
+|---|---|
+| `pnpm typecheck` | pass |
+| `pnpm test` | **75 passed**: contract (mock + fake goveggie), rules (no invented data), recipe structure, scaling, visibility, brand defaults, QR ids, FAQ links, site URL |
+| `pnpm build` | pass: 51 static pages + `/api/orders`, robots, sitemap |
+| HTTP checks (local production build) | all 13 page routes 200 · unknown page 404 · `/p/hummus-zanahoria` 307 to the product with UTM · unknown QR to the catalogue · `/es/carrito` and `/en/carrito` 307 to where to buy · `/api/orders` 503 |
+| Removed claims (grep on rendered HTML) | no "Últimas unidades", "Disponible", "carrito", "Precio por confirmar", "Una marca de Go Veggie Life" (text), "refrigerados", "a base de vegetales", placeholders |
+| Interactions (browser) | servings 2→4 rescales every line, including the product (60→120 g) · print triggers `window.print` · both WhatsApp messages build the right text with a draft note · product → recipes pre-filters by `?producto=` · time "Más de 30 min" shows only 35–40-min recipes · empty state + reset · language switch keeps filters · QR landing shows the welcome, 3 ideas and 2 recipes |
+| Analytics events (browser) | `recipe_print_click`, `whatsapp_share_click` ×2, `servings_change` pushed to `dataLayer` with `site_env`; no personal data |
+| Layout | desktop 1440 and mobile 375: no horizontal overflow; hero headline ≤ 4 lines; mobile nav wraps to 2 rows (all 5 links visible); 44 px tap targets on chips, steppers, recipe actions, small links |
+| Metadata | `/en/productos/hummus-de-remolacha`: canonical, es/en/x-default alternates, og:title/url/image specific to the page |
+
+Not covered:
+- Real-device testing, screen-reader testing and Lighthouse scores.
+- Behaviour on Vercel preview (blocked by the push).
+- Codex couldn't open a browser from its sandbox, so its site review was a code and content audit.
+
+Screenshots were taken during verification in the in-app browser. They're not committed.
+
+## Codex review: what was done
+1. `codex review --base origin/palapa-verde/shop` found one P2 (sitemap with an empty `SITE_URL`). **Fixed** with a shared `siteUrl()` and a test.
+2. Codex site review (brand, UX, accuracy, a11y) returned 22 items. **21 fixed**:
+   - Unverified storage, process and offer wording; illustration captions; draft note in shares.
+   - Servings in the header; ⅛-step scaling; "aprox." household measures; exclusive time filter.
+   - Mobile nav; tap targets; language switch keeps query; per-page canonical, hreflang and OG; shared site URL.
+   - Draft policy documented; admin "Ficha completa"; heading levels; `lang="es"`; recipe titles in Archivo Black; FAQ "Todavía no"; "visualizaciones del envase".
+   - **Not fixed (owner decision):** #1, the generated packshots carry "Una marca de Go Veggie Life" on the label.
+     The brief forbids regenerating packaging without a separate packaging task, and the owner approved the look.
+     The images are captioned and listed in `02-brand-relationship.md` and `APPROVAL_CHECKLIST.md` #6.
+
+## Missing content and unresolved decisions
+See `docs/APPROVAL_CHECKLIST.md` (16 items). The most important:
+- the launch range (three different lists)
+- brand ownership and sourcing
+- the manufacturer and plant permit
+- product facts, real photos and kitchen-tested recipes
+- stockists and a public sales channel
+- the production domain
+- the analytics provider
+- Vercel Pro
+- the `catalog` project before any merge to `main`
+
+## Specific areas for Codex to review next (once the preview is pushed)
+1. In a real browser on the preview: home, a product, the recipe index, a recipe on mobile (375 px) and desktop. Check filters, scaling, print and WhatsApp.
+2. Spanish naturalness for Dominican readers in recipe steps and FAQ answers. English fluency.
+3. Whether the "Del vegetal al frasco" strip and the home copy still imply any unverified process.
+4. The social plan (`06-social-first-month.md`) against the site routes and the real-vs-AI rules.
+5. Accessibility with a screen reader: filters (`aria-pressed`), servings `output`, FAQ `details`.
