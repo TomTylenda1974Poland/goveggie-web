@@ -64,7 +64,7 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 .q-item{display:flex;align-items:center;gap:16px;padding:clamp(14px,1.8vw,24px) var(--pad)}
 .q-item + .q-item{border-left:var(--hairline)}
 .q-item img{width:clamp(72px,7vw,104px);flex:0 0 auto}
-.q-item h3{font-size:1rem;margin-bottom:5px}
+.q-item :is(h2,h3){font-size:1rem;margin-bottom:5px}
 .q-item p{font-size:.86rem}
 .q-note{border-top:var(--hairline);padding:10px var(--pad);font-size:.74rem;color:var(--meta)}
 
@@ -170,7 +170,7 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 /* ---------- full catalog grid ---------- */
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:clamp(10px,1.4vw,20px);margin-bottom:clamp(14px,2vw,26px)}
 .pcard{border:var(--frame);background:var(--paper);display:flex;flex-direction:column}
-.pcard img{width:100%;aspect-ratio:384/341;object-fit:contain;border-bottom:var(--hairline)}
+.pcard img{width:100%;height:auto;aspect-ratio:384/341;object-fit:contain;border-bottom:var(--hairline)}
 .pcard-body{padding:12px 14px 14px}
 .pcard-body h3{font-size:1.15rem}
 .pcard-body .pdesc{display:block;font-size:.78rem;color:var(--meta);margin-top:3px}
@@ -287,5 +287,14 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
  .contact-fields{grid-template-columns:1fr}
  .friendly-form{gap:20px}
  .journey-caption{grid-template-columns:repeat(2,1fr)}
- .botanical-site header{position:relative}
+ .cards,.botanical-site .hero-grid,.botanical-site .ph-grid,.b2b-grid,.contact-grid{grid-template-columns:minmax(0,1fr)}
+ .card,.hero-art,.b2b-art,.ph-grid>*,.contact-grid>*{min-width:0}
+ .card-photo{width:min(calc(100% - 32px),230px);align-self:center}
+ .botanical-site header{position:sticky;top:0}
+ .botanical-site .nav{gap:6px 10px;padding-block:6px}
+ .botanical-site .nav-links{gap:4px 12px;padding-top:5px}
+ .botanical-site .nav .btn{padding-block:7px}
+}
+@media(max-width:760px){
+ .ph-grid:has(.ph-image--supply) h1{font-size:clamp(1.45rem,7.2vw,2.4rem);overflow-wrap:anywhere}
 }
