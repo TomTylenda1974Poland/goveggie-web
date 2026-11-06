@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { PROCESS_ART } from "@/content/process-art";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { STOCKISTS } from "@/content/stockists";
@@ -39,7 +40,7 @@ export default async function WhereToBuyPage({ params }: Props) {
               {t.home.cta}
             </Link>
           </div>
-          <Image className="prelaunch-art" src="/media/proceso-frasco.jpg" alt="" width={512} height={512} sizes="200px" />
+          <Image className="prelaunch-art" src={PROCESS_ART.frasco} alt="" width={640} height={640} sizes="200px" />
         </section>
       ) : (
         <section aria-label={w.title}>

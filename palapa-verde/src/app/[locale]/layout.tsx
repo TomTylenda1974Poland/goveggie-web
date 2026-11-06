@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
       locale: locale === "es" ? "es_DO" : "en_US",
       title: t.meta.title,
       description: t.meta.description,
-      images: [{ url: "/media/hero-linea.jpg", width: 1536, height: 1024 }],
+      images: [{ url: "/media/linea-botanica.webp", width: 1536, height: 1024 }],
     },
   };
 }

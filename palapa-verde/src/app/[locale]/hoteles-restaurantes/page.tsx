@@ -9,7 +9,7 @@ import styles from "./kitchen.module.css";
 
 type Props = { params: Promise<{ locale: string }> };
 const route = "/hoteles-restaurantes";
-const heroImage = "/media/cocina-profesional.jpg";
+const heroImage = "/media/cocina-grabado.webp";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -34,7 +34,7 @@ export default async function ProfessionalKitchenPage({ params }: Props) {
             <a className={styles.jumpLink} href="#formatos">{t.explore}</a>
           </div>
         </div>
-        <figure className={styles.heroPhoto}>
+        <figure className={styles.heroArt}>
           <Image src={heroImage} alt={t.imageAlt} width={1536} height={1024} sizes="(max-width: 760px) 100vw, 50vw" preload />
           <figcaption>{t.imageCaption}</figcaption>
         </figure>

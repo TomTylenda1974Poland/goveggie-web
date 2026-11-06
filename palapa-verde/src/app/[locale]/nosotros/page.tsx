@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { PROCESS_ART } from "@/content/process-art";
 import { notFound } from "next/navigation";
 import { GO_VEGGIE_LIFE_URL, MANUFACTURER, relationship } from "@/content/brand";
 import { PRODUCE_PHOTOS } from "@/lib/commerce/brand-content";
@@ -58,7 +59,7 @@ export default async function AboutPage({ params }: Props) {
         </div>
         <div className="story-art" aria-hidden="true">
           {(["campo", "cocina", "frasco"] as const).map((s) => (
-            <Image key={s} src={`/media/proceso-${s}.jpg`} alt="" width={512} height={512} sizes="140px" />
+            <Image key={s} src={PROCESS_ART[s]} alt="" width={512} height={512} sizes="140px" />
           ))}
         </div>
       </section>

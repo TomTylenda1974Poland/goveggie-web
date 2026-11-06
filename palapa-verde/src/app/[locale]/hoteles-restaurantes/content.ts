@@ -20,7 +20,7 @@ export const kitchenCopy: Record<Locale, KitchenCopy> = {
     intro: "Vegetales frescos de Go Veggie Life y preparaciones de Palapa Verde. Explore los formatos de prueba según lo que consume su cocina por servicio.",
     inquiry: "Preparar mi consulta",
     explore: "Ver formatos de prueba",
-    imageAlt: "Hummus servido con cuchara en una mesa de trabajo junto a vegetales frescos.",
+    imageAlt: "Un chef sirve hummus de zanahoria Palapa Verde con casabe.",
     imageCaption: "Propuesta de uso en cocina · Imagen ilustrativa",
     restaurant: {
       title: "Cocina a la carta",
@@ -44,7 +44,7 @@ export const kitchenCopy: Record<Locale, KitchenCopy> = {
     intro: "Fresh produce from Go Veggie Life and prepared foods from Palapa Verde. Explore trial packs based on how much your kitchen uses per service.",
     inquiry: "Prepare my enquiry",
     explore: "Explore trial packs",
-    imageAlt: "Hummus with a serving spoon on a kitchen worktop beside fresh vegetables.",
+    imageAlt: "A chef serves Palapa Verde carrot hummus with cassava flatbread.",
     imageCaption: "Kitchen serving suggestion · Illustrative image",
     restaurant: {
       title: "À la carte service",

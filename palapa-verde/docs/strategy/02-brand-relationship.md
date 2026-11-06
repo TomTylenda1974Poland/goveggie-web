@@ -8,23 +8,19 @@ The owner confirmed the brand relationship on 6 November 2026. Use **“Una marc
 
 The website uses the owned setting in src/content/brand.ts. MANUFACTURER and REGISTRATION_HOLDER remain separate, empty fields pending confirmation.
 
-The owner chose variant B, “Lekka palapa”, on 6 November 2026. The centered two-stroke roof spans 28% of the visible PALAPA VERDE wordmark. Place the Go Veggie Life endorsement directly below the name in smaller italic lettering, with the same letter size in Spanish and English. The Spanish endorsement spans 72% of the wordmark and the English one approximately 65%, with a softer ink tone than the name. Use the approved SVG in each language.
+The owner chose variant B, “Lekka palapa”, on 6 November 2026. The centered two-stroke roof spans 28% of the visible PALAPA VERDE wordmark. In the website header, place the Go Veggie Life endorsement directly below the name in smaller italic lettering, with the same letter size in Spanish and English. The Spanish endorsement spans 72% of the wordmark and the English one approximately 65%, with a softer ink tone than the name. Use the approved SVG in each language.
 
 ## Where the two sites link
 - Palapa Verde: the "Nosotros" relationship section, the home relationship block, the footer, and the business page (for fresh produce).
 - Go Veggie Life (separate task, root site): its footer already links to Palapa Verde. Recommended: a short "Palapa Verde" block on "Nosotros" or "Para supermercados" that uses the same confirmed wording.
 
-## Packaging label hierarchy (recommendation for the packaging task, not applied)
-1. Botanical engraving of the key vegetable (top of the arched label)
-2. **PALAPA VERDE** wordmark, the largest brand element
-3. Endorsement line, smaller and directly under the wordmark: only the confirmed wording above.
-   About 35–45% of the wordmark's cap height, never below the legal minimum legible size at print scale.
-   Use the official Go Veggie Life wordmark only if that is the approved lockup; otherwise set the text in the label serif.
-4. Rule
-5. Product name, as two lines: "HUMMUS / de ZANAHORIA"
-6. Short descriptor (approved only)
-7. Bottom band: net content · storage instruction (approved only)
-8. Back label: ingredients, allergens ("Contiene: …"), manufacturer name and address, lot/date, sanitary registration once issued, under NORDOM 53 review
+## Packaging label hierarchy
+
+Use a rectangular sticker with four square corners. The upper section carries the two-stroke roof and the Palapa Verde wordmark. Put the engraved ingredient beside the product name in the middle. At the bottom, set the endorsement with the original Go Veggie Life symbol and wordmark. Print dimensions and commercial fields require the approved pack and product data.
+
+## Website illustrations
+
+Use the public Go Veggie Life harvest, packing and supermarket illustrations as references for scenes. Draw people, tools and settings in fine graphite hatching on white. Use natural colour for the food. In catalogue visuals, pair a realistic package with a botanical engraving outside the label. Add the approved label from the source artwork after illustration, so the roof and parent-brand signature remain exact.
 
 ## Existing artwork
 

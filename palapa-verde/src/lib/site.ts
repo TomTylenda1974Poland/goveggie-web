@@ -34,7 +34,7 @@ export function pageMetadata({ locale, path, title, description, image, noindex 
       url: `/${locale}${path}`,
       ...(title ? { title } : {}),
       ...(description ? { description } : {}),
-      images: [{ url: image ?? "/media/hero-linea.jpg", width: 1536, height: 1024 }],
+      images: [{ url: image ?? "/media/linea-botanica.webp", width: 1536, height: 1024 }],
     },
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
   };

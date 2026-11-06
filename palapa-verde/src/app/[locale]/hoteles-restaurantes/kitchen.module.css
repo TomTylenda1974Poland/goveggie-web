@@ -32,21 +32,21 @@
   font-weight: 650;
   text-underline-offset: 0.25em;
 }
-.heroPhoto {
+.heroArt {
   display: grid;
   grid-template-rows: 1fr auto;
   border-inline-start: var(--hairline);
   margin: 0;
   min-width: 0;
 }
-.heroPhoto img {
+.heroArt img {
   width: 100%;
   height: 100%;
   min-height: 0;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
-.heroPhoto figcaption {
+.heroArt figcaption {
   padding: 6px 13px;
   border-top: var(--hairline);
   color: var(--meta);
@@ -105,8 +105,8 @@
 .size { color: var(--verde); font-weight: 750; }
 @media (max-width: 760px) {
   .hero { grid-template-columns: 1fr; }
-  .heroPhoto { border-inline-start: 0; border-top: var(--hairline); }
-  .heroPhoto img { aspect-ratio: 2.2; }
+  .heroArt { border-inline-start: 0; border-top: var(--hairline); }
+  .heroArt img { height: auto; aspect-ratio: 3 / 2; }
   .services { grid-template-columns: 1fr; }
   .services section + section { border-inline-start: 0; border-top: var(--hairline); }
   .formatRow { grid-template-columns: 1fr; gap: 8px; }

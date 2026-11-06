@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PROCESS_ART } from "@/content/process-art";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductCard } from "@/components/ProductCard";
@@ -59,7 +60,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
         <figure className="hero-media">
           <Image
-            src="/media/hero-linea.jpg"
+            src="/media/linea-botanica.webp"
             alt={
               locale === "es"
                 ? "Los cinco productos Palapa Verde en su envase propuesto, junto a sus vegetales"
@@ -81,7 +82,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </h2>
         {STEPS.map((step, i) => (
           <div className="step" key={step}>
-            <Image src={`/media/proceso-${step}.jpg`} alt="" width={512} height={512} sizes="120px" />
+            <Image src={PROCESS_ART[step]} alt="" width={512} height={512} sizes="120px" />
             <div>
               <h3>
                 <span className="step-n">0{i + 1}</span> {h.steps[step].title}
@@ -104,7 +105,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <ProductCard key={product.id} product={product} locale={locale} priority={i < 2} />
           ))}
           <Link className="card card--line" href={`/${locale}/negocios`}>
-            <Image src="/media/proceso-frasco.jpg" alt="" width={512} height={512} sizes="200px" />
+            <Image src={PROCESS_ART.frasco} alt="" width={640} height={640} sizes="200px" />
             <span className="card-cat">{h.businessHeading}</span>
             <span className="card-line-title">{h.businessText}</span>
             <span className="card-cta arrow">{h.businessCta}</span>
