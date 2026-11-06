@@ -13,7 +13,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "check": "pnpm typecheck && pnpm test && pnpm build"
+    "check": "pnpm typecheck && pnpm test && pnpm build",
+    "smoke": "node scripts/smoke.mjs"
   },
   "dependencies": {
     "next": "16.4.5",

@@ -13,14 +13,14 @@ import "../globals.css";
 const display = Archivo_Black({ weight: "400", subsets: ["latin"], variable: "--font-display", display: "swap" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 const botanical = Cormorant_Garamond({
-  weight: ["500", "600"],
+  weight: ["500"],
   style: ["italic"],
   subsets: ["latin"],
   variable: "--font-botanical",
   display: "swap",
 });
 
-const label = Playfair_Display({ weight: ["700", "800", "900"], subsets: ["latin"], variable: "--font-label", display: "swap" });
+const label = Playfair_Display({ weight: ["800", "900"], subsets: ["latin"], variable: "--font-label", display: "swap" });
 
 export const dynamicParams = false;
 

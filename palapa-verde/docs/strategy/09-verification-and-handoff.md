@@ -83,3 +83,19 @@ See `docs/APPROVAL_CHECKLIST.md` (16 items). The most important:
 3. Whether the "Del vegetal al frasco" strip and the home copy still imply any unverified process.
 4. The social plan (`06-social-first-month.md`) against the site routes and the real-vs-AI rules.
 5. Accessibility with a screen reader: filters (`aria-pressed`), servings `output`, FAQ `details`.
+
+## Follow-up 2026-11-06 (owner: "Co możesz zrobić samemu, rób samemu")
+- **Codex edits integrated.** Codex (ChatGPT app) left uncommitted edits in this working tree: owner-confirmed `owned` relationship, SVG logo, safer recipe drafts.
+  They were verified (typecheck, 76 tests, build, visual check of the logo) and committed as `b8cd41c`, attributed to Codex.
+- **Lighthouse (mobile, local production build):** home performance 87–89, product 90–92; accessibility 100; best practices 100; CLS 0.
+  On the Vercel preview, home performance is ~55 because preview deployments load the Vercel Toolbar (`vercel.live/feedback.js`). Production doesn't.
+  SEO 69 only because of the intentional `noindex` (`is-crawlable`).
+- **Small performance changes:**
+  - Removed unused font weights (Playfair 700, Cormorant 600).
+  - No `mix-blend-mode` on white backgrounds.
+  - `fetchPriority="high"` on the LCP images. The simulated score didn't move (within noise), but this is the documented best practice.
+- **`pnpm smoke <url>`:** a dependency-free deployed-site check (18 pages, 8 redirects, orders API off, banned-text scan, noindex).
+- **Not done (needs the owner):** guarding the `catalog` Vercel project against `main` pushes was blocked by the session's permission policy (shared resource).
+  Suggested setting: Vercel → catalog → Settings → Git → Ignored Build Step:
+  `if [ -n "$VERCEL_GIT_COMMIT_REF" ]; then exit 0; fi; exit 1`
+  This skips only Git-triggered builds. CLI deploys keep working.

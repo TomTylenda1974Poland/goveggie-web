@@ -36,6 +36,7 @@ pnpm test         # vitest: contract, rules, cart, i18n
 pnpm typecheck
 pnpm build
 pnpm check        # all three; run before every push
+pnpm smoke <url>  # deployed-site check: routes, QR/cart redirects, orders off, no banned text
 ```
 
 ## Map

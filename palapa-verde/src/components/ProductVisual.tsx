@@ -51,6 +51,7 @@ export function ProductVisual({ product, locale, size, priority, hideNote }: Pro
           height={image.height}
           sizes={SIZES[size]}
           priority={priority}
+          fetchPriority={priority ? "high" : undefined}
           unoptimized={isRemote(image.src)}
         />
       ) : (

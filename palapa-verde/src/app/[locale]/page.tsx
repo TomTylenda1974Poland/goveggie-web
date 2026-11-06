@@ -69,6 +69,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             height={1024}
             sizes="(max-width: 900px) 100vw, 62vw"
             priority
+            fetchPriority="high"
           />
           <figcaption className="visual-note">{t.common.imageNote}</figcaption>
         </figure>

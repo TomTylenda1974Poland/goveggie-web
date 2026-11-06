@@ -486,3 +486,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; l
   .stepper button { display: none; }
   .stepper, .stepper output { border: 0; height: auto; min-width: auto; }
 }
+
+/* Rendimiento: sin mezcla de capas sobre fondo blanco (mismo resultado visual, menos trabajo de pintado) */
+.step img, .produce img, .card--line img, .prelaunch-art, .story-art img { mix-blend-mode: normal; }
+.card--line { background: var(--paper); }
