@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v=horeca2">
+<link rel="stylesheet" href="assets/horeca-edicion-v2.css">
 <script src="assets/nav.js?v=horeca2" defer></script>
 </head>
 <body class="botanical-site">
@@ -43,7 +44,7 @@
 <main>
     <div class="wrap">
 
-  <section class="panel page-head">
+  <section class="panel page-head horeca-cover">
     <div class="ph-grid ph-grid--balanced">
     <div>
   <h1 data-i18n="ph_h">Para hoteles y restaurantes</h1>
@@ -51,34 +52,42 @@
   <p><span data-i18n="lead_before">Frutas, vegetales y hierbas frescas en formatos para cocina, y pronto los preparados de</span> <span translate="no">Palapa Verde</span><span data-i18n="lead_after">. Un proveedor para tu cocina.</span></p>
 <a class="btn arrow horeca-cta" href="#consulta"><span data-i18n="hero_cta">Consultar formatos</span></a></div>
 
-  <figure class="horeca-figure"><img src="assets/horeca-cocina-v1.jpg" width="1536" height="1024" data-i18n-alt="hero_alt" alt="Frutas, vegetales y hierbas en una cocina profesional" fetchpriority="high"><figcaption class="note"><span data-i18n="illustrative">Imagen ilustrativa</span></figcaption></figure>
+  <figure class="horeca-figure"><img id="deliveryArt" src="assets/horeca-entrega-es-v2.webp" data-es="assets/horeca-entrega-es-v2.webp" data-en="assets/horeca-entrega-en-v2.webp" width="1536" height="1024" data-i18n-alt="hero_alt" alt="Cajas de tomates y albahaca, cebollas y cilantro, y ajíes y lechugas para una cocina profesional." fetchpriority="high"><figcaption class="note"><span data-i18n="illustrative">Imagen ilustrativa</span></figcaption></figure>
 </div>
 </section>
 
-  <section class="panel pad">
-  <h2 data-i18n="who_h">Para quién</h2>
-
-    <div class="horeca-audience">
-    <div>
-  <h3 data-i18n="who_1">Hoteles y resorts</h3>
-
-  <p data-i18n="who_1_p">Desayunos, buffets, restaurantes y bares.</p>
-</div>
-
-    <div>
-  <h3 data-i18n="who_2">Restaurantes</h3>
-
-  <p data-i18n="who_2_p">Cocina a la carta.</p>
-</div>
-
-    <div>
-  <h3 data-i18n="who_3">Catering y eventos</h3>
-</div>
-
-    <div>
-  <h3 data-i18n="who_4">Cafeterías y bares</h3>
-</div>
-</div>
+<section id="para-quien" class="panel kitchen-audiences" aria-labelledby="kitchen-audiences-title">
+  <h2 id="kitchen-audiences-title" data-i18n="who_h">Para quién</h2>
+  <ul class="kitchen-audiences-list">
+    <li>
+      <img src="assets/p-papaya.jpg" alt="" width="384" height="342" loading="lazy" decoding="async">
+      <div>
+        <h3 data-i18n="who_1">Hoteles y resorts</h3>
+        <p data-i18n="who_1_p">Papaya en rodajas para el desayuno y el bufé.</p>
+      </div>
+    </li>
+    <li>
+      <img src="assets/p-tomate-v7.jpg" alt="" width="570" height="506" loading="lazy" decoding="async">
+      <div>
+        <h3 data-i18n="who_2">Restaurantes</h3>
+        <p data-i18n="who_2_p">Tomates para ensaladas y salsas de la carta.</p>
+      </div>
+    </li>
+    <li>
+      <img src="assets/p-aji.jpg" alt="" width="384" height="341" loading="lazy" decoding="async">
+      <div>
+        <h3 data-i18n="who_3">Catering y eventos</h3>
+        <p data-i18n="who_3_p">Ajíes de colores para brochetas y bandejas.</p>
+      </div>
+    </li>
+    <li>
+      <img src="assets/p-limon.jpg" alt="" width="384" height="344" loading="lazy" decoding="async">
+      <div>
+        <h3 data-i18n="who_4">Cafeterías y bares</h3>
+        <p data-i18n="who_4_p">Limón fresco para jugos, limonadas y cócteles.</p>
+      </div>
+    </li>
+  </ul>
 </section>
 
   <section class="panel pad">
@@ -113,45 +122,30 @@
   <p data-i18n="formats_note">Los formatos, tamaños y condiciones se acuerdan por cocina; consúltanos qué está disponible hoy.</p>
 </section>
 
-  <section class="panel">
-    <div class="pad horeca-process-head">
-    <div>
-  <h2 data-i18n="how_h">Cómo trabajamos</h2>
-</div>
-<img class="horeca-engraving" src="assets/horeca-grabado-v1.jpg" alt="" width="1024" height="1024" loading="lazy"></div>
-
-    <div class="steps">
-    <div class="step"><span class="n">1</span>
-  <h3 data-i18n="s1_h">Cuéntanos sobre tu cocina</h3>
-
-  <p data-i18n="s1_p">Tipo de negocio, habitaciones o cubiertos al día y productos que usas.</p>
-</div>
-
-    <div class="step"><span class="n">2</span>
-  <h3 data-i18n="s2_h">Te enviamos una propuesta</h3>
-
-  <p data-i18n="s2_p">Formatos, cantidades y frecuencia de entrega por acordar, con una ficha de producto para cada artículo.</p>
-</div>
-
-    <div class="step"><span class="n">3</span>
-  <h3 data-i18n="s3_h">Pedido base y ajustes</h3>
-
-  <p data-i18n="s3_p">Definimos contigo un pedido base regular que puedas ajustar.</p>
-</div>
-</div>
-</section>
+  <section class="panel horeca-work" id="como-trabajamos" aria-labelledby="how-heading">
+    <div class="horeca-work-copy">
+      <h2 id="how-heading" data-i18n="how_h">Cómo trabajamos</h2>
+      <ol class="horeca-work-steps">
+        <li><h3 data-i18n="s1_h">Cuéntanos sobre tu cocina</h3><p data-i18n="s1_p">Tipo de negocio, habitaciones o cubiertos al día y productos que usas.</p></li>
+        <li><h3 data-i18n="s2_h">Te enviamos una propuesta</h3><p data-i18n="s2_p">Formatos, cantidades y frecuencia de entrega por acordar, con una ficha de producto para cada artículo.</p></li>
+        <li><h3 data-i18n="s3_h">Pedido base y ajustes</h3><p data-i18n="s3_p">Definimos contigo un pedido base regular que puedas ajustar.</p></li>
+      </ol>
+    </div>
+    <figure class="horeca-work-art"><img src="assets/horeca-recepcion-v2.webp" width="1440" height="600" alt="Un chef recibe un ají rojo para revisar la entrega junto a una balanza de cocina." data-i18n-alt="work_alt" loading="lazy" decoding="async"></figure>
+  </section>
 
   <section class="panel">
     <div class="b2b-grid">
     <div class="b2b-left">
+  <img id="pvLogo" translate="no" src="https://palapa-verde.vercel.app/brand/palapa-verde-es.svg" data-es="https://palapa-verde.vercel.app/brand/palapa-verde-es.svg" data-en="https://palapa-verde.vercel.app/brand/palapa-verde-en.svg" data-alt-es="Palapa Verde · Una marca de Go Veggie Life" data-alt-en="Palapa Verde · A brand of Go Veggie Life" alt="Palapa Verde · Una marca de Go Veggie Life" width="1012" height="342" loading="lazy" decoding="async" class="horeca-palapa-mark">
   <h2><span translate="no">Palapa Verde</span> <span data-i18n="pv_h">para cocinas profesionales</span></h2>
 
   <p data-i18n="pv_p">Estamos preparando formatos profesionales de nuestros chutney, pesto, hummus y salsa: envases grandes para cocina y buffet, y porciones individuales. Todavía no están a la venta.</p>
 <a id="pvLink" class="btn arrow" href="https://palapa-verde.vercel.app/es/hoteles-restaurantes"><span data-i18n="pv_cta">Conocer</span> <span translate="no">Palapa Verde</span></a></div>
 
-    <div class="b2b-art art-col horeca-pv-art"><img id="pvLogo" translate="no" src="https://palapa-verde.vercel.app/brand/palapa-verde-es.svg" data-es="https://palapa-verde.vercel.app/brand/palapa-verde-es.svg" data-en="https://palapa-verde.vercel.app/brand/palapa-verde-en.svg" data-alt-es="Palapa Verde · Una marca de Go Veggie Life" data-alt-en="Palapa Verde · A brand of Go Veggie Life" alt="Palapa Verde · Una marca de Go Veggie Life" width="1012" height="342" loading="lazy" decoding="async" style="width:min(100%,420px);height:auto;margin:auto">
+    <div class="b2b-art art-col horeca-pv-art">
 
-  <figure class="horeca-figure"><img src="assets/horeca-palapa-pro-v1.jpg" alt="Envases grandes y porciones individuales propuestos para cocina y buffet" data-i18n-alt="pv_alt" width="1536" height="1024" loading="lazy"><figcaption class="note"><span data-i18n="pv_caption">Imagen ilustrativa del formato propuesto</span></figcaption></figure>
+  <figure class="horeca-figure"><img src="assets/horeca-palapa-servicio-v2.webp" alt="Un chef sirve hummus de zanahoria Palapa Verde con casabe." data-i18n-alt="pv_alt" width="1536" height="1024" loading="lazy"><figcaption class="note"><span data-i18n="pv_caption">Imagen ilustrativa del formato propuesto</span></figcaption></figure>
 </div>
 </div>
 </section>
@@ -162,7 +156,9 @@
         <h2 data-i18n="form_h">Hablemos de tu cocina</h2>
         <div id="friendly-contact" data-variant="horeca"></div>
       </div>
-      <aside class="b2b-art horeca-proposal">
+      <aside class="horeca-proposal"><div class="horeca-proposal-inner">
+        <img class="horeca-consult-art" src="assets/horeca-consulta-v2.webp" width="880" height="587" alt="Una representante prepara una consulta junto a una caja de vegetales frescos." data-i18n-alt="contact_art_alt" loading="lazy" decoding="async">
+        <div class="horeca-proposal-copy">
         <h3 data-i18n="proposal_h">Para preparar tu propuesta</h3>
         <ul>
           <li data-i18n="proposal_business">Tipo de negocio</li>
@@ -170,7 +166,8 @@
           <li data-i18n="proposal_amount">Cantidades aproximadas por semana</li>
           <li data-i18n="proposal_delivery">Frecuencia de entrega deseada</li>
         </ul>
-      </aside>
+        </div>
+      </div></aside>
     </div>
 </section>
 </div>
@@ -231,12 +228,12 @@ const i18n = {
     "lead_after": ". Un proveedor para tu cocina.",
     "hero_cta": "Consultar formatos",
     "illustrative": "Imagen ilustrativa",
-    "hero_alt": "Frutas, vegetales y hierbas en una cocina profesional",
+    "hero_alt": "Cajas de tomates y albahaca, cebollas y cilantro, y ajíes y lechugas para una cocina profesional.",
     "who_h": "Para quién",
     "who_1": "Hoteles y resorts",
-    "who_1_p": "Desayunos, buffets, restaurantes y bares.",
+    "who_1_p": "Papaya en rodajas para el desayuno y el bufé.",
     "who_2": "Restaurantes",
-    "who_2_p": "Cocina a la carta.",
+    "who_2_p": "Tomates para ensaladas y salsas de la carta.",
     "who_3": "Catering y eventos",
     "who_4": "Cafeterías y bares",
     "formats_h": "Formatos para cocina",
@@ -252,6 +249,8 @@ const i18n = {
     "format_4_p": "Propuesta de vegetales cortados para mise en place, como cebolla en cubos o pico de gallo.",
     "formats_note": "Los formatos, tamaños y condiciones se acuerdan por cocina; consúltanos qué está disponible hoy.",
     "how_h": "Cómo trabajamos",
+    "work_alt": "Un chef recibe un ají rojo para revisar la entrega junto a una balanza de cocina.",
+    "contact_art_alt": "Una representante prepara una consulta junto a una caja de vegetales frescos.",
     "s1_h": "Cuéntanos sobre tu cocina",
     "s1_p": "Tipo de negocio, habitaciones o cubiertos al día y productos que usas.",
     "s2_h": "Te enviamos una propuesta",
@@ -262,8 +261,10 @@ const i18n = {
     "pv_p": "Estamos preparando formatos profesionales de nuestros chutney, pesto, hummus y salsa: envases grandes para cocina y buffet, y porciones individuales. Todavía no están a la venta.",
     "pv_cta": "Conocer",
     "pv_caption": "Imagen ilustrativa del formato propuesto",
-    "pv_alt": "Envases grandes y porciones individuales propuestos para cocina y buffet",
-    "form_h": "Hablemos de tu cocina"
+    "pv_alt": "Un chef sirve hummus de zanahoria Palapa Verde con casabe.",
+    "form_h": "Hablemos de tu cocina",
+    "who_3_p": "Ajíes de colores para brochetas y bandejas.",
+    "who_4_p": "Limón fresco para jugos, limonadas y cócteles."
   },
   "en": {
     "nav_home": "Home",
@@ -287,14 +288,14 @@ const i18n = {
     "lead_after": " coming soon. One supplier for your kitchen.",
     "hero_cta": "Ask about formats",
     "illustrative": "Illustrative image",
-    "hero_alt": "Fruit, vegetables and herbs in a professional kitchen",
+    "hero_alt": "Crates of tomatoes and basil, onions and cilantro, and peppers and lettuce for a professional kitchen.",
     "who_h": "Who it's for",
-    "who_1": "Hotels and resorts",
-    "who_1_p": "Breakfasts, buffets, restaurants and bars.",
+    "who_1": "Hotels & resorts",
+    "who_1_p": "Sliced papaya for breakfast and the buffet.",
     "who_2": "Restaurants",
-    "who_2_p": "À la carte kitchens.",
-    "who_3": "Catering and events",
-    "who_4": "Cafés and bars",
+    "who_2_p": "Tomatoes for salads and house sauces.",
+    "who_3": "Catering & events",
+    "who_4": "Cafés & bars",
     "formats_h": "Kitchen formats",
     "ask": "Ask us",
     "format_1_h": "By weight, without shelf packaging",
@@ -308,6 +309,8 @@ const i18n = {
     "format_4_p": "Proposed cut vegetables for mise en place, such as diced onion or pico de gallo.",
     "formats_note": "Formats, sizes and conditions are agreed for each kitchen; ask us what is available today.",
     "how_h": "How we work",
+    "work_alt": "A chef receives a red pepper to check the delivery beside a kitchen scale.",
+    "contact_art_alt": "A representative handles an enquiry beside a crate of fresh vegetables.",
     "s1_h": "Tell us about your kitchen",
     "s1_p": "Type of business, rooms or covers per day, and the products you use.",
     "s2_h": "We send you a proposal",
@@ -318,8 +321,10 @@ const i18n = {
     "pv_p": "We are developing professional formats for our chutney, pesto, hummus and salsa: large containers for kitchens and buffets, and individual portions. They are not on sale yet.",
     "pv_cta": "Discover",
     "pv_caption": "Illustrative image of the proposed format",
-    "pv_alt": "Proposed large containers and individual portions for kitchens and buffets",
-    "form_h": "Let's talk about your kitchen"
+    "pv_alt": "A chef serves Palapa Verde carrot hummus with cassava flatbread.",
+    "form_h": "Let's talk about your kitchen",
+    "who_3_p": "Sweet peppers for skewers and sharing platters.",
+    "who_4_p": "Fresh lime for juices, limeade and cocktails."
   }
 };
 Object.assign(i18n.es, {nav_business:'Negocios',nav_business_b2b:'Para supermercados',nav_business_horeca:'Para hoteles y restaurantes'});
@@ -335,6 +340,8 @@ function applyLang(){
     if (t !== undefined) el.textContent = t;
   });
   document.querySelectorAll('[data-i18n-alt]').forEach(el => el.alt = i18n[lang][el.dataset.i18nAlt]);
+  const delivery = document.getElementById('deliveryArt');
+  if (delivery.getAttribute('src') !== delivery.dataset[lang]) delivery.src = delivery.dataset[lang];
   const pv = document.getElementById('pvLogo');
   if (pv) { pv.src = pv.dataset[lang]; pv.alt = lang === 'es' ? pv.dataset.altEs : pv.dataset.altEn; }
   document.getElementById('pvLink').href = 'https://palapa-verde.vercel.app/' + lang + '/hoteles-restaurantes';
