@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 import type { Locale } from "@/lib/commerce/types";
-import styles from "./business-inquiry.module.css";
+import { enquiryEmailHref } from "@/lib/enquiry-email";
+import styles from "./EmailInquiry.module.css";
 
 const copy = {
   es: {
@@ -19,13 +20,16 @@ const copy = {
   },
 } as const;
 
-export function BusinessInquiry({ locale, email }: { locale: Locale; email: string }) {
+type Props = { locale: Locale; email: string; example?: string; subject?: string };
+
+export function EmailInquiry({ locale, email, example, subject }: Props) {
   const t = copy[locale];
+  const messageId = useId();
+  const helpId = useId();
   const [message, setMessage] = useState("");
   const [feedback, setFeedback] = useState("");
   const address = useRef<HTMLSpanElement>(null);
-  const href = `mailto:${email}?subject=${encodeURIComponent(t.subject)}` +
-    (message.trim() ? `&body=${encodeURIComponent(message)}` : "");
+  const href = enquiryEmailHref(email, subject ?? t.subject, message);
 
   async function copyAddress() {
     try {
@@ -45,11 +49,11 @@ export function BusinessInquiry({ locale, email }: { locale: Locale; email: stri
 
   return (
     <div className={styles.inquiry}>
-      <label htmlFor="business-message">{t.message} <span>{t.optional}</span></label>
-      <textarea id="business-message" name="message" rows={2} placeholder={t.example}
+      <label htmlFor={messageId}>{t.message} <span>{t.optional}</span></label>
+      <textarea id={messageId} name="message" rows={2} placeholder={example ?? t.example}
         value={message} onChange={event => setMessage(event.target.value)} />
-      <a className={`btn ${styles.open}`} href={href} aria-describedby="business-mail-help">{t.open} <span aria-hidden="true">↗</span></a>
-      <small id="business-mail-help" className={styles.help}>{t.help}</small>
+      <a className={`btn ${styles.open}`} href={href} aria-describedby={helpId}>{t.open} <span aria-hidden="true">↗</span></a>
+      <small id={helpId} className={styles.help}>{t.help}</small>
       <div className={styles.address}>
         <span ref={address}>{email}</span>
         <button type="button" onClick={copyAddress}>{t.copy}</button>

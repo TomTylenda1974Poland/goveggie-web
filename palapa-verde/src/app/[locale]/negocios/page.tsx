@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { CONTACT, GO_VEGGIE_LIFE_HORECA_URL } from "@/content/brand";
 import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale } from "@/lib/i18n";
-import { BusinessInquiry } from "./BusinessInquiry";
+import { EmailInquiry } from "@/components/EmailInquiry";
 import styles from "./business.module.css";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -47,7 +47,7 @@ export default async function BusinessPage({ params }: Props) {
         <div className={styles.heroCopy}>
           <h1 id="business-heading">{page.heading}</h1>
           <p>{page.intro}</p>
-          {CONTACT.salesEmail && <BusinessInquiry locale={locale} email={CONTACT.salesEmail} />}
+          {CONTACT.salesEmail && <EmailInquiry locale={locale} email={CONTACT.salesEmail} />}
         </div>
         <figure className={styles.art}>
           <Image src={art} width={1200} height={800} alt={page.alt}

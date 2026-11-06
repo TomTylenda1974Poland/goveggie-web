@@ -123,3 +123,5 @@ Właściciel wskazał planszę z czterema przezroczystymi opakowaniami jako wzor
 6 listopada 2026 — sekcja powiązania marek na stronie głównej używa ilustracji współpracy z Go Veggie Life w ES/EN. Strona Negocios ma dwujęzyczny formularz zapytania. Właściciel potwierdził odrębny adres Palapa Verde info@palapaverde.com do zapytań handlowych. Na stronie biznesowej i w strefie gastronomii klient wysyła przygotowaną wiadomość ze swojej aplikacji pocztowej.
 
 6 listopada 2026 — na stronie Negocios w ES i EN klient widzi kontakt przed ilustracją. Wybór typu firmy, tematu i osobny ekran podglądu zastąpiło jedno opcjonalne pole wiadomości. Przycisk od razu otwiera szkic do info@palapaverde.com, a widoczny adres można skopiować również bez aplikacji pocztowej.
+
+6 listopada 2026 — kontakt dla hoteli i restauracji w ES i EN znajduje się przed ilustracją. Klient może dopisać dowolną wiadomość lub od razu otworzyć pocztę. Linki przy proponowanych opakowaniach i produktach Palapa Verde uzupełniają szkic zapytania o wybraną pozycję. Oba formularze korzystają ze wspólnego komponentu i zatwierdzonego adresu handlowego.

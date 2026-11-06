@@ -6,7 +6,7 @@ export type PackKey = "kitchen" | "buffet" | "portion" | "bottle";
 type KitchenCopy = {
   title: string;
   intro: string;
-  inquiry: string;
+  contact: { subject: string; example: string; about: string; trial: string; write: string };
   explore: string;
   packHeading: string;
   imageAlt: string;
@@ -27,8 +27,14 @@ type KitchenCopy = {
 export const kitchenCopy: Record<Locale, KitchenCopy> = {
   es: {
     title: "Hoteles y restaurantes",
-    intro: "Preparaciones de Palapa Verde y vegetales frescos de Go Veggie Life para tu cocina. Dinos qué sirves y exploramos juntos los formatos que estamos desarrollando.",
-    inquiry: "Preparar mi consulta",
+    intro: "¿Qué producto o envase te gustaría probar en tu cocina?",
+    contact: {
+      subject: "Consulta de cocina profesional · Palapa Verde",
+      example: "Por ejemplo: Busco hummus para el bufé de mi hotel.",
+      about: "Consultar por correo",
+      trial: "Hola, ¿podríamos probar este formato en nuestra cocina?",
+      write: "Escribir a Palapa Verde",
+    },
     explore: "Ver formatos propuestos",
     packHeading: "Envases propuestos · por confirmar",
     imageAlt: "Un plato de auyama asada con pesto de cilantro y semillas de auyama sale de cocina hacia el comedor.",
@@ -65,8 +71,14 @@ export const kitchenCopy: Record<Locale, KitchenCopy> = {
   },
   en: {
     title: "Hotels & restaurants",
-    intro: "Prepared foods from Palapa Verde and fresh produce from Go Veggie Life for your kitchen. Tell us what you serve and we’ll help you explore the formats we’re developing.",
-    inquiry: "Prepare my enquiry",
+    intro: "Which product or pack would you like to try in your kitchen?",
+    contact: {
+      subject: "Professional kitchen enquiry · Palapa Verde",
+      example: "For example: I’m looking for hummus for our hotel buffet.",
+      about: "Ask by email",
+      trial: "Hello, could we try this format in our kitchen?",
+      write: "Contact Palapa Verde",
+    },
     explore: "See proposed formats",
     packHeading: "Proposed packs · to be confirmed",
     imageAlt: "A plate of roasted squash with cilantro and pumpkin seed pesto leaves the kitchen for the dining room.",

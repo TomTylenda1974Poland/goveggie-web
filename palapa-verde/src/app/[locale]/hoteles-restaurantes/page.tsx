@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { GO_VEGGIE_LIFE_HORECA_URL } from "@/content/brand";
+import { CONTACT, GO_VEGGIE_LIFE_HORECA_URL } from "@/content/brand";
 import { getDictionary, isLocale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/site";
 import { kitchenCopy, type PackKey } from "./content";
-import { KitchenInquiry } from "./KitchenInquiry";
+import { EmailInquiry } from "@/components/EmailInquiry";
+import { enquiryEmailHref } from "@/lib/enquiry-email";
 import { ProfessionalLabel } from "./ProfessionalLabel";
 import styles from "./kitchen.module.css";
 
@@ -32,17 +33,16 @@ export default async function ProfessionalKitchenPage({ params }: Props) {
   if (!isLocale(locale)) notFound();
   const t = kitchenCopy[locale];
   const pro = getDictionary(locale).business.horeca;
+  const email = CONTACT.salesEmail;
 
   return (
     <>
-      <section className={styles.hero} aria-labelledby="kitchen-title">
+      <section id="consulta" className={styles.hero} aria-labelledby="kitchen-title">
         <div className={styles.heroCopy}>
           <h1 id="kitchen-title">{t.title}</h1>
           <p>{t.intro}</p>
-          <div className={styles.actions}>
-            <a className="btn" href="#consulta">{t.inquiry}</a>
-            <a className={styles.jumpLink} href="#linea-profesional">{t.explore}</a>
-          </div>
+          {email && <EmailInquiry locale={locale} email={email} subject={t.contact.subject} example={t.contact.example} />}
+          <a className={styles.jumpLink} href="#linea-profesional">{t.explore}</a>
         </div>
         <figure className={styles.heroArt}>
           <Image src={heroImage} alt={t.imageAlt} width={1536} height={1024}
@@ -95,6 +95,11 @@ export default async function ProfessionalKitchenPage({ params }: Props) {
                 <div>
                   <h4>{pack.title}</h4>
                   <p>{pack.use}</p>
+                  {email && (
+                    <a className={styles.ask} href={enquiryEmailHref(email, t.contact.subject + " · " + pack.title, t.contact.trial)}>
+                      {t.contact.about}<span className="sr-only"> · {pack.title}</span>
+                    </a>
+                  )}
                 </div>
               </li>
             );
@@ -117,7 +122,14 @@ export default async function ProfessionalKitchenPage({ params }: Props) {
                 <h3>{item.product}</h3>
               </div>
               <strong className={styles.size}>{item.format}</strong>
-              <p>{item.use}</p>
+              <div className={styles.rowUse}>
+                <p>{item.use}</p>
+                {email && item.brand === "Palapa Verde" && (
+                  <a className={styles.ask} href={enquiryEmailHref(email, t.contact.subject + " · " + item.product, t.contact.trial + "\n\n" + item.format)}>
+                    {t.contact.about}<span className="sr-only"> · {item.product}</span>
+                  </a>
+                )}
+              </div>
             </li>
           ))}
         </ul>
@@ -137,7 +149,7 @@ export default async function ProfessionalKitchenPage({ params }: Props) {
         </a>
       </section>
 
-      <KitchenInquiry locale={locale} />
+      {email && <a className={styles.backContact} href="#consulta">{t.contact.write} <span aria-hidden="true">↑</span></a>}
     </>
   );
 }
