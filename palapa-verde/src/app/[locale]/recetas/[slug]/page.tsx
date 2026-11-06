@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ProductVisual } from "@/components/ProductVisual";
+import { ProductThumb } from "@/components/ProductThumb";
+import { RecipeServingImage } from "@/components/RecipeServingImage";
+import artStyles from "@/components/RecipeServingImage.module.css";
 import { RecipeCard } from "@/components/RecipeCard";
 import { RecipeInteractive } from "@/components/RecipeInteractive";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: `/recetas/${slug}`,
     title: pick(recipe.title, locale),
     description: pick(recipe.intro, locale),
-    image: recipe.media.photo?.src ?? `/media/productos/${recipe.product}.jpg`,
+    image: recipe.media.photo?.src ?? recipe.media.illustration?.src ?? `/media/productos/${recipe.product}.jpg`,
     noindex: recipe.status === "draft",
   });
 }
@@ -112,14 +113,10 @@ export default async function RecipePage({ params }: Props) {
             {recipe.status === "draft" ? <p className="notice">{r.draftNote}</p> : null}
           </div>
           <div className="recipe-head-media">
-            {recipe.media.photo ? (
-              <Image src={recipe.media.photo.src} alt={pick(recipe.media.photo.alt, locale)}
-                width={recipe.media.photo.width} height={recipe.media.photo.height}
-                sizes="(max-width: 900px) 100vw, 480px" />
-            ) : <p className="media-pending">{r.photoPending}</p>}
+            <RecipeServingImage media={recipe.media} locale={locale} detail />
             {product ? (
-              <Link href={`/${locale}/productos/${product.slug}`} className="recipe-product" data-track="recipe_product_click" data-track-recipe={recipe.slug} data-track-product={product.slug}>
-                <ProductVisual product={product} locale={locale} size="card" />
+              <Link href={`/${locale}/productos/${product.slug}`} className={artStyles.product} data-track="recipe_product_click" data-track-recipe={recipe.slug} data-track-product={product.slug}>
+                <ProductThumb product={product} />
                 <span className="recipe-product-name">
                   {r.productUsed}: <strong>{pick(product.name, locale)}</strong>
                 </span>

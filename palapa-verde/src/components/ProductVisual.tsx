@@ -1,11 +1,13 @@
 import Image from "next/image";
 import { isRemote } from "@/lib/format";
+import { productTexture } from "@/content/product-textures";
+import { ProductGallery } from "@/components/ProductGallery";
 import { Engraving } from "@/components/engravings";
 import type { Locale, Product } from "@/lib/commerce/types";
 import { getDictionary, pick } from "@/lib/i18n";
 
 type Props = {
-  product: Pick<Product, "name" | "images" | "art">;
+  product: Pick<Product, "slug" | "name" | "images" | "art">;
   locale: Locale;
   size: "card" | "detail" | "thumb";
   priority?: boolean;
@@ -41,7 +43,7 @@ export function ProductVisual({ product, locale, size, priority, hideNote }: Pro
           ? t.ingredientPhoto
           : t.noPhoto;
 
-  return (
+  const primary = (
     <figure className={`visual visual--${size}`}>
       {image ? (
         <Image
@@ -63,5 +65,12 @@ export function ProductVisual({ product, locale, size, priority, hideNote }: Pro
       )}
       {size !== "thumb" && note && !hideNote ? <figcaption className="visual-note">{note}</figcaption> : null}
     </figure>
+  );
+  const texture = size === "detail" && image ? productTexture(product.slug, locale) : null;
+  if (!texture) return primary;
+  return (
+    <ProductGallery locale={locale} slug={product.slug} initialIsPackaging={image?.kind === "illustration"} texture={texture}>
+      {primary}
+    </ProductGallery>
   );
 }

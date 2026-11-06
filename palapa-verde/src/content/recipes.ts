@@ -35,8 +35,11 @@ export type Ingredient = {
   scale?: "per-pan";
 };
 
+type RecipeImage = { src: string; alt: Localized; width: number; height: number };
+
 export type RecipeMedia = {
-  photo: { src: string; alt: Localized; width: number; height: number } | null;
+  photo: RecipeImage | null;
+  illustration?: RecipeImage;
   /** Vídeo corto (vertical) cuando exista grabación real. */
   video: { src: string; poster: string } | null;
 };
@@ -62,7 +65,13 @@ export type Recipe = {
 
 const t = (es: string, en: string): Localized => ({ es, en });
 const n = (es1: string, es2: string, en1: string, en2: string): Noun => ({ es: [es1, es2], en: [en1, en2] });
-const NO_MEDIA: RecipeMedia = { photo: null, video: null };
+function servingIllustration(file: string, es: string, en: string): RecipeMedia {
+  return {
+    photo: null,
+    video: null,
+    illustration: { src: `/media/recetas/${file}.webp`, alt: t(es, en), width: 960, height: 640 },
+  };
+}
 const PRODUCT_ALLERGENS = t(
   "La composición y los alérgenos del producto están pendientes de confirmación. Antes de una degustación, verifica la información de la muestra concreta.",
   "The product ingredients and allergens are pending confirmation. Before a tasting, check the information for the specific sample.",
@@ -97,7 +106,7 @@ export const RECIPES: readonly Recipe[] = [
       t("Para 4 porciones: Cambia la yuca por 1 kg de batata pelada. Córtala en trozos de 3 cm y hiérvela hasta que esté tierna. Registra el tiempo de esta variante aparte.", "For 4 servings: Replace the yuca with 1 kg of peeled sweet potato. Cut into 3 cm pieces and boil until tender. Record the cooking time for this version separately."),
     ],
     allergens: t("Consulta los ingredientes de la yuca envasada, el aceite y el vinagre de la prueba. Registra cualquier alérgeno declarado.", "Read the labels of the packaged yuca, oil and vinegar used for the test. Record any declared allergens."),
-    media: NO_MEDIA,
+    media: servingIllustration("yuca", "Yuca cocida con cebolla roja y un cuenco de chutney de cilantro.", "Boiled cassava with red onion and a bowl of cilantro chutney."),
   },
   {
     slug: "sandwich-de-pollo-con-chutney-de-cilantro",
@@ -130,7 +139,7 @@ export const RECIPES: readonly Recipe[] = [
       t("Para 2 porciones: En lugar de 300 g de pechuga, prueba 2 huevos fritos con la yema cuajada o 150 g de queso de freír dorado. Para el pan, usa 4 rebanadas de pan integral de trigo por las 2 unidades de pan de agua.", "For 2 servings: In place of the chicken, try 2 fried eggs with set yolks or 150 g of pan-seared frying cheese. Swap the two rolls for 4 slices of whole-wheat bread."),
     ],
     allergens: t("Pan de agua de trigo: trigo (gluten). El queso añade leche y el huevo añade huevo si eliges esas variantes. Comprueba la etiqueta del pan.", "Wheat rolls contain wheat (gluten). The cheese variation adds milk, and the egg variation adds egg. Check the bread label."),
-    media: NO_MEDIA,
+    media: servingIllustration("sandwich", "Pan de agua con pollo a la plancha, tomate, aguacate y chutney verde.", "A Dominican bread roll with grilled chicken, tomato, avocado and green chutney."),
   },
   {
     slug: "huevos-revueltos-con-pesto-de-cilantro",
@@ -160,7 +169,7 @@ export const RECIPES: readonly Recipe[] = [
       t("Para 2 porciones: Usa 2 trozos de casabe tostado (unos 40 g en total) en vez de las 2 rebanadas. Puedes sustituir la mantequilla por 1 cucharada de aceite.", "For 2 servings: Use 2 pieces of toasted casabe (about 40 g total) instead of the bread. You can replace the butter with 1 tablespoon of oil."),
     ],
     allergens: t("Huevo, trigo (gluten) en el pan y leche en la mantequilla. Si cambias alguno, revisa las etiquetas del casabe y del aceite que utilices.", "Egg, wheat (gluten) in the bread and milk in the butter. Check the labels of any casabe or oil used as swaps."),
-    media: NO_MEDIA,
+    media: servingIllustration("tostadas", "Tostadas con pesto verde y huevos revueltos.", "Toast spread with green pesto and topped with scrambled eggs."),
   },
   {
     slug: "pasta-con-pesto-auyama-y-berenjena",
@@ -191,7 +200,7 @@ export const RECIPES: readonly Recipe[] = [
       t("Para 4 porciones: Sustituye la berenjena por 300 g de calabacín en cubos. Puedes cambiar la pasta de trigo por 400 g de pasta de maíz, siguiendo el tiempo de su paquete.", "For 4 servings: Replace the eggplant with 300 g diced zucchini. You can swap wheat pasta for 400 g of corn pasta, following its package timing."),
     ],
     allergens: t("La pasta de trigo aporta trigo (gluten). Revisa si la pasta elegida incluye huevo u otros alérgenos.", "Wheat pasta contains wheat (gluten). Check the chosen pasta for egg and other declared allergens."),
-    media: NO_MEDIA,
+    media: servingIllustration("pasta", "Pasta corta con pesto, auyama asada y berenjena.", "Short pasta with pesto, roasted squash and eggplant."),
   },
   {
     slug: "picadera-de-vegetales-con-hummus-de-zanahoria",
@@ -220,7 +229,7 @@ export const RECIPES: readonly Recipe[] = [
       t("Para 6 porciones: Por los 120 g de casabe, usa 120 g de galletas de trigo. Puedes sustituir el pepino por 150 g de apio cortado en bastones.", "For 6 servings: Replace the 120 g of casabe with 120 g of wheat crackers. You can swap the cucumber for 150 g of celery sticks."),
     ],
     allergens: t("Revisa la etiqueta del casabe. Las galletas de trigo aportan trigo (gluten), y el apio debe declararse si eliges la sustitución.", "Check the casabe label. Wheat crackers add wheat (gluten), and celery should be identified if used as a swap."),
-    media: NO_MEDIA,
+    media: servingIllustration("picadera", "Hummus de zanahoria rodeado de bastones de vegetales, tomates y casabe.", "Carrot hummus surrounded by vegetable sticks, tomatoes and cassava crispbread."),
   },
   {
     slug: "wrap-de-vegetales-asados-con-hummus-de-zanahoria",
@@ -253,7 +262,7 @@ export const RECIPES: readonly Recipe[] = [
       t("Para 4 porciones: Prueba 4 tortillas de maíz grandes del mismo diámetro y revisa su etiqueta. En vez del queso opcional, usa 100 g de garbanzos cocidos y escurridos.", "For 4 servings: Try 4 large corn tortillas of the same diameter and check their label. Replace the optional cheese with 100 g of cooked, drained chickpeas."),
     ],
     allergens: t("La tortilla de trigo aporta trigo (gluten). El queso opcional añade leche. Comprueba también la etiqueta de las tortillas de maíz si las usas.", "Wheat tortillas contain wheat (gluten). The optional cheese adds milk. If using corn tortillas, also check their label."),
-    media: NO_MEDIA,
+    media: servingIllustration("wrap", "Un wrap cortado muestra hummus de zanahoria, ají rojo y vegetales a la plancha.", "A cut wrap reveals carrot hummus, red pepper and grilled vegetables."),
   },
   {
     slug: "casabe-con-hummus-de-remolacha-y-aguacate",
@@ -284,7 +293,7 @@ export const RECIPES: readonly Recipe[] = [
       t("Para 2 porciones: Por el casabe, prueba 2 rebanadas de pan de trigo tostado. En lugar del aguacate, corta 2 huevos duros en rodajas.", "For 2 servings: Try 2 slices of toasted wheat bread in place of the casabe. Instead of avocado, top with 2 sliced hard-boiled eggs."),
     ],
     allergens: t("Comprueba la etiqueta del casabe. La versión con pan de trigo contiene trigo (gluten) y la versión con huevo contiene huevo.", "Check the casabe label. The wheat bread version contains wheat (gluten), and the egg version contains egg."),
-    media: NO_MEDIA,
+    media: servingIllustration("casabe", "Casabe tostado con hummus rosado de remolacha y aguacate en láminas.", "Toasted cassava crispbread with pink beet hummus and sliced avocado."),
   },
   {
     slug: "bowl-de-arroz-con-vegetales-y-hummus-de-remolacha",
@@ -317,7 +326,7 @@ export const RECIPES: readonly Recipe[] = [
       t("Para 4 porciones: En vez de los 4 huevos opcionales, usa 240 g de garbanzos cocidos y escurridos. Para arroz integral, usa 1½ tazas secas y ajusta el agua y la cocción según el paquete.", "For 4 servings: Instead of the 4 optional eggs, use 240 g of cooked, drained chickpeas. For brown rice, use 1½ cups dry and follow its package directions for water and cooking time."),
     ],
     allergens: t("El huevo es opcional. Registra si lo incluyes y revisa las etiquetas del aceite y de cualquier ingrediente envasado.", "Egg is optional. Record whether it was used and check the labels on the oil and any packaged ingredients."),
-    media: NO_MEDIA,
+    media: servingIllustration("bowl", "Arroz blanco con zanahoria, brócoli, pepino y hummus de remolacha.", "White rice with carrot, broccoli, cucumber and beet hummus."),
   },
   {
     slug: "tacos-de-pescado-con-salsa-de-aguacate-y-jalapeno",
@@ -350,7 +359,7 @@ export const RECIPES: readonly Recipe[] = [
       t("Para 4 porciones: Cambia el pescado por 500 g de hongos frescos en tiras y saltéalos hasta que se doren. Puedes usar 8 tortillas pequeñas de trigo en vez de las de maíz.", "For 4 servings: Swap fish for 500 g of sliced fresh mushrooms and sauté until browned. You can use 8 small wheat tortillas instead of corn tortillas."),
     ],
     allergens: t("Contiene pescado. Revisa la etiqueta de las tortillas de maíz. Si usas tortillas de trigo, se añade trigo (gluten).", "Contains fish. Check the corn tortilla label. Wheat tortillas add wheat (gluten)."),
-    media: NO_MEDIA,
+    media: servingIllustration("tacos", "Tacos de pescado con repollo y salsa verde cremosa de aguacate.", "Fish tacos filled with cabbage and creamy green avocado salsa."),
   },
   {
     slug: "tostones-con-salsa-de-aguacate-y-jalapeno",
@@ -381,7 +390,7 @@ export const RECIPES: readonly Recipe[] = [
       t("Para 4 porciones: Cambia el tomate por 120 g de mango firme en cubitos. Para otra picadera, sirve la misma salsa con 120 g de casabe listo para comer, sin freír.", "For 4 servings: Swap the tomato for 120 g diced firm mango. For another snack, serve the salsa with 120 g of ready-to-eat casabe, skipping the frying step."),
     ],
     allergens: t("Comprueba la etiqueta del aceite. Para la prueba, usa aceite nuevo y utensilios limpios. Revisa también el casabe si eliges esa variante.", "Check the oil label. For this test, use fresh frying oil and clean utensils. Also check the casabe if you choose that variation."),
-    media: NO_MEDIA,
+    media: servingIllustration("tostones", "Tostones dorados con salsa de aguacate, tomate y cebolla roja.", "Golden fried plantain rounds with avocado salsa, tomato and red onion."),
   },
 ];
 

@@ -1,0 +1,32 @@
+.card, .detail {
+  margin: 0;
+  min-width: 0;
+  background: var(--paper);
+}
+.card img, .detail img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+}
+.card figcaption, .detail figcaption {
+  color: var(--meta);
+  font-size: .75rem;
+  line-height: 1.35;
+}
+.card figcaption { margin-top: .25rem; }
+.detail figcaption { padding: .4rem .65rem; border-top: 1px solid #d9d9d2; }
+.product {
+  display: grid;
+  grid-template-columns: 68px minmax(0,1fr);
+  gap: .25rem .65rem;
+  align-items: center;
+  padding: .55rem;
+  background: var(--paper);
+  border: var(--hairline);
+  text-decoration: none;
+}
+.product :global(.thumb) { width:68px; height:46px; grid-row:span 2; }
+.product :global(.badge) { justify-self:start; }
+.product strong { text-decoration: underline; text-underline-offset:.16em; }

@@ -3,6 +3,8 @@ import { Archivo_Black, Cormorant_Garamond, Inter, Playfair_Display } from "next
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { AnalyticsListener } from "@/components/AnalyticsListener";
+import { SiteAnalytics } from "@/components/SiteAnalytics";
+import { visibleRecipes } from "@/content/recipes";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { BRAND_CONTENT } from "@/lib/commerce/brand-content";
 import { LOCALES } from "@/lib/commerce/types";
@@ -37,6 +39,7 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
   const indexable = process.env.SITE_INDEXABLE === "true";
   return {
     metadataBase: new URL(siteUrl()),
+    referrer: "origin",
     title: { default: t.meta.title, template: "%s · Palapa Verde" },
     description: t.meta.description,
     robots: indexable ? undefined : { index: false, follow: false },
@@ -59,6 +62,12 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   // Aviso de prelanzamiento mientras ningún producto esté a la venta.
   const prelaunch = !Object.values(BRAND_CONTENT).some((c) => c.launch === "available");
 
+  const publicPaths = [
+    "", "/productos", "/recetas", "/nosotros", "/preguntas", "/negocios", "/hoteles-restaurantes", "/donde-comprar",
+    ...Object.keys(BRAND_CONTENT).map(slug => `/productos/${slug}`),
+    ...visibleRecipes().map(recipe => `/recetas/${recipe.slug}`),
+  ].map(path => `/${locale}${path}`);
+
   return (
     <html lang={locale} className={`${display.variable} ${body.variable} ${botanical.variable} ${label.variable}`}>
       <body>
@@ -71,6 +80,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         </main>
         <SiteFooter locale={locale} />
         <AnalyticsListener />
+        {process.env.VERCEL_ENV === "production" && <SiteAnalytics paths={publicPaths} />}
       </body>
     </html>
   );

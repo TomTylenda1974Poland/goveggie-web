@@ -1,4 +1,4 @@
-import type { Localized } from "@/lib/commerce/types";
+import type { Locale, Localized } from "@/lib/commerce/types";
 
 /**
  * Hechos de marca que SOLO el propietario puede confirmar. Cambiarlos aquí cambia
@@ -14,6 +14,16 @@ export const BRAND_RELATIONSHIP: BrandRelationship = "owned";
 
 export const GO_VEGGIE_LIFE_URL = "https://web.goveggie.life/";
 export const GO_VEGGIE_LIFE_HORECA_URL = `${GO_VEGGIE_LIFE_URL}hoteles-restaurantes.html`;
+
+export function partnerUrl(locale: Locale, base = GO_VEGGIE_LIFE_URL) {
+  const url = new URL(base);
+  url.searchParams.set("lang", locale);
+  return url.href;
+}
+
+/** Enable after the owner confirms external delivery to the dedicated OpenSRS inbox. */
+export const SALES_EMAIL_READY = process.env.PALAPA_EMAIL_DELIVERY === "ready";
+
 
 /** Fabricante real (nombre y dirección del registro sanitario). `null` = no se muestra. */
 export const REGISTRATION_HOLDER: { name: string } | null = null;

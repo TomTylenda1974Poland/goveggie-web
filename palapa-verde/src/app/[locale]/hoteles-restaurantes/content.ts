@@ -31,7 +31,7 @@ export const kitchenCopy: Record<Locale, KitchenCopy> = {
     contact: {
       subject: "Consulta de cocina profesional · Palapa Verde",
       example: "Por ejemplo: Busco hummus para el bufé de mi hotel.",
-      about: "Consultar por correo",
+      about: "Consultar este formato",
       trial: "Hola, ¿podríamos probar este formato en nuestra cocina?",
       write: "Escribir a Palapa Verde",
     },
@@ -75,7 +75,7 @@ export const kitchenCopy: Record<Locale, KitchenCopy> = {
     contact: {
       subject: "Professional kitchen enquiry · Palapa Verde",
       example: "For example: I’m looking for hummus for our hotel buffet.",
-      about: "Ask by email",
+      about: "Ask about this format",
       trial: "Hello, could we try this format in our kitchen?",
       write: "Contact Palapa Verde",
     },

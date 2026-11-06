@@ -26,7 +26,7 @@ export default async function AdminPage({ params }: Props) {
   const audits = auditCatalog(products);
   const totalMissing = audits.reduce((n, x) => n + x.missing, 0);
   const tested = RECIPES.filter((r) => r.status === "tested").length;
-  const analyticsProvider = process.env.NEXT_PUBLIC_ANALYTICS_PROVIDER ?? null;
+  const analyticsProvider = process.env.VERCEL_ENV === "production" ? "Vercel Web Analytics" : null;
 
   const checklist: [string, boolean, string?][] = [
     [a.checklist.relationship, BRAND_RELATIONSHIP !== "unconfirmed", BRAND_RELATIONSHIP],

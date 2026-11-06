@@ -109,6 +109,7 @@ const es = {
     recipesHeading: "Recetas con este producto",
     recipesEmpty: "Pronto publicaremos recetas con este producto.",
     seeRecipes: "Ver recetas",
+    ask: "Consultar por este producto",
     whereToBuy: "Dónde comprar",
     details: "Información del producto",
     detailsPending:
@@ -170,6 +171,7 @@ const es = {
     intro: "Aquí aparecerán solo las tiendas confirmadas, con su dirección y mapa.",
     none: "Estamos preparando la llegada a tiendas",
     noneText: "Los productos siguen en desarrollo. Aún no hay tiendas confirmadas. Cuando se confirme un punto de venta, podrás consultar aquí su ubicación y qué productos ofrece.",
+    availabilityCta: "Consultar disponibilidad",
     planningAlt: "Una muestra de Palapa Verde y un mapa sin tiendas señaladas.",
     planningCaption: "Ilustración de la preparación de los futuros puntos de venta.",
     listNote: "Lista de tiendas que trabajan con Palapa Verde. No es un inventario en tiempo real: consulta en la tienda.",
@@ -394,6 +396,7 @@ const en: Dictionary = {
     recipesHeading: "Recipes with this product",
     recipesEmpty: "Recipes with this product are coming soon.",
     seeRecipes: "See recipes",
+    ask: "Ask about this product",
     whereToBuy: "Where to buy",
     details: "Product information",
     detailsPending:
@@ -454,6 +457,7 @@ const en: Dictionary = {
     intro: "Only confirmed stores will appear here, with their address and map.",
     none: "Getting ready for stores",
     noneText: "The products are still in development. There are no confirmed stockists yet. Once a store is confirmed, you’ll find its location here and see which products it carries.",
+    availabilityCta: "Ask about availability",
     planningAlt: "A Palapa Verde sample beside a map with no stores marked.",
     planningCaption: "An illustration of planning for future stockists.",
     listNote: "List of stores that work with Palapa Verde. This is not real-time stock: please check in store.",

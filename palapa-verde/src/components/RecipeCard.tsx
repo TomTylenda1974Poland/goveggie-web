@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { RecipeServingImage } from "@/components/RecipeServingImage";
 import { ProductThumb } from "@/components/ProductThumb";
 import { totalMinutes, timeBucket, type Recipe } from "@/content/recipes";
 import type { Locale, Product } from "@/lib/commerce/types";
@@ -17,6 +18,7 @@ export function RecipeCard({ recipe, product, locale, headingLevel = "h3" }: Pro
       data-time={timeBucket(recipe)}
       data-occasions={recipe.occasions.join(" ")}
     >
+      <RecipeServingImage media={recipe.media} locale={locale} />
       <div className="rcard-meta">
         <span>{recipe.occasions.map((o) => t.recipes.occasion[o]).join(" · ")}</span>
         <span>

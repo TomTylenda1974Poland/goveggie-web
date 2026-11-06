@@ -8,7 +8,7 @@ import { getDictionary, isLocale, pick } from "@/lib/i18n";
 import { loadCatalog } from "@/lib/shop";
 import styles from "./where.module.css";
 
-type Props = { params: Promise<{ locale: string }> };
+type Props = { params: Promise<{ locale: string }>; searchParams: Promise<{ producto?: string | string[] }> };
 const planningImage = "/media/horeca/puntos-v1.webp";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -18,12 +18,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return pageMetadata({ locale, path: "/donde-comprar", title: t.title, description: t.intro, image: STOCKISTS.length === 0 ? planningImage : undefined });
 }
 
-export default async function WhereToBuyPage({ params }: Props) {
+export default async function WhereToBuyPage({ params, searchParams }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const t = getDictionary(locale);
   const w = t.where;
-  const products = STOCKISTS.length ? (await loadCatalog()).products : [];
+  const requested = (await searchParams).producto;
+  const products = STOCKISTS.length || requested ? (await loadCatalog()).products : [];
+  const product = products.find(item => item.slug === requested);
+  const contactHref = product
+    ? `/${locale}/negocios?producto=${encodeURIComponent(product.slug)}#contacto`
+    : `/${locale}/negocios#contacto`;
 
   return (
     <>
@@ -37,8 +42,8 @@ export default async function WhereToBuyPage({ params }: Props) {
           <div className={styles.copy}>
             <h2 className="h-md" id="where-launch">{w.none}</h2>
             <p>{w.noneText}</p>
-            <Link className="btn arrow" href={`/${locale}/productos`}>
-              {t.home.cta}
+            <Link className="btn arrow" href={contactHref} data-track="wholesale_contact_click" data-track-from="where_to_buy">
+              {w.availabilityCta}
             </Link>
           </div>
           <figure className={styles.art}>
@@ -84,7 +89,7 @@ export default async function WhereToBuyPage({ params }: Props) {
           <h2 className="h-md">{w.requestHeading}</h2>
           <p>{w.requestText}</p>
         </div>
-        <Link className="btn arrow" href={`/${locale}/negocios`} data-track="wholesale_contact_click" data-track-from="where_to_buy">
+        <Link className="btn arrow" href={contactHref} data-track="wholesale_contact_click" data-track-from="where_to_buy">
           {w.requestCta}
         </Link>
       </section>

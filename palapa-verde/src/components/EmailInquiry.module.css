@@ -12,3 +12,7 @@
 .address span { user-select:all; overflow-wrap:anywhere; }
 .address button { border:0; background:none; min-height:44px; color:var(--verde); font-weight:650; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
 .status:not(:empty) { font-size:.85rem; color:var(--verde); }
+
+.context { margin:0 0 .55rem; font-weight:650; line-height:1.35; }
+.context span { color:var(--meta); font-weight:400; }
+.draftLink { justify-self:start; display:inline-flex; align-items:center; min-height:44px; text-underline-offset:.2em; }

@@ -24,12 +24,17 @@ Rules:
 
 ## Analytics
 
-Existing setup: none. The site has a provider-neutral event layer (`src/lib/analytics.ts`).
-Events go to `window.dataLayer` only if a tag manager or analytics tool has been installed. Without one, nothing is sent.
-Choosing and installing a provider is an owner decision, and it may need a cookie and privacy notice.
+Open the **palapa-verde** production project in Vercel, select **Web Analytics**, choose a date range, and read **Devices**. Record the date range, total visitors, mobile visitors and tablet visitors separately. Use the same metric throughout. Mobile share is mobile visitors divided by all visitors in that period. Show the sample size beside the result. An empty dashboard gives no percentage. [Vercel dashboard guide](https://vercel.com/docs/analytics/using-web-analytics).
+
+The site uses Vercel Web Analytics for page views on public production routes. The client strips search parameters and fragments, honours Do Not Track and Global Privacy Control, and excludes staff, preview and unknown paths. If a foreign referrer contains more than its origin, it skips the view. The provider uses an anonymous daily visitor hash and does not require third-party cookies. No analytics input or identifier is collected by our contact form. [Vercel privacy documentation](https://vercel.com/docs/analytics/privacy-policy).
+
+For enquiries, record one new conversation when it actually arrives at the sales mailbox. Use the team's **Registro de consultas recibidas.csv** with a local reference, receipt time, channel, business type, product or format, time of first reply and outcome. Keep names, addresses and full messages in the mailbox. Use Dominican local time. Record tests separately from genuine buyer enquiries. The free Vercel integration measures page views only. A tap on a mail link opens a draft in the visitor's app. The optional `email_draft_open` event below describes that tap and is separate from the inbox count.
+
+The following existing events are available to `window.dataLayer` only if another approved provider installs it.
 
 | Event | When | Properties (no personal data) |
 |---|---|---|
+| `email_draft_open` | Visitor taps a mail link to compose an enquiry | `from`, optional public `product` slug |
 | `recipe_view` | Recipe page loaded | `recipe`, `product` |
 | `product_recipe_click` | "Ver recetas" on a product page | `product` |
 | `recipe_product_click` | Product card on a recipe page | `recipe`, `product` |
@@ -43,7 +48,7 @@ Choosing and installing a provider is an owner decision, and it may need a cooki
 | `campaign_visit` | Landing with any other `utm_source` | `path`, UTM fields |
 
 Every event carries `site_env` (`production` / `preview` / `development`, from `NEXT_PUBLIC_VERCEL_ENV`). That keeps preview traffic separable.
-The best practice is to install the provider only on the production deployment.
+The Vercel page-view component is mounted only for production deployments.
 
 Add tracking to a link: `data-track="where_to_buy_click" data-track-from="home"`. A listener in the layout picks it up.
 

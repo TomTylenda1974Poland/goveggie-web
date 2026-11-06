@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductCard } from "@/components/ProductCard";
 import { RecipeCard } from "@/components/RecipeCard";
-import { GO_VEGGIE_LIFE_URL, relationship } from "@/content/brand";
+import { partnerUrl, relationship } from "@/content/brand";
 import { visibleRecipes } from "@/content/recipes";
 import { getDictionary, isLocale, pick } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/site";
@@ -134,7 +134,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <Link className="btn arrow" href={`/${locale}/nosotros`}>
               {t.nav.about}
             </Link>
-            <a className="btn btn--ghost" href={GO_VEGGIE_LIFE_URL} rel="noopener">
+            <a className="btn btn--ghost" href={partnerUrl(locale)} rel="noopener">
               {h.originCta}
             </a>
           </div>

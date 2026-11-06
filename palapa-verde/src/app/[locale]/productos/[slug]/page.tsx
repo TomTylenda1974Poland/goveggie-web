@@ -90,6 +90,11 @@ export default async function ProductPage({ params }: Props) {
           </div>
           {product.description ? <p className="lead">{pick(product.description, locale)}</p> : null}
 
+          <Link className="btn arrow" href={`/${locale}/negocios?producto=${encodeURIComponent(product.slug)}#contacto`}
+            data-track="wholesale_contact_click" data-track-from="product" data-track-product={product.slug}>
+            {p.ask}
+          </Link>
+
           <h2 className="h-sm">{p.ideasHeading}</h2>
           <ol className="ideas">
             {product.servingIdeas.map((idea, i) => (
@@ -108,7 +113,7 @@ export default async function ProductPage({ params }: Props) {
             </Link>
             <Link
               className="btn btn--ghost"
-              href={`/${locale}/donde-comprar`}
+              href={`/${locale}/donde-comprar?producto=${encodeURIComponent(product.slug)}`}
               data-track="where_to_buy_click"
               data-track-from="product"
               data-track-product={product.slug}

@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { MobileNavigation } from "@/components/MobileNavigation";
 import { LangSwitch } from "@/components/LangSwitch";
 import { PalapaLogo } from "@/components/PalapaLogo";
-import { GO_VEGGIE_LIFE_URL, relationship } from "@/content/brand";
+import { partnerUrl, relationship } from "@/content/brand";
 import type { Locale } from "@/lib/commerce/types";
 import { getDictionary, pick } from "@/lib/i18n";
 
@@ -17,6 +18,7 @@ export function SiteHeader({ locale, prelaunch }: { locale: Locale; prelaunch: b
     [`/${locale}/donde-comprar`, t.nav.whereToBuy],
     [`/${locale}/nosotros`, t.nav.about],
     [`/${locale}/negocios`, t.nav.business],
+    [`/${locale}/hoteles-restaurantes`, t.nav.hospitality],
   ];
   return (
     <header className="site-header">
@@ -38,6 +40,7 @@ export function SiteHeader({ locale, prelaunch }: { locale: Locale; prelaunch: b
             ))}
           </nav>
           <LangSwitch locale={locale} label={t.lang.label} text={t.lang.switchTo} />
+          <MobileNavigation locale={locale} links={links} label={t.nav.menu} />
         </div>
       </div>
     </header>
@@ -58,7 +61,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <Link href={`/${locale}/preguntas`}>{t.nav.faq}</Link>
           <Link href={`/${locale}/negocios`}>{t.nav.business}</Link>
           <Link href={`/${locale}/hoteles-restaurantes`}>{t.nav.hospitality}</Link>
-          <a href={GO_VEGGIE_LIFE_URL} rel="noopener">
+          <a href={partnerUrl(locale)} rel="noopener">
             Go Veggie Life
           </a>
         </nav>

@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CONTACT, GO_VEGGIE_LIFE_HORECA_URL } from "@/content/brand";
+import { CONTACT, GO_VEGGIE_LIFE_HORECA_URL, partnerUrl, SALES_EMAIL_READY } from "@/content/brand";
+import { loadCatalog } from "@/lib/shop";
 import { pageMetadata } from "@/lib/site";
-import { getDictionary, isLocale } from "@/lib/i18n";
+import { getDictionary, isLocale, pick } from "@/lib/i18n";
 import { EmailInquiry } from "@/components/EmailInquiry";
 import styles from "./business.module.css";
 
-type Props = { params: Promise<{ locale: string }> };
+type Props = { params: Promise<{ locale: string }>; searchParams: Promise<{ producto?: string | string[] }> };
 const art = "/media/horeca/consulta-comercial-v1.webp";
 
 const copy = {
@@ -34,12 +35,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return pageMetadata({ locale, path: "/negocios", title: getDictionary(locale).business.title, description: copy[locale].intro, image: art });
 }
 
-export default async function BusinessPage({ params }: Props) {
+export default async function BusinessPage({ params, searchParams }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const t = getDictionary(locale);
   const business = t.business;
   const page = copy[locale];
+  const slug = (await searchParams).producto;
+  const product = typeof slug === "string" ? (await loadCatalog()).products.find(item => item.slug === slug) : undefined;
+  const name = product && pick(product.name, locale);
 
   return (
     <>
@@ -47,7 +51,8 @@ export default async function BusinessPage({ params }: Props) {
         <div className={styles.heroCopy}>
           <h1 id="business-heading">{page.heading}</h1>
           <p>{page.intro}</p>
-          {CONTACT.salesEmail && <EmailInquiry locale={locale} email={CONTACT.salesEmail} />}
+          {CONTACT.salesEmail && <EmailInquiry key={product?.slug ?? "general"} locale={locale} email={CONTACT.salesEmail}
+            ready={SALES_EMAIL_READY} context={name} source="business" />}
         </div>
         <figure className={styles.art}>
           <Image src={art} width={1200} height={800} alt={page.alt}
@@ -65,7 +70,7 @@ export default async function BusinessPage({ params }: Props) {
         <section aria-labelledby="h-produce">
           <h2 id="h-produce">{business.produceHeading}</h2>
           <p>{business.produceText}</p>
-          <a className="section-link arrow" href={GO_VEGGIE_LIFE_HORECA_URL} rel="noopener">{business.produceCta}</a>
+          <a className="section-link arrow" href={partnerUrl(locale, GO_VEGGIE_LIFE_HORECA_URL)} rel="noopener">{business.produceCta}</a>
         </section>
       </div>
 

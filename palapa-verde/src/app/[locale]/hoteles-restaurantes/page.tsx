@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { CONTACT, GO_VEGGIE_LIFE_HORECA_URL } from "@/content/brand";
+import { CONTACT, GO_VEGGIE_LIFE_HORECA_URL, partnerUrl, SALES_EMAIL_READY } from "@/content/brand";
 import { getDictionary, isLocale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/site";
 import { kitchenCopy, type PackKey } from "./content";
@@ -10,7 +10,7 @@ import { enquiryEmailHref } from "@/lib/enquiry-email";
 import { ProfessionalLabel } from "./ProfessionalLabel";
 import styles from "./kitchen.module.css";
 
-type Props = { params: Promise<{ locale: string }> };
+type Props = { params: Promise<{ locale: string }>; searchParams: Promise<{ envase?: string; grupo?: string }> };
 const route = "/hoteles-restaurantes";
 const imagePath = (name: string) => `/media/horeca/${name}-v1.webp`;
 const heroImage = imagePath("pase");
@@ -28,12 +28,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return pageMetadata({ locale, path: route, title, description: intro, image: heroImage });
 }
 
-export default async function ProfessionalKitchenPage({ params }: Props) {
+export default async function ProfessionalKitchenPage({ params, searchParams }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const t = kitchenCopy[locale];
   const pro = getDictionary(locale).business.horeca;
   const email = CONTACT.salesEmail;
+  const query = await searchParams;
+  const packKey = packImages.find(pack => pack.key === query.envase)?.key;
+  const row = t.rows.find(item => item.image === query.grupo && item.brand === "Palapa Verde");
+  const selected = packKey ? t.packs[packKey].title : row?.product;
+  const startingMessage = selected ? [t.contact.trial, row?.format].filter(Boolean).join("\n\n") : undefined;
 
   return (
     <>
@@ -41,7 +46,8 @@ export default async function ProfessionalKitchenPage({ params }: Props) {
         <div className={styles.heroCopy}>
           <h1 id="kitchen-title">{t.title}</h1>
           <p>{t.intro}</p>
-          {email && <EmailInquiry locale={locale} email={email} subject={t.contact.subject} example={t.contact.example} />}
+          {email && <EmailInquiry key={selected ?? "general"} locale={locale} email={email} source="kitchen"
+            ready={SALES_EMAIL_READY} context={selected} initialMessage={startingMessage} subject={t.contact.subject} example={t.contact.example} />}
           <a className={styles.jumpLink} href="#linea-profesional">{t.explore}</a>
         </div>
         <figure className={styles.heroArt}>
@@ -96,7 +102,10 @@ export default async function ProfessionalKitchenPage({ params }: Props) {
                   <h4>{pack.title}</h4>
                   <p>{pack.use}</p>
                   {email && (
-                    <a className={styles.ask} href={enquiryEmailHref(email, t.contact.subject + " · " + pack.title, t.contact.trial)}>
+                    <a className={styles.ask} href={SALES_EMAIL_READY
+                      ? enquiryEmailHref(email, t.contact.subject + " · " + pack.title, t.contact.trial)
+                      : `/${locale}/hoteles-restaurantes?envase=${key}#consulta`}
+                      data-track={SALES_EMAIL_READY ? "email_draft_open" : "wholesale_contact_click"} data-track-from="kitchen_pack">
                       {t.contact.about}<span className="sr-only"> · {pack.title}</span>
                     </a>
                   )}
@@ -125,7 +134,10 @@ export default async function ProfessionalKitchenPage({ params }: Props) {
               <div className={styles.rowUse}>
                 <p>{item.use}</p>
                 {email && item.brand === "Palapa Verde" && (
-                  <a className={styles.ask} href={enquiryEmailHref(email, t.contact.subject + " · " + item.product, t.contact.trial + "\n\n" + item.format)}>
+                  <a className={styles.ask} href={SALES_EMAIL_READY
+                    ? enquiryEmailHref(email, t.contact.subject + " · " + item.product, t.contact.trial + "\n\n" + item.format)
+                    : `/${locale}/hoteles-restaurantes?grupo=${item.image}#consulta`}
+                    data-track={SALES_EMAIL_READY ? "email_draft_open" : "wholesale_contact_click"} data-track-from="kitchen_product">
                     {t.contact.about}<span className="sr-only"> · {item.product}</span>
                   </a>
                 )}
@@ -144,7 +156,7 @@ export default async function ProfessionalKitchenPage({ params }: Props) {
           <h2 id="h-produce" className="h-md">{t.produceHeading}</h2>
           <p>{t.produceText}</p>
         </div>
-        <a className="btn btn--ghost arrow" href={GO_VEGGIE_LIFE_HORECA_URL} rel="noopener">
+        <a className="btn btn--ghost arrow" href={partnerUrl(locale, GO_VEGGIE_LIFE_HORECA_URL)} rel="noopener">
           {t.produceCta}
         </a>
       </section>

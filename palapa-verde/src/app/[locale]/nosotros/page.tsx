@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { GO_VEGGIE_LIFE_URL, MANUFACTURER, relationship } from "@/content/brand";
+import { partnerUrl, MANUFACTURER, relationship } from "@/content/brand";
 import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale, pick } from "@/lib/i18n";
 
@@ -32,7 +32,7 @@ export default async function AboutPage({ params }: Props) {
         <div className={styles.copy}>
           <h2 id="h-rel" className="h-md">{a.relationshipHeading}</h2>
           <p>{pick(relationship.statement, locale)}</p>
-          <a className="btn arrow" href={GO_VEGGIE_LIFE_URL} rel="noopener">
+          <a className="btn arrow" href={partnerUrl(locale)} rel="noopener">
             {a.visitGvl}
           </a>
         </div>

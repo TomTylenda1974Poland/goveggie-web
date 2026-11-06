@@ -1,5 +1,5 @@
 /**
- * Capa de analítica sin proveedor. Los eventos se envían a `window.dataLayer`
+ * Capa de eventos independiente de las vistas de página de Vercel. Los eventos se envían a `window.dataLayer`
  * solo si existe (p. ej. cuando se instale Google Tag Manager u otra
  * herramienta aprobada). Sin proveedor no se envía nada a ningún sitio.
  *
@@ -16,6 +16,7 @@ export const EVENTS = [
   "recipe_print_click",
   "servings_change",
   "wholesale_contact_click",
+  "email_draft_open",
   "qr_visit",
   "campaign_visit",
 ] as const;
