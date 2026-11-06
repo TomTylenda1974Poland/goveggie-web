@@ -45,7 +45,9 @@ Ostatnia aktualizacja: 2026-11-05 · gałąź `palapa-verde/shop` · wersja 0.1.
 ## Ostatni podgląd
 - Gałąź (zawsze najnowsza wersja): https://palapa-verde-git-palapa-verde-shop-donpollolococabarete-9718.vercel.app/es
 - Wdrożenie z 2026-11-05: `dpl_Chqk54KV7Aw3nitQNSstjfdwKkpk`, commit `0c05bc1`, status READY.
-- Produkcja (https://palapa-verde.vercel.app) to nadal stary one-pager, celowo nietknięty.
+- Produkcja (https://palapa-verde.vercel.app): **od 2026-11-06 01:34 UTC jest tam inna, statyczna wersja**
+  („El campo, hecho cocina.”), wdrożona z CLI w innej sesji, spoza gita. Kopia leży w
+  `legacy/v6_2026-11-06_0134_jb4tzoi11/`. Promote sklepu czeka na decyzję właściciela, którą wersję zostawić.
 - Sprawdzone na podglądzie: wszystkie strony zwracają 200, nieznana strona 404, `noindex` jest,
   zamówienie testowe przez `/api/orders` działa.
 
