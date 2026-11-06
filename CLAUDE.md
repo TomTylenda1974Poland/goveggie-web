@@ -21,7 +21,9 @@ distributor for supermarkets, Dominican Republic), plus the sister kitchen brand
   `palapa-verde/shop`). Read `palapa-verde/AGENTS.md` before touching it; it has its own rules
   (never invent prices/ingredients/allergens/shelf life; no real payments). The original one-pager is
   archived in `palapa-verde/legacy/`. Vercel project **palapa-verde** is Git-connected to this repo with
-  Root Directory `palapa-verde`: pushes to other branches create previews, `main` is production.
+  Root Directory `palapa-verde`: pushes to other branches create previews. Since 2026-11-06 production runs
+  the shop built from branch `palapa-verde/shop` (owner-approved); `main` still has the old one-pager, so do NOT
+  push `palapa-verde/` changes to `main` or run `vercel --prod` for palapa-verde without the owner.
 - `assets/*.jpg` — all imagery. Pages load images via jsDelivr:
   `https://cdn.jsdelivr.net/gh/TomTylenda1974Poland/goveggie-web@main/assets/<file>`
   **jsDelivr caches `@main` aggressively → any changed image MUST get a NEW filename**
