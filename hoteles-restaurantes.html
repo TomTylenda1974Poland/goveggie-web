@@ -147,7 +147,7 @@
   <h2><span translate="no">Palapa Verde</span> <span data-i18n="pv_h">para cocinas profesionales</span></h2>
 
   <p data-i18n="pv_p">Estamos preparando formatos profesionales de nuestros chutney, pesto, hummus y salsa: envases grandes para cocina y buffet, y porciones individuales. Todavía no están a la venta.</p>
-<a id="pvLink" class="btn arrow" href="https://palapa-verde.vercel.app/es/negocios#hoteles"><span data-i18n="pv_cta">Conocer</span> <span translate="no">Palapa Verde</span></a></div>
+<a id="pvLink" class="btn arrow" href="https://palapa-verde.vercel.app/es/hoteles-restaurantes"><span data-i18n="pv_cta">Conocer</span> <span translate="no">Palapa Verde</span></a></div>
 
     <div class="b2b-art art-col horeca-pv-art"><img id="pvLogo" translate="no" src="https://palapa-verde.vercel.app/brand/palapa-verde-es.svg" data-es="https://palapa-verde.vercel.app/brand/palapa-verde-es.svg" data-en="https://palapa-verde.vercel.app/brand/palapa-verde-en.svg" data-alt-es="Palapa Verde · Una marca de Go Veggie Life" data-alt-en="Palapa Verde · A brand of Go Veggie Life" alt="Palapa Verde · Una marca de Go Veggie Life" width="1012" height="342" loading="lazy" decoding="async" style="width:min(100%,420px);height:auto;margin:auto">
 
@@ -337,7 +337,7 @@ function applyLang(){
   document.querySelectorAll('[data-i18n-alt]').forEach(el => el.alt = i18n[lang][el.dataset.i18nAlt]);
   const pv = document.getElementById('pvLogo');
   if (pv) { pv.src = pv.dataset[lang]; pv.alt = lang === 'es' ? pv.dataset.altEs : pv.dataset.altEn; }
-  document.getElementById('pvLink').href = 'https://palapa-verde.vercel.app/' + lang + '/negocios#hoteles';
+  document.getElementById('pvLink').href = 'https://palapa-verde.vercel.app/' + lang + '/hoteles-restaurantes';
 }
 langBtn.addEventListener('click', ()=>{
   lang = lang === 'es' ? 'en' : 'es';
