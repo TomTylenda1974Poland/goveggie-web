@@ -298,3 +298,15 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 @media(max-width:760px){
  .ph-grid:has(.ph-image--supply) h1{font-size:clamp(1.45rem,7.2vw,2.4rem);overflow-wrap:anywhere}
 }
+
+/* Laptop layout: keep the navigation centred between the outer panel edges. */
+@media (min-width:1200px) and (hover:hover) and (pointer:fine){
+ .botanical-site .nav{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);column-gap:12px}
+ .botanical-site .nav>*{grid-row:1}
+ .botanical-site .nav .logo{grid-column:1;justify-self:start}
+ .botanical-site .nav-links{grid-column:2;justify-self:center;margin:0}
+ .botanical-site .nav .btn,.botanical-site .nav .lang{grid-column:3;justify-self:end}
+ .botanical-site .nav .btn{margin-right:54px}
+ .botanical-site .b2b-art{align-self:stretch}
+ .botanical-site .b2b-art--dominicana{display:grid;align-items:center}
+}
