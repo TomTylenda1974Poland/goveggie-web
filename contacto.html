@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=laptop1">
+<link rel="stylesheet" href="assets/site.css?v=contact2">
 </head>
 <body class="botanical-site">
 <header>
@@ -46,13 +46,14 @@
     </div>
   </section>
   <section class="panel">
-    <div class="b2b-grid">
+    <div class="b2b-grid contact-panel">
+      <figure class="b2b-art art-col contact-portrait">
+        <figcaption data-i18n="portrait_question">¿Qué falta hoy en tu góndola?</figcaption>
+        <img src="assets/contact-color-v2.png" alt="" width="1536" height="1024">
+      </figure>
       <div class="b2b-left">
         <h2 data-i18n="f_h">Hablemos de tu negocio</h2>
         <div id="friendly-contact"></div>
-      </div>
-      <div class="b2b-art art-col">
-        <img src="assets/contact-color-v2.png" alt="Atención cercana para tu negocio" width="1536" height="1024">
       </div>
     </div>
   </section>
@@ -75,7 +76,7 @@
       <div class="f-col">
         <a href="supermercados.html" data-i18n="nav_b2b">Para supermercados</a>
         <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
-        <a href="https://palapa-verde-donpollolococabarete-9718.vercel.app">Palapa Verde</a>
+        <a href="https://palapa-verde-donpollolococabarete-9718.vercel.app" translate="no" class="notranslate">Palapa Verde</a>
       </div>
       <div class="f-social">
         <a href="contacto.html" aria-label="Instagram"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg></a>
@@ -91,7 +92,7 @@
 </footer>
 <a class="b2b-sticky" href="supermercados.html" data-i18n="sticky">Hablemos de tu negocio</a>
 <script>
-const i18n = {"es": {"nav_home": "Inicio", "nav_products": "Productos", "nav_quality": "Calidad", "nav_about": "Nosotros", "nav_b2b": "Para supermercados", "nav_contact": "Contacto", "nav_cta": "Solicitar catálogo", "f_about": "Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.", "f_legal": "© 2026 Go Veggie Life · [datos de la empresa] · [correo comercial] · [teléfono / WhatsApp]", "f_proto": "Prototipo de diseño - logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.", "sticky": "Hablemos de tu negocio", "ph_h": "Contacto", "ph_p": "Cuéntanos qué necesitas. Tú eliges cómo seguimos la conversación.", "sl_1": "La frescura no espera.", "sl_2": "Del campo a tu góndola, sin rodeos.", "f_h": "Hablemos de tu negocio", "l1": "Nombre", "l2": "Correo", "l3": "Teléfono / WhatsApp", "l4": "Mensaje", "l5": "Enviar", "l6": "Mensaje enviado. Te respondemos el mismo día hábil.", "l6s": "Enviando…", "l6e": "No se pudo enviar. Inténtalo de nuevo en un momento."}, "en": {"nav_home": "Home", "nav_products": "Products", "nav_quality": "Quality", "nav_about": "About us", "nav_b2b": "For supermarkets", "nav_contact": "Contact", "nav_cta": "Request catalogue", "f_about": "Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.", "f_legal": "© 2026 Go Veggie Life · [company details] · [sales email] · [phone / WhatsApp]", "f_proto": "Design prototype - logo, photography, products and contact details will be replaced with approved materials.", "sticky": "Let's talk business", "ph_h": "Contact", "ph_p": "Tell us what you need. You choose how we continue the conversation.", "sl_1": "Freshness doesn't wait.", "sl_2": "From the field to your shelf, no detours.", "f_h": "Let’s talk business", "l1": "Name", "l2": "Email", "l3": "Phone / WhatsApp", "l4": "Message", "l5": "Send", "l6": "Message sent. We reply the same business day.", "l6s": "Sending…", "l6e": "Couldn't send - please try again in a moment."}};
+const i18n = {"es": {"nav_home": "Inicio", "nav_products": "Productos", "nav_quality": "Calidad", "nav_about": "Nosotros", "nav_b2b": "Para supermercados", "nav_contact": "Contacto", "nav_cta": "Solicitar catálogo", "f_about": "Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.", "f_legal": "© 2026 Go Veggie Life · [datos de la empresa] · [correo comercial] · [teléfono / WhatsApp]", "f_proto": "Prototipo de diseño - logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.", "sticky": "Hablemos de tu negocio", "ph_h": "Contacto", "ph_p": "Cuéntanos qué necesitas. Tú eliges cómo seguimos la conversación.", "sl_1": "La frescura no espera.", "sl_2": "Del campo a tu góndola, sin rodeos.", "portrait_question": "¿Qué falta hoy en tu góndola?", "f_h": "Hablemos de tu negocio", "l1": "Nombre", "l2": "Correo", "l3": "Teléfono / WhatsApp", "l4": "Mensaje", "l5": "Enviar", "l6": "Mensaje enviado. Te respondemos el mismo día hábil.", "l6s": "Enviando…", "l6e": "No se pudo enviar. Inténtalo de nuevo en un momento."}, "en": {"nav_home": "Home", "nav_products": "Products", "nav_quality": "Quality", "nav_about": "About us", "nav_b2b": "For supermarkets", "nav_contact": "Contact", "nav_cta": "Request catalogue", "f_about": "Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.", "f_legal": "© 2026 Go Veggie Life · [company details] · [sales email] · [phone / WhatsApp]", "f_proto": "Design prototype - logo, photography, products and contact details will be replaced with approved materials.", "sticky": "Let's talk business", "ph_h": "Contact", "ph_p": "Tell us what you need. You choose how we continue the conversation.", "sl_1": "Freshness doesn't wait.", "sl_2": "From the field to your shelf, no detours.", "portrait_question": "What’s missing from your shelves?", "f_h": "Let’s talk business", "l1": "Name", "l2": "Email", "l3": "Phone / WhatsApp", "l4": "Message", "l5": "Send", "l6": "Message sent. We reply the same business day.", "l6s": "Sending…", "l6e": "Couldn't send - please try again in a moment."}};
 let lang = 'es';
 try { if (localStorage.getItem('gv-lang') === 'en') lang = 'en'; } catch(e) {}
 const langBtn = document.getElementById('langBtn');

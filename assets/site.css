@@ -310,3 +310,13 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
  .botanical-site .b2b-art{align-self:stretch}
  .botanical-site .b2b-art--dominicana{display:grid;align-items:center}
 }
+
+.contact-panel{grid-template-areas:"form portrait"}
+.contact-panel>.b2b-left{grid-area:form}
+.contact-portrait{grid-area:portrait;align-items:center;text-align:center}
+.contact-portrait figcaption{font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.6rem);line-height:1.08;text-wrap:balance;max-width:23ch}
+@media(max-width:760px){
+ .contact-panel{grid-template-areas:"portrait" "form"}
+ .contact-panel>.contact-portrait{padding:18px 14px 10px;gap:8px;border-top:none;border-bottom:var(--hairline)}
+ .contact-portrait>img{width:auto;height:clamp(140px,39vw,160px)}
+}
