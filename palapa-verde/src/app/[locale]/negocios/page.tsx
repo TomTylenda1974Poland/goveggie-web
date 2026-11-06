@@ -34,6 +34,9 @@ export default async function BusinessPage({ params }: Props) {
           <div key={k} className="panel pad audience">
             <h2 className="h-sm">{b.audiences[k].title}</h2>
             <p>{b.audiences[k].text}</p>
+            {k === "horeca" && (
+              <Link className="section-link arrow" href={`/${locale}/hoteles-restaurantes`}>{t.nav.kitchenFormats}</Link>
+            )}
           </div>
         ))}
       </section>

@@ -169,9 +169,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="panel pad">
           <h2 className="h-md">{h.businessHeading}</h2>
           <p>{h.businessText}</p>
-          <Link className="btn btn--ghost arrow" href={`/${locale}/negocios`} data-track="wholesale_contact_click" data-track-from="home">
-            {h.businessCta}
-          </Link>
+          <div className="cta-row">
+            <Link className="btn arrow" href={`/${locale}/hoteles-restaurantes`}>{t.nav.hospitality}</Link>
+            <Link className="btn btn--ghost" href={`/${locale}/negocios`} data-track="wholesale_contact_click" data-track-from="home">
+              {h.businessCta}
+            </Link>
+          </div>
         </div>
       </section>
     </>
