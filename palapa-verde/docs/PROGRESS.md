@@ -74,6 +74,10 @@ Ostatnia aktualizacja: 2026-11-06 · gałąź `palapa-verde/shop` · wersja 0.2.
   bo repozytorium jest publiczne. Prompt do obrazów jest w `design-src/images-prompt.txt`.
 
 ## Dziennik
+- 2026-11-06: **szkice przepisów widoczne na produkcji** z decyzji właściciela („Pokaż szkice”): zmienna Vercel
+  `SHOW_DRAFT_RECIPES=true` (tylko Production), wdrożenie `dpl_FHSNac83D11sYS5SSmhXErm79ekM`. Przepisy mają oznaczenie
+  „Borrador · pendiente de prueba en cocina”, notę o braku testu, `noindex` i bez danych strukturalnych. Ukrycie: usunąć
+  zmienną lub ustawić `false` i przebudować produkcję.
 - 2026-11-06: **na produkcję trafiła wersja z podglądu** (commit `81e5c29`, wdrożenie `dpl_6fuEtnhaNpqhpkmAwNbPfdfCLRt2`),
   za zgodą właściciela („Tak, na produkcję”). Smoke test na https://palapa-verde.vercel.app przechodzi. Na produkcji szkice
   przepisów są ukryte (`SHOW_DRAFT_RECIPES` nieustawione), strona ma `noindex`. Wycofanie: Vercel → palapa-verde →

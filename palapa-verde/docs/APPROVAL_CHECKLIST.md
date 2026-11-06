@@ -18,7 +18,7 @@ Live status is also shown at `/es/admin` → "Hechos por confirmar". Update the 
 | 12 | **Analytics provider** and privacy/cookie notice | Events go nowhere until installed | Tag manager + `NEXT_PUBLIC_ANALYTICS_PROVIDER` |
 | 13 | **Vercel Pro** (US$20/month): Hobby forbids commercial use | Before selling | Vercel billing (owner) |
 | 14 | **Real payments / online orders**: provider, contract | Off by design | `ORDERS_ENABLED` (do not set without decision) |
-| 15 | **Go-live**: merge to `main` / promote, `SITE_INDEXABLE=true`, `SHOW_DRAFT_RECIPES` policy | Publishing | Owner instruction only |
+| 15 | **Go-live**: merge to `main`, `SITE_INDEXABLE=true`. Done 2026-11-06: production runs the shop branch; `SHOW_DRAFT_RECIPES=true` on production (owner decision) | Publishing | Owner instruction only |
 | 16 | **The `catalog` Vercel project** is linked to this repo; a push to `main` would replace catalog.goveggie.life | Before any merge to `main` | Vercel project settings (owner) |
 
 The manufacturer and registration holder are separate, unconfirmed fields. Enter them only from approved product documentation.
