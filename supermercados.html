@@ -7,7 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=supply2">
+<link rel="stylesheet" href="assets/site.css?v=horeca2">
+<script src="assets/nav.js?v=horeca2" defer></script>
 </head>
 <body class="botanical-site">
 <header>
@@ -22,7 +23,15 @@
         <a href="productos.html" data-i18n="nav_products">Productos</a>
         <a href="calidad.html" data-i18n="nav_quality">Calidad</a>
         <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
-        <a href="supermercados.html" data-i18n="nav_b2b">Para supermercados</a>
+        <div class="nav-group">
+          <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="business-links" data-current="true"><span data-i18n="nav_business">Negocios</span><span class="nav-caret" aria-hidden="true"> ▾</span></button>
+          <div class="nav-group-panel" id="business-links">
+            <a href="supermercados.html" data-i18n="nav_business_b2b">Para supermercados</a>
+            <a href="hoteles-restaurantes.html" data-i18n="nav_business_horeca">Para hoteles y restaurantes</a>
+          </div>
+        </div>
+        <a class="nav-business-mobile" href="supermercados.html" data-i18n="nav_b2b">Supermercados</a>
+        <a class="nav-business-mobile" href="hoteles-restaurantes.html" data-i18n="nav_horeca">Hoteles y restaurantes</a>
         <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
       </nav>
       <a class="btn arrow" href="supermercados.html" data-i18n="nav_cta" style="margin-left:auto">Solicitar catálogo</a>
@@ -90,7 +99,8 @@
         <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
       </div>
       <div class="f-col">
-        <a href="supermercados.html" data-i18n="nav_b2b">Para supermercados</a>
+        <a href="supermercados.html" data-i18n="nav_b2b">Supermercados</a>
+        <a href="hoteles-restaurantes.html" data-i18n="nav_horeca">Hoteles y restaurantes</a>
         <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
         <a href="https://palapa-verde-donpollolococabarete-9718.vercel.app" translate="no" class="notranslate">Palapa Verde</a>
       </div>
@@ -108,9 +118,13 @@
 </footer>
 <a class="b2b-sticky" href="supermercados.html" data-i18n="sticky">Hablemos de tu negocio</a>
 <script>
-const i18n = {"es": {"nav_home": "Inicio", "nav_products": "Productos", "nav_quality": "Calidad", "nav_about": "Nosotros", "nav_b2b": "Para supermercados", "nav_contact": "Contacto", "nav_cta": "Solicitar catálogo", "f_about": "Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.", "f_legal": "© 2026 Go Veggie Life · [datos de la empresa] · [correo comercial] · [teléfono / WhatsApp]", "f_proto": "Prototipo de diseño - logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.", "sticky": "Hablemos de tu negocio", "m1": "Selección", "m2": "Presentación", "m3": "Distribución", "ph_h": "Para supermercados y distribuidores", "ph_p": "Seleccionamos y empacamos los productos para tu góndola. Acordamos contigo el lugar, el volumen y la frecuencia de entrega.", "s1_h": "Solicita el catálogo", "s1_p": "Recibe el catálogo con disponibilidad y precios para tu negocio.", "s2_h": "Define tu pedido", "s2_p": "Para una tienda, acordamos la entrega según el volumen del pedido. Para una cadena, también podemos planificar el surtido y la reposición.", "s3_h": "Recibe y rota", "s3_p": "Entregas puntuales y producto con excelente apariencia en góndola.", "f_h": "Hablemos de tu negocio", "f_p": "Déjanos tus datos y te contactamos con el catálogo y condiciones comerciales.", "l1": "Nombre y empresa", "l2": "Correo", "l3": "Teléfono / WhatsApp", "l4": "¿Qué necesita tu negocio?", "l5": "Enviar", "l6": "Solicitud enviada. Te contactamos con el catálogo y condiciones.", "l6s": "Enviando…", "l6e": "No se pudo enviar. Inténtalo de nuevo en un momento.", "buyer": "¿Qué necesitas para tu próxima entrega? Cuéntanos qué productos buscas, para cuántas tiendas y cuándo te gustaría recibirlos.", "closing": "Tu góndola es solo el comienzo."}, "en": {"nav_home": "Home", "nav_products": "Products", "nav_quality": "Quality", "nav_about": "About us", "nav_b2b": "For supermarkets", "nav_contact": "Contact", "nav_cta": "Request catalogue", "f_about": "Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.", "f_legal": "© 2026 Go Veggie Life · [company details] · [sales email] · [phone / WhatsApp]", "f_proto": "Design prototype - logo, photography, products and contact details will be replaced with approved materials.", "sticky": "Let's talk business", "m1": "Selection", "m2": "Presentation", "m3": "Distribution", "ph_h": "For supermarkets and distributors", "ph_p": "We select and pack produce for your shelves. Together we agree on the delivery location, order size and schedule.", "s1_h": "Request the catalogue", "s1_p": "Get the catalogue with availability and pricing for your business.", "s2_h": "Define your order", "s2_p": "For one shop, we arrange delivery based on order size. For a chain, we can also help plan the range and restocking.", "s3_h": "Receive and rotate", "s3_p": "On-time deliveries and produce that looks excellent on the shelf.", "f_h": "Let's talk business", "f_p": "Leave your details and we'll get back to you with the catalogue and trade terms.", "l1": "Name and company", "l2": "Email", "l3": "Phone / WhatsApp", "l4": "What does your business need?", "l5": "Send", "l6": "Request sent. We'll contact you with the catalogue and terms.", "l6s": "Sending…", "l6e": "Couldn't send - please try again in a moment.", "buyer": "What do you need for your next delivery? Tell us what you’re looking for, how many shops you supply and when you’d like it to arrive.", "closing": "Your shelf is just the beginning."}};
+const i18n = {"es": {"nav_home": "Inicio", "nav_products": "Productos", "nav_quality": "Calidad", "nav_about": "Nosotros", "nav_b2b": "Supermercados", "nav_contact": "Contacto", "nav_cta": "Solicitar catálogo", "f_about": "Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.", "f_legal": "© 2026 Go Veggie Life · [datos de la empresa] · [correo comercial] · [teléfono / WhatsApp]", "f_proto": "Prototipo de diseño - logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.", "sticky": "Hablemos de tu negocio", "m1": "Selección", "m2": "Presentación", "m3": "Distribución", "ph_h": "Para supermercados y distribuidores", "ph_p": "Seleccionamos y empacamos los productos para tu góndola. Acordamos contigo el lugar, el volumen y la frecuencia de entrega.", "s1_h": "Solicita el catálogo", "s1_p": "Recibe el catálogo con disponibilidad y precios para tu negocio.", "s2_h": "Define tu pedido", "s2_p": "Para una tienda, acordamos la entrega según el volumen del pedido. Para una cadena, también podemos planificar el surtido y la reposición.", "s3_h": "Recibe y rota", "s3_p": "Entregas puntuales y producto con excelente apariencia en góndola.", "f_h": "Hablemos de tu negocio", "f_p": "Déjanos tus datos y te contactamos con el catálogo y condiciones comerciales.", "l1": "Nombre y empresa", "l2": "Correo", "l3": "Teléfono / WhatsApp", "l4": "¿Qué necesita tu negocio?", "l5": "Enviar", "l6": "Solicitud enviada. Te contactamos con el catálogo y condiciones.", "l6s": "Enviando…", "l6e": "No se pudo enviar. Inténtalo de nuevo en un momento.", "buyer": "¿Qué necesitas para tu próxima entrega? Cuéntanos qué productos buscas, para cuántas tiendas y cuándo te gustaría recibirlos.", "closing": "Tu góndola es solo el comienzo."}, "en": {"nav_home": "Home", "nav_products": "Products", "nav_quality": "Quality", "nav_about": "About us", "nav_b2b": "Supermarkets", "nav_contact": "Contact", "nav_cta": "Request catalogue", "f_about": "Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.", "f_legal": "© 2026 Go Veggie Life · [company details] · [sales email] · [phone / WhatsApp]", "f_proto": "Design prototype - logo, photography, products and contact details will be replaced with approved materials.", "sticky": "Let's talk business", "m1": "Selection", "m2": "Presentation", "m3": "Distribution", "ph_h": "For supermarkets and distributors", "ph_p": "We select and pack produce for your shelves. Together we agree on the delivery location, order size and schedule.", "s1_h": "Request the catalogue", "s1_p": "Get the catalogue with availability and pricing for your business.", "s2_h": "Define your order", "s2_p": "For one shop, we arrange delivery based on order size. For a chain, we can also help plan the range and restocking.", "s3_h": "Receive and rotate", "s3_p": "On-time deliveries and produce that looks excellent on the shelf.", "f_h": "Let's talk business", "f_p": "Leave your details and we'll get back to you with the catalogue and trade terms.", "l1": "Name and company", "l2": "Email", "l3": "Phone / WhatsApp", "l4": "What does your business need?", "l5": "Send", "l6": "Request sent. We'll contact you with the catalogue and terms.", "l6s": "Sending…", "l6e": "Couldn't send - please try again in a moment.", "buyer": "What do you need for your next delivery? Tell us what you’re looking for, how many shops you supply and when you’d like it to arrive.", "closing": "Your shelf is just the beginning."}};
 Object.assign(i18n.es, {journey_h:'De la finca al supermercado',journey_1:'Cosecha',journey_2:'Transporte',journey_3:'Selección y empaque',journey_4:'Supermercado'});
 Object.assign(i18n.en, {journey_h:'From the farm to the supermarket',journey_1:'Harvest',journey_2:'Transport',journey_3:'Selection and packing',journey_4:'Supermarket'});
+Object.assign(i18n.es, {nav_horeca:'Hoteles y restaurantes'});
+Object.assign(i18n.en, {nav_horeca:'Hotels & restaurants'});
+Object.assign(i18n.es, {nav_business:'Negocios',nav_business_b2b:'Para supermercados',nav_business_horeca:'Para hoteles y restaurantes'});
+Object.assign(i18n.en, {nav_business:'Business',nav_business_b2b:'For supermarkets',nav_business_horeca:'For hotels & restaurants'});
 let lang = 'es';
 try { if (localStorage.getItem('gv-lang') === 'en') lang = 'en'; } catch(e) {}
 const langBtn = document.getElementById('langBtn');
@@ -130,6 +144,6 @@ langBtn.addEventListener('click', ()=>{
 if (lang !== 'es') applyLang();
 
 </script>
-<script src="assets/contact.js?v=draft1"></script>
+<script src="assets/contact.js?v=horeca1"></script>
 </body>
 </html>
