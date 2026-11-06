@@ -13,6 +13,7 @@ export type BrandRelationship = "unconfirmed" | "owned" | "supplied";
 export const BRAND_RELATIONSHIP: BrandRelationship = "owned";
 
 export const GO_VEGGIE_LIFE_URL = "https://web.goveggie.life/";
+export const GO_VEGGIE_LIFE_HORECA_URL = `${GO_VEGGIE_LIFE_URL}hoteles-restaurantes.html`;
 
 /** Fabricante real (nombre y dirección del registro sanitario). `null` = no se muestra. */
 export const REGISTRATION_HOLDER: { name: string } | null = null;

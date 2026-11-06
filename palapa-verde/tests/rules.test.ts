@@ -170,3 +170,16 @@ describe("nombre como en la etiqueta", async () => {
     expect(splitLabelName(name)).toEqual({ main, sub });
   });
 });
+
+
+describe("formatos profesionales propuestos", () => {
+  it.each(["es", "en"] as const)("%s no publica tamaños ni precios HoReCa", (locale) => {
+    const business = getDictionary(locale).business;
+    const text = JSON.stringify(business);
+    expect(text).not.toMatch(/\d\s*(?:kg|ml|oz|g)\b/i);
+    expect(text).not.toMatch(/\p{Sc}/u);
+    expect(Object.keys(business.horeca.formats)).toHaveLength(4);
+    expect(business.horeca.proposed).toBe(locale === "es" ? "Propuesto · por confirmar" : "Proposed · to be confirmed");
+    expect(business.pending).toBe(locale === "es" ? "Por confirmar" : "To be confirmed");
+  });
+});

@@ -397,6 +397,16 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; l
 .split-cta p { max-width: 40em; }
 .stockists { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: var(--gap); margin: 12px 0; }
 .audiences { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.horeca { scroll-margin-top: 120px; }
+.horeca-head { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--gap); align-items: center; }
+.horeca-head .lead { margin-bottom: 0; }
+.horeca-visual { margin: 0; }
+@media (max-width: 900px) { .horeca-head { grid-template-columns: 1fr; } }
+.horeca-visual img { display: block; width: 100%; height: auto; border: var(--hairline); }
+.horeca-formats { list-style: none; padding: 0; }
+.horeca-formats .h-sm { margin: 0; }
+.horeca-label { margin-top: 28px; }
+.horeca-label ul { padding-left: 20px; margin-top: 12px; display: grid; gap: 8px; }
 .audience { margin-bottom: 0; }
 .audience .h-sm { margin-top: 0; }
 .steps-story { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); align-items: center; }
