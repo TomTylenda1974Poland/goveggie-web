@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { GO_VEGGIE_LIFE_URL, MANUFACTURER, relationship } from "@/content/brand";
 import { PRODUCE_PHOTOS } from "@/lib/commerce/brand-content";
 import type { ArtKey } from "@/lib/commerce/types";
+import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale, pick } from "@/lib/i18n";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -11,7 +12,7 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return { title: getDictionary(locale).about.title, description: pick(relationship.statement, locale) };
+  return pageMetadata({ locale, path: "/nosotros", title: getDictionary(locale).about.title, description: pick(relationship.statement, locale) });
 }
 
 export default async function AboutPage({ params }: Props) {

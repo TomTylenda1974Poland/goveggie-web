@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FAQ } from "@/content/faq";
+import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale, pick } from "@/lib/i18n";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -10,7 +11,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const t = getDictionary(locale).faq;
-  return { title: t.title, description: t.intro };
+  return pageMetadata({ locale, path: "/preguntas", title: t.title, description: t.intro });
 }
 
 export default async function FaqPage({ params }: Props) {

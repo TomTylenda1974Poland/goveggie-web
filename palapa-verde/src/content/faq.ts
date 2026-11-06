@@ -16,8 +16,8 @@ export const FAQ: readonly FaqItem[] = [
     group: "product",
     q: t("¿Qué es Palapa Verde?", "What is Palapa Verde?"),
     a: t(
-      `${relationship.statement.es} Estamos desarrollando chutney, pesto, hummus y salsa a base de vegetales.`,
-      `${relationship.statement.en} We are developing vegetable-based chutney, pesto, hummus and salsa.`,
+      `${relationship.statement.es} Estamos desarrollando chutney, pesto, hummus y salsa con vegetales protagonistas.`,
+      `${relationship.statement.en} We are developing chutney, pesto, hummus and salsa starring vegetables.`,
     ),
     href: "/nosotros",
     cta: t("Más sobre nosotros", "More about us"),
@@ -76,8 +76,8 @@ export const FAQ: readonly FaqItem[] = [
     group: "buy",
     q: t("¿Venden a negocios o al por mayor?", "Do you sell to businesses or wholesale?"),
     a: t(
-      "Sí, es nuestra intención trabajar con supermercados, hoteles, restaurantes y distribuidores. Formatos, pedidos mínimos y entregas se publicarán cuando estén confirmados.",
-      "Yes, we intend to work with supermarkets, hotels, restaurants and distributors. Formats, minimum orders and delivery will be published once confirmed.",
+      "Todavía no. Queremos trabajar con supermercados, hoteles, restaurantes y distribuidores; formatos, pedidos mínimos y entregas se publicarán cuando estén confirmados.",
+      "Not yet. We want to work with supermarkets, hotels, restaurants and distributors; formats, minimum orders and delivery will be published once confirmed.",
     ),
     href: "/negocios",
     cta: t("Información para negocios", "Information for businesses"),

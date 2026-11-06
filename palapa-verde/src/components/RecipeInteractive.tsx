@@ -15,6 +15,8 @@ type Labels = {
   shareRecipe: string;
   shareList: string;
   listTitle: string;
+  /** Aviso añadido a los mensajes compartidos (borrador, prelanzamiento). */
+  shareNote: string | null;
 };
 
 type Props = {
@@ -38,11 +40,13 @@ export function RecipeInteractive({ locale, slug, title, baseServings, ingredien
   const pageUrl = () => window.location.href.split(/[?#]/)[0] ?? "";
 
   function shareRecipe() {
-    window.open(whatsappShareUrl(`${title}\n${pageUrl()}`), "_blank", "noopener");
+    const note = labels.shareNote ? `\n(${labels.shareNote})` : "";
+    window.open(whatsappShareUrl(`${title}${note}\n${pageUrl()}`), "_blank", "noopener");
   }
   function shareList() {
     const lines = ingredients.map((i) => `• ${ingredientText(i, factor, locale)}`);
-    const text = `${labels.listTitle}: ${title} (${servings} ${labels.servings.toLowerCase()})\n${lines.join("\n")}\n${pageUrl()}`;
+    const note = labels.shareNote ? `(${labels.shareNote})\n` : "";
+    const text = `${labels.listTitle}: ${title} (${servings} ${labels.servings.toLowerCase()})\n${note}${lines.join("\n")}\n${pageUrl()}`;
     window.open(whatsappShareUrl(text), "_blank", "noopener");
   }
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CONTACT, GO_VEGGIE_LIFE_URL } from "@/content/brand";
+import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale } from "@/lib/i18n";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -10,7 +11,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const t = getDictionary(locale).business;
-  return { title: t.title, description: t.intro };
+  return pageMetadata({ locale, path: "/negocios", title: t.title, description: t.intro });
 }
 
 export default async function BusinessPage({ params }: Props) {

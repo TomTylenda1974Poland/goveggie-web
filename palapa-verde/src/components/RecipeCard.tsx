@@ -4,9 +4,10 @@ import { totalMinutes, timeBucket, type Recipe } from "@/content/recipes";
 import type { Locale, Product } from "@/lib/commerce/types";
 import { getDictionary, pick } from "@/lib/i18n";
 
-type Props = { recipe: Recipe; product: Product | undefined; locale: Locale };
+type Props = { recipe: Recipe; product: Product | undefined; locale: Locale; headingLevel?: "h2" | "h3" };
 
-export function RecipeCard({ recipe, product, locale }: Props) {
+export function RecipeCard({ recipe, product, locale, headingLevel = "h3" }: Props) {
+  const Heading = headingLevel;
   const t = getDictionary(locale);
   const href = `/${locale}/recetas/${recipe.slug}`;
   return (
@@ -22,11 +23,11 @@ export function RecipeCard({ recipe, product, locale }: Props) {
           {totalMinutes(recipe)} {t.common.minutes}
         </span>
       </div>
-      <h3>
+      <Heading className="rcard-h">
         <Link href={href} className="rcard-title">
           {pick(recipe.title, locale)}
         </Link>
-      </h3>
+      </Heading>
       <p className="rcard-intro">{pick(recipe.intro, locale)}</p>
       <div className="rcard-foot">
         {product ? (

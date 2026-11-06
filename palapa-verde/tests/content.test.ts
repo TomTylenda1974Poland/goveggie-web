@@ -6,6 +6,7 @@ import { STOCKISTS } from "../src/content/stockists";
 import { BRAND_CONTENT } from "../src/lib/commerce/brand-content";
 import { MOCK_PRODUCTS } from "../src/lib/commerce/mock/fixtures";
 import { formatQty, ingredientText, roundQty, whatsappShareUrl } from "../src/lib/recipe-format";
+import { siteUrl } from "../src/lib/site";
 
 const productSlugs = new Set(MOCK_PRODUCTS.map((p) => p.slug));
 
@@ -66,6 +67,9 @@ describe("escalado de cantidades", () => {
     expect(roundQty(123, "g")).toBe(125);
     expect(roundQty(12.4, "g")).toBe(12);
     expect(roundQty(0.6, "tbsp")).toBe(0.5);
+    expect(roundQty(0.125, "tsp")).toBe(0.125);
+    expect(formatQty(0.125, "tsp")).toBe("⅛");
+    expect(roundQty(0.5, "pinch")).toBe(1);
     expect(formatQty(1.5, "cup")).toBe("1½");
     expect(formatQty(0.25, "tsp")).toBe("¼");
   });
@@ -76,8 +80,9 @@ describe("escalado de cantidades", () => {
     expect(line(4, 0.5)).toBe("1 pan de agua");
     expect(line(4, 1)).toBe("2 panes de agua");
     expect(line(4, 1, "en")).toBe("2 Dominican bread rolls");
-    expect(line(8, 1)).toBe("60 g (4 cdas.) de Chutney de Cilantro Palapa Verde");
-    expect(line(8, 2, "en")).toBe("120 g (8 tbsp) Palapa Verde Cilantro Chutney");
+    expect(line(8, 1)).toBe("60 g (aprox. 4 cdas.) de Chutney de Cilantro Palapa Verde");
+    expect(line(2, 0.5)).toBe("⅛ cdta. de pimienta negra molida");
+    expect(line(8, 2, "en")).toBe("120 g (about 8 tbsp) Palapa Verde Cilantro Chutney");
   });
 
   it("marca opcionales y «al gusto»", () => {
@@ -118,5 +123,16 @@ describe("hechos de marca y prelanzamiento", () => {
   it("las FAQ con enlace apuntan a rutas existentes", () => {
     const routes = new Set(["/recetas", "/donde-comprar", "/nosotros", "/negocios", "/productos", "/preguntas"]);
     for (const item of FAQ) if (item.href) expect(routes.has(item.href)).toBe(true);
+  });
+});
+
+describe("URL pública", () => {
+  it("ignora SITE_URL vacío y usa el host de Vercel", () => {
+    expect(siteUrl({ SITE_URL: "" })).toBe("http://localhost:3000");
+    expect(siteUrl({ SITE_URL: " https://palapaverde.do/ " })).toBe("https://palapaverde.do");
+    expect(siteUrl({ SITE_URL: "", VERCEL_ENV: "preview", VERCEL_URL: "pv-abc.vercel.app" })).toBe("https://pv-abc.vercel.app");
+    expect(siteUrl({ VERCEL_ENV: "production", VERCEL_PROJECT_PRODUCTION_URL: "palapa-verde.vercel.app", VERCEL_URL: "x.vercel.app" })).toBe(
+      "https://palapa-verde.vercel.app",
+    );
   });
 });

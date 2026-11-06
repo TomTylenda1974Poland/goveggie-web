@@ -28,8 +28,14 @@ export function ProductName({ name, locale, as: Tag = "span", size = "card" }: P
   const { main, sub } = splitLabelName(name.es);
   return (
     <Tag className={`pname pname--${size}`}>
-      <span className="pname-main">{main}</span>
-      {sub ? <span className="pname-sub">{sub}</span> : null}
+      <span className="pname-main" lang={locale !== "es" ? "es" : undefined}>
+        {main}
+      </span>
+      {sub ? (
+        <span className="pname-sub" lang={locale !== "es" ? "es" : undefined}>
+          {sub}
+        </span>
+      ) : null}
       {locale !== "es" && name[locale] !== name.es ? (
         <span className="pname-tr" lang={locale}>
           {name[locale]}

@@ -464,3 +464,20 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; l
   .recipe-times div:nth-child(3) { border-left: 0; }
   .recipe-times div:nth-child(n + 3) { border-top: var(--hairline); }
 }
+
+/* Revisión Codex: tipografía de títulos, objetivos táctiles, menú móvil sin desplazamiento oculto */
+.card .card-h { font-size: clamp(1.25rem, 1.7vw, 1.55rem); }
+.rcard .rcard-h { font-family: var(--label); font-weight: 900; text-transform: none; letter-spacing: 0; font-size: clamp(1.25rem, 1.6vw, 1.45rem); line-height: 1.12; }
+.recipe-head-copy h1 { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: -0.01em; font-size: clamp(1.8rem, 3.4vw, 2.9rem); line-height: 0.98; }
+.chip { min-height: 44px; }
+.stepper { height: 48px; }
+.stepper button { width: 44px; min-height: 44px; }
+.recipe-actions .btn, .faq-answer a { min-height: 44px; display: inline-flex; align-items: center; }
+@media (max-width: 760px) {
+  .nav-links { flex-wrap: wrap; justify-content: center; overflow: visible; -webkit-mask-image: none; mask-image: none; padding: 4px 0 0; gap: 0 16px; }
+  .nav-links a { min-height: 44px; }
+}
+/* Titular de portada en 4 líneas como máximo en escritorio */
+.hero { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
+.hero h1 { font-size: clamp(2rem, 3vw, 3.1rem); }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; } .hero h1 { font-size: clamp(2rem, 8.4vw, 3rem); } }

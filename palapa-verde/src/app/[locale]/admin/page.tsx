@@ -106,7 +106,7 @@ export default async function AdminPage({ params }: Props) {
               </tr>
             </thead>
             <tbody>
-              {audits.map(({ product, fields, missing, readyToSell }) => {
+              {audits.map(({ product, fields, missing, complete }) => {
                 const level = inventory.get(product.id);
                 return (
                   <tr key={product.id}>
@@ -115,8 +115,8 @@ export default async function AdminPage({ params }: Props) {
                         <ProductThumb product={product} />
                         <span>
                           <Link href={`/${locale}/productos/${product.slug}`}>{pick(product.name, locale)}</Link>
-                          <span className={readyToSell ? "state state--ok" : "state state--missing"}>
-                            {readyToSell ? a.ready : fill(a.notReady, { n: missing })}
+                          <span className={complete ? "state state--ok" : "state state--missing"}>
+                            {complete ? a.ready : fill(a.notReady, { n: missing })}
                           </span>
                           {product.qrId ? <code className="note">/p/{product.qrId}</code> : null}
                         </span>

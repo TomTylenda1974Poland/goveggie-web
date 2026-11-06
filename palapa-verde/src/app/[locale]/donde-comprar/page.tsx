@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { STOCKISTS } from "@/content/stockists";
+import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale, pick } from "@/lib/i18n";
 import { loadCatalog } from "@/lib/shop";
 
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const t = getDictionary(locale).where;
-  return { title: t.title, description: t.intro };
+  return pageMetadata({ locale, path: "/donde-comprar", title: t.title, description: t.intro });
 }
 
 export default async function WhereToBuyPage({ params }: Props) {

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { RecipeCard } from "@/components/RecipeCard";
 import { RecipeFilters } from "@/components/RecipeFilters";
 import { OCCASIONS, TIME_BUCKETS, timeBucket, visibleRecipes } from "@/content/recipes";
+import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale, pick } from "@/lib/i18n";
 import { loadCatalog } from "@/lib/shop";
 
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const t = getDictionary(locale).recipes;
-  return { title: t.title, description: t.intro };
+  return pageMetadata({ locale, path: "/recetas", title: t.title, description: t.intro });
 }
 
 export default async function RecipesPage({ params }: Props) {
@@ -70,7 +71,7 @@ export default async function RecipesPage({ params }: Props) {
               data-time={timeBucket(r)}
               data-occasions={r.occasions.join(" ")}
             >
-              <RecipeCard recipe={r} product={products.find((p) => p.slug === r.product)} locale={locale} />
+              <RecipeCard recipe={r} product={products.find((p) => p.slug === r.product)} locale={locale} headingLevel="h2" />
             </div>
           ))}
         </RecipeFilters>

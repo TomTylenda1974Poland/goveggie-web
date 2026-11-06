@@ -24,8 +24,11 @@ export type ProductAudit = {
   product: Product;
   fields: FieldAudit[];
   missing: number;
-  /** Se puede vender cuando no falta ningún campo obligatorio. */
-  readyToSell: boolean;
+  /**
+   * Ficha completa: ningún campo falta ni está solo en español. NO es una
+   * autorización de venta (eso depende de `launch` y de las decisiones del negocio).
+   */
+  complete: boolean;
 };
 
 function localizedState(value: Localized | null): FieldState {
@@ -48,7 +51,8 @@ export function auditProduct(product: Product): ProductAudit {
   };
   const fields = AUDITED_FIELDS.map((field) => ({ field, state: states[field] }));
   const missing = fields.filter((f) => f.state === "missing").length;
-  return { product, fields, missing, readyToSell: missing === 0 };
+  const partial = fields.some((f) => f.state === "partial");
+  return { product, fields, missing, complete: missing === 0 && !partial };
 }
 
 export function auditCatalog(products: readonly Product[]): ProductAudit[] {

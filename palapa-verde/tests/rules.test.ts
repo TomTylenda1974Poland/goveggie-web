@@ -19,7 +19,7 @@ describe("regla de negocio: no inventar datos", () => {
 
   it("el panel marca como pendientes todos esos campos", () => {
     const audit = auditProduct(MOCK_PRODUCTS[0]!);
-    expect(audit.readyToSell).toBe(false);
+    expect(audit.complete).toBe(false);
     expect(audit.fields.filter((f) => f.state === "missing").map((f) => f.field)).toEqual([
       "price",
       "netContent",
@@ -33,7 +33,7 @@ describe("regla de negocio: no inventar datos", () => {
     ]);
   });
 
-  it("un producto completo queda listo para vender", () => {
+  it("un producto con todos los datos en ES y EN tiene la ficha completa", () => {
     const text = { es: "x", en: "y" };
     const audit = auditProduct({
       ...MOCK_PRODUCTS[0]!,
@@ -47,7 +47,7 @@ describe("regla de negocio: no inventar datos", () => {
       description: text,
       images: [{ src: "/a.jpg", alt: text, kind: "product", width: 1, height: 1 }],
     });
-    expect(audit.readyToSell).toBe(true);
+    expect(audit.complete).toBe(true);
   });
 });
 

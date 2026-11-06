@@ -6,7 +6,10 @@ const UNIT_LABELS: Record<Locale, Record<Exclude<Unit, "g" | "ml">, [string, str
   en: { cup: ["cup", "cups"], tbsp: ["tbsp", "tbsp"], tsp: ["tsp", "tsp"], pinch: ["pinch", "pinches"] },
 };
 
-const FRACTIONS: Record<number, string> = { 0.25: "¼", 0.5: "½", 0.75: "¾" };
+const FRACTIONS: Record<number, string> = { 0.125: "⅛", 0.25: "¼", 0.375: "⅜", 0.5: "½", 0.625: "⅝", 0.75: "¾", 0.875: "⅞" };
+
+/** Paso de redondeo por unidad: cucharaditas a ⅛, pizcas enteras, el resto a ¼. */
+const STEP: Record<string, number> = { tsp: 0.125, pinch: 1, tbsp: 0.25, cup: 0.25, count: 0.25 };
 
 const isNoun = (name: Localized | Noun): name is Noun => Array.isArray((name as Noun).es);
 
@@ -16,14 +19,15 @@ export function roundQty(value: number, unit: Unit | null): number {
     if (value >= 50) return Math.round(value / 5) * 5;
     return Math.max(1, Math.round(value));
   }
-  return Math.max(0.25, Math.round(value * 4) / 4);
+  const step = STEP[unit ?? "count"] ?? 0.25;
+  return Math.max(step, Math.round(value / step) * step);
 }
 
 export function formatQty(value: number, unit: Unit | null): string {
   const v = roundQty(value, unit);
   if (unit === "g" || unit === "ml") return String(v);
   const whole = Math.floor(v);
-  const frac = FRACTIONS[Math.round((v - whole) * 100) / 100];
+  const frac = FRACTIONS[Math.round((v - whole) * 1000) / 1000];
   if (!frac) return String(whole);
   return whole === 0 ? frac : `${whole}${frac}`;
 }
@@ -56,8 +60,10 @@ export function ingredientLine(ing: Ingredient, factor: number, locale: Locale):
     return { qty, text: `${name}${note}${optional}` };
   }
 
+  // Equivalencia casera orientativa (depende de la densidad real del producto).
+  const approx = locale === "es" ? "aprox." : "about";
   const alt = ing.alt
-    ? ` (${formatQty(ing.alt.qty * factor, ing.alt.unit)} ${unitLabel(ing.alt.unit, roundQty(ing.alt.qty * factor, ing.alt.unit), locale)})`
+    ? ` (${approx} ${formatQty(ing.alt.qty * factor, ing.alt.unit)} ${unitLabel(ing.alt.unit, roundQty(ing.alt.qty * factor, ing.alt.unit), locale)})`
     : "";
   const name = isNoun(ing.name) ? ing.name[locale][1] : ing.name[locale];
   const of = locale === "es" ? "de " : "";

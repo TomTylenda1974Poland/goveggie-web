@@ -24,13 +24,22 @@ const SIZES = {
  * si tampoco hay, los dibujos botánicos del nombre del producto.
  */
 export function ProductVisual({ product, locale, size, priority, hideNote }: Props) {
-  const t = getDictionary(locale).product;
+  const dict = getDictionary(locale);
+  const t = dict.product;
   const image =
     product.images.find((i) => i.kind === "product") ??
     product.images.find((i) => i.kind === "illustration") ??
     product.images[0];
   const note =
-    image?.kind === "product" ? null : image?.kind === "illustration" ? t.illustration : image ? t.ingredientPhoto : t.noPhoto;
+    image?.kind === "product"
+      ? null
+      : image?.kind === "illustration"
+        ? size === "detail"
+          ? t.illustration
+          : dict.common.imageNote
+        : image
+          ? t.ingredientPhoto
+          : t.noPhoto;
 
   return (
     <figure className={`visual visual--${size}`}>

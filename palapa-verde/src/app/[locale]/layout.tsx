@@ -7,6 +7,7 @@ import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { BRAND_CONTENT } from "@/lib/commerce/brand-content";
 import { LOCALES } from "@/lib/commerce/types";
 import { getDictionary, isLocale } from "@/lib/i18n";
+import { siteUrl } from "@/lib/site";
 import "../globals.css";
 
 const display = Archivo_Black({ weight: "400", subsets: ["latin"], variable: "--font-display", display: "swap" });
@@ -39,7 +40,6 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
     title: { default: t.meta.title, template: "%s · Palapa Verde" },
     description: t.meta.description,
     robots: indexable ? undefined : { index: false, follow: false },
-    alternates: { languages: { es: "/es", en: "/en" } },
     openGraph: {
       type: "website",
       siteName: "Palapa Verde",
@@ -49,14 +49,6 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
       images: [{ url: "/media/hero-linea.jpg", width: 1536, height: 1024 }],
     },
   };
-}
-
-/** URL pública para metadatos (OG). En Vercel se toma del entorno; localmente, localhost. */
-function siteUrl(): string {
-  const explicit = process.env.SITE_URL;
-  if (explicit) return explicit;
-  const host = process.env.VERCEL_ENV === "production" ? process.env.VERCEL_PROJECT_PRODUCTION_URL : process.env.VERCEL_URL;
-  return host ? `https://${host}` : "http://localhost:3000";
 }
 
 export const viewport: Viewport = { themeColor: "#ffffff" };

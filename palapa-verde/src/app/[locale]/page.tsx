@@ -8,9 +8,18 @@ import { visibleRecipes } from "@/content/recipes";
 import { PRODUCE_PHOTOS } from "@/lib/commerce/brand-content";
 import type { ArtKey } from "@/lib/commerce/types";
 import { getDictionary, isLocale, pick } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/site";
+import type { Metadata } from "next";
 import { loadCatalog } from "@/lib/shop";
 
 const STEPS = ["campo", "cocina", "frasco"] as const;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const t = getDictionary(locale).meta;
+  return pageMetadata({ locale, path: "", title: t.title, description: t.description });
+}
 
 /** Una receta por producto para la portada, en orden de catálogo. */
 function featuredRecipes(products: { slug: string }[]) {

@@ -8,6 +8,7 @@ import { StatusBadge } from "@/components/StatusBadge";
 import { TrackView } from "@/components/TrackView";
 import { PRODUCT_ALLERGENS, RECIPES, totalMinutes, visibleRecipes } from "@/content/recipes";
 import { LOCALES } from "@/lib/commerce/types";
+import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale, pick } from "@/lib/i18n";
 import { ingredientText, isoDuration } from "@/lib/recipe-format";
 import { loadCatalog } from "@/lib/shop";
@@ -29,12 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   const recipe = findRecipe(slug);
   if (!isLocale(locale) || !recipe) return {};
-  return {
+  return pageMetadata({
+    locale,
+    path: `/recetas/${slug}`,
     title: pick(recipe.title, locale),
     description: pick(recipe.intro, locale),
-    openGraph: { images: [`/media/productos/${recipe.product}.jpg`] },
-    robots: recipe.status === "draft" ? { index: false, follow: true } : undefined,
-  };
+    image: recipe.media.photo?.src ?? `/media/productos/${recipe.product}.jpg`,
+    noindex: recipe.status === "draft",
+  });
 }
 
 export default async function RecipePage({ params }: Props) {
@@ -104,10 +107,6 @@ export default async function RecipePage({ params }: Props) {
                   {totalMinutes(recipe)} {t.common.minutes}
                 </dd>
               </div>
-              <div>
-                <dt>{r.servings}</dt>
-                <dd>{recipe.servings}</dd>
-              </div>
             </dl>
             {recipe.status === "draft" ? <p className="notice">{r.draftNote}</p> : null}
           </div>
@@ -115,7 +114,7 @@ export default async function RecipePage({ params }: Props) {
             {recipe.media.photo ? null : <p className="media-pending">{r.photoPending}</p>}
             {product ? (
               <Link href={`/${locale}/productos/${product.slug}`} className="recipe-product" data-track="recipe_product_click" data-track-recipe={recipe.slug} data-track-product={product.slug}>
-                <ProductVisual product={product} locale={locale} size="card" hideNote />
+                <ProductVisual product={product} locale={locale} size="card" />
                 <span className="recipe-product-name">
                   {r.productUsed}: <strong>{pick(product.name, locale)}</strong>
                 </span>
@@ -142,6 +141,7 @@ export default async function RecipePage({ params }: Props) {
               shareRecipe: r.shareRecipe,
               shareList: r.shareList,
               listTitle: r.listTitle,
+              shareNote: recipe.status === "draft" ? r.shareNote : null,
             }}
           />
 

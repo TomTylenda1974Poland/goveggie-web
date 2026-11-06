@@ -13,7 +13,8 @@ type CardProps = { "data-product"?: string; "data-time"?: string; "data-occasion
 
 function matches(props: CardProps, s: Selection): boolean {
   if (s.product !== "all" && props["data-product"] !== s.product) return false;
-  if (s.time !== "all" && Number(props["data-time"]) > Number(s.time)) return false;
+  if (s.time === "60" && props["data-time"] !== "60") return false;
+  if (s.time !== "all" && s.time !== "60" && Number(props["data-time"]) > Number(s.time)) return false;
   if (s.occasion !== "all" && !(props["data-occasions"] ?? "").split(" ").includes(s.occasion)) return false;
   return true;
 }

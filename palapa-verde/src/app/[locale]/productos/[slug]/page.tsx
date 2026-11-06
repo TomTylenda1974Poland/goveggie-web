@@ -12,6 +12,7 @@ import { recipesForProduct } from "@/content/recipes";
 import { getCommerce } from "@/lib/commerce";
 import { LOCALES, type Localized } from "@/lib/commerce/types";
 import { formatMoney } from "@/lib/format";
+import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale, pick } from "@/lib/i18n";
 import { loadCatalog } from "@/lib/shop";
 
@@ -31,11 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) return {};
   const ideas = product.servingIdeas.map((i) => pick(i, locale)).join(" ");
   const image = product.images[0]?.src;
-  return {
-    title: pick(product.name, locale),
-    description: ideas || undefined,
-    openGraph: image ? { images: [image] } : undefined,
-  };
+  return pageMetadata({ locale, path: `/productos/${slug}`, title: pick(product.name, locale), description: ideas || undefined, image });
 }
 
 /**

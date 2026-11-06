@@ -19,9 +19,9 @@ export function pick(text: Localized, locale: Locale): string {
 
 const es = {
   meta: {
-    title: "Palapa Verde — chutney, pesto, hummus y salsa de vegetales",
+    title: "Palapa Verde — chutney, pesto, hummus y salsa",
     description:
-      "Palapa Verde prepara chutney, pesto, hummus y salsa a base de vegetales. Productos en desarrollo, recetas e información para negocios.",
+      "Palapa Verde desarrolla chutney, pesto, hummus y salsa con vegetales protagonistas. Productos en desarrollo, recetas e información para negocios.",
   },
   nav: {
     products: "Productos",
@@ -52,17 +52,17 @@ const es = {
   } satisfies Record<LaunchStatus, string>,
   home: {
     lockup: "Palapa Verde",
-    title: "Salsas, pesto y hummus",
-    titleAccent: "a base de vegetales.",
+    title: "Chutney, pesto, hummus y salsa",
+    titleAccent: "con vegetales protagonistas.",
     intro:
       "Estamos desarrollando cinco recetas: chutney de cilantro, pesto de cilantro con semillas de auyama, hummus de zanahoria, hummus de remolacha y salsa de aguacate y jalapeño.",
     cta: "Ver los productos",
     ctaSecondary: "Ideas y recetas",
     stepsHeading: "Del vegetal al frasco",
     steps: {
-      campo: { title: "Vegetales", text: "Todo empieza con vegetales enteros: cilantro, auyama, zanahoria, remolacha, aguacate y jalapeño." },
-      cocina: { title: "Cocina", text: "Los convertimos en salsas y untables listos para servir." },
-      frasco: { title: "Frasco", text: "Para tu mesa: desayuno, picadera, almuerzo o cena." },
+      campo: { title: "Vegetales", text: "Cada receta tiene un vegetal protagonista: cilantro, semillas de auyama, zanahoria, remolacha, aguacate o jalapeño." },
+      cocina: { title: "Cocina", text: "Estamos desarrollando las recetas; las presentaremos con fotos reales." },
+      frasco: { title: "Frasco", text: "Pensadas para desayunos, picaderas, almuerzos y cenas." },
     },
     productsHeading: "Los productos",
     allProducts: "Ver todos",
@@ -119,7 +119,7 @@ const es = {
     taste: "Sabor",
     texture: "Textura",
     heat: "Picante",
-    illustration: "Imagen ilustrativa — foto real del producto pendiente",
+    illustration: "Imagen ilustrativa del envase propuesto — foto real pendiente",
     ingredientPhoto: "Foto del ingrediente — foto del producto pendiente",
     noPhoto: "Foto del producto pendiente",
     related: "Otros productos",
@@ -156,6 +156,7 @@ const es = {
     shareRecipe: "Compartir por WhatsApp",
     shareList: "Enviar lista de compras por WhatsApp",
     listTitle: "Lista de compras",
+    shareNote: "Receta en desarrollo · el producto aún no está a la venta",
     whereToBuy: "Dónde comprar el producto",
     related: "Más recetas",
     photoPending: "Foto pendiente — la añadiremos cuando preparemos la receta.",
@@ -181,11 +182,11 @@ const es = {
     relationshipHeading: "Palapa Verde y Go Veggie Life",
     processHeading: "Del vegetal al frasco",
     processText:
-      "Palapa Verde convierte vegetales en salsas, pesto, hummus y chutney. Cuando la producción esté lista, mostraremos aquí la cocina, el proceso y a las personas que lo hacen, con fotos y vídeos reales.",
+      "Palapa Verde está desarrollando salsas, pesto, hummus y chutney con vegetales protagonistas. Cuando la producción esté lista, mostraremos aquí la cocina, el proceso y a las personas que lo hacen, con fotos y vídeos reales.",
     peopleHeading: "El equipo",
     peopleText: "Pronto: presentación del equipo con fotos reales.",
     imagesNote:
-      "Las fotos de producto de esta web son imágenes ilustrativas creadas a partir del diseño de envase propuesto. Las sustituiremos por fotos reales.",
+      "Las imágenes de producto de esta web son visualizaciones del envase propuesto, no fotos del producto. Las sustituiremos por fotos reales.",
     manufacturerHeading: "Elaboración",
     visitGvl: "Visitar Go Veggie Life",
   },
@@ -197,9 +198,9 @@ const es = {
     title: "Para negocios",
     intro: "Supermercados, hoteles, restaurantes y distribuidores interesados en Palapa Verde.",
     audiences: {
-      supermarkets: { title: "Supermercados y colmados", text: "Productos refrigerados de góndola para el consumidor final." },
+      supermarkets: { title: "Supermercados y colmados", text: "Productos envasados para la venta al consumidor." },
       horeca: { title: "Hoteles y restaurantes", text: "Salsas y untables para desayunos, buffets y cocina." },
-      distributors: { title: "Distribuidores", text: "Cobertura en otras zonas del país." },
+      distributors: { title: "Distribuidores", text: "Interesados en llevar Palapa Verde a otras zonas." },
     },
     statusHeading: "Estado actual",
     statusText:
@@ -227,8 +228,8 @@ const es = {
     launch: "Lanzamiento",
     stock: "Existencias",
     stockTest: "prueba, no se muestra",
-    ready: "Listo para vender",
-    notReady: "Faltan {n}",
+    ready: "Ficha completa",
+    notReady: "Faltan {n} datos",
     state: { missing: "Falta", partial: "Solo ES", ok: "OK" },
     fields: {
       price: "Precio",
@@ -267,7 +268,7 @@ const es = {
     },
   },
   footer: {
-    about: "Chutney, pesto, hummus y salsa a base de vegetales.",
+    about: "Chutney, pesto, hummus y salsa con vegetales protagonistas.",
     legal: "© 2026 Palapa Verde",
     proto: "Versión previa — productos en desarrollo, aún no a la venta.",
   },
@@ -278,9 +279,9 @@ export type Dictionary = typeof es;
 
 const en: Dictionary = {
   meta: {
-    title: "Palapa Verde — vegetable chutney, pesto, hummus and salsa",
+    title: "Palapa Verde — chutney, pesto, hummus and salsa",
     description:
-      "Palapa Verde makes vegetable-based chutney, pesto, hummus and salsa. Products in development, recipes and information for businesses.",
+      "Palapa Verde is developing chutney, pesto, hummus and salsa starring vegetables. Products in development, recipes and information for businesses.",
   },
   nav: {
     products: "Products",
@@ -304,17 +305,17 @@ const en: Dictionary = {
   },
   home: {
     lockup: "Palapa Verde",
-    title: "Sauces, pesto and hummus",
-    titleAccent: "made from vegetables.",
+    title: "Chutney, pesto, hummus and salsa",
+    titleAccent: "starring vegetables.",
     intro:
       "We are developing five recipes: cilantro chutney, cilantro pesto with pumpkin seeds, carrot hummus, beet hummus and avocado–jalapeño salsa.",
     cta: "See the products",
     ctaSecondary: "Ideas and recipes",
     stepsHeading: "From vegetable to jar",
     steps: {
-      campo: { title: "Vegetables", text: "It all starts with whole vegetables: cilantro, pumpkin, carrot, beet, avocado and jalapeño." },
-      cocina: { title: "Kitchen", text: "We turn them into ready-to-serve sauces and spreads." },
-      frasco: { title: "Jar", text: "For your table: breakfast, snacks, lunch or dinner." },
+      campo: { title: "Vegetables", text: "Each recipe stars one vegetable: cilantro, pumpkin seeds, carrot, beet, avocado or jalapeño." },
+      cocina: { title: "Kitchen", text: "We are developing the recipes and will show them with real photos." },
+      frasco: { title: "Jar", text: "Made for breakfasts, snacks, lunches and dinners." },
     },
     productsHeading: "The products",
     allProducts: "See all",
@@ -371,7 +372,7 @@ const en: Dictionary = {
     taste: "Taste",
     texture: "Texture",
     heat: "Heat",
-    illustration: "Illustrative image — real product photo pending",
+    illustration: "Illustration of the proposed packaging — real photo pending",
     ingredientPhoto: "Ingredient photo — product photo pending",
     noPhoto: "Product photo pending",
     related: "Other products",
@@ -407,6 +408,7 @@ const en: Dictionary = {
     shareRecipe: "Share on WhatsApp",
     shareList: "Send shopping list on WhatsApp",
     listTitle: "Shopping list",
+    shareNote: "Recipe in development · the product is not on sale yet",
     whereToBuy: "Where to buy the product",
     related: "More recipes",
     photoPending: "Photo pending — we will add it when we cook the recipe.",
@@ -432,11 +434,11 @@ const en: Dictionary = {
     relationshipHeading: "Palapa Verde and Go Veggie Life",
     processHeading: "From vegetable to jar",
     processText:
-      "Palapa Verde turns vegetables into sauces, pesto, hummus and chutney. Once production is ready, we will show the kitchen, the process and the people who make it here, with real photos and videos.",
+      "Palapa Verde is developing sauces, pesto, hummus and chutney starring vegetables. Once production is ready, we will show the kitchen, the process and the people who make it here, with real photos and videos.",
     peopleHeading: "The team",
     peopleText: "Coming soon: an introduction to the team with real photos.",
     imagesNote:
-      "The product photos on this site are illustrative images created from the proposed packaging design. We will replace them with real photos.",
+      "The product images on this site are illustrations of the proposed packaging, not photos of the product. We will replace them with real photos.",
     manufacturerHeading: "Made by",
     visitGvl: "Visit Go Veggie Life",
   },
@@ -448,9 +450,9 @@ const en: Dictionary = {
     title: "For businesses",
     intro: "Supermarkets, hotels, restaurants and distributors interested in Palapa Verde.",
     audiences: {
-      supermarkets: { title: "Supermarkets and corner shops", text: "Chilled shelf products for shoppers." },
+      supermarkets: { title: "Supermarkets and corner shops", text: "Packaged products for retail shoppers." },
       horeca: { title: "Hotels and restaurants", text: "Sauces and spreads for breakfasts, buffets and kitchens." },
-      distributors: { title: "Distributors", text: "Coverage in other parts of the country." },
+      distributors: { title: "Distributors", text: "Interested in taking Palapa Verde to other areas." },
     },
     statusHeading: "Current status",
     statusText:
@@ -478,8 +480,8 @@ const en: Dictionary = {
     launch: "Launch",
     stock: "Stock",
     stockTest: "test, not shown",
-    ready: "Ready to sell",
-    notReady: "{n} missing",
+    ready: "Data complete",
+    notReady: "{n} items missing",
     state: { missing: "Missing", partial: "ES only", ok: "OK" },
     fields: {
       price: "Price",
@@ -518,7 +520,7 @@ const en: Dictionary = {
     },
   },
   footer: {
-    about: "Vegetable-based chutney, pesto, hummus and salsa.",
+    about: "Chutney, pesto, hummus and salsa starring vegetables.",
     legal: "© 2026 Palapa Verde",
     proto: "Preview version — products in development, not on sale yet.",
   },
