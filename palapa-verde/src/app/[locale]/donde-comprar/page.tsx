@@ -6,14 +6,16 @@ import { STOCKISTS } from "@/content/stockists";
 import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale, pick } from "@/lib/i18n";
 import { loadCatalog } from "@/lib/shop";
+import styles from "./where.module.css";
 
 type Props = { params: Promise<{ locale: string }> };
+const planningImage = "/media/horeca/puntos-v1.webp";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const t = getDictionary(locale).where;
-  return pageMetadata({ locale, path: "/donde-comprar", title: t.title, description: t.intro });
+  return pageMetadata({ locale, path: "/donde-comprar", title: t.title, description: t.intro, image: STOCKISTS.length === 0 ? planningImage : undefined });
 }
 
 export default async function WhereToBuyPage({ params }: Props) {
@@ -21,25 +23,28 @@ export default async function WhereToBuyPage({ params }: Props) {
   if (!isLocale(locale)) notFound();
   const t = getDictionary(locale);
   const w = t.where;
-  const { products } = await loadCatalog();
+  const products = STOCKISTS.length ? (await loadCatalog()).products : [];
 
   return (
     <>
       <div className="page-head">
         <h1>{w.title}</h1>
-        <p className="lead">{w.intro}</p>
+        {STOCKISTS.length > 0 ? <p className="lead">{w.intro}</p> : null}
       </div>
 
       {STOCKISTS.length === 0 ? (
-        <section className="panel prelaunch">
-          <div className="prelaunch-copy">
-            <h2 className="h-md">{w.none}</h2>
+        <section className={`panel ${styles.feature}`} aria-labelledby="where-launch">
+          <div className={styles.copy}>
+            <h2 className="h-md" id="where-launch">{w.none}</h2>
             <p>{w.noneText}</p>
-            <Link className="btn btn--ghost arrow" href={`/${locale}/productos`}>
+            <Link className="btn arrow" href={`/${locale}/productos`}>
               {t.home.cta}
             </Link>
           </div>
-          <Image className="prelaunch-art" src="/media/proceso-frasco.jpg" alt="" width={512} height={512} sizes="200px" />
+          <figure className={styles.art}>
+            <Image src={planningImage} alt={w.planningAlt} width={1536} height={1024} sizes="(max-width: 760px) 100vw, (max-width: 1300px) 54vw, 685px" preload />
+            <figcaption>{w.planningCaption}</figcaption>
+          </figure>
         </section>
       ) : (
         <section aria-label={w.title}>

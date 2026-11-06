@@ -5,30 +5,51 @@
   border: var(--frame);
   background: var(--paper);
 }
-.heading p, .result p { max-width: 60ch; margin: .7rem 0 1.1rem; }
-.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.2rem; }
-.form label, .result label {
+.heading p, .result > p { max-width: 60ch; margin: .7rem 0 1.1rem; }
+.form, .detailsGrid {
   display: grid;
-  align-content: end;
-  gap: .35rem;
-  font-size: .86rem;
-  font-weight: 650;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.2rem;
 }
+.form { max-width: 56rem; }
+.form[hidden] { display: none; }
+.field, .detailsGrid > label, .quantity > label { display: grid; align-content: start; gap: .4rem; min-width: 0; }
+.field > label, .form label, .result > label { font-size: .93rem; font-weight: 650; }
 .form input, .form select, .result textarea {
   min-width: 0;
   width: 100%;
   border: var(--hairline);
   border-radius: 0;
-  padding: .68rem .75rem;
+  padding: .7rem .75rem;
   background: var(--paper);
   color: var(--ink);
   font: 1rem var(--body);
 }
 .form input, .form select { min-height: 46px; }
-.quantity { display: grid; grid-template-columns: minmax(0, 1fr) minmax(90px, .6fr); gap: .55rem; }
-.full { grid-column: 1 / -1; }
-.result { margin-top: 1.4rem; padding-top: 1.4rem; border-top: var(--hairline); }
-.result textarea { margin-top: .4rem; resize: vertical; line-height: 1.5; }
-.actions { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1rem; }
+.form :is(input, select):focus-visible, .result textarea:focus-visible,
+.optional summary:focus-visible, .textButton:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+.form [aria-invalid="true"] { border: 2px solid #8c2e23; }
+.error { color: #812c22; font-size: .86rem; margin: 0; grid-column: 1 / -1; }
+.quantity { display: grid; grid-template-columns: minmax(0, 1fr) minmax(6rem, .55fr); align-content: start; gap: .4rem .55rem; }
+.full, .optional { grid-column: 1 / -1; }
+.optional { border-block: 1px solid #b9bdb2; }
+.optional summary { padding: .9rem .12rem; min-height: 46px; cursor: pointer; font-weight: 650; }
+.optionalHint { font-size: .8rem; font-weight: 450; color: #52584e; margin-inline-start: .65em; }
+.detailsGrid { padding: .35rem 0 1.1rem; }
+.result { max-width: 56rem; margin-top: 1rem; }
+.reviewHeading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0 1rem; margin-bottom: .7rem; }
+.reviewHeading h3 { font: 600 clamp(1.35rem, 2vw, 1.65rem)/1.15 var(--botanical); }
+.reviewHeading h3:focus { outline: 0; }
+.textButton { min-height: 44px; padding: .55rem 0; border: 0; background: transparent; font: inherit; font-size: .88rem; font-weight: 600; text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
+.result textarea { display: block; margin-top: .4rem; resize: vertical; line-height: 1.5; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem 1rem; }
+.actions > a:not([class]), .partner { display: inline-flex; align-items: center; min-height: 44px; text-underline-offset: .2em; font-size: .9rem; }
+.partner { margin-top: .4rem; }
 .status:not(:empty) { margin-top: .65rem; }
-@media (max-width: 680px) { .form { grid-template-columns: 1fr; } }
+@media (max-width: 680px) {
+  .form, .detailsGrid { grid-template-columns: minmax(0, 1fr); }
+  .form .full > button, .actions :global(.btn) { width: 100%; justify-content: center; }
+}

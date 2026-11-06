@@ -28,6 +28,9 @@ Read these before working:
 6. Never commit secrets. Configuration goes in Vercel environment variables (see `.env.example`).
 7. Pages talk only to `CommerceProvider` (`src/lib/commerce/provider.ts`), never to an HTTP API directly.
 
+## Brand artwork and foodservice packaging
+For editorial scenes use white paper, graphite people, equipment and packaging, and natural colour for food. Use the approved rectangular, square-cornered Palapa Verde label, with the two-line roof at the top, ingredient engraving next to the product name and the original Go Veggie Life mark at the bottom. Show it on pails, tubs and other packs wherever a product label fits. Fresh produce crates use the Go Veggie Life logo and identify their contents. Distinguish proposed packs from confirmed availability. Show jars and lidded food-contact containers as appropriate to the use; do not invent certifications or product data.
+
 ## Commands (run inside `palapa-verde/`)
 ```
 pnpm install

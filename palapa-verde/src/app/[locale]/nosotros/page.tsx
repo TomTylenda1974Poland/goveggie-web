@@ -2,25 +2,25 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { GO_VEGGIE_LIFE_URL, MANUFACTURER, relationship } from "@/content/brand";
-import { PRODUCE_PHOTOS } from "@/lib/commerce/brand-content";
-import type { ArtKey } from "@/lib/commerce/types";
 import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale, pick } from "@/lib/i18n";
 
+import styles from "./story.module.css";
+
 type Props = { params: Promise<{ locale: string }> };
+const allianceImage = "/media/horeca/alianza-v1.webp";
+const processImage = "/media/horeca/proceso-v1.webp";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return pageMetadata({ locale, path: "/nosotros", title: getDictionary(locale).about.title, description: pick(relationship.statement, locale) });
+  return pageMetadata({ locale, path: "/nosotros", title: getDictionary(locale).about.title, description: pick(relationship.statement, locale), image: allianceImage });
 }
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const t = getDictionary(locale);
-  const a = t.about;
-  const produce = Object.entries(PRODUCE_PHOTOS) as [ArtKey, string][];
+  const a = getDictionary(locale).about;
 
   return (
     <>
@@ -28,39 +28,30 @@ export default async function AboutPage({ params }: Props) {
         <h1>{a.title}</h1>
       </div>
 
-      <section className="panel origin" aria-labelledby="h-rel">
-        <div className="origin-copy">
-          <h2 id="h-rel">{a.relationshipHeading}</h2>
+      <section className={`panel ${styles.story}`} aria-labelledby="h-rel">
+        <div className={styles.copy}>
+          <h2 id="h-rel" className="h-md">{a.relationshipHeading}</h2>
           <p>{pick(relationship.statement, locale)}</p>
           <a className="btn arrow" href={GO_VEGGIE_LIFE_URL} rel="noopener">
             {a.visitGvl}
           </a>
         </div>
-        <div className="origin-media">
-          <ul className="produce" aria-label={t.home.produceCaption}>
-            {produce.map(([key, src]) => (
-              <li key={key}>
-                <Image src={src} alt="" width={384} height={300} sizes="(max-width: 760px) 30vw, 160px" />
-                <span>{t.veg[key]}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <figure className={styles.art}>
+          <Image src={allianceImage} alt={a.allianceAlt} width={1536} height={1024} sizes="(max-width: 760px) 100vw, (max-width: 1300px) 56vw, 710px" preload />
+          <figcaption>{a.allianceCaption}</figcaption>
+        </figure>
       </section>
 
-      <section className="panel steps-story" aria-labelledby="h-proc">
-        <div className="story-copy">
-          <h2 id="h-proc" className="h-md">
-            {a.processHeading}
-          </h2>
+      <section className={`panel ${styles.story}`} aria-labelledby="h-proc">
+        <div className={styles.copy}>
+          <h2 id="h-proc" className="h-md">{a.processHeading}</h2>
           <p>{a.processText}</p>
-          <p className="note">{a.imagesNote}</p>
+          <p>{a.packText}</p>
         </div>
-        <div className="story-art" aria-hidden="true">
-          {(["campo", "cocina", "frasco"] as const).map((s) => (
-            <Image key={s} src={`/media/proceso-${s}.jpg`} alt="" width={512} height={512} sizes="140px" />
-          ))}
-        </div>
+        <figure className={styles.art}>
+          <Image src={processImage} alt={a.processAlt} width={1536} height={1024} sizes="(max-width: 760px) 100vw, (max-width: 1300px) 56vw, 710px" />
+          <figcaption>{a.imagesNote}</figcaption>
+        </figure>
       </section>
 
       <section className="panel pad" aria-labelledby="h-team">

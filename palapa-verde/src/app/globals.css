@@ -502,3 +502,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; l
 /* Rendimiento: sin mezcla de capas sobre fondo blanco (mismo resultado visual, menos trabajo de pintado) */
 .step img, .produce img, .card--line img, .prelaunch-art, .story-art img { mix-blend-mode: normal; }
 .card--line { background: var(--paper); }
+@media (max-width: 600px) {
+  .section-head { column-gap: 12px; flex-wrap: wrap; }
+  .section-head h2 { min-width: 0; }
+  .section-head .section-link { margin-inline-start: auto; }
+}

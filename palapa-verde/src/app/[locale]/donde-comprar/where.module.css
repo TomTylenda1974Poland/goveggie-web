@@ -1,0 +1,11 @@
+.feature { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+.copy { align-self: center; padding: clamp(20px, 3vw, 42px) var(--pad); }
+.copy p { margin: 12px 0 20px; max-width: 43ch; }
+.art { min-width: 0; padding: clamp(12px, 1.4vw, 20px); border-inline-start: var(--hairline); }
+.art img { width: 100%; height: auto; aspect-ratio: 3/2; object-fit: contain; }
+.art figcaption { color: var(--meta); font-size: .8rem; line-height: 1.4; padding-top: 8px; }
+@media (max-width: 760px) {
+  .feature { grid-template-columns: 1fr; }
+  .copy { padding-block: 18px; }
+  .art { border-inline-start: 0; border-top: var(--hairline); }
+}

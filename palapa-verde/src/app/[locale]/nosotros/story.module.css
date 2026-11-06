@@ -1,0 +1,13 @@
+.story { display: grid; grid-template-columns: minmax(0, .84fr) minmax(0, 1.16fr); }
+.copy { align-self: center; padding: clamp(20px, 2.9vw, 43px) var(--pad); }
+.copy h2 { max-width: 18ch; }
+.copy p { margin-top: 12px; max-width: 44ch; }
+.copy a { margin-top: 18px; }
+.art { min-width: 0; border-inline-start: var(--hairline); padding: clamp(12px, 1.4vw, 20px); display: flex; flex-direction: column; justify-content: center; }
+.art img { width: 100%; height: auto; aspect-ratio: 3/2; object-fit: contain; }
+.art figcaption { color: var(--meta); font-size: .8rem; line-height: 1.4; padding-top: 8px; }
+@media (max-width: 760px) {
+  .story { grid-template-columns: 1fr; }
+  .copy { padding-block: 18px; }
+  .art { border-inline-start: 0; border-top: var(--hairline); }
+}

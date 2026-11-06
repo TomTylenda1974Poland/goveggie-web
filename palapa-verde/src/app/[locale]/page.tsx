@@ -81,7 +81,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </h2>
         {STEPS.map((step, i) => (
           <div className="step" key={step}>
-            <Image src={`/media/proceso-${step}.jpg`} alt="" width={512} height={512} sizes="120px" />
+            <Image src={step === "frasco" ? "/media/horeca/pesto-v1.webp" : `/media/proceso-${step}.jpg`} alt="" width={step === "frasco" ? 768 : 512} height={512} sizes="120px" />
             <div>
               <h3>
                 <span className="step-n">0{i + 1}</span> {h.steps[step].title}
@@ -104,7 +104,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <ProductCard key={product.id} product={product} locale={locale} priority={i < 2} />
           ))}
           <Link className="card card--line" href={`/${locale}/negocios`}>
-            <Image src="/media/proceso-frasco.jpg" alt="" width={512} height={512} sizes="200px" />
+            <Image src="/media/horeca/linea-v1.webp" alt="" width={768} height={512} sizes="200px" />
             <span className="card-cat">{h.businessHeading}</span>
             <span className="card-line-title">{h.businessText}</span>
             <span className="card-cta arrow">{h.businessCta}</span>
