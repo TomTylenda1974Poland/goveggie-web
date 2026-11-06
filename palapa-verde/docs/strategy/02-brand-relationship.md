@@ -8,6 +8,8 @@ The owner confirmed the brand relationship on 6 November 2026. Use **“Una marc
 
 The website uses the owned setting in src/content/brand.ts. MANUFACTURER and REGISTRATION_HOLDER remain separate, empty fields pending confirmation.
 
+The owner chose variant B, “Lekka palapa”, on 6 November 2026. The centered two-stroke roof spans 28% of the visible PALAPA VERDE wordmark. Place the Go Veggie Life endorsement directly below the name in smaller italic lettering, with the same letter size in Spanish and English. The Spanish endorsement spans 72% of the wordmark and the English one approximately 65%, with a softer ink tone than the name. Use the approved SVG in each language.
+
 ## Where the two sites link
 - Palapa Verde: the "Nosotros" relationship section, the home relationship block, the footer, and the business page (for fresh produce).
 - Go Veggie Life (separate task, root site): its footer already links to Palapa Verde. Recommended: a short "Palapa Verde" block on "Nosotros" or "Para supermercados" that uses the same confirmed wording.

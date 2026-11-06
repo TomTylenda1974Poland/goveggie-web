@@ -11,8 +11,8 @@ export function PalapaLogo({ locale, inverse = false }: { locale: Locale; invers
     <span className={styles.lockup}>
       <img
         src={owned ? `/brand/palapa-verde-${locale}.svg` : "/brand/palapa-verde.svg"}
-        width={480}
-        height={owned ? 151 : 107}
+        width={1012}
+        height={owned ? 342 : 238}
         alt=""
         className={inverse ? `${styles.mark} ${styles.inverse}` : styles.mark}
       />
