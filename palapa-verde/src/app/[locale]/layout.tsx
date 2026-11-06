@@ -2,8 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Archivo_Black, Cormorant_Garamond, Inter, Playfair_Display } from "next/font/google";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
+import { AnalyticsListener } from "@/components/AnalyticsListener";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
-import { getCommerce } from "@/lib/commerce";
+import { BRAND_CONTENT } from "@/lib/commerce/brand-content";
 import { LOCALES } from "@/lib/commerce/types";
 import { getDictionary, isLocale } from "@/lib/i18n";
 import "../globals.css";
@@ -34,11 +35,28 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
   const t = getDictionary(locale);
   const indexable = process.env.SITE_INDEXABLE === "true";
   return {
+    metadataBase: new URL(siteUrl()),
     title: { default: t.meta.title, template: "%s · Palapa Verde" },
     description: t.meta.description,
     robots: indexable ? undefined : { index: false, follow: false },
     alternates: { languages: { es: "/es", en: "/en" } },
+    openGraph: {
+      type: "website",
+      siteName: "Palapa Verde",
+      locale: locale === "es" ? "es_DO" : "en_US",
+      title: t.meta.title,
+      description: t.meta.description,
+      images: [{ url: "/media/hero-linea.jpg", width: 1536, height: 1024 }],
+    },
   };
+}
+
+/** URL pública para metadatos (OG). En Vercel se toma del entorno; localmente, localhost. */
+function siteUrl(): string {
+  const explicit = process.env.SITE_URL;
+  if (explicit) return explicit;
+  const host = process.env.VERCEL_ENV === "production" ? process.env.VERCEL_PROJECT_PRODUCTION_URL : process.env.VERCEL_URL;
+  return host ? `https://${host}` : "http://localhost:3000";
 }
 
 export const viewport: Viewport = { themeColor: "#ffffff" };
@@ -46,7 +64,8 @@ export const viewport: Viewport = { themeColor: "#ffffff" };
 export default async function LocaleLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const { isTestData } = getCommerce();
+  // Aviso de prelanzamiento mientras ningún producto esté a la venta.
+  const prelaunch = !Object.values(BRAND_CONTENT).some((c) => c.launch === "available");
 
   return (
     <html lang={locale} className={`${display.variable} ${body.variable} ${botanical.variable} ${label.variable}`}>
@@ -54,11 +73,12 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <a className="skip" href="#contenido">
           {locale === "es" ? "Saltar al contenido" : "Skip to content"}
         </a>
-        <SiteHeader locale={locale} isTestData={isTestData} />
+        <SiteHeader locale={locale} prelaunch={prelaunch} />
         <main id="contenido" className="wrap">
           {children}
         </main>
         <SiteFooter locale={locale} />
+        <AnalyticsListener />
       </body>
     </html>
   );

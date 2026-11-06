@@ -10,6 +10,13 @@ const MAX_BODY_BYTES = 16_000;
  * No cobra nada: los pagos en línea están desactivados hasta que el negocio decida.
  */
 export async function POST(request: Request) {
+  // La web no acepta pedidos hasta que el negocio active la venta (ORDERS_ENABLED=true).
+  if (process.env.ORDERS_ENABLED !== "true") {
+    return NextResponse.json(
+      { error: { code: "ORDERS_DISABLED", message: "Palapa Verde todavía no acepta pedidos en línea." } },
+      { status: 503 },
+    );
+  }
   const raw = await request.text();
   if (raw.length > MAX_BODY_BYTES) {
     return NextResponse.json({ error: { code: "INVALID_REQUEST", message: "Pedido demasiado grande" } }, { status: 413 });

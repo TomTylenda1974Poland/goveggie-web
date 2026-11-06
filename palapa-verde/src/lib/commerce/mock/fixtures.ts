@@ -34,6 +34,9 @@ function draft(
     allergens: null,
     shelfLife: null,
     storage: null,
+    taste: null,
+    texture: null,
+    heat: null,
     status: "draft",
   };
 }

@@ -24,6 +24,9 @@ export type GvProductDto = {
   allergens?: GvLocalizedDto | null;
   shelf_life?: GvLocalizedDto | null;
   storage?: GvLocalizedDto | null;
+  taste?: GvLocalizedDto | null;
+  texture?: GvLocalizedDto | null;
+  heat?: GvLocalizedDto | null;
   images?: { url: string; alt?: GvLocalizedDto | null; width?: number; height?: number }[];
   status?: string;
 };

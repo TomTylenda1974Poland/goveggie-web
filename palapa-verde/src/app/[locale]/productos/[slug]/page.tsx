@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import type { ReactNode } from "react";
-import { AddToCart } from "@/components/AddToCart";
-import { AvailabilityBadge } from "@/components/AvailabilityBadge";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductName } from "@/components/ProductName";
 import { ProductVisual } from "@/components/ProductVisual";
-import { PRODUCE_PHOTOS } from "@/lib/commerce/brand-content";
+import { QrWelcome } from "@/components/QrWelcome";
+import { RecipeCard } from "@/components/RecipeCard";
+import { StatusBadge } from "@/components/StatusBadge";
+import { relationship } from "@/content/brand";
+import { recipesForProduct } from "@/content/recipes";
 import { getCommerce } from "@/lib/commerce";
 import { LOCALES, type Localized } from "@/lib/commerce/types";
 import { formatMoney } from "@/lib/format";
@@ -28,42 +28,56 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   if (!isLocale(locale)) return {};
   const product = (await loadCatalog()).products.find((p) => p.slug === slug);
-  return product ? { title: pick(product.name, locale) } : {};
+  if (!product) return {};
+  const ideas = product.servingIdeas.map((i) => pick(i, locale)).join(" ");
+  const image = product.images[0]?.src;
+  return {
+    title: pick(product.name, locale),
+    description: ideas || undefined,
+    openGraph: image ? { images: [image] } : undefined,
+  };
 }
 
+/**
+ * Ficha de producto y destino de los códigos QR del envase (/p/{qrId}):
+ * producto exacto, tres ideas, recetas, información aprobada y dónde comprar.
+ */
 export default async function ProductPage({ params }: Props) {
   const { locale, slug } = await params;
   if (!isLocale(locale)) notFound();
   const t = getDictionary(locale);
-  const { products, inventory, availability } = await loadCatalog();
-  const product = products.find((p) => p.slug === slug);
+  const p = t.product;
+  const { products } = await loadCatalog();
+  const product = products.find((x) => x.slug === slug);
   if (!product) notFound();
 
-  const rows: { label: string; value: ReactNode | null }[] = [
-    { label: t.product.netContent, value: product.netContent },
-    ...(
-      [
-        [t.product.ingredients, product.ingredients],
-        [t.product.allergens, product.allergens],
-        [t.product.shelfLife, product.shelfLife],
-        [t.product.storage, product.storage],
-      ] as [string, Localized | null][]
-    ).map(([label, value]) => ({ label, value: value ? pick(value, locale) : null })),
-  ];
-  const hasPending = rows.some((r) => r.value === null);
-  const related = products.filter((p) => p.id !== product.id).slice(0, 3);
-  const produce = product.art.flatMap((key) => {
-    const src = PRODUCE_PHOTOS[key];
-    return src ? [{ key, src }] : [];
-  });
+  const recipes = recipesForProduct(product.slug);
+  const related = products.filter((x) => x.id !== product.id).slice(0, 3);
+  const showPrice = product.launch === "available" && product.price !== null;
+
+  // Solo se muestran datos aprobados (no nulos). Si no hay ninguno, un aviso honesto.
+  const facts: [string, string][] = (
+    [
+      [p.taste, product.taste],
+      [p.texture, product.texture],
+      [p.heat, product.heat],
+      [p.ingredients, product.ingredients],
+      [p.allergens, product.allergens],
+      [p.storage, product.storage],
+      [p.shelfLife, product.shelfLife],
+    ] as [string, Localized | null][]
+  ).flatMap(([label, v]) => (v ? [[label, pick(v, locale)] as [string, string]] : []));
+  if (product.netContent) facts.unshift([p.netContent, product.netContent]);
 
   return (
     <>
       <nav className="crumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumb"}>
         <Link href={`/${locale}/productos`} className="back">
-          ← {t.product.back}
+          ← {p.back}
         </Link>
       </nav>
+
+      <QrWelcome text={p.qrWelcome} />
 
       <article className="panel product">
         <div className="product-media">
@@ -72,10 +86,58 @@ export default async function ProductPage({ params }: Props) {
         <div className="product-info">
           <p className="kicker">{t.category[product.category]}</p>
           <ProductName name={product.name} locale={locale} as="h1" size="page" />
-          <p className="brand-line">{t.product.brandLine}</p>
+          {relationship.endorsement ? <p className="brand-line">{pick(relationship.endorsement, locale)}</p> : <hr className="rule" />}
+          <div className="product-buy">
+            {showPrice && product.price ? <p className="price price--lg">{formatMoney(product.price, locale)}</p> : null}
+            <StatusBadge status={product.launch} locale={locale} />
+          </div>
+          {product.description ? <p className="lead">{pick(product.description, locale)}</p> : null}
+
+          <h2 className="h-sm">{p.ideasHeading}</h2>
+          <ol className="ideas">
+            {product.servingIdeas.map((idea, i) => (
+              <li key={i}>{pick(idea, locale)}</li>
+            ))}
+          </ol>
+
+          <div className="cta-row">
+            <Link
+              className="btn arrow"
+              href={`/${locale}/recetas?producto=${product.slug}`}
+              data-track="product_recipe_click"
+              data-track-product={product.slug}
+            >
+              {p.seeRecipes}
+            </Link>
+            <Link
+              className="btn btn--ghost"
+              href={`/${locale}/donde-comprar`}
+              data-track="where_to_buy_click"
+              data-track-from="product"
+              data-track-product={product.slug}
+            >
+              {p.whereToBuy}
+            </Link>
+          </div>
+
+          <h2 className="h-sm">{p.details}</h2>
+          {facts.length > 0 ? (
+            <table className="spec-table">
+              <tbody>
+                {facts.map(([label, value]) => (
+                  <tr key={label}>
+                    <th scope="row">{label}</th>
+                    <td>{value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : null}
+          {facts.length < 8 ? <p className="note">{p.detailsPending}</p> : null}
+
           {product.art.length > 0 ? (
             <p className="veg-line veg-line--lg">
-              <span className="veg-label">{t.product.keyVeg}</span>
+              <span className="veg-label">{p.keyVeg}</span>
               {product.art.map((key) => (
                 <span key={key} className="veg-chip">
                   {t.veg[key]}
@@ -83,64 +145,32 @@ export default async function ProductPage({ params }: Props) {
               ))}
             </p>
           ) : null}
-          {product.description ? <p className="lead">{pick(product.description, locale)}</p> : null}
-          <div className="product-buy">
-            <p className="price price--lg">
-              {product.price ? formatMoney(product.price, locale) : <small>{t.product.pricePending}</small>}
-            </p>
-            <AvailabilityBadge availability={availability(product.id)} locale={locale} />
-          </div>
-          <AddToCart
-            productId={product.id}
-            stock={inventory.get(product.id)?.available}
-            cartHref={`/${locale}/carrito`}
-            labels={{
-              quantity: t.product.quantity,
-              addToCart: t.product.addToCart,
-              added: t.product.added,
-              unavailable: t.product.unavailable,
-              cart: t.nav.cart,
-              decrease: t.cart.decrease,
-              increase: t.cart.increase,
-            }}
-          />
-          <h2 className="h-sm">{t.product.details}</h2>
-          <table className="spec-table">
-            <tbody>
-              {rows.map(({ label, value }) => (
-                <tr key={label}>
-                  <th scope="row">{label}</th>
-                  <td>{value ?? <span className="pending">{t.product.pending}</span>}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          {hasPending ? <p className="note">{t.product.pendingNote}</p> : null}
         </div>
       </article>
 
-      <section className="panel made-with" aria-label={t.product.madeWith}>
-        <p className="made-with-text">{t.product.madeWith}</p>
-        {produce.length > 0 ? (
-          <ul className="produce produce--inline">
-            {produce.map(({ key, src }) => (
-              <li key={key}>
-                <Image src={src} alt="" width={384} height={300} sizes="140px" />
-                <span>{t.veg[key]}</span>
-              </li>
+      <section aria-labelledby="h-recipes">
+        <div className="section-head">
+          <h2 id="h-recipes">{p.recipesHeading}</h2>
+        </div>
+        {recipes.length > 0 ? (
+          <div className="rcards">
+            {recipes.map((r) => (
+              <RecipeCard key={r.slug} recipe={r} product={product} locale={locale} />
             ))}
-          </ul>
-        ) : null}
+          </div>
+        ) : (
+          <p className="note">{p.recipesEmpty}</p>
+        )}
       </section>
 
       {related.length > 0 ? (
         <section aria-labelledby="h-related">
           <div className="section-head">
-            <h2 id="h-related">{t.product.related}</h2>
+            <h2 id="h-related">{p.related}</h2>
           </div>
           <div className="cards">
-            {related.map((p) => (
-              <ProductCard key={p.id} product={p} availability={availability(p.id)} locale={locale} />
+            {related.map((x) => (
+              <ProductCard key={x.id} product={x} locale={locale} />
             ))}
           </div>
         </section>

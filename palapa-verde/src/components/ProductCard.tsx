@@ -1,16 +1,18 @@
 import Link from "next/link";
-import { AvailabilityBadge } from "@/components/AvailabilityBadge";
 import { ProductName } from "@/components/ProductName";
 import { ProductVisual } from "@/components/ProductVisual";
-import type { Availability, Locale, Product } from "@/lib/commerce/types";
+import { StatusBadge } from "@/components/StatusBadge";
+import type { Locale, Product } from "@/lib/commerce/types";
 import { formatMoney } from "@/lib/format";
 import { getDictionary, pick } from "@/lib/i18n";
 
-type Props = { product: Product; availability: Availability; locale: Locale; priority?: boolean };
+type Props = { product: Product; locale: Locale; priority?: boolean };
 
-export function ProductCard({ product, availability, locale, priority }: Props) {
+/** Tarjeta de catálogo: estado real de lanzamiento; precio solo si está a la venta. */
+export function ProductCard({ product, locale, priority }: Props) {
   const t = getDictionary(locale);
   const href = `/${locale}/productos/${product.slug}`;
+  const showPrice = product.launch === "available" && product.price !== null;
   return (
     <article className="card">
       <div className="card-media">
@@ -24,21 +26,10 @@ export function ProductCard({ product, availability, locale, priority }: Props) 
           </Link>
         </h3>
       </header>
-      {product.art.length > 0 ? (
-        <p className="veg-line">
-          <span className="sr-only">{t.product.keyVeg}: </span>
-          {product.art.map((key) => (
-            <span key={key} className="veg-chip">
-              {t.veg[key]}
-            </span>
-          ))}
-        </p>
-      ) : null}
+      {product.servingIdeas[0] ? <p className="card-idea">{pick(product.servingIdeas[0], locale)}</p> : null}
       <footer className="card-foot">
-        <span className="price">
-          {product.price ? formatMoney(product.price, locale) : <small>{t.product.pricePending}</small>}
-        </span>
-        <AvailabilityBadge availability={availability} locale={locale} />
+        {showPrice && product.price ? <span className="price">{formatMoney(product.price, locale)}</span> : null}
+        <StatusBadge status={product.launch} locale={locale} />
         <span className="card-cta arrow" aria-hidden="true">
           {t.product.view}
         </span>

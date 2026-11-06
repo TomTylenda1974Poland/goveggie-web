@@ -35,6 +35,13 @@ export type ProductImage = {
   height: number;
 };
 
+/**
+ * Estado de lanzamiento. `concept`: idea/prototipo sin registro ni fecha.
+ * `in_development`: receta y producción en curso. `coming_soon`: fecha confirmada.
+ * `available`: a la venta en al menos un punto confirmado.
+ */
+export type LaunchStatus = "concept" | "in_development" | "coming_soon" | "available";
+
 export type Product = {
   /** Identificador estable en la fuente de datos (mock o API). */
   id: string;
@@ -53,6 +60,15 @@ export type Product = {
   storage: Localized | null;
   images: ProductImage[];
   status: "draft" | "active";
+  launch: LaunchStatus;
+  /** Sabor, textura y picante aprobados por producción. `null` = sin confirmar. */
+  taste: Localized | null;
+  texture: Localized | null;
+  heat: Localized | null;
+  /** Tres ideas de uso (sugerencias culinarias, no afirmaciones sobre el producto). */
+  servingIdeas: Localized[];
+  /** Identificador permanente para el código QR del envase: /p/{qrId}. */
+  qrId: string | null;
 };
 
 export type InventoryLevel = {

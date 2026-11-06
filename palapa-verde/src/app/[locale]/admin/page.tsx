@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductThumb } from "@/components/ProductThumb";
+import { BRAND_RELATIONSHIP, CONTACT, MANUFACTURER } from "@/content/brand";
+import { RECIPES } from "@/content/recipes";
+import { STOCKISTS } from "@/content/stockists";
 import { auditCatalog, AUDITED_FIELDS } from "@/lib/commerce/completeness";
 import { fill, getDictionary, isLocale, pick } from "@/lib/i18n";
 import { OPEN_BUSINESS_ITEMS } from "@/lib/open-items";
@@ -22,7 +25,19 @@ export default async function AdminPage({ params }: Props) {
   const { products, inventory, providerId, isTestData } = await loadCatalog();
   const audits = auditCatalog(products);
   const totalMissing = audits.reduce((n, x) => n + x.missing, 0);
-  const goveggieConfigured = providerId === "goveggie";
+  const tested = RECIPES.filter((r) => r.status === "tested").length;
+  const analyticsProvider = process.env.NEXT_PUBLIC_ANALYTICS_PROVIDER ?? null;
+
+  const checklist: [string, boolean, string?][] = [
+    [a.checklist.relationship, BRAND_RELATIONSHIP !== "unconfirmed", BRAND_RELATIONSHIP],
+    [a.checklist.manufacturer, MANUFACTURER !== null],
+    [a.checklist.range, products.some((p) => p.launch !== "concept")],
+    [a.checklist.recipes, tested === RECIPES.length, fill(a.recipesCount, { tested, draft: RECIPES.length - tested })],
+    [a.checklist.stockists, STOCKISTS.length > 0, String(STOCKISTS.length)],
+    [a.checklist.contact, CONTACT.salesEmail !== null || CONTACT.whatsappNumber !== null],
+    [a.checklist.analytics, analyticsProvider !== null, analyticsProvider ?? undefined],
+    [a.checklist.domain, Boolean(process.env.SITE_URL), process.env.SITE_URL],
+  ];
 
   return (
     <>
@@ -49,6 +64,29 @@ export default async function AdminPage({ params }: Props) {
         </dl>
       </section>
 
+      <section aria-labelledby="h-admin-check">
+        <div className="section-head">
+          <h2 id="h-admin-check">{a.checklistHeading}</h2>
+        </div>
+        <div className="panel">
+          <table className="spec-table">
+            <tbody>
+              {checklist.map(([label, done, detail]) => (
+                <tr key={label}>
+                  <th scope="row">{label}</th>
+                  <td>
+                    <span className={done ? "state state--ok" : "state state--missing"}>
+                      {done ? a.checklistState.done : a.checklistState.pending}
+                    </span>
+                    {detail ? <span className="note"> {detail}</span> : null}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <section aria-labelledby="h-admin-products">
         <div className="section-head">
           <h2 id="h-admin-products">{a.productsHeading}</h2>
@@ -58,6 +96,7 @@ export default async function AdminPage({ params }: Props) {
             <thead>
               <tr>
                 <th scope="col">{a.product}</th>
+                <th scope="col">{a.launch}</th>
                 {AUDITED_FIELDS.map((f) => (
                   <th scope="col" key={f}>
                     {a.fields[f]}
@@ -79,9 +118,11 @@ export default async function AdminPage({ params }: Props) {
                           <span className={readyToSell ? "state state--ok" : "state state--missing"}>
                             {readyToSell ? a.ready : fill(a.notReady, { n: missing })}
                           </span>
+                          {product.qrId ? <code className="note">/p/{product.qrId}</code> : null}
                         </span>
                       </div>
                     </th>
+                    <td>{t.launch[product.launch]}</td>
                     {fields.map(({ field, state }) => (
                       <td key={field}>
                         <span className={`state state--${state}`}>{a.state[state]}</span>
@@ -109,17 +150,15 @@ export default async function AdminPage({ params }: Props) {
               <tr>
                 <th scope="row">{a.integrations.goveggie}</th>
                 <td>
-                  <span className={goveggieConfigured ? "state state--ok" : "state state--missing"}>
-                    {goveggieConfigured ? a.integrations.goveggieConfigured : a.integrations.goveggieState}
+                  <span className={providerId === "goveggie" ? "state state--ok" : "state state--missing"}>
+                    {providerId === "goveggie" ? a.integrations.goveggieConfigured : a.integrations.goveggieState}
                   </span>
                 </td>
               </tr>
               <tr>
                 <th scope="row">{a.integrations.orders}</th>
                 <td>
-                  <span className={isTestData ? "state state--missing" : "state state--ok"}>
-                    {isTestData ? a.integrations.ordersState : a.integrations.goveggieConfigured}
-                  </span>
+                  <span className="state state--missing">{a.integrations.ordersState}</span>
                 </td>
               </tr>
               <tr>
