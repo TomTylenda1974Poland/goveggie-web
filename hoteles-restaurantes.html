@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v=horeca2">
-<link rel="stylesheet" href="assets/horeca-edicion-v2.css">
+<link rel="stylesheet" href="assets/horeca-edicion-v3.css">
 <script src="assets/nav.js?v=horeca2" defer></script>
 </head>
 <body class="botanical-site">
@@ -60,28 +60,28 @@
   <h2 id="kitchen-audiences-title" data-i18n="who_h">Para quién</h2>
   <ul class="kitchen-audiences-list">
     <li>
-      <img src="assets/p-papaya.jpg" alt="" width="384" height="342" loading="lazy" decoding="async">
+      <img src="assets/horeca-publico-hotel-v1.webp" alt="Bufé de desayuno de hotel con papaya en rodajas." data-i18n-alt="who_1_alt" width="768" height="512" loading="lazy" decoding="async">
       <div>
         <h3 data-i18n="who_1">Hoteles y resorts</h3>
         <p data-i18n="who_1_p">Papaya en rodajas para el desayuno y el bufé.</p>
       </div>
     </li>
     <li>
-      <img src="assets/p-tomate-v7.jpg" alt="" width="570" height="506" loading="lazy" decoding="async">
+      <img src="assets/horeca-publico-restaurante-v1.webp" alt="Una chef termina un plato con tomate y albahaca en el pase." data-i18n-alt="who_2_alt" width="768" height="512" loading="lazy" decoding="async">
       <div>
         <h3 data-i18n="who_2">Restaurantes</h3>
         <p data-i18n="who_2_p">Tomates para ensaladas y salsas de la carta.</p>
       </div>
     </li>
     <li>
-      <img src="assets/p-aji.jpg" alt="" width="384" height="341" loading="lazy" decoding="async">
+      <img src="assets/horeca-publico-catering-v1.webp" alt="Servicio de brochetas de ajíes en una recepción." data-i18n-alt="who_3_alt" width="768" height="512" loading="lazy" decoding="async">
       <div>
         <h3 data-i18n="who_3">Catering y eventos</h3>
         <p data-i18n="who_3_p">Ajíes de colores para brochetas y bandejas.</p>
       </div>
     </li>
     <li>
-      <img src="assets/p-limon.jpg" alt="" width="384" height="344" loading="lazy" decoding="async">
+      <img src="assets/horeca-publico-bar-v1.webp" alt="Preparación de una limonada con limón fresco en la barra." data-i18n-alt="who_4_alt" width="768" height="512" loading="lazy" decoding="async">
       <div>
         <h3 data-i18n="who_4">Cafeterías y bares</h3>
         <p data-i18n="who_4_p">Limón fresco para jugos, limonadas y cócteles.</p>
@@ -90,37 +90,31 @@
   </ul>
 </section>
 
-  <section class="panel pad">
-  <h2 data-i18n="formats_h">Formatos para cocina</h2>
-
-    <div class="horeca-formats">
-  <article class="card horeca-format"><span class="horeca-status"><span data-i18n="ask">A consultar</span></span>
-  <h3 data-i18n="format_1_h">Por peso, sin empaque de góndola</h3>
-
-  <p data-i18n="format_1_p">Productos por peso en cajas a granel, con una etiqueta sencilla: producto, calibre, peso y fecha de empaque.</p>
-</article>
-
-  <article class="card horeca-format"><span class="horeca-status"><span data-i18n="study">En estudio</span></span>
-  <h3 data-i18n="format_2_h">Cajas retornables</h3>
-
-  <p data-i18n="format_2_p">Propuesta de cajas reutilizables que se intercambian en la entrega para reducir los residuos de cartón.</p>
-</article>
-
-  <article class="card horeca-format"><span class="horeca-status"><span data-i18n="study">En estudio</span></span>
-  <h3 data-i18n="format_3_h">Hierbas y hojas listas para usar</h3>
-
-  <p data-i18n="format_3_p">Propuesta de hierbas y hojas lavadas en bolsas para cocina.</p>
-</article>
-
-  <article class="card horeca-format"><span class="horeca-status"><span data-i18n="study">En estudio</span></span>
-  <h3 data-i18n="format_4_h">Corte fresco</h3>
-
-  <p data-i18n="format_4_p">Propuesta de vegetales cortados para mise en place, como cebolla en cubos o pico de gallo.</p>
-</article>
-</div>
-
-  <p data-i18n="formats_note">Los formatos, tamaños y condiciones se acuerdan por cocina; consúltanos qué está disponible hoy.</p>
-</section>
+  <section class="panel kitchen-formats" id="formatos" aria-labelledby="formats-title">
+    <h2 id="formats-title" data-i18n="formats_h">Formatos para cocina</h2>
+    <div class="format-spread">
+      <article class="format-feature">
+        <span class="format-kicker"><span aria-hidden="true"></span><span data-i18n="ask">A consultar</span></span>
+        <img src="assets/horeca-formato-granel-v1.webp" width="768" height="512" loading="lazy" decoding="async" data-i18n-alt="format_1_alt" alt="Tomates en la balanza de una cocina.">
+        <div class="format-feature-copy"><h3 data-i18n="format_1_h">Productos a granel</h3>
+          <p data-i18n="format_1_p">Frutas y vegetales por peso, sin empaque individual. Cada caja identifica el producto, el calibre, el peso y la fecha de empaque.</p>
+          <a href="#consulta" class="format-link"><span data-i18n="formats_cta">Consultar disponibilidad</span> <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <div class="format-studies">
+        <h3 class="format-kicker" data-i18n="formats_study">Formatos en estudio</h3>
+        <ul>
+        <li><img src="assets/horeca-formato-retorno-v1.webp" width="768" height="512" loading="lazy" decoding="async" data-i18n-alt="format_2_alt" alt="Cajas vacías que se encajan para su devolución."><div><h3 data-i18n="format_2_h">Cajas retornables</h3>
+          <p data-i18n="format_2_p">La cocina devuelve las cajas vacías en la siguiente entrega para reducir el uso de cartón.</p></div></li>
+        <li><img src="assets/horeca-formato-hierbas-v1.webp" width="768" height="512" loading="lazy" decoding="async" data-i18n-alt="format_3_alt" alt="Una bolsa transparente de hierbas y hojas verdes."><div><h3 data-i18n="format_3_h">Hierbas y hojas lavadas</h3>
+          <p data-i18n="format_3_p">Cilantro y hojas lavadas en bolsas para el servicio de cocina.</p></div></li>
+        <li><img src="assets/horeca-formato-corte-v1.webp" width="768" height="512" loading="lazy" decoding="async" data-i18n-alt="format_4_alt" alt="Cebolla en cubos y pico de gallo en bandejas de cocina."><div><h3 data-i18n="format_4_h">Vegetales cortados</h3>
+          <p data-i18n="format_4_p">Cebolla en cubos o pico de gallo para agilizar la mise en place.</p></div></li>
+        </ul>
+      </div>
+    </div>
+    <p class="formats-note" data-i18n="formats_note">Los formatos, tamaños y condiciones se acuerdan por cocina; consúltanos qué está disponible hoy.</p>
+  </section>
 
   <section class="panel horeca-work" id="como-trabajamos" aria-labelledby="how-heading">
     <div class="horeca-work-copy">
@@ -238,15 +232,15 @@ const i18n = {
     "who_4": "Cafeterías y bares",
     "formats_h": "Formatos para cocina",
     "ask": "A consultar",
-    "format_1_h": "Por peso, sin empaque de góndola",
-    "format_1_p": "Productos por peso en cajas a granel, con una etiqueta sencilla: producto, calibre, peso y fecha de empaque.",
+    "format_1_h": "Productos a granel",
+    "format_1_p": "Frutas y vegetales por peso, sin empaque individual. Cada caja identifica el producto, el calibre, el peso y la fecha de empaque.",
     "study": "En estudio",
     "format_2_h": "Cajas retornables",
-    "format_2_p": "Propuesta de cajas reutilizables que se intercambian en la entrega para reducir los residuos de cartón.",
-    "format_3_h": "Hierbas y hojas listas para usar",
-    "format_3_p": "Propuesta de hierbas y hojas lavadas en bolsas para cocina.",
-    "format_4_h": "Corte fresco",
-    "format_4_p": "Propuesta de vegetales cortados para mise en place, como cebolla en cubos o pico de gallo.",
+    "format_2_p": "La cocina devuelve las cajas vacías en la siguiente entrega para reducir el uso de cartón.",
+    "format_3_h": "Hierbas y hojas lavadas",
+    "format_3_p": "Cilantro y hojas lavadas en bolsas para el servicio de cocina.",
+    "format_4_h": "Vegetales cortados",
+    "format_4_p": "Cebolla en cubos o pico de gallo para agilizar la mise en place.",
     "formats_note": "Los formatos, tamaños y condiciones se acuerdan por cocina; consúltanos qué está disponible hoy.",
     "how_h": "Cómo trabajamos",
     "work_alt": "Un chef recibe un ají rojo para revisar la entrega junto a una balanza de cocina.",
@@ -298,15 +292,15 @@ const i18n = {
     "who_4": "Cafés & bars",
     "formats_h": "Kitchen formats",
     "ask": "Ask us",
-    "format_1_h": "By weight, without shelf packaging",
-    "format_1_p": "Produce packed by weight in bulk boxes or crates, with a simple label: product, size grade, weight and packing date.",
+    "format_1_h": "Bulk produce",
+    "format_1_p": "Fruit and vegetables ordered by weight, without individual retail packs. Each box lists the product, size, weight and packing date.",
     "study": "Under study",
     "format_2_h": "Returnable crates",
-    "format_2_p": "Proposed reusable crates exchanged at delivery to reduce cardboard waste.",
-    "format_3_h": "Ready-to-use herbs and leaves",
-    "format_3_p": "Proposed washed herbs and leaves in kitchen bags.",
-    "format_4_h": "Fresh-cut produce",
-    "format_4_p": "Proposed cut vegetables for mise en place, such as diced onion or pico de gallo.",
+    "format_2_p": "The kitchen returns empty crates at the next delivery to cut down on cardboard.",
+    "format_3_h": "Washed herbs & greens",
+    "format_3_p": "Washed cilantro and salad greens packed in bags for kitchen service.",
+    "format_4_h": "Fresh-cut vegetables",
+    "format_4_p": "Diced onion or pico de gallo to speed up prep before service.",
     "formats_note": "Formats, sizes and conditions are agreed for each kitchen; ask us what is available today.",
     "how_h": "How we work",
     "work_alt": "A chef receives a red pepper to check the delivery beside a kitchen scale.",
@@ -327,7 +321,31 @@ const i18n = {
     "who_4_p": "Fresh lime for juices, limeade and cocktails."
   }
 };
+Object.assign(i18n.es, {
+  "who_1_alt": "Bufé de desayuno de hotel con papaya en rodajas.",
+  "who_2_alt": "Una chef termina un plato con tomate y albahaca en el pase.",
+  "who_3_alt": "Servicio de brochetas de ajíes en una recepción.",
+  "who_4_alt": "Preparación de una limonada con limón fresco en la barra.",
+  "format_1_alt": "Tomates en la balanza de una cocina.",
+  "format_2_alt": "Cajas vacías que se encajan para su devolución.",
+  "format_3_alt": "Una bolsa transparente de hierbas y hojas verdes.",
+  "format_4_alt": "Cebolla en cubos y pico de gallo en bandejas de cocina.",
+  "formats_cta": "Consultar disponibilidad",
+  "formats_study": "Formatos en estudio"
+});
 Object.assign(i18n.es, {nav_business:'Negocios',nav_business_b2b:'Para supermercados',nav_business_horeca:'Para hoteles y restaurantes'});
+Object.assign(i18n.en, {
+  "who_1_alt": "Hotel breakfast buffet with a platter of sliced papaya.",
+  "who_2_alt": "A restaurant chef finishes a tomato and basil dish at the pass.",
+  "who_3_alt": "A server passes a tray of sweet pepper skewers at a reception.",
+  "who_4_alt": "Fresh limeade being prepared at a café bar.",
+  "format_1_alt": "Fresh tomatoes on a kitchen scale.",
+  "format_2_alt": "Empty produce crates nested for return.",
+  "format_3_alt": "A clear kitchen bag of fresh herbs and greens.",
+  "format_4_alt": "Diced onion and pico de gallo in prep pans.",
+  "formats_cta": "Ask about availability",
+  "formats_study": "Formats under consideration"
+});
 Object.assign(i18n.en, {nav_business:'Business',nav_business_b2b:'For supermarkets',nav_business_horeca:'For hotels & restaurants'});
 let lang = 'es';
 try { if (localStorage.getItem('gv-lang') === 'en') lang = 'en'; } catch(e) {}

@@ -1,0 +1,143 @@
+/* Kitchen illustrations use the same white paper and fine rules as the produce catalogue. */
+.botanical-site .horeca-cover { padding-block:clamp(20px,2.5vw,36px); }
+.horeca-cover .ph-grid { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); }
+.botanical-site .horeca-cover h1 { font-size:clamp(2.15rem,3.9vw,3.7rem); }
+.horeca-cover .horeca-figure>img { background:#fff; }
+#como-trabajamos,#para-quien,#formatos { scroll-margin-top:96px; }
+.horeca-work {
+  display:grid;
+  grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+  align-items:center;
+  gap:clamp(22px,3.4vw,54px);
+  padding:clamp(24px,2.8vw,40px) var(--pad);
+}
+.horeca-work h2 { font-size:clamp(1.65rem,2.9vw,2.65rem); }
+.horeca-work-steps { padding:0; margin:18px 0 0; list-style:none; counter-reset:service; }
+.horeca-work-steps li { display:grid; grid-template-columns:1.6rem 1fr; gap:4px 9px; border-top:1px solid #c4c6be; padding:12px 0; counter-increment:service; }
+.horeca-work-steps li:last-child { padding-bottom:0; }
+.horeca-work-steps li::before { content:counter(service); grid-row:span 2; font:600 1.08rem/1.3 Georgia,serif; color:#405944; }
+.horeca-work-steps h3 { font:650 1.01rem/1.24 var(--body); text-transform:none; letter-spacing:normal; }
+.horeca-work-steps p { grid-column:2; font-size:.89rem; line-height:1.45; }
+.horeca-work-art { margin:0; min-width:0; }
+.horeca-work-art img { width:100%; height:auto; display:block; }
+.horeca-palapa-mark { display:block; width:min(160px,48%); height:auto; margin-bottom:12px; }
+.horeca-pv-art .horeca-figure { width:100%; }
+.horeca-enquiry { grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr); }
+.horeca-enquiry .b2b-left { padding:clamp(20px,2.4vw,34px) var(--pad); }
+.horeca-enquiry .b2b-left h2 { font-size:clamp(1.9rem,3.3vw,3.15rem); }
+.horeca-enquiry .friendly-form { max-width:none; gap:17px; margin-top:16px; }
+.horeca-enquiry .contact-choices:has(input[name="business"]) label { flex:0 1 auto; }
+.horeca-enquiry .contact-choices:has(input[name="business"]) span { padding-inline:clamp(10px,1.15vw,16px); }
+.horeca-enquiry .friendly-form>p:first-child { margin:0; }
+.horeca-enquiry .horeca-proposal { display:block; min-width:0; border-inline-start:var(--hairline); }
+.horeca-proposal-inner { position:sticky; top:92px; padding:clamp(16px,1.9vw,28px); }
+.horeca-consult-art { display:block; width:100%; height:auto; }
+.horeca-proposal-copy { border-top:var(--hairline); padding-top:16px; margin-top:12px; }
+.horeca-proposal-copy h3 { font:600 clamp(1.35rem,1.95vw,1.8rem)/1.12 Georgia,serif; text-transform:none; }
+.horeca-proposal-copy ul { list-style:none; padding:0; margin:12px 0 0; }
+.horeca-proposal-copy li { padding:6px 0 6px 1rem; margin:0; font-size:.90rem; line-height:1.36; position:relative; }
+.horeca-proposal-copy li::before { content:""; width:5px; height:5px; position:absolute; inset:calc(.68em + 4px) auto auto 0; background:#48634c; }
+@media(max-height:635px) { .horeca-proposal-inner { position:static; } }
+@media(max-width:760px) {
+  .horeca-cover .ph-grid,.horeca-work,.horeca-enquiry { grid-template-columns:minmax(0,1fr); }
+  .horeca-work { gap:18px; }
+  .horeca-enquiry .horeca-proposal { border-inline-start:0; border-top:var(--hairline); }
+  .horeca-proposal-inner { position:static; }
+  #como-trabajamos,#para-quien,#formatos { scroll-margin-top:165px; }
+}
+
+/* Hospitality audiences */
+.kitchen-audiences {
+  padding: clamp(18px, 2vw, 28px) var(--pad);
+}
+.kitchen-audiences > h2 {
+  margin-bottom: 17px;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+}
+.kitchen-audiences-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ink);
+}
+.kitchen-audiences-list li {
+  padding: 12px clamp(14px, 1.8vw, 28px) 2px;
+  border-inline-start: 1px solid #dadad5;
+}
+.kitchen-audiences-list li:first-child {
+  padding-inline-start: 0;
+  border-inline-start: 0;
+}
+.kitchen-audiences-list li:last-child { padding-inline-end: 0; }
+.kitchen-audiences-list img {
+  display: block;
+  width: 100%;
+  height: clamp(135px, 13vw, 198px);
+  object-fit: contain;
+  object-position: center;
+  margin-bottom: 10px;
+}
+.kitchen-audiences-list h3 {
+  font: normal clamp(1.3rem, 1.85vw, 1.7rem)/1.07 Georgia, 'Times New Roman', serif;
+  letter-spacing: -.035em;
+  text-transform: none;
+}
+.kitchen-audiences-list p {
+  color: #42453c;
+  font-size: .94rem;
+  line-height: 1.45;
+  margin: 7px 0 0;
+  max-width: 31ch;
+}
+@media (max-width: 850px) {
+  .kitchen-audiences-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kitchen-audiences-list li { padding: 13px 12px; }
+  .kitchen-audiences-list li:nth-child(odd) { border-inline-start: 0; padding-inline-start: 0; }
+  .kitchen-audiences-list li:nth-child(even) { padding-inline-end: 0; }
+  .kitchen-audiences-list li:nth-child(n + 3) { border-top: 1px solid #dadad5; }
+}
+@media (max-width: 500px) {
+  .kitchen-audiences-list { grid-template-columns: 1fr; }
+  .kitchen-audiences-list li:nth-child(n) {
+    display: grid;
+    grid-template-columns: clamp(98px, 32vw, 144px) minmax(0, 1fr);
+    align-items: center;
+    gap: 15px;
+    padding: 11px 0;
+    border: 0;
+  }
+  .kitchen-audiences-list li + li { border-top: 1px solid #dadad5; }
+  .kitchen-audiences-list img { width: 100%; height: auto; aspect-ratio: 3/2; margin: 0; }
+  .kitchen-audiences-list p { margin-top: 4px; }
+}
+
+/* The orderable-by-enquiry format leads; the three proposals share one status. */
+.kitchen-formats { padding:clamp(18px,2vw,28px) var(--pad); }
+.kitchen-formats > h2 { font-size:clamp(1.35rem,2vw,1.8rem); margin:0 0 17px; }
+.format-spread { display:grid; grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr); border-block:1px solid var(--ink); }
+.format-feature { padding:clamp(16px,2vw,26px) clamp(24px,3vw,44px) 20px 0; position:relative; }
+.format-kicker { display:flex; align-items:center; gap:8px; color:#38563e; font:700 .72rem/1.3 var(--body); letter-spacing:.12em; text-transform:uppercase; }
+.format-feature .format-kicker > [aria-hidden] { width:8px; height:8px; border-radius:50%; background:#48634c; }
+.format-feature > img { width:100%; height:clamp(155px,14.5vw,216px); object-fit:contain; margin:4px auto 8px; }
+.format-feature-copy h3,.format-studies li h3 { font:normal clamp(1.35rem,1.8vw,1.7rem)/1.1 Georgia,'Times New Roman',serif; letter-spacing:-.035em; text-transform:none; }
+.format-feature-copy h3 { font-size:clamp(1.65rem,2.35vw,2.25rem); }
+.format-spread p { font-size:.94rem; line-height:1.45; color:#42453c; margin:6px 0 0; }
+.format-feature-copy p { max-width:49ch; }
+.format-link { display:inline-flex; align-items:center; gap:.65em; margin-top:12px; font-weight:700; font-size:.92rem; color:#27432e; text-decoration:underline; text-underline-offset:4px; }
+.format-link:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
+.format-studies { padding:clamp(16px,2vw,26px) 0 10px clamp(18px,2.5vw,36px); border-inline-start:1px solid #c6c9c1; }
+.format-studies .format-kicker { color:#555b51; margin:0 0 8px; }
+.format-studies ul { list-style:none; padding:0; margin:0; }
+.format-studies li { display:grid; grid-template-columns:clamp(96px,9.5vw,150px) minmax(0,1fr); align-items:center; gap:clamp(12px,1.5vw,20px); padding:9px 0; }
+.format-studies li + li { border-top:1px solid #d4d7ce; }
+.format-studies li img { width:100%; height:auto; aspect-ratio:3/2; object-fit:contain; }
+.kitchen-formats .formats-note { color:#5a5e56; margin:12px 0 0; line-height:1.4; font-size:.84rem; }
+@media (max-width:760px) {
+  .format-spread { grid-template-columns:minmax(0,1fr); }
+  .format-feature { padding:15px 0 19px; }
+  .format-feature > img { height:clamp(154px,37vw,230px); }
+  .format-studies { border-inline-start:0; border-top:1px solid #c6c9c1; padding:17px 0 0; }
+  .format-studies li { grid-template-columns:clamp(88px,27vw,145px) minmax(0,1fr); }
+}
