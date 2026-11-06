@@ -258,7 +258,10 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 .botanical-site .art-col>img{object-fit:contain}
 .botanical-site .nav-links a[aria-current="page"]{border-bottom-color:var(--ink)}
 .friendly-form{display:grid;gap:22px;margin-top:24px;max-width:560px}
-.friendly-form>p:first-child{margin:0;font-size:.95rem;max-width:36em}
+#friendly-contact{scroll-margin-top:110px}
+.friendly-form .quote-product{margin:0;padding:12px 14px;border-left:3px solid var(--ink);background:var(--alt,#f5f5f2);overflow-wrap:anywhere}
+@media(max-width:760px){#friendly-contact{scroll-margin-top:195px}}
+.friendly-form>p[data-contact="intro"]{margin:0;font-size:.95rem;max-width:36em}
 .friendly-form fieldset{border:0;min-width:0}
 .friendly-form legend,.friendly-form label{font-size:.82rem;font-weight:600;letter-spacing:0;text-transform:none}
 .friendly-form legend{margin-bottom:9px}

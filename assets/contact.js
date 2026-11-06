@@ -10,9 +10,12 @@
     Object.assign(copy.es, {intro:'Cuéntanos sobre tu cocina y consulta los formatos disponibles hoy.', business:'Tipo de negocio', hotel:'Hotel', restaurant:'Restaurante', catering:'Catering', cafe:'Cafetería o bar', businessOther:'Otro', covers:'Habitaciones o cubiertos al día (opcional)', subject:'Consulta para hoteles y restaurantes'});
     Object.assign(copy.en, {intro:'Tell us about your kitchen and ask about the formats available today.', business:'Type of business', hotel:'Hotel', restaurant:'Restaurant', catering:'Catering', cafe:'Café or bar', businessOther:'Other', covers:'Rooms or covers per day (optional)', subject:'Enquiry for hotels and restaurants'});
   }
-  let intent = 'catalog', channel = 'email';
+  const product = (new URLSearchParams(location.search).get('producto') || '')
+    .replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, 160);
+  let intent = product ? 'quote' : 'catalog', channel = 'email';
   const current = () => copy[document.documentElement.lang === 'en' ? 'en' : 'es'];
   mount.innerHTML = `<form class="friendly-form" id="contactRequest">
+    <p class="quote-product" hidden><span></span> <strong></strong></p>
     <p data-contact="intro"></p>
     <fieldset><legend data-contact="intent"></legend><div class="contact-choices">
       <label><input type="radio" name="intent" value="catalog" checked><span data-contact="catalog"></span></label>
@@ -43,9 +46,14 @@
     </div>
   </form>`;
   const form = mount.querySelector('form');
+  form.elements.namedItem('intent').value = intent;
+  const productRow = form.querySelector('.quote-product');
+  productRow.querySelector('strong').textContent = product;
   const status = mount.querySelector('.contact-status');
   const update = () => {
     const t = current();
+    productRow.hidden = !product || intent !== 'quote';
+    productRow.querySelector('span').textContent = t === copy.es ? 'Producto seleccionado:' : 'Selected product:';
     mount.querySelectorAll('[data-contact]').forEach(el => el.textContent = t[el.dataset.contact]);
     mount.querySelectorAll('[data-placeholder]').forEach(el => el.placeholder = t[el.dataset.placeholder]);
     mount.querySelector('#contact-submit').textContent = t.send;
@@ -69,6 +77,7 @@
     const from = data.get('name').trim();
     const lines = [
       t[intent],
+      intent === 'quote' && product && (t === copy.es ? 'Producto: ' : 'Product: ') + product,
       t.name + ': ' + from,
       data.get('company') && t.company.replace(/ \(.*?\)/, '') + ': ' + data.get('company'),
       t[channel] + ': ' + data.get(channel),
