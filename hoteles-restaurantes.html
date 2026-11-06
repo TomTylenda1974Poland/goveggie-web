@@ -135,7 +135,7 @@
   <h2><span translate="no">Palapa Verde</span> <span data-i18n="pv_h">para cocinas profesionales</span></h2>
 
   <p data-i18n="pv_p">Estamos preparando formatos profesionales de nuestros chutney, pesto, hummus y salsa: envases grandes para cocina y buffet, y porciones individuales. Todavía no están a la venta.</p>
-<a id="pvLink" class="btn arrow" href="https://palapa-verde.vercel.app/es/hoteles-restaurantes"><span data-i18n="pv_cta">Conocer</span> <span translate="no">Palapa Verde</span></a></div>
+<a id="pvLink" class="btn arrow" href="https://palapa-verde.vercel.app/es/hoteles-restaurantes" data-palapa-path="/hoteles-restaurantes"><span data-i18n="pv_cta">Conocer</span> <span translate="no">Palapa Verde</span></a></div>
 
     <div class="b2b-art art-col horeca-pv-art">
 
@@ -183,7 +183,7 @@
         <a href="supermercados.html" data-i18n="nav_b2b">Supermercados</a>
         <a href="hoteles-restaurantes.html" data-i18n="nav_horeca">Hoteles y restaurantes</a>
         <a href="contacto.html" data-i18n="nav_contact">Contacto</a>
-        <a href="https://palapa-verde-donpollolococabarete-9718.vercel.app" translate="no" class="notranslate">Palapa Verde</a>
+        <a href="https://palapa-verde.vercel.app/es" data-palapa-path="" translate="no" class="notranslate">Palapa Verde</a>
       </div>
       <div class="f-social">
         <a href="contacto.html" aria-label="Instagram"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg></a>
@@ -198,6 +198,7 @@
   </div>
 </footer>
 <a class="b2b-sticky" href="#consulta" data-i18n="form_h">Hablemos de tu cocina</a>
+<script src="assets/language.js?v=1"></script>
 <script>
 const i18n = {
   "es": {
@@ -347,11 +348,11 @@ Object.assign(i18n.en, {
   "formats_study": "Formats under consideration"
 });
 Object.assign(i18n.en, {nav_business:'Business',nav_business_b2b:'For supermarkets',nav_business_horeca:'For hotels & restaurants'});
-let lang = 'es';
-try { if (localStorage.getItem('gv-lang') === 'en') lang = 'en'; } catch(e) {}
+let lang = gvLocale.initial();
 const langBtn = document.getElementById('langBtn');
 function applyLang(){
   document.documentElement.lang = lang;
+  gvLocale.updateLinks(lang);
   langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const t = i18n[lang][el.dataset.i18n];
@@ -362,14 +363,14 @@ function applyLang(){
   if (delivery.getAttribute('src') !== delivery.dataset[lang]) delivery.src = delivery.dataset[lang];
   const pv = document.getElementById('pvLogo');
   if (pv) { pv.src = pv.dataset[lang]; pv.alt = lang === 'es' ? pv.dataset.altEs : pv.dataset.altEn; }
-  document.getElementById('pvLink').href = 'https://palapa-verde.vercel.app/' + lang + '/hoteles-restaurantes';
 }
 langBtn.addEventListener('click', ()=>{
   lang = lang === 'es' ? 'en' : 'es';
-  try { localStorage.setItem('gv-lang', lang); } catch(e) {}
+  gvLocale.choose(lang);
   applyLang();
 });
 if (lang !== 'es') applyLang();
+else gvLocale.updateLinks(lang);
 
 </script>
 <script src="assets/contact.js?v=horeca1"></script>
