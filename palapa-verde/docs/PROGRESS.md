@@ -74,6 +74,11 @@ Ostatnia aktualizacja: 2026-11-06 · gałąź `palapa-verde/shop` · wersja 0.2.
   bo repozytorium jest publiczne. Prompt do obrazów jest w `design-src/images-prompt.txt`.
 
 ## Dziennik
+- 2026-11-06 (samodzielnie, „co możesz, rób sam”): zmiany Codex (relacja „owned” wg decyzji właściciela, logo SVG,
+  bezpieczniejsze przepisy) sprawdzone i zacommitowane (`b8cd41c`); Lighthouse mobile na buildzie produkcyjnym:
+  wydajność 87–92, dostępność 100, dobre praktyki 100; `pnpm smoke <url>` do sprawdzania wdrożeń (przechodzi na
+  podglądzie). Zabezpieczenie projektu `catalog` zablokowane przez uprawnienia (wspólny zasób) — do zrobienia
+  przez właściciela, instrukcja w `docs/strategy/09-verification-and-handoff.md`.
 - 2026-11-06 (runda 2, według briefu właściciela): audyt i plan, rekomendacja relacji marek, uczciwy prelaunch
   (bez koszyka, fikcyjnych stanów i cen), przepisy (10 szkiców ES/EN, filtry, skalowanie, druk, WhatsApp),
   strony: Dónde comprar, Nosotros, FAQ, Negocios; QR `/p/{qrId}`; analityka bez dostawcy; plan social media
