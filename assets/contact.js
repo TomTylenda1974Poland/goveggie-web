@@ -2,8 +2,8 @@
   const mount = document.getElementById('friendly-contact');
   if (!mount) return;
   const copy = {
-    es: {intro:'Elige lo que necesitas y cómo prefieres que te contactemos.', intent:'¿En qué podemos ayudarte?', catalog:'Quiero el catálogo', quote:'Solicitar cotización', other:'Tengo una pregunta', name:'Tu nombre', company:'Empresa (opcional)', channel:'¿Cómo prefieres que te contactemos?', email:'Correo electrónico', phone:'WhatsApp', detail:'Algo más que debamos saber (opcional)', submitCatalog:'Solicitar catálogo', submitQuote:'Solicitar cotización', submitOther:'Enviar consulta', note:'Vista previa: este formulario todavía no envía solicitudes.', status:'Gracias por probar el formulario. Esta es una vista previa; no se ha enviado tu solicitud.', hint:'Solo necesitamos tu nombre y un medio de contacto.', companyHint:'Nombre de tu negocio', nameHint:'¿Cómo te llamas?', detailHint:'Productos, cantidades o cualquier duda…'},
-    en: {intro:'Choose what you need and how you would like us to contact you.', intent:'How can we help?', catalog:'Get the catalogue', quote:'Request a quote', other:'Ask a question', name:'Your name', company:'Company (optional)', channel:'How should we contact you?', email:'Email address', phone:'WhatsApp', detail:'Anything else we should know? (optional)', submitCatalog:'Request catalogue', submitQuote:'Request a quote', submitOther:'Send enquiry', note:'Preview: this form does not send requests yet.', status:'Thanks for trying the form. This is a preview; your request has not been sent.', hint:'We only need your name and one way to contact you.', companyHint:'Your business name', nameHint:'What’s your name?', detailHint:'Products, quantities or any questions…'}
+    es: {intro:'Elige lo que necesitas y cómo prefieres que te contactemos.', intent:'¿En qué podemos ayudarte?', catalog:'Quiero el catálogo', quote:'Solicitar cotización', other:'Tengo una pregunta', name:'Tu nombre', company:'Empresa (opcional)', channel:'¿Cómo prefieres que te contactemos?', email:'Correo electrónico', phone:'WhatsApp', detail:'Algo más que debamos saber (opcional)', send:'Abrir correo para enviar', note:'Abriremos el mensaje listo para que lo envíes desde tu correo.', status:'Si el borrador no se abrió, copia tu consulta y envíala a', copy:'Copiar consulta', copied:'Consulta copiada', manual:'Selecciona y copia el texto de tu consulta.', hint:'Solo necesitamos tu nombre y un medio de contacto.', companyHint:'Nombre de tu negocio', nameHint:'¿Cómo te llamas?', detailHint:'Productos, cantidades o cualquier duda…'},
+    en: {intro:'Choose what you need and how you would like us to contact you.', intent:'How can we help?', catalog:'Get the catalogue', quote:'Request a quote', other:'Ask a question', name:'Your name', company:'Company (optional)', channel:'How should we contact you?', email:'Email address', phone:'WhatsApp', detail:'Anything else we should know? (optional)', send:'Open email to send', note:'Your email app will open with the message ready for you to send.', status:'If the draft did not open, copy your enquiry and email it to', copy:'Copy enquiry', copied:'Enquiry copied', manual:'Select and copy your enquiry below.', hint:'We only need your name and one way to contact you.', companyHint:'Your business name', nameHint:'What’s your name?', detailHint:'Products, quantities or any questions…'}
   };
   let intent = 'catalog', channel = 'email';
   const current = () => copy[document.documentElement.lang === 'en' ? 'en' : 'es'];
@@ -26,7 +26,12 @@
     <p class="contact-hint" data-contact="hint"></p>
     <button class="btn" type="submit" id="contact-submit"></button>
     <p class="contact-preview" data-contact="note"></p>
-    <p class="contact-status" role="status" hidden></p>
+    <div class="contact-status" hidden>
+      <p><span data-contact="status"></span> <a href="mailto:james@goveggie.life">james@goveggie.life</a>.</p>
+      <button type="button" data-contact="copy"></button>
+      <textarea aria-label="GoVeggie" readonly hidden></textarea>
+      <span role="status"></span>
+    </div>
   </form>`;
   const form = mount.querySelector('form');
   const status = mount.querySelector('.contact-status');
@@ -34,14 +39,14 @@
     const t = current();
     mount.querySelectorAll('[data-contact]').forEach(el => el.textContent = t[el.dataset.contact]);
     mount.querySelectorAll('[data-placeholder]').forEach(el => el.placeholder = t[el.dataset.placeholder]);
-    mount.querySelector('#contact-submit').textContent = t[{catalog:'submitCatalog',quote:'submitQuote',other:'submitOther'}[intent]];
+    mount.querySelector('#contact-submit').textContent = t.send;
     for (const type of ['email','phone']) {
       const input = mount.querySelector('#contact-'+type);
       mount.querySelector('#'+type+'-field').hidden = type !== channel;
       input.disabled = type !== channel;
       input.required = type === channel;
     }
-    if (!status.hidden) status.textContent = t.status;
+
   };
   form.addEventListener('change', e => {
     if (e.target.name === 'intent') intent = e.target.value;
@@ -49,10 +54,43 @@
     status.hidden = true;
     update();
   });
+  function buildDraft() {
+    const t = current();
+    const data = new FormData(form);
+    const from = data.get('name').trim();
+    const lines = [
+      t[intent],
+      t.name + ': ' + from,
+      data.get('company') && t.company.replace(/ \(.*?\)/, '') + ': ' + data.get('company'),
+      t[channel] + ': ' + data.get(channel),
+      data.get('message')
+    ];
+    return {subject: 'GoVeggie - ' + t[intent], body: lines.filter(Boolean).join('\r\n')};
+  }
   form.addEventListener('submit', e => {
     e.preventDefault();
-    status.textContent = current().status;
+    const {subject, body} = buildDraft();
+    const url = 'mailto:james@goveggie.life?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
     status.hidden = false;
+    status.querySelector('[role=status]').textContent = '';
+    status.querySelector('textarea').hidden = true;
+    window.location.href = url;
+  });
+  status.querySelector('button').addEventListener('click', async () => {
+    const {body} = buildDraft();
+    const result = status.querySelector('[role=status]');
+    try {
+      await navigator.clipboard.writeText(body);
+      result.textContent = current().copied;
+    } catch {
+      const field = status.querySelector('textarea');
+      field.value = body;
+      field.hidden = false;
+      field.focus();
+      field.select();
+      result.textContent = current().manual;
+    }
   });
   new MutationObserver(update).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
   update();

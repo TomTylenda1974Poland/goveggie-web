@@ -320,3 +320,10 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
  .contact-panel>.contact-portrait{padding:18px 14px 10px;gap:8px;border-top:none;border-bottom:var(--hairline)}
  .contact-portrait>img{width:auto;height:clamp(140px,39vw,160px)}
 }
+
+.supply-buyer,.supply-closing{display:none}
+@media(min-width:1061px) and (hover:hover) and (pointer:fine){
+ .botanical-site .supply-panel{justify-content:space-evenly;gap:clamp(20px,2vw,32px)}
+ .supply-panel .supply-buyer{display:block;max-width:50ch;margin:0 auto;font-size:1rem;line-height:1.55;text-align:center;text-wrap:pretty}
+ .supply-panel .supply-closing{display:block;font-family:var(--display);font-size:clamp(1.4rem,2.15vw,2.1rem);line-height:1.12;text-align:center;text-wrap:balance}
+}
