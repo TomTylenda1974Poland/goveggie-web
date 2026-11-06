@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { GO_VEGGIE_LIFE_HORECA_URL } from "@/content/brand";
+import { CONTACT, GO_VEGGIE_LIFE_HORECA_URL } from "@/content/brand";
 import { pageMetadata } from "@/lib/site";
 import { getDictionary, isLocale } from "@/lib/i18n";
 import { BusinessInquiry } from "./BusinessInquiry";
@@ -13,17 +13,15 @@ const art = "/media/horeca/consulta-comercial-v1.webp";
 
 const copy = {
   es: {
-    heading: "Hablemos de tu negocio",
-    intro: "¿Quieres ofrecer Palapa Verde en tu tienda, usar nuestras salsas en tu cocina o distribuirlas en tu zona?",
-    cta: "Preparar mi consulta",
+    heading: "Escríbenos",
+    intro: "¿Buscas un catálogo o muestras para tu negocio?",
     alt: "Una compradora prueba hummus de remolacha de Palapa Verde durante una conversación comercial.",
     caption: "Muestra para una conversación comercial · Ilustración",
     availability: "Disponibilidad y condiciones comerciales",
   },
   en: {
-    heading: "Let’s talk about your business",
-    intro: "Would you like to stock Palapa Verde, serve our sauces in your kitchen or distribute them in your area?",
-    cta: "Prepare my enquiry",
+    heading: "Get in touch",
+    intro: "Looking for a catalogue or samples for your business?",
     alt: "A buyer tastes Palapa Verde beet hummus during a business conversation.",
     caption: "A sample for a trade enquiry · Illustration",
     availability: "Availability and trade terms",
@@ -45,11 +43,11 @@ export default async function BusinessPage({ params }: Props) {
 
   return (
     <>
-      <section className={`panel ${styles.hero}`} aria-labelledby="business-heading">
+      <section id="contacto" className={`panel ${styles.hero}`} aria-labelledby="business-heading">
         <div className={styles.heroCopy}>
           <h1 id="business-heading">{page.heading}</h1>
           <p>{page.intro}</p>
-          <a className="btn arrow" href="#contacto">{page.cta}</a>
+          {CONTACT.salesEmail && <BusinessInquiry locale={locale} email={CONTACT.salesEmail} />}
         </div>
         <figure className={styles.art}>
           <Image src={art} width={1200} height={800} alt={page.alt}
@@ -57,8 +55,6 @@ export default async function BusinessPage({ params }: Props) {
           <figcaption>{page.caption}</figcaption>
         </figure>
       </section>
-
-      <BusinessInquiry locale={locale} />
 
       <div className={styles.links}>
         <section id="hoteles" aria-labelledby="h-hoteles">

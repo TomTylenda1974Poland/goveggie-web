@@ -1,7 +1,7 @@
 .hero { display:grid; grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr); }
 .heroCopy { padding:clamp(20px,3.6vw,52px) var(--pad); align-self:center; }
 .heroCopy h1 { max-width:12ch; font-size:clamp(2.3rem,4.5vw,4.4rem); line-height:1.02; }
-.heroCopy p { max-width:35ch; margin:14px 0 18px; font-size:clamp(1rem,1.32vw,1.2rem); line-height:1.48; }
+.heroCopy > p { max-width:42ch; margin:14px 0 18px; font-size:clamp(1rem,1.32vw,1.2rem); line-height:1.48; }
 .art { min-width:0; margin:0; align-self:stretch; display:grid; align-content:center; border-inline-start:var(--hairline); }
 .art img { width:100%; height:auto; display:block; max-height:400px; object-fit:contain; }
 .art figcaption { border-top:var(--hairline); margin:0; padding:6px 12px; color:var(--meta); font-size:.77rem; }
