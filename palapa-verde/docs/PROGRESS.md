@@ -74,6 +74,10 @@ Ostatnia aktualizacja: 2026-11-06 · gałąź `palapa-verde/shop` · wersja 0.2.
   bo repozytorium jest publiczne. Prompt do obrazów jest w `design-src/images-prompt.txt`.
 
 ## Dziennik
+- 2026-11-06: **na produkcję trafiła wersja z podglądu** (commit `81e5c29`, wdrożenie `dpl_6fuEtnhaNpqhpkmAwNbPfdfCLRt2`),
+  za zgodą właściciela („Tak, na produkcję”). Smoke test na https://palapa-verde.vercel.app przechodzi. Na produkcji szkice
+  przepisów są ukryte (`SHOW_DRAFT_RECIPES` nieustawione), strona ma `noindex`. Wycofanie: Vercel → palapa-verde →
+  Deployments → „Promote” przy `dpl_FCqWavB3Z9sg8DGhfe9cPsjxGY4v` (poprzedni sklep) albo `dpl_eWiEes4PdhFK4LkKvJoigfHsRvav` (wersja nocna).
 - 2026-11-06 (samodzielnie, „co możesz, rób sam”): zmiany Codex (relacja „owned” wg decyzji właściciela, logo SVG,
   bezpieczniejsze przepisy) sprawdzone i zacommitowane (`b8cd41c`); Lighthouse mobile na buildzie produkcyjnym:
   wydajność 87–92, dostępność 100, dobre praktyki 100; `pnpm smoke <url>` do sprawdzania wdrożeń (przechodzi na
@@ -103,3 +107,5 @@ Zmiany sprawdzono lokalnie w kopii roboczej. Realne zdjęcia, test kuchenny, zat
 Do nagłówka i stopki w obu językach dodano nowy znak Palapa Verde: dwie lekkie linie dachu nad nazwą oraz zatwierdzony podpis właścicielski. Wersje SVG mają litery zamienione na krzywe; ikona karty używa samego daszku. Archiwalny znak, packshoty i materiały etykietowe zachowano. Przed użyciem na opakowaniach potrzebna jest fizyczna próba skali na właściwym materiale.
 
 6 listopada 2026 właściciel wybrał wariant B „Lekka palapa”. Daszek ma 28% optycznej szerokości nazwy Palapa Verde. Hiszpańska i angielska wersja mają mniejszy, wyśrodkowany podpis kursywą pod nazwą marki. Podpis ma łagodniejszy odcień zieleni i zajmuje 72% szerokości nazwy po hiszpańsku oraz około 65% po angielsku. Pliki SVG zawierają podpisy „Una marca de Go Veggie Life” i „A brand of Go Veggie Life”.
+
+Właściciel wskazał planszę z czterema przezroczystymi opakowaniami jako wzorzec stylistyczny. Etykiety mają jasne pole z łukiem i cienkim czarnym obrysem, rycinę głównego składnika, szeryfową nazwę produktu i czarny wariant B z małym podpisem Go Veggie Life. Kolor wnosi produkt i fotografia świeżych składników.
