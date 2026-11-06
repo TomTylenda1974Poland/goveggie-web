@@ -108,3 +108,18 @@ See `docs/APPROVAL_CHECKLIST.md` (16 items). The most important:
 - Published to web.goveggie.life as production deployment `dpl_GCPFtkP9DRcvB7KGaLJUnCBmqY1m`. The goveggie project's production branch is not the Codex branch, so it was redeployed to production manually, as before.
 - Rollback: Vercel → goveggie → Deployments → "Promote" on `dpl_85u2HRr8zP5LsYRKFsw4rChukQkr`.
 - goveggie Ignored Build Step (set by the owner): `git diff --quiet HEAD^ HEAD -- . ':(exclude)palapa-verde'`. Palapa-only pushes are skipped.
+
+## 2026-11-06: hotels and restaurants zone on both sites (owner: "Tak, publikuj obie")
+- **Go Veggie Life** (`codex/goveggie-botanical-contact` fast-forwarded to `bafd545`, from branch `goveggie/horeca`):
+  - new `hoteles-restaurantes.html` (ES/EN): kitchen formats with status tags ("A consultar" / "En estudio"), how we work,
+    Palapa Verde professional-line block, a hotel/restaurant variant of the mailto enquiry form (`assets/contact.js`);
+  - desktop nav groups Supermercados and Hoteles y restaurantes under "Negocios ▾" (`assets/nav.js`); mobile shows both links;
+  - three illustrative images generated with ChatGPT (`assets/horeca-*-v1.jpg`).
+  - Production deployment `dpl_6fX1UfvVb3Qn7QRKLjqUXYPEpdzq` (manual redeploy). Rollback: Promote `dpl_GCPFtkP9DRcvB7KGaLJUnCBmqY1m`.
+- **Palapa Verde** (`palapa-verde/shop` fast-forwarded to `544bb5a`, from branch `palapa-verde/horeca`):
+  - `/hoteles-restaurantes` merges Codex's page (kitchen photo, à la carte vs buffet, per-product table, enquiry builder)
+    with the proposed professional line (formats "Propuesto · por confirmar", ChatGPT image, label features, link to the GVL page);
+  - trial sizes removed until confirmed; `tests/rules.test.ts` fails if sizes or prices appear; `/negocios` links to the page;
+  - Codex review (`codex review --base` the previous shop): no findings. 80 tests, typecheck, build, `pnpm smoke` on production pass.
+  - Production deployment `dpl_83rG4qMtHvmcXyPpxaaFm3TuMkfP` (manual redeploy; `SHOW_DRAFT_RECIPES=true` still applies). Rollback: Promote `dpl_A3ahJ93hT2rpWEj252EKyWaUA8Vt`.
+- The two pages link to each other, so roll back both together. Formats, sizes and conditions stay owner decisions (`APPROVAL_CHECKLIST.md` item 17).
