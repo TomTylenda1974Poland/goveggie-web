@@ -99,3 +99,12 @@ See `docs/APPROVAL_CHECKLIST.md` (16 items). The most important:
   Suggested setting: Vercel → catalog → Settings → Git → Ignored Build Step:
   `if [ -n "$VERCEL_GIT_COMMIT_REF" ]; then exit 0; fi; exit 1`
   This skips only Git-triggered builds. CLI deploys keep working.
+
+## 2026-11-06: Palapa Verde block on the Go Veggie Life site (owner-approved)
+- `nosotros.html` (About page) on branch `codex/goveggie-botanical-contact`, commit `238cef9` (fast-forward, one file):
+  - variant B logo served from palapa-verde.vercel.app (ES/EN swap);
+  - current range and honest status replace "Hierbas frescas del norte" and the soups / own-shop copy;
+  - links go to https://palapa-verde.vercel.app.
+- Published to web.goveggie.life as production deployment `dpl_GCPFtkP9DRcvB7KGaLJUnCBmqY1m`. The goveggie project's production branch is not the Codex branch, so it was redeployed to production manually, as before.
+- Rollback: Vercel → goveggie → Deployments → "Promote" on `dpl_85u2HRr8zP5LsYRKFsw4rChukQkr`.
+- goveggie Ignored Build Step (set by the owner): `git diff --quiet HEAD^ HEAD -- . ':(exclude)palapa-verde'`. Palapa-only pushes are skipped.
