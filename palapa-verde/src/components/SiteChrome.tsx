@@ -31,9 +31,9 @@ export function SiteHeader({ locale, prelaunch }: { locale: Locale; prelaunch: b
       <header className="site-header">
         <div className="wrap">
           <div className="panel nav">
-            <Link className="logo" href={`/${locale}`} aria-label={`${brandName(locale)} — ${t.nav.home}`}>
+            <PageStartLink className="logo" href={`/${locale}`} aria-label={`${brandName(locale)} — ${t.nav.home}`}>
               <PalapaLogo locale={locale} />
-            </Link>
+            </PageStartLink>
             <nav className="nav-links" aria-label={t.nav.menu}>
               {links.map(([href, label]) => href === `/${locale}/hoteles-restaurantes` ? (
                 <PageStartLink key={href} href={href}>{label}</PageStartLink>
