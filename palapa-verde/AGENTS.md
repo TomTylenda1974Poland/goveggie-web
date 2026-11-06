@@ -49,7 +49,10 @@ pnpm check        # all three; run before every push
 ## Deployments
 Vercel project **palapa-verde** (Hobby, scope `donpollolococabarete-9718`) is connected to this repo
 with Root Directory `palapa-verde`. Every push to a non-`main` branch builds a **preview**.
-`main` is production. Merging into `main` replaces the live one-pager, so do it only when the owner approves.
+Production currently runs the shop, built from branch `palapa-verde/shop` (owner-approved redeploy, 2026-11-06).
+`main` still holds the old one-pager: never push `palapa-verde/` changes to `main`, and never run `vercel --prod`
+for this project, until the branch is merged with the owner's approval (and the `catalog` project issue in
+`docs/PROGRESS.md` is resolved).
 See `docs/PROGRESS.md` for the current preview URL.
 
 ## Working with Codex

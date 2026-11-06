@@ -45,9 +45,15 @@ Ostatnia aktualizacja: 2026-11-05 · gałąź `palapa-verde/shop` · wersja 0.1.
 ## Ostatni podgląd
 - Gałąź (zawsze najnowsza wersja): https://palapa-verde-git-palapa-verde-shop-donpollolococabarete-9718.vercel.app/es
 - Wdrożenie z 2026-11-05: `dpl_Chqk54KV7Aw3nitQNSstjfdwKkpk`, commit `0c05bc1`, status READY.
-- Produkcja (https://palapa-verde.vercel.app): **od 2026-11-06 01:34 UTC jest tam inna, statyczna wersja**
-  („El campo, hecho cocina.”), wdrożona z CLI w innej sesji, spoza gita. Kopia leży w
-  `legacy/v6_2026-11-06_0134_jb4tzoi11/`. Promote sklepu czeka na decyzję właściciela, którą wersję zostawić.
+- **Produkcja (https://palapa-verde.vercel.app) = sklep z tej gałęzi od 2026-11-06.** Właściciel zgodził się
+  zastąpić nocną wersję. Wdrożenie `dpl_FCqWavB3Z9sg8DGhfe9cPsjxGY4v` to build produkcyjny commita `89d9234`
+  (redeploy podglądu `dpl_DwJaMUc3DxK1ZFwmsT6He4HU4hHD`; samo promote podglądu Vercel odrzucił błędem 422).
+  `main` nie był ruszany.
+- Wycofanie: w Vercel → palapa-verde → Deployments → „Promote” przy `dpl_eWiEes4PdhFK4LkKvJoigfHsRvav`
+  (nocna wersja, kopia w `legacy/v6_…`) albo `dpl_AQ1kji2AAs2KL7DT8SXjam8pVfFh` (stary one-pager).
+- **Uwaga:** `main` nadal ma stary `palapa-verde/index.html`. Push do `main`, który zmieni folder `palapa-verde/`,
+  albo `vercel --prod` z innej sesji nadpisze produkcję. Przed takim krokiem trzeba najpierw zrobić merge tej gałęzi
+  (i rozwiązać sprawę projektu `catalog`, opisaną niżej).
 - Sprawdzone na podglądzie: wszystkie strony zwracają 200, nieznana strona 404, `noindex` jest,
   zamówienie testowe przez `/api/orders` działa.
 
@@ -68,6 +74,8 @@ Ostatnia aktualizacja: 2026-11-05 · gałąź `palapa-verde/shop` · wersja 0.1.
   bo repozytorium jest publiczne. Prompt do obrazów jest w `design-src/images-prompt.txt`.
 
 ## Dziennik
+- 2026-11-06: sklep wdrożony na produkcję palapa-verde.vercel.app za zgodą właściciela („Tak, zastąp”).
+  Nocna wersja z innej sesji jest zarchiwizowana w `legacy/v6_2026-11-06_0134_jb4tzoi11/`.
 - 2026-11-05: właściciel zatwierdził nowy wygląd („Wygląd OK”).
 - 2026-11-05: odzyskany kod z Vercel, szkielet sklepu, warstwa integracji, testy, połączenie z Vercel.
   Właściciel odrzucił pierwszą wersję grafiki („strasznie”), więc grafika jest od nowa: produkty z wartością
