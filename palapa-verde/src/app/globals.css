@@ -61,6 +61,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; l
 }
 .btn:hover:not(:disabled), .btn:focus-visible { background: var(--paper); color: var(--ink); }
 .btn--ghost { background: var(--paper); color: var(--ink); }
+/* Long labels wrap on phones instead of widening the page. */
+@media (max-width: 600px) { .btn { white-space: normal; max-width: 100%; text-align: center; } }
 .btn--ghost:hover:not(:disabled), .btn--ghost:focus-visible { background: var(--ink); color: var(--paper); }
 .btn:disabled { background: var(--paper-alt); color: var(--meta); border-color: var(--meta); cursor: not-allowed; }
 .link-btn { background: none; border: 0; text-decoration: underline; cursor: pointer; font-size: 0.78rem; }
