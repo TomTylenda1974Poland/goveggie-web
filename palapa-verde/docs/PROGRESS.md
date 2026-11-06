@@ -86,3 +86,13 @@ Ostatnia aktualizacja: 2026-11-06 · gałąź `palapa-verde/shop` · wersja 0.2.
 - 2026-11-05: odzyskany kod z Vercel, szkielet sklepu, warstwa integracji, testy, połączenie z Vercel.
   Właściciel odrzucił pierwszą wersję grafiki („strasznie”), więc grafika jest od nowa: produkty z wartością
   dodaną w opakowaniach według jego referencji, zdjęcia z ChatGPT (Codex).
+
+## 6 listopada 2026 — aktualizacja lokalna po decyzji właściciela
+
+Palapa Verde jest marką Go Veggie Life, głównego dostawcy jej składników. Zatwierdzony podpis pozostaje na stronie i wizualizacjach. Fakt konkretnego pochodzenia składnika wymaga sprawdzenia dla danego produktu. Producent i podmiot rejestrujący są odrębnymi, nieuzupełnionymi polami.
+
+W obu językach doprecyzowano dziesięć przepisów do testów kuchennych. Przelicznik zachowuje drobne miary i stałą ilość oleju dla tego samego naczynia. Wersja do druku uwzględnia wybraną liczbę porcji. Szkic pozwala przygotować listę zakupów z oznaczeniem statusu i alergenów. Udostępnianie publicznego linku jest dostępne dla zatwierdzonej receptury na docelowej domenie. Prawdziwa fotografia dania wyświetli się, kiedy redakcja uzupełni plik i opisy. Cała dziesiątka pozostaje w stanie draft.
+
+Zmiany sprawdzono lokalnie w kopii roboczej. Realne zdjęcia, test kuchenny, zatwierdzenie sklepów, etykiet i odbiorcy kontaktu pozostają zadaniami zespołu.
+
+Do nagłówka i stopki w obu językach dodano nowy znak Palapa Verde: dwie lekkie linie dachu nad nazwą oraz zatwierdzony podpis właścicielski. Wersje SVG mają litery zamienione na krzywe; ikona karty używa samego daszku. Archiwalny znak, packshoty i materiały etykietowe zachowano. Przed użyciem na opakowaniach potrzebna jest fizyczna próba skali na właściwym materiale.

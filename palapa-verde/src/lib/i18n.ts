@@ -71,7 +71,7 @@ const es = {
     allRecipes: "Todas las recetas",
     originHeading: "Palapa Verde y Go Veggie Life",
     originCta: "Visitar Go Veggie Life",
-    produceCaption: "Vegetales de Go Veggie Life",
+    produceCaption: "Ilustraciones de vegetales",
     peopleHeading: "Las personas detrás",
     peopleText:
       "Pronto te presentaremos al equipo y la cocina con fotos reales. Mientras tanto, las imágenes de producto de esta web son ilustraciones, y lo indicamos en cada una.",
@@ -246,6 +246,7 @@ const es = {
     checklist: {
       relationship: "Relación de marca con Go Veggie Life",
       manufacturer: "Fabricante y permiso sanitario de la planta",
+      registrant: "Titular del registro del producto",
       range: "Gama de lanzamiento (tres listas distintas)",
       recipes: "Recetas probadas en cocina",
       stockists: "Puntos de venta confirmados",
@@ -324,7 +325,7 @@ const en: Dictionary = {
     allRecipes: "All recipes",
     originHeading: "Palapa Verde and Go Veggie Life",
     originCta: "Visit Go Veggie Life",
-    produceCaption: "Go Veggie Life vegetables",
+    produceCaption: "Vegetable illustrations",
     peopleHeading: "The people behind it",
     peopleText:
       "We will soon introduce the team and the kitchen with real photos. Until then, the product images on this site are illustrations, and we say so on each one.",
@@ -498,6 +499,7 @@ const en: Dictionary = {
     checklist: {
       relationship: "Brand relationship with Go Veggie Life",
       manufacturer: "Manufacturer and plant sanitary permit",
+      registrant: "Product registration holder",
       range: "Launch range (three different lists)",
       recipes: "Kitchen-tested recipes",
       stockists: "Confirmed stockists",

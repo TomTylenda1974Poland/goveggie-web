@@ -64,14 +64,19 @@ describe("escalado de cantidades", () => {
   const line = (i: number, factor: number, locale: "es" | "en" = "es") => ingredientText(recipe.ingredients[i]!, factor, locale);
 
   it("redondea por unidad", () => {
-    expect(roundQty(123, "g")).toBe(125);
-    expect(roundQty(12.4, "g")).toBe(12);
-    expect(roundQty(0.6, "tbsp")).toBe(0.5);
-    expect(roundQty(0.125, "tsp")).toBe(0.125);
+    expect(roundQty(123, "g")).toBe(123);
+    expect(roundQty(12.4, "g")).toBe(12.4);
+    expect(roundQty(0.6, "tbsp")).toBe(0.6);
     expect(formatQty(0.125, "tsp")).toBe("⅛");
-    expect(roundQty(0.5, "pinch")).toBe(1);
+    expect(formatQty(1 / 32, "tsp")).toBe("1/32");
+    expect(formatQty(250 / 6, "g", "en")).toBe("41.7");
     expect(formatQty(1.5, "cup")).toBe("1½");
     expect(formatQty(0.25, "tsp")).toBe("¼");
+  });
+
+  it("mantiene el aceite de fritura para la misma sartén", () => {
+    const oil = RECIPES.flatMap((recipe) => recipe.ingredients).find((ing) => ing.scale === "per-pan")!;
+    expect(ingredientText(oil, 0.25, "en")).toBe(ingredientText(oil, 2, "en"));
   });
 
   it("escala gramos, medidas y unidades con singular y plural", () => {
@@ -80,15 +85,14 @@ describe("escalado de cantidades", () => {
     expect(line(4, 0.5)).toBe("1 pan de agua");
     expect(line(4, 1)).toBe("2 panes de agua");
     expect(line(4, 1, "en")).toBe("2 Dominican bread rolls");
-    expect(line(8, 1)).toBe("60 g (aprox. 4 cdas.) de Chutney de Cilantro Palapa Verde");
-    expect(line(2, 0.5)).toBe("⅛ cdta. de pimienta negra molida");
-    expect(line(8, 2, "en")).toBe("120 g (about 8 tbsp) Palapa Verde Cilantro Chutney");
+    expect(line(8, 1)).toBe("60 g de Chutney de Cilantro Palapa Verde");
+    expect(line(8, 2, "en")).toBe("120 g Palapa Verde Cilantro Chutney");
   });
 
-  it("marca opcionales y «al gusto»", () => {
+  it("indica la cantidad exacta de cilantro opcional", () => {
     const casabe = RECIPES.find((r) => r.slug === "casabe-con-hummus-de-remolacha-y-aguacate")!;
-    const cilantro = casabe.ingredients.find((i) => i.qty === null)!;
-    expect(ingredientText(cilantro, 1, "es")).toBe("Hojas de cilantro, al gusto (opcional)");
+    const cilantro = casabe.ingredients.find((i) => i.optional && i.name.es === "hojas de cilantro")!;
+    expect(ingredientText(cilantro, 1, "es")).toBe("2 g de hojas de cilantro (opcional)");
   });
 
   it("el enlace de WhatsApp solo lleva el texto compartido", () => {
@@ -99,8 +103,10 @@ describe("escalado de cantidades", () => {
 });
 
 describe("hechos de marca y prelanzamiento", () => {
-  it("la relación de marca queda sin confirmar por defecto y sin aval", () => {
-    expect(BRAND_RELATIONSHIP).toBe("unconfirmed");
+  it("la marca y el proveedor principal están confirmados por el propietario", () => {
+    expect(BRAND_RELATIONSHIP).toBe("owned");
+    expect(RELATIONSHIP_COPY.owned.endorsement).toEqual({ es: "Una marca de Go Veggie Life", en: "A brand of Go Veggie Life" });
+    expect(RELATIONSHIP_COPY.owned.statement.en).toContain("main ingredient supplier");
     expect(RELATIONSHIP_COPY.unconfirmed.endorsement).toBeNull();
     expect(RELATIONSHIP_COPY.unconfirmed.statement.es).not.toMatch(/una marca de go veggie life|elaborado con vegetales de/i);
   });

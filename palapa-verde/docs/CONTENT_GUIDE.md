@@ -18,7 +18,7 @@ All content is TypeScript in the repo. After any change, run `pnpm check` and op
 ## Recipe
 Add an object to `RECIPES` in `src/content/recipes.ts`:
 - `slug` (Spanish, hyphens), `status: "draft"`, `product` (the product slug), times, `servings`, `occasions`.
-- `ingredients`: grams/ml for weighed items, `cup`/`tbsp`/`tsp`/`pinch` for kitchen measures, or `unit: null` with a singular/plural noun for counted items. Exactly one line has `product` (+ `alt` household measure).
+- `ingredients`: grams/ml for weighed items, `cup`/`tbsp`/`tsp`/`pinch` for kitchen measures, or `unit: null` with a singular/plural noun for counted items. Exactly one ingredient line has `product`. Add a household equivalent only when verified. Use `scale: "per-pan"` for frying oil loaded into the same pan, independent of servings.
 - 3–5 `steps`, `substitutions`, `allergens` for the other ingredients. Never write "tested", calories or cost.
 - When it has been cooked and photographed: set `media.photo` and `status: "tested"`.
 - Tests check the structure: `pnpm test`.
@@ -33,8 +33,8 @@ The list is not live stock. The page says so.
 
 ## Brand facts and contact
 `src/content/brand.ts`:
-- `BRAND_RELATIONSHIP`, after the owner confirms (see docs/strategy/02-brand-relationship.md)
-- `MANUFACTURER`
+- `BRAND_RELATIONSHIP = "owned"`, as confirmed by the owner on 6 November 2026. Go Veggie Life is the main ingredient supplier. Validate provenance before naming a supplier on any individual product.
+- `MANUFACTURER` and `REGISTRATION_HOLDER` are separate fields pending confirmation.
 - `CONTACT.salesEmail` / `whatsappNumber`: only owner-approved public channels. Setting one makes the contact buttons appear on `/negocios`.
 
 ## FAQ

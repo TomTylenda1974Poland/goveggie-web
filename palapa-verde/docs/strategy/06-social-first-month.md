@@ -4,7 +4,7 @@
 
 Planning window: December 2026, days 1–30; shift the schedule if approvals are late. This is a prototype-awareness plan, not a launch announcement. The five named products are prototypes, not on sale and not an approved launch range. Mock inventory is never evidence of availability. Existing illustrative website images are not real product footage.
 
-Use the exact placeholder **[relación de marca por confirmar]** wherever copy would state ownership, sourcing or manufacturing. Do not name a manufacturer or plant. Do not turn Go Veggie Life supplier activity into a Palapa Verde sourcing claim. The captions below avoid those claims entirely.
+Use the approved endorsement “Una marca de Go Veggie Life” / “A brand of Go Veggie Life”. Go Veggie Life is the main ingredient supplier. Product-specific ingredient origins, distribution agreements and manufacturing need separate supporting records.
 
 Ingredients, allergens, net content, heat level, shelf life and storage are unconfirmed. Product names identify prototypes; they do not establish a complete ingredient list. Do not add dietary, nutrition, purity or similar claims. Do not announce sales, take orders, publish a contact number or invite purchase by DM. No public contact channel is confirmed.
 
@@ -277,7 +277,7 @@ Shared dependencies for every brief: brand owner approves final ES/EN copy, real
 - Website destination: `{SITE}/es/nosotros?utm_source=instagram&utm_medium=social&utm_campaign=2026-12_people&utm_content=v11`.
 - Required REAL footage: Real consenting participant, genuine approved role and real shoot activity.
 - AI may assist: script editing, subtitles, translation and graphic text treatments only; no simulated people, kitchen, production or store evidence.
-- Approval/factual dependencies: Confirm identity and role; use founder only if verified. Obtain likeness/voice release. Any ownership, sourcing or manufacturing sentence must instead carry [relación de marca por confirmar].
+- Approval/factual dependencies: Confirm identity and role; use founder only if verified. Obtain likeness/voice release. Use the approved brand endorsement. Confirm any product-specific sourcing or manufacturing claim separately.
 
 ### v12 — Conditional store discovery
 
@@ -309,7 +309,7 @@ Use approved v11 footage or a real team portrait and actual prototypes.
 - ES: “Palapa Verde es una marca de alimentos preparados a base de vegetales. Los productos que mostramos son prototipos, no disponibles para venta; la gama de lanzamiento está por confirmar. Conoce el proyecto en la web.”
 - EN: “Palapa Verde is a prepared-vegetable food brand. The products shown are prototypes, not for sale; the launch range is unconfirmed. Learn about the project on the website.”
 - CTA/destination: learn about the project; `{SITE}/es/nosotros?utm_source=instagram&utm_medium=social&utm_campaign=2026-12_people&utm_content=p01`.
-- Dependencies: real team consent, accurate prototype images, approved about page. Any added ownership/sourcing/manufacturing statement must use “[relación de marca por confirmar]”.
+- Dependencies: real team consent, accurate prototype images, approved about page. Use the approved brand endorsement. Confirm any additional sourcing or manufacturing claim separately.
 
 ### Pin 2 — How to use the prototypes
 

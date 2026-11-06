@@ -4,17 +4,18 @@ import type { Localized } from "@/lib/commerce/types";
  * Hechos de marca que SOLO el propietario puede confirmar. Cambiarlos aquí cambia
  * toda la web. Ver docs/strategy/02-brand-relationship.md y docs/APPROVAL_CHECKLIST.md.
  *
- * - "unconfirmed": redacción neutral («vinculada a Go Veggie Life»). Valor por defecto.
- * - "owned":       Palapa Verde es una marca de Go Veggie Life (confirmado por escrito + ONAPI).
+ * - "unconfirmed": redacción neutral («vinculada a Go Veggie Life»). Alternativa sin confirmación.
+ * - "owned":       Palapa Verde es una marca de Go Veggie Life (decisión expresa del propietario para la comunicación de marca).
  * - "supplied":    los productos se elaboran con vegetales de Go Veggie Life (confirmado).
  */
 export type BrandRelationship = "unconfirmed" | "owned" | "supplied";
 
-export const BRAND_RELATIONSHIP: BrandRelationship = "unconfirmed";
+export const BRAND_RELATIONSHIP: BrandRelationship = "owned";
 
 export const GO_VEGGIE_LIFE_URL = "https://web.goveggie.life/";
 
 /** Fabricante real (nombre y dirección del registro sanitario). `null` = no se muestra. */
+export const REGISTRATION_HOLDER: { name: string } | null = null;
 export const MANUFACTURER: { name: string; address: string } | null = null;
 
 /**
@@ -44,8 +45,8 @@ export const RELATIONSHIP_COPY: Record<BrandRelationship, RelationshipCopy> = {
   owned: {
     endorsement: { es: "Una marca de Go Veggie Life", en: "A brand of Go Veggie Life" },
     statement: {
-      es: "Palapa Verde es la marca de alimentos preparados de Go Veggie Life, proveedor de frutas y vegetales frescos para supermercados de República Dominicana.",
-      en: "Palapa Verde is the prepared-food brand of Go Veggie Life, a supplier of fresh fruit and vegetables to supermarkets in the Dominican Republic.",
+      es: "Palapa Verde es una marca de Go Veggie Life. Go Veggie Life es nuestro principal proveedor de ingredientes y distribuye frutas y vegetales frescos a supermercados de la República Dominicana.",
+      en: "Palapa Verde is a brand of Go Veggie Life. Go Veggie Life is our main ingredient supplier and supplies fresh fruit and vegetables to supermarkets in the Dominican Republic.",
     },
   },
   supplied: {

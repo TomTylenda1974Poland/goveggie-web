@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductThumb } from "@/components/ProductThumb";
-import { BRAND_RELATIONSHIP, CONTACT, MANUFACTURER } from "@/content/brand";
+import { BRAND_RELATIONSHIP, CONTACT, MANUFACTURER, REGISTRATION_HOLDER } from "@/content/brand";
 import { RECIPES } from "@/content/recipes";
 import { STOCKISTS } from "@/content/stockists";
 import { auditCatalog, AUDITED_FIELDS } from "@/lib/commerce/completeness";
@@ -31,6 +31,7 @@ export default async function AdminPage({ params }: Props) {
   const checklist: [string, boolean, string?][] = [
     [a.checklist.relationship, BRAND_RELATIONSHIP !== "unconfirmed", BRAND_RELATIONSHIP],
     [a.checklist.manufacturer, MANUFACTURER !== null],
+    [a.checklist.registrant, REGISTRATION_HOLDER !== null],
     [a.checklist.range, products.some((p) => p.launch !== "concept")],
     [a.checklist.recipes, tested === RECIPES.length, fill(a.recipesCount, { tested, draft: RECIPES.length - tested })],
     [a.checklist.stockists, STOCKISTS.length > 0, String(STOCKISTS.length)],

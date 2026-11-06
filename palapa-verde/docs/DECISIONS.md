@@ -38,3 +38,7 @@ Rutynowe decyzje techniczne podjęte samodzielnie, z powodem. Decyzje biznesowe 
     Na etykietach na zdjęciach nie ma gramatury, opisu ani „MANTENER REFRIGERADO”, bo to dane do potwierdzenia.
     Typografia strony: Archivo Black dla nagłówków rodziny, Playfair Display dla marki i nazw produktów
     (jak na etykiecie), Cormorant Garamond italic dla linii opisowych.
+
+## 6 listopada 2026 — komunikacja marki
+
+Właściciel potwierdził podpisy „Una marca de Go Veggie Life” i „A brand of Go Veggie Life” oraz rolę Go Veggie Life jako głównego dostawcy składników. Dane producenta, podmiotu rejestrującego i pochodzenia surowca w danym produkcie utrzymujemy oddzielnie. Potwierdzenie rodziny marek nie stanowi deklaracji o rejestracji znaku lub składzie produktu.

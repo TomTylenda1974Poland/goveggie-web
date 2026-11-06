@@ -5,6 +5,10 @@ import { GO_VEGGIE_LIFE_URL, relationship } from "@/content/brand";
 import type { Locale } from "@/lib/commerce/types";
 import { getDictionary, pick } from "@/lib/i18n";
 
+function brandName(locale: Locale) {
+  return relationship.endorsement ? `Palapa Verde — ${pick(relationship.endorsement, locale)}` : "Palapa Verde";
+}
+
 export function SiteHeader({ locale, prelaunch }: { locale: Locale; prelaunch: boolean }) {
   const t = getDictionary(locale);
   const links: [string, string][] = [
@@ -23,14 +27,8 @@ export function SiteHeader({ locale, prelaunch }: { locale: Locale; prelaunch: b
       ) : null}
       <div className="wrap">
         <div className="panel nav">
-          <Link className="logo" href={`/${locale}`} aria-label={`Palapa Verde — ${t.nav.home}`}>
-            <PalapaLogo />
-            <span className="logo-text">
-              <span className="wordmark">
-                Palapa <span className="verde">Verde</span>
-              </span>
-              {relationship.endorsement ? <span className="logo-endorsement">{pick(relationship.endorsement, locale)}</span> : null}
-            </span>
+          <Link className="logo" href={`/${locale}`} aria-label={`${brandName(locale)} — ${t.nav.home}`}>
+            <PalapaLogo locale={locale} />
           </Link>
           <nav className="nav-links" aria-label={t.nav.menu}>
             {links.map(([href, label]) => (
@@ -51,9 +49,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
   return (
     <footer className="wrap">
       <div className="panel footer-bar">
-        <Link className="logo logo--inverse" href={`/${locale}`} aria-label="Palapa Verde">
-          <PalapaLogo />
-          <span className="wordmark">Palapa Verde</span>
+        <Link className="logo logo--inverse" href={`/${locale}`} aria-label={brandName(locale)}>
+          <PalapaLogo locale={locale} inverse />
         </Link>
         <p className="f-desc">{t.footer.about}</p>
         <nav className="f-links" aria-label="Footer">

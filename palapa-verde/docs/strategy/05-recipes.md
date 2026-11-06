@@ -1,3 +1,5 @@
+> This is the initial editorial register. Current quantities, substitutions, meal allergens and cooking steps are maintained in src/content/recipes.ts. All ten entries still need a kitchen test.
+
 # 05: Initial recipe collection (10 bilingual drafts)
 
 Source of truth: `src/content/recipes.ts`. Each recipe has ES/EN titles, an intro, prep and cook time, servings, exact quantities, 3–5 steps, the Palapa Verde amount, substitutions, recipe-level allergen notes and media placeholders.

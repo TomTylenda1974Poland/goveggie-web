@@ -6,7 +6,7 @@ Capture several weeks of real footage for v01–v11, c02 and pins 1–2 in one k
 
 A full day is the realistic option for all ten plated dishes. A half day covers a smaller first batch; do not rush cooking or pretend the remaining dishes were filmed. Store discovery v12 requires a separate real retailer visit after confirmation. A tasting c01 is optional and needs independent clearance and permission. Neither is necessary to make the kitchen day productive.
 
-Never infer product ingredients, allergens, net content, heat level, shelf life or storage from product names, visible meal components or a prototype label. No dietary, nutrition, purity or similar claims. Any ownership, sourcing or manufacturing sentence must use “[relación de marca por confirmar]”. Never name a manufacturer or plant. Do not film confidential formulas or private business information.
+Never infer product ingredients, allergens, net content, heat level, shelf life or storage from product names, visible meal components or a prototype label. No dietary, nutrition, purity or similar claims. Use the approved Palapa Verde brand endorsement. Confirm any product-specific source or manufacturing claim before filming.
 
 ## Crew and roles
 

@@ -5,11 +5,11 @@ Live status is also shown at `/es/admin` → "Hechos por confirmar". Update the 
 | # | Fact | Why it blocks | Where to set it |
 |---|---|---|---|
 | 1 | **Launch range.** Three lists exist: the website (5 products), the DIGEMAPS preparation (pesto de albahaca, hummus original, pierogi, zapiekanka, caldo de pollo) and the packaging "Phase 1" (pico de gallo, pesto de albahaca, hummus original, hummus de pimiento rojo asado). Which products launch? | Product pages, recipes, QR codes and photos depend on it | `mock/fixtures.ts`, `brand-content.ts`, `recipes.ts` |
-| 2 | **Brand ownership**: is Palapa Verde a brand of Go Veggie Life (which entity owns the mark; ONAPI status)? | Endorsement line on site and labels | `src/content/brand.ts` → `BRAND_RELATIONSHIP` |
-| 3 | **Ingredient sourcing**: which ingredients, per product, come from Go Veggie Life? | "Elaborado con vegetales de Go Veggie Life" | same |
+| 2 | **Brand relationship confirmed by the owner**: Palapa Verde is a brand of Go Veggie Life. Legal entity and ONAPI records are tracked separately. | Endorsement line on site and labels | `src/content/brand.ts` → `BRAND_RELATIONSHIP` |
+| 3 | **Ingredient sourcing**: Go Veggie Life is the main ingredient supplier. For a claim about a particular ingredient or product, confirm its provenance. | "Elaborado con vegetales de Go Veggie Life" | same |
 | 4 | **Manufacturer**: URBANCACAO, S.R.L. or a contract plant; plant address and sanitary permit | Label, "Nosotros" | `brand.ts` → `MANUFACTURER` |
 | 5 | Per product: **ingredients, allergens, net content, storage and after-opening, shelf life, taste, texture, heat** | Product facts panel, FAQ, recipe allergen notes | `fixtures.ts` (or the goveggie.life API) |
-| 6 | **Real product photos** (and packaging approval) | The "Imagen ilustrativa" images carry the unconfirmed "Una marca de Go Veggie Life" line | `public/media/productos/`, `kind: "product"` |
+| 6 | **Real product photos** (and packaging approval) | The existing illustrative packshots carry the approved brand endorsement. Real photos require real finished products and approved labels. | `public/media/productos/`, `kind: "product"` |
 | 7 | **Kitchen-tested recipes** (cook, time, taste, photograph) | Recipes are hidden in production until tested or explicitly shown | `recipes.ts` → `status`, `media` |
 | 8 | **Confirmed stockists** (name, address, map pin, products, date) | "Dónde comprar" | `src/content/stockists.ts` |
 | 9 | **Public sales channel** (email and/or WhatsApp approved for publication) | Business and retailer requests | `brand.ts` → `CONTACT` |
@@ -20,3 +20,5 @@ Live status is also shown at `/es/admin` → "Hechos por confirmar". Update the 
 | 14 | **Real payments / online orders**: provider, contract | Off by design | `ORDERS_ENABLED` (do not set without decision) |
 | 15 | **Go-live**: merge to `main` / promote, `SITE_INDEXABLE=true`, `SHOW_DRAFT_RECIPES` policy | Publishing | Owner instruction only |
 | 16 | **The `catalog` Vercel project** is linked to this repo; a push to `main` would replace catalog.goveggie.life | Before any merge to `main` | Vercel project settings (owner) |
+
+The manufacturer and registration holder are separate, unconfirmed fields. Enter them only from approved product documentation.

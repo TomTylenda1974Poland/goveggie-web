@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ProductVisual } from "@/components/ProductVisual";
 import { RecipeCard } from "@/components/RecipeCard";
@@ -111,7 +112,11 @@ export default async function RecipePage({ params }: Props) {
             {recipe.status === "draft" ? <p className="notice">{r.draftNote}</p> : null}
           </div>
           <div className="recipe-head-media">
-            {recipe.media.photo ? null : <p className="media-pending">{r.photoPending}</p>}
+            {recipe.media.photo ? (
+              <Image src={recipe.media.photo.src} alt={pick(recipe.media.photo.alt, locale)}
+                width={recipe.media.photo.width} height={recipe.media.photo.height}
+                sizes="(max-width: 900px) 100vw, 480px" />
+            ) : <p className="media-pending">{r.photoPending}</p>}
             {product ? (
               <Link href={`/${locale}/productos/${product.slug}`} className="recipe-product" data-track="recipe_product_click" data-track-recipe={recipe.slug} data-track-product={product.slug}>
                 <ProductVisual product={product} locale={locale} size="card" />
@@ -130,6 +135,7 @@ export default async function RecipePage({ params }: Props) {
             slug={recipe.slug}
             title={title}
             baseServings={recipe.servings}
+            publicRecipeUrl={recipe.status === "tested" && process.env.SITE_INDEXABLE === "true" && process.env.SITE_URL?.startsWith("https://") ? new URL(`/${locale}/recetas/${recipe.slug}`, process.env.SITE_URL).href : null}
             ingredients={[...recipe.ingredients]}
             labels={{
               servings: r.servings,
@@ -141,6 +147,7 @@ export default async function RecipePage({ params }: Props) {
               shareRecipe: r.shareRecipe,
               shareList: r.shareList,
               listTitle: r.listTitle,
+              allergens: r.allergens + ": " + pick(recipe.allergens, locale) + " " + pick(PRODUCT_ALLERGENS, locale),
               shareNote: recipe.status === "draft" ? r.shareNote : null,
             }}
           />

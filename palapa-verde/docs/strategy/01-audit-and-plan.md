@@ -34,33 +34,15 @@ Date: 2026-11-06 · Branch: `palapa-verde/shop` · Author: Claude Code (Codex re
 - The footer links to the Palapa Verde preview URL.
 - The contact form and footer hold placeholders, so **no verified receiving channel exists** for retail or wholesale enquiries.
 
-## 2. Evidence about the business (owner's documents in `~/Downloads/Veggie Life`, not in git)
+## 2. Brand facts and launch status
 
-| Fact | Evidence | Status |
-|---|---|---|
-| Legal entity spelling `URBANCACAO, S.R.L.` (RNC 1-30-88199-5) | Registro Mercantil scan, summarised in the DIGEMAPS preparation note (2026-11-02) | Partial. Page 2 is missing and the company purpose covers cacao. |
-| Company "operating Go Veggie Life and planning Palapa Verde" | DIGEMAPS handoff (user-supplied) | **Unverified** |
-| ONAPI trademarks for Go Veggie Life / Palapa Verde | none | **Missing** |
-| Manufacturing plant, operator and sanitary permit | none | **Missing**. Urban Cacao vs contract plant is unknown. |
-| DIGEMAPS registrations | Preparation drafts only, nothing submitted | **None** |
-| Products in the registration pipeline | Pesto de albahaca, Hummus original, Pierogi, Zapiekanka, Caldo de pollo | Drafts |
-
-**Three different product lists exist.** The launch range is a business decision:
-
-| Source | Products |
-|---|---|
-| Website prototype (owner brief) | Chutney de Cilantro · Pesto de Cilantro con Semillas de Auyama · Hummus de Zanahoria · Hummus de Remolacha · Salsa de Aguacate y Jalapeño |
-| DIGEMAPS preparation / draft register CSV | Pesto de Albahaca · Hummus Original · Pierogi Papa y Queso · Zapiekanka Hongos y Queso · Caldo de Pollo |
-| Owner's packaging reference "Product line – Phase 1" | Pico de Gallo Original · Pesto de Albahaca · Hummus Original · Hummus de Pimiento Rojo Asado |
-
-**Launch status per website product: "concept / in development".** None of the five appears in the registration pipeline.
-The site now labels them "En desarrollo — aún no a la venta".
+The owner confirmed that Palapa Verde is a Go Veggie Life brand and that Go Veggie Life is the main ingredient supplier. Specific formulation, ingredient provenance, the actual manufacturer and the registration holder still need SKU-specific records. Five website concepts are visible, and the business must select the launch range. Keep the different internal planning lists separate.
 
 ## 3. Unverified claims found on the site (fixed in this round)
 
 | Claim / element | Where | Action |
 |---|---|---|
-| "Una marca de Go Veggie Life" (ownership) | brand line, product page, footer | Moved behind a single relationship setting. The default uses neutral wording ("vinculada a Go Veggie Life"). |
+| "Una marca de Go Veggie Life" (ownership) | brand line, product page, footer | Owner-confirmed brand endorsement, shown in both languages. |
 | "elaborados con los vegetales y hierbas frescas de Go Veggie Life" (sourcing) | home hero | Removed. Sourcing goes behind the same setting (`supplied` mode). |
 | "Menos desperdicio → Más valor" (environmental claim) | hero strip | Removed until there's evidence |
 | "Vegetales frescos seleccionados por Go Veggie Life" | process strip | Neutral wording |

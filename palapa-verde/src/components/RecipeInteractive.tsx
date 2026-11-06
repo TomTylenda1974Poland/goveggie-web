@@ -15,8 +15,8 @@ type Labels = {
   shareRecipe: string;
   shareList: string;
   listTitle: string;
-  /** Aviso añadido a los mensajes compartidos (borrador, prelanzamiento). */
   shareNote: string | null;
+  allergens: string;
 };
 
 type Props = {
@@ -24,6 +24,7 @@ type Props = {
   slug: string;
   title: string;
   baseServings: number;
+  publicRecipeUrl: string | null;
   ingredients: Ingredient[];
   labels: Labels;
 };
@@ -32,21 +33,17 @@ const MIN = 1;
 const MAX = 24;
 
 /** Porciones ajustables, lista de ingredientes escalada, impresión y envío por WhatsApp. */
-export function RecipeInteractive({ locale, slug, title, baseServings, ingredients, labels }: Props) {
+export function RecipeInteractive({ locale, slug, title, baseServings, publicRecipeUrl, ingredients, labels }: Props) {
   const [servings, setServings] = useState(baseServings);
   const factor = servings / baseServings;
   const productLine = ingredients.find((i) => i.product);
 
-  const pageUrl = () => window.location.href.split(/[?#]/)[0] ?? "";
-
   function shareRecipe() {
-    const note = labels.shareNote ? `\n(${labels.shareNote})` : "";
-    window.open(whatsappShareUrl(`${title}${note}\n${pageUrl()}`), "_blank", "noopener");
+    if (publicRecipeUrl) window.open(whatsappShareUrl([title, labels.shareNote, publicRecipeUrl].filter(Boolean).join("\n")), "_blank", "noopener");
   }
   function shareList() {
     const lines = ingredients.map((i) => `• ${ingredientText(i, factor, locale)}`);
-    const note = labels.shareNote ? `(${labels.shareNote})\n` : "";
-    const text = `${labels.listTitle}: ${title} (${servings} ${labels.servings.toLowerCase()})\n${note}${lines.join("\n")}\n${pageUrl()}`;
+    const text = [labels.shareNote, `${labels.listTitle}: ${title} (${servings} ${labels.servings.toLowerCase()})`, ...lines, labels.allergens, publicRecipeUrl].filter(Boolean).join("\n");
     window.open(whatsappShareUrl(text), "_blank", "noopener");
   }
 
@@ -105,9 +102,9 @@ export function RecipeInteractive({ locale, slug, title, baseServings, ingredien
         <button type="button" className="btn btn--ghost" onClick={() => window.print()} data-track="recipe_print_click" data-track-recipe={slug}>
           {labels.print}
         </button>
-        <button type="button" className="btn btn--ghost" onClick={shareRecipe} data-track="whatsapp_share_click" data-track-recipe={slug} data-track-kind="recipe">
+        {publicRecipeUrl && <button type="button" className="btn btn--ghost" onClick={shareRecipe} data-track="whatsapp_share_click" data-track-recipe={slug} data-track-kind="recipe">
           {labels.shareRecipe}
-        </button>
+        </button>}
         <button type="button" className="btn btn--ghost" onClick={shareList} data-track="whatsapp_share_click" data-track-recipe={slug} data-track-kind="list">
           {labels.shareList}
         </button>

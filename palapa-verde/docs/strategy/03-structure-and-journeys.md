@@ -8,7 +8,7 @@
 | `/{locale}/productos` | Catalogue with category filter (chutney · pesto · hummus · salsa) and launch status | Done |
 | `/{locale}/productos/{slug}` | Product + three serving ideas + recipes + approved facts only + where to buy. **QR destination.** | Done |
 | `/{locale}/recetas` | Recipe index: filter by product, time (≤15 / ≤30 / >30 min) and occasion | Done (10 drafts) |
-| `/{locale}/recetas/{slug}` | Recipe: servings scaling, print, WhatsApp share (recipe or shopping list), product link, where to buy | Done |
+| `/{locale}/recetas/{slug}` | Recipe: servings scaling, print, WhatsApp (shopping list in the local draft preview, recipe link for published tested recipes), product link, where to buy | Done |
 | `/{locale}/donde-comprar` | Confirmed stockists only (with map links); otherwise an honest prelaunch state plus the business route | Done, prelaunch |
 | `/{locale}/nosotros` | Relationship (confirmed wording only), the process explained without invented facts, team placeholder; manufacturer block hidden until confirmed | Done |
 | `/{locale}/preguntas` | FAQ: use, taste and heat, ingredients and allergens, storage, buying, wholesale | Done |

@@ -6,30 +6,34 @@ const UNIT_LABELS: Record<Locale, Record<Exclude<Unit, "g" | "ml">, [string, str
   en: { cup: ["cup", "cups"], tbsp: ["tbsp", "tbsp"], tsp: ["tsp", "tsp"], pinch: ["pinch", "pinches"] },
 };
 
-const FRACTIONS: Record<number, string> = { 0.125: "⅛", 0.25: "¼", 0.375: "⅜", 0.5: "½", 0.625: "⅝", 0.75: "¾", 0.875: "⅞" };
-
-/** Paso de redondeo por unidad: cucharaditas a ⅛, pizcas enteras, el resto a ¼. */
-const STEP: Record<string, number> = { tsp: 0.125, pinch: 1, tbsp: 0.25, cup: 0.25, count: 0.25 };
+const FRACTIONS = new Map<number, string>([
+  [1 / 8, "⅛"], [1 / 4, "¼"], [3 / 8, "⅜"], [1 / 2, "½"], [5 / 8, "⅝"], [3 / 4, "¾"], [7 / 8, "⅞"],
+  [1 / 3, "⅓"], [2 / 3, "⅔"],
+]);
 
 const isNoun = (name: Localized | Noun): name is Noun => Array.isArray((name as Noun).es);
 
-/** Redondea según la unidad: gramos/ml a 5 (o 1 si es poco), medidas caseras y unidades a ¼. */
+/** Metric quantities use tenths; household measures retain enough precision for scaled teaspoons. */
 export function roundQty(value: number, unit: Unit | null): number {
-  if (unit === "g" || unit === "ml") {
-    if (value >= 50) return Math.round(value / 5) * 5;
-    return Math.max(1, Math.round(value));
-  }
-  const step = STEP[unit ?? "count"] ?? 0.25;
-  return Math.max(step, Math.round(value / step) * step);
+  const precision = unit === "g" || unit === "ml" ? 10 : 1000;
+  return Math.round(value * precision) / precision;
 }
 
-export function formatQty(value: number, unit: Unit | null): string {
-  const v = roundQty(value, unit);
-  if (unit === "g" || unit === "ml") return String(v);
-  const whole = Math.floor(v);
-  const frac = FRACTIONS[Math.round((v - whole) * 1000) / 1000];
-  if (!frac) return String(whole);
-  return whole === 0 ? frac : `${whole}${frac}`;
+export function formatQty(value: number, unit: Unit | null, locale: Locale = "es"): string {
+  if (unit !== "g" && unit !== "ml") {
+    const whole = Math.floor(value);
+    const remainder = value - whole;
+    const fraction = [...FRACTIONS.entries()].find(([n]) => Math.abs(remainder - n) < 0.000001);
+    if (fraction) return whole === 0 ? fraction[1] : `${whole}${fraction[1]}`;
+    // Very small kitchen measures such as half of ⅛ tsp are clearer as fractions.
+    for (const denominator of [12, 16, 24, 32]) {
+      const numerator = Math.round(remainder * denominator);
+      if (numerator > 0 && numerator < denominator && Math.abs(remainder - numerator / denominator) < 0.000001) {
+        return `${whole ? `${whole} ` : ""}${numerator}/${denominator}`;
+      }
+    }
+  }
+  return new Intl.NumberFormat(locale === "es" ? "es-DO" : "en", { maximumFractionDigits: 3, useGrouping: false }).format(roundQty(value, unit));
 }
 
 function unitLabel(unit: Unit, qty: number, locale: Locale): string {
@@ -51,19 +55,18 @@ export function ingredientLine(ing: Ingredient, factor: number, locale: Locale):
     return { qty: null, text: `${capitalize(name)}, ${toTaste}${note}${optional}` };
   }
 
-  const scaled = ing.qty * factor;
+  const scale = ing.scale === "per-pan" ? 1 : factor;
+  const scaled = ing.qty * scale;
   const shown = roundQty(scaled, ing.unit);
-  const qty = formatQty(scaled, ing.unit);
+  const qty = formatQty(scaled, ing.unit, locale);
 
   if (ing.unit === null) {
     const name = isNoun(ing.name) ? ing.name[locale][shown > 1 ? 1 : 0] : ing.name[locale];
     return { qty, text: `${name}${note}${optional}` };
   }
 
-  // Equivalencia casera orientativa (depende de la densidad real del producto).
-  const approx = locale === "es" ? "aprox." : "about";
   const alt = ing.alt
-    ? ` (${approx} ${formatQty(ing.alt.qty * factor, ing.alt.unit)} ${unitLabel(ing.alt.unit, roundQty(ing.alt.qty * factor, ing.alt.unit), locale)})`
+    ? ` (${formatQty(ing.alt.qty * scale, ing.alt.unit, locale)} ${unitLabel(ing.alt.unit, roundQty(ing.alt.qty * scale, ing.alt.unit), locale)})`
     : "";
   const name = isNoun(ing.name) ? ing.name[locale][1] : ing.name[locale];
   const of = locale === "es" ? "de " : "";
