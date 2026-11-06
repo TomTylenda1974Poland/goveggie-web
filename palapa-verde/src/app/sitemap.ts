@@ -6,7 +6,7 @@ import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteUrl();
-  const pages = ["", "/productos", "/recetas", "/donde-comprar", "/nosotros", "/preguntas", "/negocios"];
+  const pages = ["", "/productos", "/recetas", "/donde-comprar", "/nosotros", "/preguntas", "/negocios", "/hoteles-restaurantes"];
   const products = Object.keys(BRAND_CONTENT).map((slug) => `/productos/${slug}`);
   const recipes = visibleRecipes()
     .filter((r) => r.status === "tested")

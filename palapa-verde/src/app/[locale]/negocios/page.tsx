@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { CONTACT, GO_VEGGIE_LIFE_HORECA_URL } from "@/content/brand";
 import { pageMetadata } from "@/lib/site";
@@ -33,52 +32,25 @@ export default async function BusinessPage({ params }: Props) {
       <section className="audiences" aria-label={b.title}>
         {(Object.keys(b.audiences) as (keyof typeof b.audiences)[]).map((k) => (
           <div key={k} className="panel pad audience">
-            <h2 className="h-sm">
-              {k === "horeca" ? (
-                <a href="#hoteles">
-                  {b.audiences[k].title}
-                </a>
-              ) : b.audiences[k].title}
-            </h2>
+            <h2 className="h-sm">{b.audiences[k].title}</h2>
             <p>{b.audiences[k].text}</p>
+            {k === "horeca" && (
+              <Link className="section-link arrow" href={`/${locale}/hoteles-restaurantes`}>{t.nav.kitchenFormats}</Link>
+            )}
           </div>
         ))}
       </section>
 
-      <section id="hoteles" className="panel pad horeca" aria-labelledby="h-hoteles">
-        <div className="horeca-head">
-          <div>
-            <p className="kicker">{b.horeca.kicker}</p>
-            <h2 id="h-hoteles" className="h-md">{b.horeca.heading}</h2>
-            <p className="lead">{b.horeca.intro}</p>
-          </div>
-          <figure className="horeca-visual">
-            <Image
-              src="/media/horeca/linea-profesional.jpg"
-              alt={b.horeca.imageAlt}
-              width={1536}
-              height={1024}
-              sizes="(max-width: 900px) 100vw, 720px"
-            />
-            <figcaption className="visual-note">{b.horeca.caption}</figcaption>
-          </figure>
+      <section id="hoteles" className="panel pad split-cta" aria-labelledby="h-hoteles">
+        <div>
+          <h2 id="h-hoteles" className="h-md">
+            {t.nav.hospitality}
+          </h2>
+          <p>{b.horeca.teaser}</p>
         </div>
-        <ul className="horeca-formats duo">
-          {Object.entries(b.horeca.formats).map(([key, format]) => (
-            <li key={key} className="panel pad">
-              <span className="badge badge--concept">{b.horeca.proposed}</span>
-              <h3 className="h-sm">{format.title}</h3>
-              <p>{format.text}</p>
-            </li>
-          ))}
-        </ul>
-        <div className="horeca-label">
-          <h3 className="h-sm">{b.horeca.labelHeading}</h3>
-          <p>{b.horeca.labelIntro}</p>
-          <ul>
-            {Object.entries(b.horeca.labelFeatures).map(([key, feature]) => <li key={key}>{feature}</li>)}
-          </ul>
-        </div>
+        <Link className="btn arrow" href={`/${locale}/hoteles-restaurantes`}>
+          {b.horeca.teaserCta}
+        </Link>
       </section>
 
       <section className="panel pad" aria-labelledby="h-status">

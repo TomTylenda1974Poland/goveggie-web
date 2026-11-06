@@ -57,6 +57,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <Link href={`/${locale}/recetas`}>{t.nav.recipes}</Link>
           <Link href={`/${locale}/preguntas`}>{t.nav.faq}</Link>
           <Link href={`/${locale}/negocios`}>{t.nav.business}</Link>
+          <Link href={`/${locale}/hoteles-restaurantes`}>{t.nav.hospitality}</Link>
           <a href={GO_VEGGIE_LIFE_URL} rel="noopener">
             Go Veggie Life
           </a>

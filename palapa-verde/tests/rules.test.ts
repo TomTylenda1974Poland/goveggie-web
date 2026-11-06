@@ -1,3 +1,5 @@
+import { kitchenCopy } from "../src/app/[locale]/hoteles-restaurantes/content";
+import { inquiryCopy } from "../src/app/[locale]/hoteles-restaurantes/KitchenInquiry";
 import { describe, expect, it } from "vitest";
 import { addItem, cartTotals, itemCount, lineLimit, parseStoredCart, removeItem, setQuantity } from "../src/lib/cart/cart";
 import { availabilityOf } from "../src/lib/commerce/availability";
@@ -183,3 +185,12 @@ describe("formatos profesionales propuestos", () => {
     expect(business.pending).toBe(locale === "es" ? "Por confirmar" : "To be confirmed");
   });
 });
+
+describe("página de hoteles y restaurantes", () => {
+  const sizeOrPrice = /\d\s*(?:kg|ml|oz|lb|g)\b|\p{Sc}/iu;
+  it.each(["es", "en"] as const)("%s no publica tamaños ni precios sin confirmar", (locale) => {
+    expect(JSON.stringify(kitchenCopy[locale])).not.toMatch(sizeOrPrice);
+    expect(JSON.stringify(inquiryCopy[locale])).not.toMatch(sizeOrPrice);
+  });
+});
+

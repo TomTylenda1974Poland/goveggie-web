@@ -113,3 +113,5 @@ Do nagłówka i stopki w obu językach dodano nowy znak Palapa Verde: dwie lekki
 6 listopada 2026 właściciel wybrał wariant B „Lekka palapa”. Daszek ma 28% optycznej szerokości nazwy Palapa Verde. Hiszpańska i angielska wersja mają mniejszy, wyśrodkowany podpis kursywą pod nazwą marki. Podpis ma łagodniejszy odcień zieleni i zajmuje 72% szerokości nazwy po hiszpańsku oraz około 65% po angielsku. Pliki SVG zawierają podpisy „Una marca de Go Veggie Life” i „A brand of Go Veggie Life”.
 
 Właściciel wskazał planszę z czterema przezroczystymi opakowaniami jako wzorzec stylistyczny. Etykiety mają jasne pole z łukiem i cienkim czarnym obrysem, rycinę głównego składnika, szeryfową nazwę produktu i czarny wariant B z małym podpisem Go Veggie Life. Kolor wnosi produkt i fotografia świeżych składników.
+
+6 listopada 2026 — podgląd strefy Hoteles y restaurantes w ES/EN. Wspólne wejście dla świeżych warzyw Go Veggie Life i przetworów Palapa Verde, dostępne przez stronę główną i Negocios. Gramatury oznaczają propozycje do prób, a zapytanie klient sam udostępnia przedstawicielowi. Bezpośredni odbiorca sprzedażowy czeka na potwierdzenie w CONTACT.
