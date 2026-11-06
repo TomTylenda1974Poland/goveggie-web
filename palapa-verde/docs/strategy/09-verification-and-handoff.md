@@ -123,3 +123,8 @@ See `docs/APPROVAL_CHECKLIST.md` (16 items). The most important:
   - Codex review (`codex review --base` the previous shop): no findings. 80 tests, typecheck, build, `pnpm smoke` on production pass.
   - Production deployment `dpl_83rG4qMtHvmcXyPpxaaFm3TuMkfP` (manual redeploy; `SHOW_DRAFT_RECIPES=true` still applies). Rollback: Promote `dpl_A3ahJ93hT2rpWEj252EKyWaUA8Vt`.
 - The two pages link to each other, so roll back both together. Formats, sizes and conditions stay owner decisions (`APPROVAL_CHECKLIST.md` item 17).
+- **Follow-up fix (owner: "Tak, wdróż poprawkę"):** on 360 px phones the long "Go Veggie Life para hoteles y restaurantes" button widened
+  `/hoteles-restaurantes` and `/negocios` to 448 px. Buttons now wrap below 600 px (commit `c5be8a2`). Production deployment
+  `dpl_5e8XLG9753oNNWxxCyz1BxtHdaH5`; both pages measure 360 px at 360 px, `pnpm smoke` passes. Rollback for this fix only:
+  Promote `dpl_83rG4qMtHvmcXyPpxaaFm3TuMkfP`.
+- Known, older: the home page overflows by 7 px at 360 px because of the "Ver todos" section link (already in `dpl_A3ahJ93hT2rpWEj252EKyWaUA8Vt`).
