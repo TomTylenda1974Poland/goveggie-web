@@ -1,7 +1,8 @@
 // Update the cache name together with the pilot kit assets.
-const cacheName = "palapa-cocina-757ff38136";
+const cacheName = "palapa-cocina-c78254e2ce";
 const assets = [
-  "./prueba-de-cocina.html", "./hummus-de-zanahoria.html", "./piloto.css", "./piloto.js", "./offline.js",
+  "./prueba-de-cocina.html", "./hummus-de-zanahoria.html",
+  "./hummus-de-zanahoria.css", "./hummus-de-zanahoria.js", "./piloto.css", "./piloto.js", "./offline.js",
   "./zip.min.js", "./plantilla-etiqueta.pdf", "../brand/palapa-verde-es.svg",
 ].map(path => new URL(path, self.location.href).href);
 
