@@ -22,6 +22,8 @@ const gvLocale = (() => {
   }
 
   function updateLinks(lang) {
+    const title = document.querySelector('title[data-es][data-en]');
+    if (title) document.title = title.dataset[lang];
     for (const link of document.querySelectorAll('a[data-palapa-path]')) {
       link.href = 'https://palapa-verde.vercel.app/' + lang + link.dataset.palapaPath;
     }
