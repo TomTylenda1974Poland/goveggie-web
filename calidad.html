@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=producto1">
+<link rel="stylesheet" href="assets/site.css?v=calidad2">
 <script src="assets/nav.js?v=horeca2" defer></script>
 </head>
 <body class="botanical-site">
@@ -51,7 +51,7 @@
         <p class="hero-sub" data-i18n="quality_intro">Así seleccionamos y empacamos los vegetales antes de enviarlos al supermercado.</p>
       </div>
       <div class="hero-art">
-        <img src="assets/packing-quality-v1.png" alt="" width="1536" height="1024">
+        <img src="assets/web/packing-quality-v1-768.webp" srcset="assets/web/packing-quality-v1-480.webp 480w, assets/web/packing-quality-v1-768.webp 768w, assets/web/packing-quality-v1-1200.webp 1200w" sizes="(max-width: 760px) 94vw, (max-width: 1440px) 54vw, 760px" decoding="async" fetchpriority="high" alt="" width="1536" height="1024">
       </div>
     </div>
   </section>
@@ -60,28 +60,27 @@
   <section class="panel" id="calidad">
     <div class="q-grid">
       <div class="q-item">
-        <img src="assets/icon-sel.jpg" alt="" width="107" height="90">
+        <img src="assets/web/seleccion-240.webp" srcset="assets/web/seleccion-240.webp 240w, assets/web/seleccion-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" alt="" loading="lazy" decoding="async">
         <div>
           <h2 data-i18n="q1_h">Selección</h2>
-          <p data-i18n="q1_p">Productos frescos, de alta calidad y con excelente apariencia.</p>
+          <p data-i18n="q1_p">Elige la variedad y el punto de maduración que buscas.</p>
         </div>
       </div>
       <div class="q-item">
-        <img src="assets/icon-pres.jpg" alt="" width="90" height="82">
+        <img src="assets/web/empaque-240.webp" srcset="assets/web/empaque-240.webp 240w, assets/web/empaque-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" alt="" loading="lazy" decoding="async">
         <div>
-          <h2 data-i18n="q2_h">Presentación</h2>
-          <p data-i18n="q2_p">Empaque y formatos ideales para el punto de venta.</p>
+          <h2 data-i18n="q2_h">Empaque</h2>
+          <p data-i18n="q2_p">Consulta los formatos para tu góndola o tu cocina.</p>
         </div>
       </div>
       <div class="q-item">
-        <img src="assets/icon-dist-v2.jpg" alt="" width="114" height="77">
+        <img src="assets/web/entrega-240.webp" srcset="assets/web/entrega-240.webp 240w, assets/web/entrega-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" alt="" loading="lazy" decoding="async">
         <div>
-          <h2 data-i18n="q3_h">Distribución</h2>
-          <p data-i18n="q3_p">Acordamos contigo dónde y cuándo entregar, y cumplimos lo acordado.</p>
+          <h2 data-i18n="q3_h">Entrega</h2>
+          <p data-i18n="q3_p">Dinos dónde recibes tu pedido y acordamos los detalles de la entrega.</p>
         </div>
       </div>
     </div>
-    <p class="q-note" data-i18n="q_note">Nota del prototipo: las declaraciones de calidad y logística son de ejemplo y deberán confirmarse con GoVeggie antes de publicar.</p>
   </section>
 
 </div>
@@ -129,10 +128,9 @@ const i18n = {
     quality_intro:"Así seleccionamos y empacamos los vegetales antes de enviarlos al supermercado.",
     nav_home:"Inicio", nav_products:"Productos", nav_quality:"Calidad", nav_about:"Nosotros", nav_b2b:"Supermercados", nav_contact:"Contacto",
     nav_cta:"Ver catálogo",
-    q1_h:"Selección", q1_p:"Productos frescos, de alta calidad y con excelente apariencia.",
-    q2_h:"Presentación", q2_p:"Empaque y formatos ideales para el punto de venta.",
-    q3_h:"Distribución", q3_p:"Acordamos contigo dónde y cuándo entregar, y cumplimos lo acordado.",
-    q_note:"Nota del prototipo: las declaraciones de calidad y logística son de ejemplo y deberán confirmarse con GoVeggie antes de publicar.",
+    q1_h:"Selección", q1_p:"Elige la variedad y el punto de maduración que buscas.",
+    q2_h:"Empaque", q2_p:"Consulta los formatos para tu góndola o tu cocina.",
+    q3_h:"Entrega", q3_p:"Dinos dónde recibes tu pedido y acordamos los detalles de la entrega.",
     f_about:"Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.",
     f_legal:"© 2026 Go Veggie Life",
     f_proto:"Prototipo de diseño - logo, fotografías, productos y datos de contacto se sustituirán por los materiales aprobados.",
@@ -142,10 +140,9 @@ const i18n = {
     quality_intro:"How we select and pack vegetables before they reach the supermarket.",
     nav_home:"Home", nav_products:"Products", nav_quality:"Quality", nav_about:"About us", nav_b2b:"Supermarkets", nav_contact:"Contact",
     nav_cta:"View catalogue (ES)",
-    q1_h:"Selection", q1_p:"Fresh, high-quality produce with excellent appearance.",
-    q2_h:"Presentation", q2_p:"Packaging and formats ideal for the point of sale.",
-    q3_h:"Distribution", q3_p:"We agree on a delivery place and time with you, and we keep that commitment.",
-    q_note:"Prototype note: quality and logistics claims are examples and must be confirmed with GoVeggie before publishing.",
+    q1_h:"Selection", q1_p:"Choose the variety and ripeness you need.",
+    q2_h:"Packing", q2_p:"Explore pack sizes for your shelves or your kitchen.",
+    q3_h:"Delivery", q3_p:"Tell us where you receive orders so we can plan the delivery with you.",
     f_about:"Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.",
     f_legal:"© 2026 Go Veggie Life",
     f_proto:"Design prototype - logo, photography, products and contact details will be replaced with approved materials.",

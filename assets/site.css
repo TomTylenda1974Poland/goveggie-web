@@ -61,11 +61,11 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 
 /* ---------- quality strip ---------- */
 .q-grid{display:grid;grid-template-columns:repeat(3,1fr)}
-.q-item{display:flex;align-items:center;gap:16px;padding:clamp(14px,1.8vw,24px) var(--pad)}
+.q-item{display:grid;align-content:start;gap:14px;padding:clamp(14px,1.8vw,24px) var(--pad)}
 .q-item + .q-item{border-left:var(--hairline)}
-.q-item img{width:clamp(72px,7vw,104px);flex:0 0 auto}
+.q-item img{display:block;width:100%;height:auto;aspect-ratio:640/365;object-fit:cover}
 .q-item :is(h2,h3){font-size:1rem;margin-bottom:5px}
-.q-item p{font-size:.86rem}
+.q-item p{font-size:.94rem;line-height:1.45;max-width:34ch}
 .q-note{border-top:var(--hairline);padding:10px var(--pad);font-size:.74rem;color:var(--meta)}
 
 /* ---------- products ---------- */
@@ -126,6 +126,8 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
   .section-head h2{white-space:normal}
   .hero-grid{grid-template-columns:1fr;padding-top:22px}
   .q-grid{grid-template-columns:1fr}
+  .q-item{grid-template-columns:clamp(78px,26vw,115px) 1fr;align-items:center;gap:14px}
+  .q-item img{aspect-ratio:4/3}
   .q-item + .q-item{border-left:none;border-top:var(--hairline)}
   .cards{grid-template-columns:1fr}
   .b2b-grid{grid-template-columns:1fr}
