@@ -1,6 +1,6 @@
 # Postęp: Palapa Verde (strona i sklep)
 
-Ostatnia aktualizacja: 2026-11-06 · gałąź `palapa-verde/shop` · wersja 0.2.0 (podgląd na Vercel)
+Ostatnia aktualizacja: 2026-11-07 · gałąź `palapa-verde/shop` · wersja 0.2.0 (podgląd na Vercel)
 
 ## Stan
 
@@ -135,3 +135,5 @@ OpenSRS pokazuje info@palapaverde.com jako aktywną skrzynkę. Podczas sprawdzen
 Na telefonach zwinięta nawigacja pozostaje przy górze ekranu, a komunikat o rozwoju zostaje przy początku dokumentu. Główne wejścia do gastronomii otwierają początek strony, także po wybraniu tej samej podstrony. Celowe odsyłacze do etykiety, opakowań i formularza zachowują swoje kotwice i odstęp pod paskiem.
 
 Wszystkie sześć pozycji mobilnego menu w ES i EN korzysta z tej samej zasady: wybór zakładki zamyka menu i otwiera stronę od góry, także przy ponownym wyborze bieżącej zakładki. Logo w nagłówku prowadzi na początek strony głównej. Przycisk Wstecz pozostawia przywracanie pozycji przeglądarce.
+
+7 listopada 2026 — w rejestrze kuchni dodano kartę hotelowej próby hummusu z marchwi. Po wpisaniu rzeczywistych pomiarów gramów na zmianie i liczby porcji karta wylicza ilość podaną na porcję, pozwala skopiować podsumowanie do rejestru i drukuje się na Carta. Dane prób wprowadza zespół na urządzeniu. Karta i rejestr są dostępne offline po pierwszym pełnym wczytaniu.

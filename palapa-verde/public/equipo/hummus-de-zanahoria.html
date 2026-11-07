@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<script src="./offline.js" defer></script>
+<title>Prueba hotelera de hummus de zanahoria · Palapa Verde</title>
+<style>
+:root{--ink:#18221c;--green:#234835;--muted:#526056;--line:#a7b4a7;--paper:#fffffc;--pale:#eef3e9;--orange:#9b421c}
+*{box-sizing:border-box}body{margin:0;background:#f3f3eb;color:var(--ink);font:16px/1.45 Inter,system-ui,sans-serif}main{width:min(760px,100%);margin:22px auto;padding:30px 34px;background:var(--paper);border:1px solid var(--line)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:2px solid var(--green);padding-bottom:16px}.brand{width:155px;height:auto}header span{font-size:.88rem;color:var(--green);text-align:right}
+h1{font:normal clamp(2.0rem,6vw,3.4rem)/1.02 Georgia,serif;letter-spacing:-.045em;color:var(--green);margin:23px 0 9px;text-wrap:balance}h2{font:normal 1.65rem/1.12 Georgia,serif;color:var(--green);margin:0 0 8px}p{margin:6px 0}.intro{color:var(--muted);margin-bottom:16px}
+section{border-top:1px solid var(--line);padding:18px 0 12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;margin-top:11px}.wide{grid-column:1/-1}label{display:block;font-size:.9rem;font-weight:650;min-width:0}input,textarea,select{display:block;width:100%;max-width:100%;font:inherit;font-weight:400;color:var(--ink);padding:9px;border:1px solid var(--line);border-radius:0;background:white;margin-top:4px;min-height:42px}textarea{resize:vertical}a{color:var(--green);text-underline-offset:3px}input:focus-visible,textarea:focus-visible,a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #985821;outline-offset:2px}
+.hint{font-size:.88rem;color:var(--muted)}.paper-value{display:none}.status{display:block;background:var(--pale);padding:12px 14px;margin-top:12px;font-weight:650;border-left:3px solid var(--green);font-variant-numeric:tabular-nums}.status.error{color:#812118;border-color:#9a301f}.actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:12px 0 6px}
+button,.action{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border:1px solid var(--green);border-radius:0;background:white;color:var(--green);font:600 .92rem/1.3 system-ui,sans-serif;cursor:pointer;text-decoration:none;min-height:44px}.action{background:var(--green);color:white}.actions p{width:100%}#manual{width:100%}.feedback{min-height:1.4em}.print-only,[hidden]{display:none!important}
+@media(max-width:580px){main{margin:0;padding:19px;border:0}.brand{width:130px}header{padding-bottom:12px}.grid{column-gap:10px}.identity{grid-template-columns:1fr}.actions>*:not(.hint){flex:1 1 160px}input,select,textarea{font-size:16px}}
+@page{size:letter;margin:12mm}
+@media print{body,main{background:white;font:9pt/1.23 Arial,sans-serif;color:#172318}main{width:auto;margin:0;padding:0;border:0}header{padding-bottom:5px}.brand{width:100px}header span,.hint,label{font-size:8.5pt}h1{font-size:25pt;margin:9px 0 4px}h2{font-size:15pt;margin:0 0 4px}.intro{margin-bottom:5px}p{margin:4px 0}section{padding:7px 0 5px;break-inside:avoid}.grid,.identity{grid-template-columns:1fr 1fr;gap:6px 14px;margin-top:6px}input,textarea,select{display:none}.paper-value{display:block;min-height:16px;padding:2px 0;border-bottom:1px solid #87958a;white-space:pre-wrap;overflow-wrap:anywhere;font-weight:400}.wide .paper-value{min-height:19px}.status{margin:6px 0;padding:4px 8px;font-weight:600}.actions,.screen,.feedback,#manual{display:none!important}.print-only{display:block!important}.print-only a{color:inherit}}
+</style>
+</head>
+<body><main>
+<header><img class="brand" src="../brand/palapa-verde-es.svg" alt="Palapa Verde, una marca de Go Veggie Life"><span>Equipo de cocina<br>Prueba en hotel</span></header>
+<h1>Hummus de zanahoria</h1>
+<p class="intro">Mide cuánto hummus utiliza la cocina en un turno para elegir el próximo envase de prueba.</p>
+<form id="worksheet" autocomplete="off" onsubmit="return false">
+<section>
+<h2>Antes de abrir la muestra</h2>
+<p>Identifica la receta aprobada y el lote. Revisa la lista de ingredientes y alérgenos de la muestra y sus acompañantes con sus fichas o etiquetas. El responsable de cocina confirma el envase apto para alimentos y las condiciones de manejo aplicables al lote antes de autorizar la degustación.</p>
+<div class="grid identity">
+<label>Lote de la muestra<input name="lot" maxlength="60"></label>
+<label>Fecha y turno<input name="shift" maxlength="80" placeholder="Ej. 7 de noviembre, desayuno"></label>
+<label>Versión de receta y referencia de sus fichas<input name="formula" maxlength="120"></label>
+<label>Responsable de cocina<input name="chef" maxlength="80"></label>
+<label class="wide">Alérgenos identificados y etiquetas revisadas<textarea name="allergens" rows="2" maxlength="260"></textarea></label>
+<label>Envase y referencia de manejo del lote<input name="pack" maxlength="120"></label>
+<label>Decisión del responsable<select name="status"><option value="">Pendiente de revisión</option><option>Degustación autorizada para esta prueba</option><option>Prueba en pausa</option></select></label>
+</div>
+</section>
+<section>
+<h2>Durante el servicio</h2>
+<p>Como punto de partida, el borrador de la picadera propone 250 g de hummus para 6 porciones con vegetales y casabe. Pesa el hummus del turno con la tara descontada.</p>
+<div class="grid">
+<label>Hummus puesto en servicio (g)<input type="number" name="initial" min="0" step="any" inputmode="decimal"></label>
+<label>Sobrante al cierre (g)<input type="number" name="left" min="0" step="any" inputmode="decimal"></label>
+<label>Merma medida por separado (g)<input type="number" name="waste" min="0" step="any" inputmode="decimal"></label>
+<label>Porciones servidas<input type="number" name="portions" min="0" step="1" inputmode="numeric"></label>
+</div>
+<p class="hint">El sobrante es lo que queda en el envase. En merma, anota solo lo descartado que ya salió del envase. Escribe 0 si mediste cero.</p>
+<output id="calc" class="status" aria-live="polite">Anota los pesos para calcular cuántos gramos se sirvieron.</output>
+<p class="print-only">Hummus servido (g) = puesto en servicio − sobrante − merma. Divide el resultado entre las porciones servidas para obtener gramos por porción.</p>
+</section>
+<section>
+<h2>Al cerrar el turno</h2>
+<label>¿Qué cambiarías en el siguiente envase?<input name="next" maxlength="160" placeholder="Tamaño, facilidad de servir o cierre"></label>
+<p>En el registro del equipo, selecciona «Hotel» y «Hummus de zanahoria». Pega el resumen en «Notas de cocina», añade las fotos del envase etiquetado y del plato de esta misma prueba y descarga el ZIP.</p>
+<div class="actions"><button type="button" id="copy">Copiar resumen</button><a class="action" target="_blank" rel="noopener" href="./prueba-de-cocina.html">Abrir registro de cocina ↗</a><button type="button" id="print">Imprimir ficha</button></div>
+<label id="manual" hidden>Selecciona y copia el resumen<textarea id="manual-text" rows="5" readonly></textarea></label>
+<p id="feedback" class="hint feedback screen" role="status">Guarda la ficha impresa o copia el resumen antes de cerrar esta página.</p>
+<p id="offline-status" class="hint screen" role="status"></p>
+<p class="print-only">Registro y fotos: palapa-verde.vercel.app/equipo/prueba-de-cocina.html</p>
+</section>
+</form>
+</main>
+<script>
+const form = document.querySelector('#worksheet');
+const fields = name => form.elements.namedItem(name);
+const output = document.querySelector('#calc');
+const feedback = document.querySelector('#feedback');
+const formatter = new Intl.NumberFormat('es-DO', {maximumFractionDigits:2});
+const keys = ['lot','shift','formula','chef','allergens','pack','status','initial','left','waste','portions','next'];
+const defaults = {status:'Pendiente de revisión'};
+function display(name) { return fields(name).value.trim() || defaults[name] || ''; }
+function update() {
+  const numbers = ['initial','left','waste','portions'].map(name => fields(name));
+  const [initial,left,waste,portions] = numbers.map(input => input.valueAsNumber);
+  const invalid = numbers.some(input => !input.validity.valid);
+  let message = 'Anota los pesos para calcular cuántos gramos se sirvieron.';
+  let error = false;
+  if (invalid) { message = 'Revisa las cantidades. Usa pesos positivos o cero y porciones enteras.'; error = true; }
+  else if ([initial,left,waste].every(Number.isFinite)) {
+    const served = Math.round((initial-left-waste)*1000000)/1000000;
+    if (served < 0) { message = 'Revisa los pesos. El sobrante más la merma superan el hummus puesto en servicio.'; error = true; }
+    else if ((portions === 0 && served > 0) || (portions > 0 && served === 0)) {
+      message = 'Revisa las porciones y los pesos. La cantidad servida y las porciones deben corresponder al mismo turno.'; error = true;
+    } else {
+      message = 'Hummus servido: ' + formatter.format(served) + ' g.';
+      if (portions > 0) message += ' Promedio: ' + formatter.format(served/portions) + ' g por porción.';
+    }
+  }
+  output.textContent = message;
+  output.classList.toggle('error',error);
+  for (const name of keys) fields(name).parentElement.querySelector('.paper-value').textContent = display(name) || ' ';
+  return !error;
+}
+for (const name of keys) { const node = document.createElement('span'); node.className = 'paper-value'; fields(name).after(node); }
+function summary() {
+  const lines = ['Hummus de zanahoria · prueba hotelera'];
+  const titles = ['Lote','Fecha y turno','Receta y fichas','Responsable','Alérgenos y etiquetas','Envase y manejo','Decisión','Puesto en servicio (g)','Sobrante (g)','Merma (g)','Porciones','Siguiente envase'];
+  keys.forEach((name,i) => { if (display(name)) lines.push(titles[i] + ': ' + display(name)); });
+  if (!output.classList.contains('error') && output.textContent.startsWith('Hummus servido:')) lines.push(output.textContent);
+  return lines.join('\n');
+}
+form.addEventListener('input',()=>{update(); document.querySelector('#manual').hidden=true; feedback.textContent='Guarda la ficha impresa o copia el resumen antes de cerrar esta página.';});
+document.querySelector('#copy').onclick=async()=>{
+  if (!update()) { feedback.textContent='Corrige las mediciones antes de copiar el resumen.'; output.scrollIntoView({block:'center'}); return; }
+  const text=summary();
+  try { await navigator.clipboard.writeText(text); feedback.textContent='Resumen copiado. Pégalo en «Notas de cocina» del registro.'; }
+  catch { document.querySelector('#manual').hidden=false; const copy=document.querySelector('#manual-text'); copy.value=text; copy.focus(); copy.select(); feedback.textContent='Copia el texto seleccionado y pégalo en «Notas de cocina».'; }
+};
+document.querySelector('#print').onclick=()=>{update();window.print();};
+window.addEventListener('beforeprint',update);
+update();
+</script>
+</body>
+</html>
