@@ -60,21 +60,21 @@
   <section class="panel" id="calidad">
     <div class="q-grid">
       <div class="q-item">
-        <img src="assets/web/seleccion-240.webp" srcset="assets/web/seleccion-240.webp 240w, assets/web/seleccion-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" alt="" loading="lazy" decoding="async">
+        <img src="assets/web/calidad-seleccion-v2-240.webp" srcset="assets/web/calidad-seleccion-v2-240.webp 240w, assets/web/calidad-seleccion-v2-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" data-i18n-alt="seleccion_alt" alt="Un calibrador mide el diámetro de un tomate cherry." loading="lazy" decoding="async">
         <div>
           <h2 data-i18n="q1_h">Selección</h2>
           <p data-i18n="q1_p">Elige la variedad y el punto de maduración que buscas.</p>
         </div>
       </div>
       <div class="q-item">
-        <img src="assets/web/empaque-240.webp" srcset="assets/web/empaque-240.webp 240w, assets/web/empaque-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" alt="" loading="lazy" decoding="async">
+        <img src="assets/web/calidad-empaque-v2-240.webp" srcset="assets/web/calidad-empaque-v2-240.webp 240w, assets/web/calidad-empaque-v2-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" data-i18n-alt="empaque_alt" alt="Una mano cierra la tapa transparente de un envase de arándanos." loading="lazy" decoding="async">
         <div>
           <h2 data-i18n="q2_h">Empaque</h2>
           <p data-i18n="q2_p">Consulta los formatos para tu góndola o tu cocina.</p>
         </div>
       </div>
       <div class="q-item">
-        <img src="assets/web/entrega-240.webp" srcset="assets/web/entrega-240.webp 240w, assets/web/entrega-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" alt="" loading="lazy" decoding="async">
+        <img src="assets/web/calidad-entrega-v2-240.webp" srcset="assets/web/calidad-entrega-v2-240.webp 240w, assets/web/calidad-entrega-v2-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" data-i18n-alt="entrega_alt" alt="La persona que recibe las berenjenas marca la hoja de entrega." loading="lazy" decoding="async">
         <div>
           <h2 data-i18n="q3_h">Entrega</h2>
           <p data-i18n="q3_p">Dinos dónde recibes tu pedido y acordamos los detalles de la entrega.</p>
@@ -153,11 +153,14 @@ Object.assign(i18n.es, {nav_horeca:'Hoteles y restaurantes'});
 Object.assign(i18n.en, {nav_horeca:'Hotels & restaurants'});
 Object.assign(i18n.es, {nav_business:'Negocios',nav_business_b2b:'Para supermercados',nav_business_horeca:'Para hoteles y restaurantes'});
 Object.assign(i18n.en, {nav_business:'Business',nav_business_b2b:'For supermarkets',nav_business_horeca:'For hotels & restaurants'});
+Object.assign(i18n.es, {"seleccion_alt": "Un calibrador mide el diámetro de un tomate cherry.", "empaque_alt": "Una mano cierra la tapa transparente de un envase de arándanos.", "entrega_alt": "La persona que recibe las berenjenas marca la hoja de entrega."});
+Object.assign(i18n.en, {"seleccion_alt": "A caliper measures the diameter of a cherry tomato.", "empaque_alt": "A hand closes the clear lid on a punnet of blueberries.", "entrega_alt": "The person receiving the eggplants checks the delivery slip."});
 let lang = gvLocale.initial();
 const langBtn = document.getElementById('langBtn');
 function applyLang(){
   document.documentElement.lang = lang;
   gvLocale.updateLinks(lang);
+  document.querySelectorAll('[data-i18n-alt]').forEach(img => { img.alt = i18n[lang][img.dataset.i18nAlt]; });
   langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const t = i18n[lang][el.dataset.i18n];

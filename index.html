@@ -64,21 +64,21 @@
   <section class="panel" id="calidad">
     <div class="q-grid">
       <div class="q-item">
-        <img src="assets/web/seleccion-240.webp" srcset="assets/web/seleccion-240.webp 240w, assets/web/seleccion-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" alt="" loading="lazy" decoding="async">
+        <img src="assets/web/home-seleccion-v2-240.webp" srcset="assets/web/home-seleccion-v2-240.webp 240w, assets/web/home-seleccion-v2-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" data-i18n-alt="seleccion_alt" alt="Tres lechosas de distinto color muestran cómo cambia la fruta al madurar." loading="lazy" decoding="async">
         <div>
           <h3 data-i18n="q1_h">Selección</h3>
           <p data-i18n="q1_p">Elige la variedad y el punto de maduración que buscas.</p>
         </div>
       </div>
       <div class="q-item">
-        <img src="assets/web/empaque-240.webp" srcset="assets/web/empaque-240.webp 240w, assets/web/empaque-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" alt="" loading="lazy" decoding="async">
+        <img src="assets/web/home-empaque-v2-240.webp" srcset="assets/web/home-empaque-v2-240.webp 240w, assets/web/home-empaque-v2-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" data-i18n-alt="empaque_alt" alt="Un trabajador ajusta una banda de papel alrededor de un manojo de cebollines." loading="lazy" decoding="async">
         <div>
           <h3 data-i18n="q2_h">Empaque</h3>
           <p data-i18n="q2_p">Consulta los formatos para tu góndola o tu cocina.</p>
         </div>
       </div>
       <div class="q-item">
-        <img src="assets/web/entrega-240.webp" srcset="assets/web/entrega-240.webp 240w, assets/web/entrega-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" alt="" loading="lazy" decoding="async">
+        <img src="assets/web/home-entrega-v2-240.webp" srcset="assets/web/home-entrega-v2-240.webp 240w, assets/web/home-entrega-v2-640.webp 640w" sizes="(max-width: 760px) 115px, (max-width: 1440px) 31vw, 445px" width="640" height="365" data-i18n-alt="entrega_alt" alt="Un proveedor entrega lechugas a un cocinero en la entrada de servicio." loading="lazy" decoding="async">
         <div>
           <h3 data-i18n="q3_h">Entrega</h3>
           <p data-i18n="q3_p">Dinos dónde recibes tu pedido y acordamos los detalles de la entrega.</p>
@@ -133,7 +133,7 @@
         <a class="secondary-link arrow" href="hoteles-restaurantes.html" data-i18n="b2b_horeca">¿Hotel o restaurante? Ver formatos para cocina</a>
       </div>
       <div class="b2b-art b2b-art--dominicana">
-        <img src="assets/web/packing-quality-v1-768.webp" srcset="assets/web/packing-quality-v1-480.webp 480w, assets/web/packing-quality-v1-768.webp 768w, assets/web/packing-quality-v1-1200.webp 1200w" sizes="(max-width: 760px) 94vw, (max-width: 1440px) 54vw, 760px" decoding="async" loading="lazy" alt="Ilustración de selección, control de calidad y empaque de vegetales en la empacadora" width="1536" height="1024">
+        <img src="assets/web/aliado-supermercado-v2-768.webp" srcset="assets/web/aliado-supermercado-v2-480.webp 480w, assets/web/aliado-supermercado-v2-768.webp 768w, assets/web/aliado-supermercado-v2-1200.webp 1200w" sizes="(max-width: 760px) 94vw, (max-width: 1440px) 54vw, 760px" decoding="async" loading="lazy" data-i18n-alt="aliado_alt" alt="Una encargada de supermercado y un proveedor conversan frente a la exhibición de vegetales." width="1536" height="1024">
       </div>
     </div>
   </section>
@@ -228,11 +228,14 @@ Object.assign(i18n.es, {b2b_horeca:'¿Hotel o restaurante? Ver formatos para coc
 Object.assign(i18n.en, {b2b_horeca:'Hotel or restaurant? See kitchen formats',nav_horeca:'Hotels & restaurants'});
 Object.assign(i18n.es, {nav_business:'Negocios',nav_business_b2b:'Para supermercados',nav_business_horeca:'Para hoteles y restaurantes'});
 Object.assign(i18n.en, {nav_business:'Business',nav_business_b2b:'For supermarkets',nav_business_horeca:'For hotels & restaurants'});
+Object.assign(i18n.es, {"seleccion_alt": "Tres lechosas de distinto color muestran cómo cambia la fruta al madurar.", "empaque_alt": "Un trabajador ajusta una banda de papel alrededor de un manojo de cebollines.", "entrega_alt": "Un proveedor entrega lechugas a un cocinero en la entrada de servicio.", "aliado_alt": "Una encargada de supermercado y un proveedor conversan frente a la exhibición de vegetales."});
+Object.assign(i18n.en, {"seleccion_alt": "Three papayas show how the colour of the fruit changes as it ripens.", "empaque_alt": "A worker wraps a paper band around a bunch of scallions.", "entrega_alt": "A supplier passes fresh lettuce to a cook at the service entrance.", "aliado_alt": "A supermarket buyer and a supplier discuss the produce display."});
 let lang = gvLocale.initial();
 const langBtn = document.getElementById('langBtn');
 function applyLang(){
   document.documentElement.lang = lang;
   gvLocale.updateLinks(lang);
+  document.querySelectorAll('[data-i18n-alt]').forEach(img => { img.alt = i18n[lang][img.dataset.i18nAlt]; });
   langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const t = i18n[lang][el.dataset.i18n];
