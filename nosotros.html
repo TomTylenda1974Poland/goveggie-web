@@ -21,6 +21,7 @@
       <nav class="nav-links" aria-label="principal">
         <a href="index.html" data-i18n="nav_home">Inicio</a>
         <a href="productos.html" data-i18n="nav_products">Productos</a>
+        <a href="/recetas/" data-book-link data-i18n="nav_recetas">Recetas</a>
         <a href="calidad.html" data-i18n="nav_quality">Calidad</a>
         <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
         <div class="nav-group">
@@ -89,6 +90,7 @@
       <p class="f-desc" data-i18n="f_about">Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.</p>
       <div class="f-col">
         <a href="productos.html" data-i18n="nav_products">Productos</a>
+        <a href="/recetas/" data-book-link data-i18n="nav_recetas">Recetas</a>
         <a href="calidad.html" data-i18n="nav_quality">Calidad</a>
         <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
       </div>
@@ -106,13 +108,15 @@
   </div>
 </footer>
 <a class="b2b-sticky" href="supermercados.html" data-i18n="sticky">Hablemos de tu negocio</a>
-<script src="assets/language.js?v=2"></script>
+<script src="assets/language.js?v=cocina1"></script>
 <script>
 const i18n = {"es": {"nav_home": "Inicio", "nav_products": "Productos", "nav_quality": "Calidad", "nav_about": "Nosotros", "nav_b2b": "Supermercados", "nav_contact": "Contacto", "nav_cta": "Ver catálogo", "f_about": "Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.", "f_legal": "© 2026 Go Veggie Life", "sticky": "Hablemos de tu negocio", "ph_h": "Nosotros", "ph_p": "Trabajamos con productores que cultivan en la República Dominicana y con supermercados que buscan frutas, vegetales y hierbas para sus clientes.", "n1_h": "Del campo a tu supermercado", "n1_p": "Conocemos desde hace años a los productores con los que trabajamos. Complementamos sus cosechas con importaciones cuando la oferta local no alcanza.", "n1_cta": "Conoce nuestros productos", "pv_tag": "Chutney, pesto, hummus y salsa con vegetales protagonistas.", "pv_p": "Palapa Verde es nuestra marca de alimentos preparados: chutney, pesto, hummus y salsa. Go Veggie Life es su principal proveedor de ingredientes. Los productos están en desarrollo y todavía no están a la venta.", "pv_cta": "Visitar"}, "en": {"nav_home": "Home", "nav_products": "Products", "nav_quality": "Quality", "nav_about": "About us", "nav_b2b": "Supermarkets", "nav_contact": "Contact", "nav_cta": "View catalogue (ES)", "f_about": "Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.", "f_legal": "© 2026 Go Veggie Life", "sticky": "Let's talk business", "ph_h": "About us", "ph_p": "We work with growers who farm in the Dominican Republic and supermarkets looking for fruit, vegetables and herbs for their customers.", "n1_h": "From the field to your supermarket", "n1_p": "We have worked with our growers for years. When the local harvest cannot meet demand, we supplement it with imports.", "n1_cta": "Discover our products", "pv_tag": "Chutney, pesto, hummus and salsa starring vegetables.", "pv_p": "Palapa Verde is our prepared-food brand: chutney, pesto, hummus and salsa. Go Veggie Life is its main ingredient supplier. The products are in development and not on sale yet.", "pv_cta": "Visit"}};
 Object.assign(i18n.es, {nav_horeca:'Hoteles y restaurantes'});
 Object.assign(i18n.en, {nav_horeca:'Hotels & restaurants'});
 Object.assign(i18n.es, {nav_business:'Negocios',nav_business_b2b:'Para supermercados',nav_business_horeca:'Para hoteles y restaurantes'});
 Object.assign(i18n.en, {nav_business:'Business',nav_business_b2b:'For supermarkets',nav_business_horeca:'For hotels & restaurants'});
+Object.assign(i18n.es, {nav_recetas:'Recetas',libro_cta:'Cocina con nuestros productos'});
+Object.assign(i18n.en, {nav_recetas:'Recipes',libro_cta:'Cook with our produce'});
 let lang = gvLocale.initial();
 const langBtn = document.getElementById('langBtn');
 function applyLang(){

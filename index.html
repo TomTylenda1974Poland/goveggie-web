@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v=surtido1">
 <script src="assets/nav.js?v=horeca2" defer></script>
+<style>.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.hero-actions .book-cta{background:#195d39;color:white;border-color:#195d39}.hero-actions .book-cta:hover{background:#103f29}@media(max-width:760px){.hero-actions .book-cta{order:-1}}</style>
 </head>
 <body class="botanical-site">
 
@@ -22,6 +23,7 @@
       <nav class="nav-links" aria-label="principal">
         <a href="#" data-i18n="nav_home" aria-current="page">Inicio</a>
         <a href="productos.html" data-i18n="nav_products">Productos</a>
+        <a href="/recetas/" data-book-link data-i18n="nav_recetas">Recetas</a>
         <a href="calidad.html" data-i18n="nav_quality">Calidad</a>
         <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
         <div class="nav-group">
@@ -50,7 +52,7 @@
       <div>
         <h1 data-i18n="hero_h1">Frescura que se nota.</h1>
         <p class="hero-sub" data-i18n="hero_sub">Frutas y vegetales seleccionados para supermercados de República Dominicana.</p>
-        <a class="btn arrow" href="productos.html" data-i18n="hero_cta">Conoce nuestros productos</a>
+        <div class="hero-actions"><a class="btn arrow" href="productos.html" data-i18n="hero_cta">Conoce nuestros productos</a><a class="btn arrow book-cta" href="/recetas/" data-book-link data-i18n="libro_cta">Ver el recetario</a></div>
       </div>
       <div class="hero-art">
         <img src="assets/web/harvest-hero-v1-768.webp" srcset="assets/web/harvest-hero-v1-480.webp 480w, assets/web/harvest-hero-v1-768.webp 768w, assets/web/harvest-hero-v1-1200.webp 1200w" sizes="(max-width: 760px) 94vw, (max-width: 1440px) 54vw, 760px" decoding="async" fetchpriority="high" alt="Un productor comprueba la madurez de un tomate en la planta, con campos y montañas al fondo" width="1536" height="1024">
@@ -150,6 +152,7 @@
       <p class="f-desc" data-i18n="f_about">Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.</p>
       <div class="f-col">
         <a href="productos.html" data-i18n="nav_products">Productos</a>
+        <a href="/recetas/" data-book-link data-i18n="nav_recetas">Recetas</a>
         <a href="calidad.html" data-i18n="nav_quality">Calidad</a>
         <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
       </div>
@@ -169,7 +172,7 @@
 
 <a class="b2b-sticky" href="supermercados.html" data-i18n="sticky">Hablemos de tu negocio</a>
 
-<script src="assets/language.js?v=2"></script>
+<script src="assets/language.js?v=cocina1"></script>
 <script>
 const i18n = {
   es: {
@@ -221,6 +224,8 @@ Object.assign(i18n.es, {nav_business:'Negocios',nav_business_b2b:'Para supermerc
 Object.assign(i18n.en, {nav_business:'Business',nav_business_b2b:'For supermarkets',nav_business_horeca:'For hotels & restaurants'});
 Object.assign(i18n.es, {"seleccion_alt": "Tres lechosas de distinto color muestran cómo cambia la fruta al madurar.", "empaque_alt": "Un trabajador ajusta una banda de papel alrededor de un manojo de cebollines.", "entrega_alt": "Un proveedor entrega lechugas a un cocinero en la entrada de servicio.", "aliado_alt": "Una encargada de supermercado y un proveedor conversan frente a la exhibición de vegetales."});
 Object.assign(i18n.en, {"seleccion_alt": "Three papayas show how the colour of the fruit changes as it ripens.", "empaque_alt": "A worker wraps a paper band around a bunch of scallions.", "entrega_alt": "A supplier passes fresh lettuce to a cook at the service entrance.", "aliado_alt": "A supermarket buyer and a supplier discuss the produce display."});
+Object.assign(i18n.es, {nav_recetas:'Recetas',libro_cta:'Ver el recetario'});
+Object.assign(i18n.en, {nav_recetas:'Recipes',libro_cta:'Explore the cookbook'});
 let lang = gvLocale.initial();
 const langBtn = document.getElementById('langBtn');
 function applyLang(){

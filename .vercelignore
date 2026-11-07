@@ -1,0 +1,7 @@
+.git
+.env*
+AGENTS.md
+CLAUDE.md
+README.md
+design-src
+cocina-src

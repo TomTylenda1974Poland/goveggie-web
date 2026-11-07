@@ -23,6 +23,7 @@
       <nav class="nav-links" aria-label="principal">
         <a href="index.html" data-i18n="nav_home">Inicio</a>
         <a href="productos.html" data-i18n="nav_products">Productos</a>
+        <a href="/recetas/" data-book-link data-i18n="nav_recetas">Recetas</a>
         <a href="calidad.html" data-i18n="nav_quality">Calidad</a>
         <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
         <div class="nav-group">
@@ -176,6 +177,7 @@
       <p class="f-desc" data-i18n="f_about">Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.</p>
       <div class="f-col">
         <a href="productos.html" data-i18n="nav_products">Productos</a>
+        <a href="/recetas/" data-book-link data-i18n="nav_recetas">Recetas</a>
         <a href="calidad.html" data-i18n="nav_quality">Calidad</a>
         <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
       </div>
@@ -193,7 +195,7 @@
   </div>
 </footer>
 <a class="b2b-sticky" href="#consulta" data-i18n="form_h">Hablemos de tu cocina</a>
-<script src="assets/language.js?v=2"></script>
+<script src="assets/language.js?v=cocina1"></script>
 <script>
 const i18n = {
   "es": {
@@ -341,6 +343,8 @@ Object.assign(i18n.en, {
   "formats_study": "Formats under consideration"
 });
 Object.assign(i18n.en, {nav_business:'Business',nav_business_b2b:'For supermarkets',nav_business_horeca:'For hotels & restaurants'});
+Object.assign(i18n.es, {nav_recetas:'Recetas',libro_cta:'Cocina con nuestros productos'});
+Object.assign(i18n.en, {nav_recetas:'Recipes',libro_cta:'Cook with our produce'});
 let lang = gvLocale.initial();
 const langBtn = document.getElementById('langBtn');
 function applyLang(){

@@ -22,6 +22,9 @@ const gvLocale = (() => {
   }
 
   function updateLinks(lang) {
+    for (const link of document.querySelectorAll('[data-book-link]')) {
+      link.href = lang === 'en' ? '/en/recipes/' : '/recetas/';
+    }
     const title = document.querySelector('title[data-es][data-en]');
     if (title) document.title = title.dataset[lang];
     for (const link of document.querySelectorAll('a[data-palapa-path]')) {

@@ -1,0 +1,118 @@
+# key | Spanish | English | eligible catalogue slugs (a group prefixed by @ imports its varieties)
+avo|aguacate maduro|ripe avocado|@Aguacates
+apple|manzana|apple|@Manzanas
+orange|naranja|orange|naranja
+mand|mandarina|mandarin|mandarinas
+lemon|jugo de limón amarillo|lemon juice|limones-amarillos
+plumtom|tomate para salsa|plum tomato|tomate-barcelo tomate-san-marzano-grande tomate-san-marzano-pequeno
+cherry|tomate pequeño|small tomatoes|tomate-cherry tomate-cherry-grande tomate-cherry-en-ramita tomate-cherry-en-ramitas-grandes tomate-coctel-indigo tomates-uva
+slicetom|tomate de ensalada|salad tomato|tomate-ensalada tomate-heirloom tomate-mezcla tomates-zebra
+sweet|ají dulce para asar|sweet roasting pepper|aji-morron aji-cubanela aji-sweet-palermo italian-peppers
+gustoso|ají gustoso|ají gustoso pepper|aji-beso-de-cereza-gustoso
+hot|ají picante fresco|fresh hot chili|aji-beso-de-fuego aji-cayena aji-cherry-bomb aji-cherry-pepper aji-chili-hot-hot-hot aji-habanero aji-jalapeno aji-picante-hot-hot aji-fresno aji-picante-cornitos
+shishito|ají shishito|shishito peppers|aji-shishito
+eggplant|berenjena|eggplant|berenjena-normal berenjena-grande berenjena-criolla-negra berenjena-blanca
+smallbrin|berenjena pequeña|small eggplant|berenjena-thai berenjena-hindu
+cuke|pepino|cucumber|pepino-americano pepino-japones pepinillos pepino-ingles
+tindora|tindora verde|green tindora|pepino-tindora
+napa|repollo chino|napa cabbage|repollo-chino-grande repollo-chino-pequeno repollo-napa-cabbage
+redcab|repollo morado|red cabbage|repollo-morado-grande repollo-morado-pequeno
+cauli|coliflor|cauliflower|@Coliflor
+squash|auyama pelada|peeled Caribbean squash|auyama
+zuke|zucchini|zucchini|zucchini
+gourd|calabaza alargada joven|young long gourd|squash-opo-normal opo-squash-largo bangana-corta bangana-larga sponge-gourd-egyptian-cucumber
+bitter|melón amargo|bitter melon|bitter-melon
+chayote|tayota|chayote|tayota
+beans|vainitas|green beans|@Vainitas
+snow|guisantes de nieve|snow peas|@Guisante de Nieve
+carrot|zanahoria|carrot|@Zanahoria
+beet|remolacha|beetroot|remolacha
+radish|rábano|radish|rabano
+turnip|nabo|turnip|nabo
+fennel|bulbo de hinojo|fennel bulb|hinojo-fennel cepa-de-hinojo
+stalk|tallos de hinojo|fennel stalks|tallos-de-hinojo
+babycorn|maíz tierno pequeño|baby corn|maiz-baby-corn
+skewers|pinchos de vegetales|vegetable skewers|pinchos-veggie-vegetales-rebanados
+lettuce|lechuga|lettuce|@Lechuga
+mesclun|mezcla de hojas|mixed salad leaves|mesclun-salad-greens
+spinach|espinaca|spinach|espinaca-americana espinaca-malabar
+rocket|rúcula|arugula|rucula-normal rucula-pequena rucula-sylvestre rucula-italiana
+kale|kale|kale|kale-rizada kale-toscana
+cress|berro|watercress|berro-watercress
+basil|albahaca|basil|albahaca-basilico
+recaito|recaíto o cilantro ancho|culantro|cilantro-ancho recaito
+parsley|perejil|parsley|perejil-italiano perejil-rizado
+mint|menta|mint|menta-normal menta-chocolate hierba-buena
+balm|toronjil|lemon balm|toronjil
+rosemary|romero|rosemary|romero
+dill|eneldo|dill|eneldo
+lemongrass|limoncillo|lemongrass|limoncillo-lemongrass
+thyme|ditén (tomillo culinario)|culinary thyme (ditén)|diten
+mango|pulpa de mango|mango flesh|@Mango
+rasp|frambuesas|raspberries|@Frambuesas
+berry|bayas maduras|ripe berries|fresas mora-blackberry arandanos
+goose|grosellas maduras|ripe gooseberries|gooseberry ceylon-gooseberry-ketembilla
+granadilla|pulpa madura de granadilla|ripe granadilla pulp|@Granadillas
+fig|higos|figs|@Higos
+tamarillo|tomate de árbol maduro|ripe tamarillo|tamarillo-tomate-de-arbol
+star|carambola madura|ripe star fruit|carambola
+melon|melón coreano|Korean melon|melon-amarillo-coreano
+guava|guayaba madura|ripe guava|guayaba
+kiwi|kiwi|kiwi|kiwis
+ambarella|manzana de oro madura|ripe ambarella|manzana-de-oro
+mush|hongos de botón o crimini|button or cremini mushrooms|mushroom-button-entero mushroom-button-rebanado hongo-crimini
+porto|portobello|portobello mushrooms|mushroom-portobello-entero mushroom-portobello-rebanado
+oyster|hongo ostra o trompeta|oyster or king trumpet mushrooms|hongos-trompeta-trumpet hongo-ostra-oyster
+shiitake|shiitake|shiitake|hongo-shiitake
+enoki|enoki|enoki|hongo-enoki
+honey|miel|honey|@Miel
+egg|huevos|eggs|@Huevos
+mac|macadamias sin sal|unsalted macadamias|@Macadamia
+ginger|jengibre|ginger|jengibre
+turmeric|cúrcuma fresca|fresh turmeric|curcumina-curcuma
+broc|brócoli|broccoli|brocoli
+celery|apio|celery|apio
+onion|cebolla|onion|cebolla-de-bulbo
+scallion|cebollín|scallion|cebolla-verde
+leek|puerro|leek|puerro-leeks
+garlic|ajo|garlic|ajo
+greenGarlic|ajo verde|green garlic|ajo-verde
+elephant|ajo elefante|elephant garlic|ajo-elefante
+choi|pak choi o tatsoi|bok choy or tatsoi|@Hojas asiáticas
+passion|pulpa de chinola|passion fruit pulp|chinola-passion-fruit
+tomatillo|tomatillo|tomatillo|tomatillos
+lychee|lichi o rambután pelado, sin semilla|peeled, pitted lychee or rambutan|@Lichi y rambután
+pear|pera|pear|peras
+grape|uvas|grapes|uvas
+stone|fruta de hueso madura|ripe stone fruit|@Frutas de hueso
+oil|aceite de oliva|olive oil|
+salt|sal fina|fine salt|
+water|agua|water|
+rice|arroz blanco de grano largo|long-grain white rice|
+arborio|arroz arborio|arborio rice|
+cookedrice|arroz recién cocido|freshly cooked rice|
+stock|caldo de vegetales|vegetable stock|
+coconut|leche de coco sin azúcar|unsweetened coconut milk|
+sugar|azúcar|sugar|
+cornmeal|harina de maíz fina|fine cornmeal|
+oats|avena en hojuelas|rolled oats|
+yogurt|yogur natural|plain yogurt|
+bread|pan de campo vegano|vegan country bread|
+pasta|pasta seca de sémola sin huevo|dried egg-free durum pasta|
+lentils|lentejas cocidas y escurridas|cooked, drained lentils|
+chick|garbanzos cocidos y escurridos|cooked, drained chickpeas|
+whitebean|habichuelas blancas cocidas|cooked white beans|
+redbean|habichuelas rojas cocidas|cooked red beans|
+plantain|plátano verde pelado|peeled green plantain|
+potato|papa|potato|
+vinegar|vinagre de vino|wine vinegar|
+tamari|tamari|tamari|
+sesame|aceite de sésamo|sesame oil|
+cornstarch|fécula de maíz|cornstarch|
+cumin|comino molido|ground cumin|
+cinnamon|canela molida|ground cinnamon|
+vanilla|extracto de vainilla|vanilla extract|
+butter|mantequilla|butter|
+flour|harina de trigo|wheat flour|
+milk|leche|milk|
+paprika|pimentón ahumado|smoked paprika|
