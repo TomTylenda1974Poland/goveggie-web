@@ -2,12 +2,12 @@
 from html import escape as h
 from pathlib import Path
 import json
-from catalog import ROOT, ingredients, recipes, products, used, copy_art, art_for
+from catalog import ROOT, ingredients, recipes, products, used, copy_art
 
 HOST = 'https://web.goveggie.life'
 CUISINE = {'D':('Dominicana','Dominican'),'I':('Italiana','Italian'),'F':('Francesa','French'),'C':('Caribeña','Caribbean'),'A':('Inspiración asiática','Asian-inspired'),'H':('Inspiración india','Indian-inspired'),'M':('Inspiración mexicana','Mexican-inspired')}
 MEALS = {'B':('Desayuno','Breakfast'),'L':('Almuerzo','Lunch'),'D':('Cena','Dinner'),'S':('Picadera','Small plates'),'X':('Postre','Dessert')}
-FEATURES = ('arroz-auyama','panzanella','clafoutis')
+COVER_RECIPE = 'arroz-auyama'
 FIRST = ('panzanella','clafoutis','mangu-cebolla','risotto-hongos','chinola','rollitos-lechuga','crema-zanahoria','berenjenitas','arroz-auyama')
 assert set(products) - used == {'ruda'}, 'Review new or removed catalogue items before publication.'
 def path(lang, slug=''):
@@ -17,29 +17,48 @@ def dump(data):
     return json.dumps(data, ensure_ascii=False, separators=(',',':')).replace('<','\\u003c')
 
 def picture(slug, size='card', alt=''):
-    art=art_for(slug)
-    src='/assets/cocina/'+art
-    large=size in ('hero','detail')
-    if slug in FEATURES:
-        attrs=f'src="{src}-sm.webp" srcset="{src}-sm.webp 420w, {src}.webp 800w" sizes="(max-width: 600px) 94vw, '+('550px' if large else '340px')+'"'
-        dimensions='width="800" height="533"'
-    else:
-        attrs=f'src="{src}.webp"'
-        dimensions='width="400" height="400"'
-    return f'<img {attrs} {dimensions} alt="{h(alt)}" {"fetchpriority=high" if large else "loading=lazy"} decoding="async">'
+    src = '/assets/cocina/' + slug
+    large = size in ('hero', 'detail')
+    sizes = '(max-width: 650px) 94vw, 550px' if large else '(max-width: 650px) 46vw, 320px'
+    priority = 'fetchpriority="high"' if large else 'loading="lazy"'
+    return (f'<img src="{src}-sm.webp" srcset="{src}-sm.webp 420w, {src}.webp 800w" '
+            f'sizes="{sizes}" width="800" height="533" alt="{h(alt)}" {priority} decoding="async">')
 
-def render(lang):
+
+def load_kitchen_guide():
+    guide = {}
+    for line in (ROOT / 'cocina-src/kitchen-guide.txt').read_text().splitlines():
+        slug, *fields = line.split('|')
+        pairs = [field.split('/') for field in fields]
+        if slug in guide or any(len(pair) != 2 or not all(pair) for pair in pairs):
+            raise ValueError(f'Invalid bilingual cooking guide: {slug}')
+        guide[slug] = (pairs[:-1], pairs[-1])
+    if guide.keys() != recipes.keys():
+        raise ValueError('Every recipe must have a cooking guide.')
+    for slug, recipe in recipes.items():
+        headings, _ = guide[slug]
+        if len(headings) != len(recipe['steps']):
+            raise ValueError(f'Check the illustrated steps for {slug}')
+        artwork = [slug + '.webp', slug + '-sm.webp']
+        artwork.extend(f'pasos/{slug}-{n}.webp' for n in range(1, len(headings) + 1))
+        for name in artwork:
+            if not (ROOT / 'assets/cocina' / name).is_file():
+                raise FileNotFoundError(f'Missing recipe artwork: {name}')
+    return guide
+
+
+def render(lang, guide):
     other='en' if lang=='es' else 'es'
     def t(es,en): return es if lang=='es' else en
     def cuisine(r): return t(*CUISINE[r['cuisine']])
     def base(slug,title,description,body,data):
         htmltitle=h(title+' · Go Veggie Life')
-        img='/assets/cocina/'+art_for(slug or FEATURES[0])+'.webp'
+        img='/assets/cocina/'+(slug or COVER_RECIPE)+'.webp'
         return f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{htmltitle}</title><meta name="description" content="{h(description,quote=True)}"><link rel="canonical" href="{HOST}{path(lang,slug)}">
 <link rel="alternate" hreflang="es" href="{HOST}{path('es',slug)}"><link rel="alternate" hreflang="en" href="{HOST}{path('en',slug)}">
 <meta property="og:title" content="{htmltitle}"><meta property="og:description" content="{h(description,quote=True)}"><meta property="og:image" content="{HOST}{img}">
-<link rel="icon" href="/assets/goveggie-mark-white-v2.svg"><link rel="stylesheet" href="/assets/cocina/book.css?v=1">
+<link rel="icon" href="/assets/goveggie-mark-white-v2.svg"><link rel="stylesheet" href="/assets/cocina/book.css?v=platos2">
 <script src="/assets/cocina/book.js?v=1" defer></script></head><body>
 <a class="skip" href="#main">{t("Ir al contenido","Skip to content")}</a>
 <header class="mast"><div class="bar"><a class="brand" href="/?lang={lang}" aria-label="Go Veggie Life"><img src="/assets/goveggie-mark-white-v2.svg" width="34" height="34" alt="">goveggie.life</a>
@@ -66,7 +85,7 @@ def render(lang):
     title=t('El recetario','The cookbook')
     intro=t('Elige un ingrediente y encuentra qué preparar con él.','Pick an ingredient and find something to cook with it.')
     index=f'''<section class="cover"><div><p class="eyebrow">Go Veggie Life</p><h1>{title}</h1><p class="intro">{intro}</p><a class="primary" href="#buscar">{t('Buscar una receta','Find a recipe')} ↓</a></div>
-<a class="cover-art" href="{path(lang,FEATURES[0])}">{picture(FEATURES[0],'hero')}<span>{h(recipes[FEATURES[0]][lang])} <b aria-hidden="true">↗</b></span></a></section>
+<a class="cover-art" href="{path(lang,COVER_RECIPE)}">{picture(COVER_RECIPE,'hero')}<span>{h(recipes[COVER_RECIPE][lang])} <b aria-hidden="true">↗</b></span></a></section>
 <section id="buscar" class="finder"><div class="find-head"><h2>{t('¿Qué tienes en la cocina?','What’s in your kitchen?')}</h2></div>
 <form id="filters" role="search"><label class="search">{t('Buscar por ingrediente o plato','Search by ingredient or dish')}<input type="search" id="q" placeholder="{t('Por ejemplo, tomate Barceló o mangú','Try avocado, Barceló or mangú')}" autocomplete="off"></label>
 <button id="filter-toggle" class="filter-toggle" type="button" aria-expanded="false" aria-controls="filter-options">{t("Filtros de recetas","Recipe filters")} <span aria-hidden="true">＋</span></button><div id="filter-options"><div class="selects">{cuisine_select}{meal_select}{diet_select}<label>{t('Producto del catálogo','Catalogue product')}<select id="producto"><option value="">{t('Todos los productos','All products')}</option>{select_products}</select></label></div>
@@ -93,21 +112,34 @@ def render(lang):
         tags=' · '.join(t(*MEALS[m]) for m in r['meals'])
         diet=t('Vegana','Vegan') if r['vegan'] else t('Vegetariana','Vegetarian')
         child=t(' · Para niños',' · For children') if r['kids'] else ''
-        step_html=''.join(f'<li>{h(t(*pair))}</li>' for pair in r['steps'])
+        headings, family_task = guide[slug]
+        step_cards = []
+        for n, (heading, instruction) in enumerate(zip(headings, r['steps']), 1):
+            step_cards.append(
+                f'<li><img class="step-image" src="/assets/cocina/pasos/{slug}-{n}.webp" '
+                f'width="480" height="320" loading="lazy" decoding="async" alt="">'
+                f'<div class="step-copy"><h3><span>{n}.</span> {h(t(*heading))}</h3>'
+                f'<p>{h(t(*instruction))}</p></div></li>'
+            )
+        step_html = ''.join(step_cards)
+        family_note = (f'<aside class="family-task"><strong>{t("Para las manos pequeñas", "For little hands")}</strong>'
+                       f'<p>{h(t(*family_task))}</p><small>{t("Deja los cuchillos, el fuego y los aparatos eléctricos a una persona adulta.", "Let an adult handle knives, heat and electrical appliances.")}</small></aside>')
         serving_options=''.join(f'<option value="{n}" {"selected" if n==2 else ""}>{n}</option>' for n in (2,4,6,8))
         detail=f'''<a class="back" href="{path(lang)}#buscar">← {t("Todas las recetas","All recipes")}</a><section class="recipe-head"><div><p class="eyebrow">{h(cuisine(r))} · {r["minutes"]} min</p><h1>{h(title)}</h1><p class="intro small">{tags} · {diet}{child}</p>
-<button class="secondary fav" type="button" aria-pressed="false">{t("Guardar receta","Save recipe")}</button></div><div class="dish">{picture(slug,'detail',title if slug in FEATURES else t('Ilustración del ingrediente','Ingredient illustration'))}</div></section>
-<div class="method"><section class="shopping"><div class="section-title"><h2>{t("Ingredientes","Ingredients")}</h2><label>{t("Porciones","Servings")} <select id="servings">{serving_options}</select></label></div>
+<button class="secondary fav" type="button" aria-pressed="false">{t("Guardar receta","Save recipe")}</button></div><div class="dish">{picture(slug,'detail',title)}</div></section>
+<nav class="recipe-shortcuts" aria-label="{t('Ir a una sección del plato','Jump to a recipe section')}"><a href="#ingredientes">{t('Ingredientes','Ingredients')}</a><a href="#preparacion">{t('Paso a paso','Step by step')} ↓</a></nav>
+<div class="method"><section id="ingredientes" class="shopping"><div class="section-title"><h2>{t("Ingredientes","Ingredients")}</h2><label>{t("Porciones","Servings")} <select id="servings">{serving_options}</select></label></div>
 <p class="hint">{t("Marca lo que ya tienes. El resto irá a tu lista de compras.","Tick what you already have. The rest goes on your shopping list.")}</p><ul id="ingredients">{''.join(items)}</ul>
 <a id="wa" class="primary" target="_blank" rel="noopener noreferrer">{t("Compartir lista por WhatsApp","Share list on WhatsApp")} ↗</a>
 <button type="button" class="link-button" id="copy">{t("Copiar lista","Copy list")}</button><p id="feedback" role="status"></p>
 <label id="manual-wrap" hidden>{t("Lista para copiar","List to copy")}<textarea id="manual" readonly rows="5"></textarea></label></section>
-<section class="steps"><h2>{t("Preparación","Method")}</h2><ol>{step_html}</ol><details><summary>{t("Variedades del catálogo para esta receta","Catalogue varieties for this recipe")}</summary>
+<section class="steps" id="preparacion"><h2>{t("Preparación paso a paso","Step-by-step method")}</h2><ol role="list">{step_html}</ol>{family_note}<details><summary>{t("Variedades del catálogo para esta receta","Catalogue varieties for this recipe")}</summary>
 <label>{t("Estoy cocinando con","I’m cooking with")}<select id="variety"><option value="">{t("Elegir producto","Choose produce")}</option>{options}</select></label><a id="catalog-link" hidden href="https://catalog.goveggie.life/">{t("Ver producto en el catálogo","View catalogue product")} ↗</a></details></section></div>'''
         data={'type':'recipe','slug':slug,'lines':line_data,'products':variants}
         write(slug,base(slug,title,tags+' · '+diet+' · '+str(r['minutes'])+' min',detail,data))
 
 if __name__=='__main__':
+    guide = load_kitchen_guide()
     copy_art()
     for locale in ('es','en'):
-        render(locale)
+        render(locale, guide)

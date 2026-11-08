@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=surtido1">
+<link rel="stylesheet" href="assets/site.css?v=comercios2">
 <script src="assets/nav.js?v=horeca2" defer></script>
 </head>
 <body class="botanical-site">
@@ -53,10 +53,19 @@
     </div>
   </section>
   <section class="panel">
-    <div class="steps">
-      <div class="step"><span class="n">1</span><h3 data-i18n="s1_h">Solicita el catálogo</h3><p data-i18n="s1_p">Recibe el catálogo con disponibilidad y precios para tu negocio.</p></div>
-      <div class="step"><span class="n">2</span><h3 data-i18n="s2_h">Define tu pedido</h3><p data-i18n="s2_p">Para una tienda, acordamos la entrega según el volumen del pedido. Para una cadena, también podemos planificar el surtido y la reposición.</p></div>
-      <div class="step"><span class="n">3</span><h3 data-i18n="s3_h">Recibe y rota</h3><p data-i18n="s3_p">Entregas puntuales y producto con excelente apariencia en góndola.</p></div>
+    <div class="steps retail-cards">
+      <article class="step retail-card">
+        <img src="assets/super-surtido.webp" width="768" height="512" loading="lazy" decoding="async" alt="">
+        <div><h3 data-i18n="s1_h">El surtido de tu tienda</h3><p data-i18n="s1_p">¿Tomate Barceló para salsa o cherry para ensalada? Elige las variedades que buscan tus clientes en el catálogo.</p></div>
+      </article>
+      <article class="step retail-card">
+        <img src="assets/super-presentacion.webp" width="768" height="512" loading="lazy" decoding="async" alt="">
+        <div><h3 data-i18n="s2_h">A granel o en bandeja</h3><p data-i18n="s2_p">El ají se puede exhibir suelto o en bandeja. Indícanos cómo lo vendes y consulta las presentaciones disponibles para cada producto.</p></div>
+      </article>
+      <article class="step retail-card">
+        <img src="assets/super-reposicion.webp" width="768" height="512" loading="lazy" decoding="async" alt="">
+        <div><h3 data-i18n="s3_h">Reposición por tienda</h3><p data-i18n="s3_p">¿Dónde recibes y cuántas cajas necesitas por semana? Con esos dos datos acordamos la frecuencia de entrega y las cantidades por sucursal.</p></div>
+      </article>
     </div>
   </section>
   <section class="panel">
@@ -69,8 +78,10 @@
       <div class="b2b-art art-col supply-panel">
         <p class="supply-buyer" data-i18n="buyer">¿Qué necesitas para tu próxima entrega? Cuéntanos qué productos buscas, para cuántas tiendas y cuándo te gustaría recibirlos.</p>
         <figure class="supply-story" aria-labelledby="supply-title">
-          <div class="supply-brand"><img src="assets/goveggie-mark-white-v2.svg" alt="" width="28" height="28"><span>goveggie.life</span></div>
-          <h3 id="supply-title" data-i18n="journey_h">De la finca al supermercado</h3>
+          <div class="supply-heading">
+            <div class="supply-brand"><img src="assets/goveggie-mark-white-v2.svg" alt="" width="28" height="28"><span>goveggie.life</span></div>
+            <h3 id="supply-title" data-i18n="journey_h">De la finca al supermercado</h3>
+          </div>
           <div class="supply-story-art"><img src="assets/finca-proceso-v3.webp" alt="Ilustración del proceso: cosecha, transporte refrigerado, empaque y exhibición de vegetales" width="1200" height="800" loading="lazy"></div>
           <ol class="supply-stages">
             <li><span>01</span><strong data-i18n="journey_1">Cosecha</strong></li>
@@ -116,7 +127,7 @@
 <a class="b2b-sticky" href="supermercados.html" data-i18n="sticky">Hablemos de tu negocio</a>
 <script src="assets/language.js?v=cocina1"></script>
 <script>
-const i18n = {"es": {"nav_home": "Inicio", "nav_products": "Productos", "nav_quality": "Calidad", "nav_about": "Nosotros", "nav_b2b": "Supermercados", "nav_contact": "Contacto", "nav_cta": "Ver catálogo", "f_about": "Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.", "f_legal": "© 2026 Go Veggie Life", "sticky": "Hablemos de tu negocio", "m1": "Selección", "m2": "Presentación", "m3": "Distribución", "ph_h": "Para supermercados y distribuidores", "ph_p": "Seleccionamos y empacamos los productos para tu góndola. Acordamos contigo el lugar, el volumen y la frecuencia de entrega.", "s1_h": "Solicita el catálogo", "s1_p": "Recibe el catálogo con disponibilidad y precios para tu negocio.", "s2_h": "Define tu pedido", "s2_p": "Para una tienda, acordamos la entrega según el volumen del pedido. Para una cadena, también podemos planificar el surtido y la reposición.", "s3_h": "Recibe y rota", "s3_p": "Entregas puntuales y producto con excelente apariencia en góndola.", "f_h": "Hablemos de tu negocio", "f_p": "Déjanos tus datos y te contactamos con el catálogo y condiciones comerciales.", "l1": "Nombre y empresa", "l2": "Correo", "l3": "Teléfono / WhatsApp", "l4": "¿Qué necesita tu negocio?", "l5": "Enviar", "l6": "Solicitud enviada. Te contactamos con el catálogo y condiciones.", "l6s": "Enviando…", "l6e": "No se pudo enviar. Inténtalo de nuevo en un momento.", "buyer": "¿Qué necesitas para tu próxima entrega? Cuéntanos qué productos buscas, para cuántas tiendas y cuándo te gustaría recibirlos.", "closing": "Tu góndola es solo el comienzo."}, "en": {"nav_home": "Home", "nav_products": "Products", "nav_quality": "Quality", "nav_about": "About us", "nav_b2b": "Supermarkets", "nav_contact": "Contact", "nav_cta": "View catalogue (ES)", "f_about": "Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.", "f_legal": "© 2026 Go Veggie Life", "sticky": "Let's talk business", "m1": "Selection", "m2": "Presentation", "m3": "Distribution", "ph_h": "For supermarkets and distributors", "ph_p": "We select and pack produce for your shelves. Together we agree on the delivery location, order size and schedule.", "s1_h": "Request the catalogue", "s1_p": "Get the catalogue with availability and pricing for your business.", "s2_h": "Define your order", "s2_p": "For one shop, we arrange delivery based on order size. For a chain, we can also help plan the range and restocking.", "s3_h": "Receive and rotate", "s3_p": "On-time deliveries and produce that looks excellent on the shelf.", "f_h": "Let's talk business", "f_p": "Leave your details and we'll get back to you with the catalogue and trade terms.", "l1": "Name and company", "l2": "Email", "l3": "Phone / WhatsApp", "l4": "What does your business need?", "l5": "Send", "l6": "Request sent. We'll contact you with the catalogue and terms.", "l6s": "Sending…", "l6e": "Couldn't send - please try again in a moment.", "buyer": "What do you need for your next delivery? Tell us what you’re looking for, how many shops you supply and when you’d like it to arrive.", "closing": "Your shelf is just the beginning."}};
+const i18n = {"es": {"nav_home": "Inicio", "nav_products": "Productos", "nav_quality": "Calidad", "nav_about": "Nosotros", "nav_b2b": "Supermercados", "nav_contact": "Contacto", "nav_cta": "Ver catálogo", "f_about": "Proveedor de frutas y vegetales frescos para supermercados en la República Dominicana.", "f_legal": "© 2026 Go Veggie Life", "sticky": "Hablemos de tu negocio", "m1": "Selección", "m2": "Presentación", "m3": "Distribución", "ph_h": "Para supermercados y distribuidores", "ph_p": "Seleccionamos y empacamos los productos para tu góndola. Acordamos contigo el lugar, el volumen y la frecuencia de entrega.", "s1_h": "El surtido de tu tienda", "s1_p": "¿Tomate Barceló para salsa o cherry para ensalada? Elige las variedades que buscan tus clientes en el catálogo.", "s2_h": "A granel o en bandeja", "s2_p": "El ají se puede exhibir suelto o en bandeja. Indícanos cómo lo vendes y consulta las presentaciones disponibles para cada producto.", "s3_h": "Reposición por tienda", "s3_p": "¿Dónde recibes y cuántas cajas necesitas por semana? Con esos dos datos acordamos la frecuencia de entrega y las cantidades por sucursal.", "f_h": "Hablemos de tu negocio", "f_p": "Déjanos tus datos y te contactamos con el catálogo y condiciones comerciales.", "l1": "Nombre y empresa", "l2": "Correo", "l3": "Teléfono / WhatsApp", "l4": "¿Qué necesita tu negocio?", "l5": "Enviar", "l6": "Solicitud enviada. Te contactamos con el catálogo y condiciones.", "l6s": "Enviando…", "l6e": "No se pudo enviar. Inténtalo de nuevo en un momento.", "buyer": "¿Qué necesitas para tu próxima entrega? Cuéntanos qué productos buscas, para cuántas tiendas y cuándo te gustaría recibirlos.", "closing": "Tu góndola es solo el comienzo."}, "en": {"nav_home": "Home", "nav_products": "Products", "nav_quality": "Quality", "nav_about": "About us", "nav_b2b": "Supermarkets", "nav_contact": "Contact", "nav_cta": "View catalogue (ES)", "f_about": "Supplier of fresh fruits and vegetables for supermarkets in the Dominican Republic.", "f_legal": "© 2026 Go Veggie Life", "sticky": "Let's talk business", "m1": "Selection", "m2": "Presentation", "m3": "Distribution", "ph_h": "For supermarkets and distributors", "ph_p": "We select and pack produce for your shelves. Together we agree on the delivery location, order size and schedule.", "s1_h": "Your produce range", "s1_p": "Barceló for sauce or cherry tomatoes for salads? Use the catalogue to pick the varieties your customers look for.", "s2_h": "Loose or tray-packed", "s2_p": "Sweet peppers can be displayed loose or on a tray. Tell us how you sell them and ask which packs are available for each product.", "s3_h": "Restocking each store", "s3_p": "Where do you receive deliveries, and how many cases do you need each week? We use those details to agree a schedule and quantities for each store.", "f_h": "Let's talk business", "f_p": "Leave your details and we'll get back to you with the catalogue and trade terms.", "l1": "Name and company", "l2": "Email", "l3": "Phone / WhatsApp", "l4": "What does your business need?", "l5": "Send", "l6": "Request sent. We'll contact you with the catalogue and terms.", "l6s": "Sending…", "l6e": "Couldn't send - please try again in a moment.", "buyer": "What do you need for your next delivery? Tell us what you’re looking for, how many shops you supply and when you’d like it to arrive.", "closing": "Your shelf is just the beginning."}};
 Object.assign(i18n.es, {journey_h:'De la finca al supermercado',journey_1:'Cosecha',journey_2:'Transporte',journey_3:'Selección y empaque',journey_4:'Supermercado'});
 Object.assign(i18n.en, {journey_h:'From the farm to the supermarket',journey_1:'Harvest',journey_2:'Transport',journey_3:'Selection and packing',journey_4:'Supermarket'});
 Object.assign(i18n.es, {nav_horeca:'Hoteles y restaurantes'});

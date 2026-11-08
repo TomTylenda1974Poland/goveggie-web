@@ -44,12 +44,6 @@ for block in (SRC / 'recipes.txt').read_text().strip().split('\n\n'):
 used = {p for r in recipes.values() for p in r['products']}
 print(len(recipes),'recipes,',len(used),'of',len(products),'catalogue items. Unused:', sorted(products.keys()-used))
 
-def art_for(slug):
-    if slug in ('arroz-auyama','panzanella','clafoutis'):
-        return slug
-    hero = next(p for p in recipes[slug]['products'])
-    return 'productos/' + hero
-
 def copy_art():
     target = ROOT / 'assets/cocina/productos'
     target.mkdir(exist_ok=True, parents=True)

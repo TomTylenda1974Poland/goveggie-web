@@ -385,3 +385,19 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 .product-destination:hover h3,.product-destination:focus-visible h3{text-decoration:underline}
 .product-destination:focus-visible{outline:3px solid #196732;outline-offset:2px}
 .product-action{display:block;margin-top:auto;padding:0 14px 14px;font-size:.82rem;font-weight:650}
+
+.retail-card img {
+  display:block;
+  width:100%;
+  height:clamp(140px,14vw,205px);
+  object-fit:contain;
+  margin-bottom:14px;
+}
+.retail-card h3 { margin:0 0 8px; }
+@media (max-width:760px) {
+  .retail-card { display:grid;grid-template-columns:minmax(80px,32%) 1fr;align-items:center;gap:16px; }
+  .retail-card img { height:auto;margin:0; }
+}
+@media (min-width:1061px) and (hover:hover) and (pointer:fine) {
+  .supply-panel .supply-heading { position:relative;bottom:clamp(18px,2.4vw,36px); }
+}
