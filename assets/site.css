@@ -386,17 +386,40 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);padding-top:clam
 .product-destination:focus-visible{outline:3px solid #196732;outline-offset:2px}
 .product-action{display:block;margin-top:auto;padding:0 14px 14px;font-size:.82rem;font-weight:650}
 
-.retail-card img {
+.retail-art {
+  position:relative;
+  width:100%;
+  aspect-ratio:3/2;
+  margin:0 0 18px;
+}
+.retail-art>img:not(.retail-pack-label) {
   display:block;
   width:100%;
-  height:clamp(140px,14vw,205px);
+  height:100%;
   object-fit:contain;
-  margin-bottom:14px;
 }
 .retail-card h3 { margin:0 0 8px; }
+.retail-art>.retail-pack-label {
+  position:absolute;
+  left:59.3%;
+  top:56.3%;
+  width:26.3%;
+  height:26.3%;
+  object-fit:contain;
+  background:#fff;
+}
+.retail-label-link {
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  margin-top:8px;
+  font-size:.82rem;
+  font-weight:600;
+  text-underline-offset:4px;
+}
 @media (max-width:760px) {
-  .retail-card { display:grid;grid-template-columns:minmax(80px,32%) 1fr;align-items:center;gap:16px; }
-  .retail-card img { height:auto;margin:0; }
+  .retail-card { display:block;padding-block:20px 24px; }
+  .retail-art { max-width:360px;margin:0 auto 18px; }
 }
 @media (min-width:1061px) and (hover:hover) and (pointer:fine) {
   .supply-panel .supply-heading { position:relative;bottom:clamp(18px,2.4vw,36px); }
