@@ -1,6 +1,6 @@
 You are the art director and food photographer for PALAPA VERDE, the value-added prepared-foods line of GO VEGGIE LIFE (fresh fruit & vegetable supplier for supermarkets in the Dominican Republic). Palapa Verde turns Go Veggie Life vegetables into finished, refrigerated products.
 
-THE FIRST ATTACHED IMAGE (referencia-envases) IS THE MANDATORY PACKAGING AND PHOTO STYLE. Reproduce its look precisely: the same containers, the same white die-cut label with arched top and thin black border, the same black-and-white typography (bold serif wordmark, small italic serif line, large bold condensed serif product name), the same black botanical engraving of the key ingredient at the top of the label, the same bright, clean, premium photography with fresh vegetables around the containers on a white background. The other attached images show the Go Veggie Life family style (vivid produce + black stippled botanical engraving on pure white).
+THE FIRST ATTACHED IMAGE (referencia-envases) IS THE MANDATORY PACKAGING AND PHOTO STYLE. Use the same containers. The owner requires a simple white rectangular sticker with four straight edges, square corners and a thin black inset rectangular border. Use the same black-and-white typography (bold serif wordmark and large bold condensed serif product name), the same black botanical engraving of the key ingredient to the left of the product name in the middle of the label, the same bright, clean, premium photography with fresh vegetables around the containers on a white background. The other attached images show the Go Veggie Life family style (vivid produce + black stippled botanical engraving on pure white).
 
 Use your image generation tool. Save each final image as PNG at exactly the given path (relative to the current directory, the palapa-verde/ folder); if the tool saves elsewhere, copy the final file there. Create only these files; do not modify any other file; do not run pnpm/npm/git.
 
@@ -9,17 +9,17 @@ CONTAINERS:
 - HUMMUS DE ZANAHORIA, HUMMUS DE REMOLACHA, SALSA DE AGUACATE Y JALAPEÑO: clear round plastic deli tub with a clear lid (like the hummus tubs in the reference).
 
 LABEL (front, centred, identical system for every product):
-1) a black-ink botanical engraving of the product's key vegetable(s) at the top of the arch;
-2) the wordmark "PALAPA VERDE" (bold serif, black; NO ® or ™ symbol);
-3) the line "Una marca de Go Veggie Life" in small italic serif;
-4) a thin black rule;
-5) the product name, big, as two lines in the reference manner, spelled EXACTLY:
+1) the variant B two-stroke roof, centered and spanning 28% of the wordmark width; below the roof the wordmark "PALAPA VERDE" (bold serif, black; NO ® or ™ symbol);
+2) a thin black rule;
+3) in the middle, a black-ink engraving of the product's key vegetable(s) to the left of the product name;
+4) the product name, big, as two lines in the reference manner, spelled EXACTLY:
    - "CHUTNEY" / "de CILANTRO"
    - "PESTO de CILANTRO" / "con SEMILLAS DE AUYAMA"
    - "HUMMUS" / "de ZANAHORIA"
    - "HUMMUS" / "de REMOLACHA"
    - "SALSA" / "de AGUACATE y JALAPEÑO" (with Ñ)
-IMPORTANT DIFFERENCE FROM THE REFERENCE: the label must NOT contain any description sentence, weight (no "g"), "MANTENER REFRIGERADO", price, barcode, claims or any other text. Below the product name the label simply ends with clean white space and the border. No other text anywhere in the image.
+5) at the very bottom, place the supplied Spanish packaging footer artwork: “Una marca de” plus the original color symbol from the Go Veggie Life website and the lowercase “goveggie.life” wordmark in Archivo Black as one graphic. The finished SVGs for the five SKUs are in design-src/etiquetas/. Use the supplied artwork; if unavailable, reserve the space for later placement.
+IMPORTANT DIFFERENCE FROM THE REFERENCE: the label must NOT contain any description sentence, weight (no "g"), "MANTENER REFRIGERADO", price, barcode, claims or any other text. Keep clear space around the bottom packaging signature. No other text anywhere in the image.
 
 FOOD: show only vegetables named in the product (no chickpeas, no garlic, no lemon, no olive oil, no cheese, no bread or crackers).
 - Chutney de cilantro: vibrant glossy green, chunky, visible through the glass; fresh cilantro around.
@@ -37,6 +37,6 @@ IMAGES (photorealistic, white background, soft daylight from the left, soft shad
 6. design-src/generated-raw/salsa-de-aguacate-y-jalapeno.png — 1536x1024, the avocado salsa tub alone, same composition.
 7. design-src/generated-raw/proceso-campo.png — 1024x1024. BLACK INK ONLY botanical engraving on pure white (no colour), same engraving style as the label illustrations: hands harvesting a bunch of cilantro beside a woven basket of fresh vegetables. No faces, no landscape, no text.
 8. design-src/generated-raw/proceso-cocina.png — 1024x1024. BLACK INK ONLY engraving on white: a cook's hands chopping fresh herbs on a wooden board, a few vegetables beside. No faces, no text.
-9. design-src/generated-raw/proceso-frasco.png — 1024x1024. BLACK INK ONLY engraving on white: one glass jar with black lid and an arched label left blank, a cilantro sprig beside it. No text.
+9. design-src/generated-raw/proceso-frasco.png — 1024x1024. BLACK INK ONLY engraving on white: one glass jar with black lid and a rectangular label with square corners left blank, a cilantro sprig beside it. No text.
 
 Before finishing, inspect every image: exact spelling, no forbidden text (no weight, no MANTENER REFRIGERADO, no description, no ®), correct container type, white background. Regenerate any image that fails (up to 3 tries each). Finally print the saved file list with pixel sizes and any image you could not get right.

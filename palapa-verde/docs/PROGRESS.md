@@ -112,7 +112,15 @@ Do nagłówka i stopki w obu językach dodano nowy znak Palapa Verde: dwie lekki
 
 6 listopada 2026 właściciel wybrał wariant B „Lekka palapa”. Daszek ma 28% optycznej szerokości nazwy Palapa Verde. Hiszpańska i angielska wersja mają mniejszy, wyśrodkowany podpis kursywą pod nazwą marki. Podpis ma łagodniejszy odcień zieleni i zajmuje 72% szerokości nazwy po hiszpańsku oraz około 65% po angielsku. Pliki SVG zawierają podpisy „Una marca de Go Veggie Life” i „A brand of Go Veggie Life”.
 
-Właściciel wskazał planszę z czterema przezroczystymi opakowaniami jako wzorzec stylistyczny. Etykiety mają jasne pole z łukiem i cienkim czarnym obrysem, rycinę głównego składnika, szeryfową nazwę produktu i czarny wariant B z małym podpisem Go Veggie Life. Kolor wnosi produkt i fotografia świeżych składników.
+Właściciel wskazał planszę z czterema przezroczystymi opakowaniami jako wzorzec stylistyczny. Etykiety na historycznej planszy mają jasne pole z łukiem i cienkim czarnym obrysem, rycinę głównego składnika, szeryfową nazwę produktu i czarny wariant B z małym podpisem Go Veggie Life. Kolor wnosi produkt i fotografia świeżych składników.
+
+Aktualizacja decyzji o etykietach: u góry stosujemy sam znak B Palapa Verde i nazwę produktu. Ostatnim elementem frontu jest mniejszy znak Go Veggie Life z opakowań (symbol i zapis „goveggie.life” jako jedna grafika). Propozycja tekstu przed znakiem to „Una marca de” po hiszpańsku i „by” po angielsku. Podgląd wykorzystuje czarny znak z planszy „Go Veggie Label Design Comparison”. Do wydania produkcyjnego potrzebny jest wzorcowy plik znaku i próba druku. Decyzja dotyczy opakowań.
+
+6 listopada 2026 — decyzja właściciela o druku: wszystkie naklejki Palapa Verde mają cztery proste krawędzie i kąty proste; nie stosujemy łuków ani specjalnego wykrojnika. Rycina i daszek są jedynie nadrukiem. Wymiary dotyczą całej naklejki: pierwsza przymiarka 100 × 75 mm (szer. × wys.), porównawczo 100 × 100 mm. Wymiar do produkcji ustalamy osobno po przymiarce na kubku i słoiku.
+
+6 listopada 2026 — lokalne zdjęcia ilustracyjne: pięć osobnych ujęć i jedno grupowe dla Palapa Verde. Prostokątne naklejki mają ostre narożniki. Znak B zajmuje górę, oryginalna rycina ze starszego zdjęcia znajduje się z lewej strony nazwy produktu, a na samym dole pojawia się „Una marca de” i kolorowy znak z web.goveggie.life.
+
+6 listopada 2026 — opublikowano zdjęcia wszystkich pięciu produktów i ujęcie grupowe z prostokątnymi etykietami. Produkcja https://palapa-verde.vercel.app/es, commit 1aafe07, wdrożenie dpl_A3ahJ93hT2rpWEj252EKyWaUA8Vt. Zweryfikowano publiczne pliki oraz wyświetlane wersje sześciu zdjęć, pnpm smoke i 76 testów. Poprzednia produkcja: dpl_FHSNac83D11sYS5SSmhXErm79ekM.
 
 6 listopada 2026 — podgląd strefy Hoteles y restaurantes w ES/EN. Wspólne wejście dla świeżych warzyw Go Veggie Life i przetworów Palapa Verde, dostępne przez stronę główną i Negocios. Gramatury oznaczają propozycje do prób, a zapytanie klient sam udostępnia przedstawicielowi. Bezpośredni odbiorca sprzedażowy czeka na potwierdzenie w CONTACT.
 

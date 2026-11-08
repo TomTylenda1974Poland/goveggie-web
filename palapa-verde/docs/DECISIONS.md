@@ -34,7 +34,7 @@ Rutynowe decyzje techniczne podjęte samodzielnie, z powodem. Decyzje biznesowe 
 13. **Cała strona ma `noindex`**, dopóki `SITE_INDEXABLE` nie dostanie wartości `true` przy starcie.
 
 14. **Grafika według referencji opakowań właściciela** (zatwierdzona 2026-11-05): słoiki dla chutney i pesto,
-    przezroczyste pojemniki dla hummusów i salsy, łukowa etykieta, szeryfowe PALAPA VERDE, ryciny warzyw.
+    przezroczyste pojemniki dla hummusów i salsy, prostokątna naklejka z prostymi narożnikami, szeryfowe PALAPA VERDE, ryciny warzyw.
     Na etykietach na zdjęciach nie ma gramatury, opisu ani „MANTENER REFRIGERADO”, bo to dane do potwierdzenia.
     Typografia strony: Archivo Black dla nagłówków rodziny, Playfair Display dla marki i nazw produktów
     (jak na etykiecie), Cormorant Garamond italic dla linii opisowych.
