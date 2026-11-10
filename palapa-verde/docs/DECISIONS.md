@@ -42,3 +42,9 @@ Rutynowe decyzje techniczne podjęte samodzielnie, z powodem. Decyzje biznesowe 
 ## 6 listopada 2026 — komunikacja marki
 
 Właściciel potwierdził podpisy „Una marca de Go Veggie Life” i „A brand of Go Veggie Life” oraz rolę Go Veggie Life jako głównego dostawcy składników. Dane producenta, podmiotu rejestrującego i pochodzenia surowca w danym produkcie utrzymujemy oddzielnie. Potwierdzenie rodziny marek nie stanowi deklaracji o rejestracji znaku lub składzie produktu.
+
+## 10 listopada 2026 — szkic zapytania i liczba porcji przy zmianie języka
+
+Zmiana języka otwiera stronę drugiego języka od nowa, więc to, co klient wpisał albo wybrał, znikało. Tekst zapytania i liczbę porcji trzymamy w pamięci sesji karty (sessionStorage), pod kluczem niezależnym od języka (formularz + produkt lub opakowanie; przepis). Nie w adresie, bo treść zapytania jest prywatna, a adres trafia do historii i analityki. Nie w pamięci trwałej (localStorage), bo szkic nie powinien zostać na wspólnym urządzeniu po zamknięciu karty. Odczyt następuje dopiero w przeglądarce, po wyświetleniu strony, więc prywatny tekst nie bierze udziału w renderowaniu na serwerze.
+
+Testy komponentów potrzebują drzewa DOM, którego dotąd w testach nie było: doszła zależność deweloperska jsdom (przypięta wersja), używana tylko przez pliki z nagłówkiem `@vitest-environment jsdom`. Pozostałe testy dalej działają w czystym Node.

@@ -1,6 +1,6 @@
 # Postęp: Palapa Verde (strona i sklep)
 
-Ostatnia aktualizacja: 2026-11-07 · gałąź `palapa-verde/shop` · wersja 0.2.0 (podgląd na Vercel)
+Ostatnia aktualizacja: 2026-11-10 · gałąź `palapa-verde/shop` · wersja 0.2.0 (podgląd na Vercel)
 
 ## Stan
 
@@ -16,7 +16,7 @@ Ostatnia aktualizacja: 2026-11-07 · gałąź `palapa-verde/shop` · wersja 0.2.
   adapter HTTP z testami kontraktu. Opis w `docs/INTEGRATION.md`.
 - Grafika według referencji opakowań od właściciela (`design-src/referencia-envases.jpg`).
   Zdjęcia wygenerował ChatGPT przez Codex; na stronie są podpisane „Imagen ilustrativa”.
-- Testy: `pnpm check` (typecheck, 51 testów Vitest, build).
+- Testy: `pnpm check` (typecheck, 99 testów Vitest, build).
 - Vercel: projekt `palapa-verde` podłączony do repozytorium (Root Directory `palapa-verde`). Każdy push
   poza `main` buduje podgląd. Build pomija commity, które nie zmieniają `palapa-verde/`.
 
@@ -145,3 +145,9 @@ Na telefonach zwinięta nawigacja pozostaje przy górze ekranu, a komunikat o ro
 Wszystkie sześć pozycji mobilnego menu w ES i EN korzysta z tej samej zasady: wybór zakładki zamyka menu i otwiera stronę od góry, także przy ponownym wyborze bieżącej zakładki. Logo w nagłówku prowadzi na początek strony głównej. Przycisk Wstecz pozostawia przywracanie pozycji przeglądarce.
 
 7 listopada 2026 — w rejestrze kuchni dodano kartę hotelowej próby hummusu z marchwi. Po wpisaniu rzeczywistych pomiarów gramów na zmianie i liczby porcji karta wylicza ilość podaną na porcję, pozwala skopiować podsumowanie do rejestru i drukuje się na Carta. Dane prób wprowadza zespół na urządzeniu. Karta i rejestr są dostępne offline po pierwszym pełnym wczytaniu.
+
+10 listopada 2026 — tekst wpisany w formularzu zapytania (Negocios oraz Hoteles y restaurantes) zostaje po zmianie języka ES/EN i po powrocie na stronę w tej samej karcie przeglądarki. Każde zapytanie (ogólne, o produkt, o opakowanie) ma własny szkic; pole celowo wyczyszczone zostaje puste, a nietknięta podpowiedź nadal zmienia język razem ze stroną. Tak samo zachowuje się liczba porcji wybrana w przepisie. Szkic i liczba porcji są tylko w pamięci sesji karty: nie trafiają do adresu, analityki ani na serwer. Przy zablokowanej pamięci przeglądarki szkic trzyma się do przeładowania strony.
+
+Ze stopki dla klientów zniknął link „Admin”. Adresy /es/admin i /en/admin działają jak dotąd i nadal nie mają logowania (tylko noindex i robots), więc usunięcie linku niczego nie zabezpiecza. Etykieta nawigacji w stopce jest teraz po hiszpańsku i po angielsku.
+
+Poprawkę formularza i stopki przygotował Codex jako patch; tutaj została sprawdzona i nałożona bez zmian. Doszły testy formularza i liczby porcji w środowisku przeglądarkowym (nowa zależność tylko do testów: jsdom 30.1.3) oraz kontrola w `pnpm smoke`, że strony dla klientów nie linkują do /admin. Sprawdzone: `pnpm check` (typecheck, 99 testów, build), `pnpm smoke` na lokalnym buildzie produkcyjnym oraz ręcznie w przeglądarce po hiszpańsku i angielsku, na komputerze i w szerokości telefonu.
