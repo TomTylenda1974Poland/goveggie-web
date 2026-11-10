@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Ingredient } from "@/content/recipes";
 import type { Locale } from "@/lib/commerce/types";
 import { track } from "@/lib/analytics";
 import { ingredientLine, ingredientText, whatsappShareUrl } from "@/lib/recipe-format";
+import { readServings, writeServings } from "@/lib/recipe-servings";
 
 type Labels = {
   servings: string;
@@ -40,6 +41,17 @@ export function RecipeInteractive({ locale, slug, title, baseServings, publicRec
   const factor = servings / baseServings;
   const productLine = ingredients.find((i) => i.product);
 
+  // Un cambio de idioma vuelve a montar este control: recupera lo que la persona eligió en esta pestaña.
+  useEffect(() => {
+    const kept = readServings(slug, MIN, MAX);
+    if (kept !== null) setServings(kept);
+  }, [slug]);
+
+  function choose(count: number) {
+    setServings(count);
+    writeServings(slug, count);
+  }
+
   function shareRecipe() {
     if (publicRecipeUrl) window.open(whatsappShareUrl([title, labels.shareNote, publicRecipeUrl].filter(Boolean).join("\n")), "_blank", "noopener");
   }
@@ -60,7 +72,7 @@ export function RecipeInteractive({ locale, slug, title, baseServings, publicRec
               type="button"
               aria-label={labels.lessServings}
               disabled={servings <= MIN}
-              onClick={() => setServings((s) => Math.max(MIN, s - 1))}
+              onClick={() => choose(Math.max(MIN, servings - 1))}
               data-track="servings_change"
               data-track-recipe={slug}
               data-track-direction="down"
@@ -72,7 +84,7 @@ export function RecipeInteractive({ locale, slug, title, baseServings, publicRec
               aria-labelledby={`servings-${slug}`}
               onChange={event => {
                 const count = Number(event.target.value);
-                setServings(count);
+                choose(count);
                 track("servings_change", { recipe: slug, direction: count > servings ? "up" : "down" });
               }}
             >
@@ -83,7 +95,7 @@ export function RecipeInteractive({ locale, slug, title, baseServings, publicRec
               type="button"
               aria-label={labels.moreServings}
               disabled={servings >= MAX}
-              onClick={() => setServings((s) => Math.min(MAX, s + 1))}
+              onClick={() => choose(Math.min(MAX, servings + 1))}
               data-track="servings_change"
               data-track-recipe={slug}
               data-track-direction="up"
