@@ -302,6 +302,7 @@ const es = {
     },
   },
   footer: {
+    navigationLabel: "Pie de página",
     about: "Chutney, pesto, hummus y salsa con vegetales protagonistas.",
     legal: "© 2026 Palapa Verde",
     proto: "Versión previa — productos en desarrollo, aún no a la venta.",
@@ -588,6 +589,7 @@ const en: Dictionary = {
     },
   },
   footer: {
+    navigationLabel: "Footer",
     about: "Chutney, pesto, hummus and salsa starring vegetables.",
     legal: "© 2026 Palapa Verde",
     proto: "Preview version — products in development, not on sale yet.",

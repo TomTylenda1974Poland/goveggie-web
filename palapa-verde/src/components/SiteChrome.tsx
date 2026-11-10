@@ -59,7 +59,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <PalapaLogo locale={locale} inverse />
         </Link>
         <p className="f-desc">{t.footer.about}</p>
-        <nav className="f-links" aria-label="Footer">
+        <nav className="f-links" aria-label={t.footer.navigationLabel}>
           <Link href={`/${locale}/recetas`}>{t.nav.recipes}</Link>
           <Link href={`/${locale}/preguntas`}>{t.nav.faq}</Link>
           <Link href={`/${locale}/negocios`}>{t.nav.business}</Link>
@@ -72,7 +72,6 @@ export function SiteFooter({ locale }: { locale: Locale }) {
       <div className="f-meta">
         <span>{t.footer.legal}</span>
         <span>{t.footer.proto}</span>
-        <Link href={`/${locale}/admin`}>{t.nav.admin}</Link>
       </div>
     </footer>
   );

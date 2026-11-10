@@ -1,8 +1,9 @@
 "use client";
 
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import type { Locale } from "@/lib/commerce/types";
 import { enquiryEmailHref } from "@/lib/enquiry-email";
+import { inquiryDraftKey, readInquiryDraft, writeInquiryDraft } from "@/lib/enquiry-draft";
 import styles from "./EmailInquiry.module.css";
 
 const copy = {
@@ -29,27 +30,44 @@ type Props = {
   email: string;
   ready: boolean;
   source: "business" | "kitchen";
+  /** Stable product/pack ID; never a translated title or the private message. */
+  draftId: string;
   example?: string;
   subject?: string;
   context?: string;
   initialMessage?: string;
 };
 
-export function EmailInquiry({ locale, email, ready, source, example, subject, context, initialMessage = "" }: Props) {
+export function EmailInquiry({ locale, email, ready, source, draftId, example, subject, context, initialMessage = "" }: Props) {
   const t = copy[locale];
   const messageId = useId();
   const helpId = useId();
-  const [message, setMessage] = useState(initialMessage);
-  const [feedback, setFeedback] = useState("");
+  const [editedMessage, setMessage] = useState<string | null>(null);
+  const message = editedMessage ?? initialMessage;
+  const [feedback, setFeedback] = useState<"copied" | "manual" | null>(null);
+  const draftStorageKey = inquiryDraftKey(source, draftId);
   const address = useRef<HTMLSpanElement>(null);
   const emailSubject = [subject ?? t.subject, context].filter(Boolean).join(" · ");
   const href = enquiryEmailHref(email, emailSubject, message);
   const savedText = [email, emailSubject, "", message].join("\n");
 
+  // Restore only in the browser, so personal text never enters server rendering.
+  // Callers key this component by its stable draft ID when the scope changes.
+  useEffect(() => {
+    const saved = readInquiryDraft(draftStorageKey);
+    if (saved !== null) setMessage(saved);
+  }, [draftStorageKey]);
+
+  function updateMessage(value: string) {
+    setMessage(value);
+    // Save synchronously before navigation; retain intentional empty drafts too.
+    writeInquiryDraft(draftStorageKey, value);
+  }
+
   async function copyAddress() {
     try {
       await navigator.clipboard.writeText(email);
-      setFeedback(t.copied);
+      setFeedback("copied");
     } catch {
       const selection = window.getSelection();
       if (address.current && selection) {
@@ -57,7 +75,7 @@ export function EmailInquiry({ locale, email, ready, source, example, subject, c
         range.selectNodeContents(address.current);
         selection.removeAllRanges();
         selection.addRange(range);
-        setFeedback(t.manual);
+        setFeedback("manual");
       }
     }
   }
@@ -67,7 +85,7 @@ export function EmailInquiry({ locale, email, ready, source, example, subject, c
       {context && <p className={styles.context}><span>{t.about}</span> {context}</p>}
       <label htmlFor={messageId}>{t.message} <span>{t.optional}</span></label>
       <textarea id={messageId} name="message" rows={2} placeholder={example ?? t.example}
-        value={message} onChange={event => setMessage(event.target.value)} />
+        value={message} onChange={event => updateMessage(event.target.value)} />
       {ready ? (
         <a className={`btn ${styles.open}`} href={href} aria-describedby={helpId}
           data-track="email_draft_open" data-track-from={source}>{t.open} <span aria-hidden="true">↗</span></a>
@@ -81,7 +99,7 @@ export function EmailInquiry({ locale, email, ready, source, example, subject, c
         <span ref={address}>{email}</span>
         <button type="button" onClick={copyAddress}>{t.copy}</button>
       </div>
-      <span role="status" className={styles.status}>{feedback}</span>
+      <span role="status" className={styles.status}>{feedback ? t[feedback] : ""}</span>
     </div>
   );
 }

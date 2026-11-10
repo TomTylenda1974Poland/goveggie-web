@@ -36,6 +36,12 @@ const BANNED = [
 ];
 const PUBLIC_FOR_BANNED = ["/es", "/en", "/es/productos", "/es/productos/hummus-de-remolacha", "/es/negocios", "/es/preguntas"];
 
+/** Páginas de clientes: no enlazan el panel interno /admin (la ruta sigue existiendo para el equipo). */
+const PUBLIC_WITHOUT_ADMIN_LINK = [
+  "/es", "/en", "/es/negocios", "/en/negocios", "/es/hoteles-restaurantes", "/en/hoteles-restaurantes",
+  "/es/recetas", "/en/productos/hummus-de-zanahoria",
+];
+
 let failures = 0;
 const fail = (msg) => {
   failures++;
@@ -75,6 +81,14 @@ for (const path of PUBLIC_FOR_BANNED) {
   const html = await (await get(path)).text();
   const hits = BANNED.filter((re) => re.test(html)).map(String);
   hits.length === 0 ? ok(`${path} no banned text`) : fail(`${path} contains ${hits.join(", ")}`);
+}
+
+for (const path of PUBLIC_WITHOUT_ADMIN_LINK) {
+  const res = await get(path);
+  const html = await res.text();
+  res.status === 200 && !/\/(?:es|en)\/admin\b/.test(html)
+    ? ok(`${path} no link to /admin`)
+    : fail(res.status === 200 ? `${path} links to /admin` : `${path} → ${res.status}`);
 }
 
 {

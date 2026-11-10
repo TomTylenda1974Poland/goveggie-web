@@ -38,6 +38,7 @@ export default async function ProfessionalKitchenPage({ params, searchParams }: 
   const packKey = packImages.find(pack => pack.key === query.envase)?.key;
   const row = t.rows.find(item => item.image === query.grupo && item.brand === "Palapa Verde");
   const selected = packKey ? t.packs[packKey].title : row?.product;
+  const draftId = packKey ? `pack:${packKey}` : row ? `product:${row.image}` : "general";
   const startingMessage = selected ? [t.contact.trial, row?.format].filter(Boolean).join("\n\n") : undefined;
 
   return (
@@ -46,7 +47,7 @@ export default async function ProfessionalKitchenPage({ params, searchParams }: 
         <div className={styles.heroCopy}>
           <h1 id="kitchen-title">{t.title}</h1>
           <p>{t.intro}</p>
-          {email && <EmailInquiry key={selected ?? "general"} locale={locale} email={email} source="kitchen"
+          {email && <EmailInquiry key={draftId} locale={locale} email={email} source="kitchen" draftId={draftId}
             ready={SALES_EMAIL_READY} context={selected} initialMessage={startingMessage} subject={t.contact.subject} example={t.contact.example} />}
           <a className={styles.jumpLink} href="#linea-profesional">{t.explore}</a>
         </div>

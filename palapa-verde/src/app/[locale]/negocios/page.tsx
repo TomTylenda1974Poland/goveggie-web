@@ -53,7 +53,7 @@ export default async function BusinessPage({ params, searchParams }: Props) {
           <h1 id="business-heading">{page.heading}</h1>
           <p>{page.intro}</p>
           {CONTACT.salesEmail && <EmailInquiry key={product?.slug ?? "general"} locale={locale} email={CONTACT.salesEmail}
-            ready={SALES_EMAIL_READY} context={name} source="business" />}
+            ready={SALES_EMAIL_READY} context={name} source="business" draftId={product?.slug ?? "general"} />}
         </div>
         <figure className={styles.art}>
           <Image src={art} width={1200} height={800} alt={page.alt}
